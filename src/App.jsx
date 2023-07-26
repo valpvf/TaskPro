@@ -1,5 +1,5 @@
-// import Home from 'pages/Home';
-// import Welcome from 'pages/Welcome';
+import Home from 'pages/Home';
+import Welcome from 'pages/Welcome';
 import { Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
@@ -10,9 +10,9 @@ export const App = () => {
   return (
     <Suspense fallback={<h1>Loading ...</h1>}>
       <Routes>
-        {/* <Route path="/" element={<Welcome />} /> */}
-        {/* <Route index element={<Welcome />} /> */}
-        {/* <Route path="home" element={<Home />} /> */}
+        <Route path="/" element={<Welcome />} />
+        <Route index element={<Welcome />} />
+        <Route path="home" element={<Home />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Suspense>
