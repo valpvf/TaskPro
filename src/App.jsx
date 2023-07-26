@@ -1,8 +1,10 @@
-import { Suspense, lazy } from 'react';
+import Home from 'pages/Home';
+import Welcome from 'pages/Welcome';
+import { Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-const Welcome = lazy(() => import('./pages/Welcome'));
-const Home = lazy(() => import('./pages/Home'));
+// const Welcome = lazy(() => import('./pages/Welcome'));
+// const Home = lazy(() => import('./pages/Home'));
 
 export const App = () => {
   return (
