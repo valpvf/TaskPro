@@ -4,7 +4,7 @@ const Welcome = () => {
   return (
     <>
       <h1>Start page</h1>
-      <Link to="/Home">To Home Page</Link>
+      <Link to="/home">To Home Page</Link>
     </>
   );
 };
