@@ -1,8 +1,8 @@
 {
-  "name": "taskpro",
+  "name": "taskspro",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://valpvf.github.io/taskpro",
+  "homepage": "https://valpvf.github.io/taskspro",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@reduxjs/toolkit": "^1.9.5",
