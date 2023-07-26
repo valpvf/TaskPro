@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktaskpro=self.webpackChunktaskpro||[]).push([[114],{114:function(s,e,a){a.r(e);var n=a(329);e.default=function(){return(0,n.jsx)("h1",{children:"Tasks page"})}}}]);
-//# sourceMappingURL=114.20e044f7.chunk.js.map
