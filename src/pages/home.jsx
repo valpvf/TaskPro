@@ -6,10 +6,8 @@ const Home = () => {
   return (
     <>
       <Sidebar />
-      <>
-        <Header />
-        <ScreensPage />
-      </>
+      <Header />
+      <ScreensPage />
     </>
   );
 };
