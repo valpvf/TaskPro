@@ -1,5 +1,5 @@
-import Home from 'components/Home';
-import Welcome from 'components/Welcome';
+import Home from 'page/Home';
+import Welcome from 'page/Welcome';
 import { Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
@@ -8,17 +8,14 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 export const App = () => {
   return (
-    <>
-      <Home />
-      <Suspense fallback={<h1>Loading ...</h1>}>
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route index element={<Welcome />} />
-          <Route path="home" element={<Home />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </Suspense>
-    </>
+    <Suspense fallback={<h1>Loading ...</h1>}>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route index element={<Welcome />} />
+        <Route path="home" element={<Home />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Suspense>
   );
 };
 
