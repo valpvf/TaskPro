@@ -16,3 +16,5 @@ export const App = () => {
     </Suspense>
   );
 };
+
+export default App;
