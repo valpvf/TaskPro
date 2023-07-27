@@ -1,5 +1,10 @@
 const UserInfo = () => {
-  return <h1>UserInfo component</h1>;
+  return (
+    <div style={{ display: 'flex' }}>
+      <div>Name</div>
+      <div>Avt</div>
+    </div>
+  );
 };
 
 export default UserInfo;
