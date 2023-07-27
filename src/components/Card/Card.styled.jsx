@@ -14,6 +14,7 @@ export const PriorityWrapper = styled.div `
 `
 
 export const Title = styled.h4 `
+    margin-bottom: 12px;
     font-weight: 600;
     font-size: 14px;
     color: white;
