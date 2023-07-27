@@ -5,9 +5,20 @@ import Sidebar from 'components/Sidebar/Sidebar';
 const Home = () => {
   return (
     <>
-      <Sidebar />
-      <Header />
-      <ScreensPage />
+      <div style={{ display: 'flex' }}>
+        <Sidebar />
+        <div
+          style={{
+            flexGrow: '1',
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <Header />
+          <ScreensPage />
+        </div>
+      </div>
     </>
   );
 };
