@@ -38,7 +38,7 @@ export const TextareaStyled = styled.textarea`
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.4);
   /* opacity: 0.4000000059604645; */
-  background-color: #1f1f1f;
+  background-color: transparent;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 
   color: #fff;

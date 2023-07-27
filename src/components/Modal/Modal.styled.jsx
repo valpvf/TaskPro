@@ -8,7 +8,7 @@ export const BackdropStyled = styled.div`
   width: 100%;
   height: 100%;
   z-index: 100;
-  background-color: rgba(46, 47, 66, 0.4);
+  background-color: rgba(137, 137, 137, 0.2);
 `;
 
 export const ModalWindowStyled = styled.div`
@@ -17,8 +17,7 @@ export const ModalWindowStyled = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 335px;
-  /* height: 220px; */
+  width: 350px;
   padding: 24px;
 
   background-color: #151515;
@@ -33,6 +32,8 @@ export const CloseBtnStyled = styled.div`
   position: absolute;
   right: 14px;
   top: 14px;
+`;
 
-  background-color: gray;
+export const IconStyled = styled.svg`
+  stroke: currentColor;
 `;

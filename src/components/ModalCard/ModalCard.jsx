@@ -28,7 +28,7 @@ const ModalCard = ({ onClose }) => {
           name="cardTitle"
           type="text"
           onChange={formik.handleChange}
-          value={formik.values.firstName}
+          value={formik.values.cardTitle}
         />
         <label htmlFor="cardDescr"></label>
         <TextareaStyled
@@ -37,7 +37,7 @@ const ModalCard = ({ onClose }) => {
           type="text"
           placeholder="Description"
           onChange={formik.handleChange}
-          value={formik.values.lastName}
+          value={formik.values.cardDescr}
         />
         <SubtitleStyled htmlFor="date">Deadline</SubtitleStyled>
         <DateInputStyled id="date" name="date" type="date" />

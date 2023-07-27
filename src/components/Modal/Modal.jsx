@@ -1,21 +1,22 @@
+import sprite from '../../images/sprite.svg';
 import {
   BackdropStyled,
   ModalWindowStyled,
   CloseBtnStyled,
+  IconStyled,
 } from './Modal.styled';
 
 const Modal = ({ children, onClose }) => {
-  const handleClose = e => {
-    console.log(e);
+  const handleClose = () => {
     onClose();
   };
   return (
     <BackdropStyled>
       <ModalWindowStyled>
         <CloseBtnStyled onClick={handleClose}>
-          <svg width={18} height={18}>
-            <use></use>
-          </svg>
+          <IconStyled width={18} height={18}>
+            <use href={sprite + '#icon-close'}></use>
+          </IconStyled>
         </CloseBtnStyled>
         {children}
       </ModalWindowStyled>

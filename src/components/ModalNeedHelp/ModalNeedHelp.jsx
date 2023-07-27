@@ -17,7 +17,7 @@ const ModalNeedHelp = ({ onClose }) => {
   return (
     <Modal onClose={onClose}>
       <ModalTitle>Need help</ModalTitle>
-      <form>
+      <form onSubmit={formik.handleSubmit}>
         <label htmlFor="email"></label>
         <InputStyled
           id="email"
@@ -34,7 +34,7 @@ const ModalNeedHelp = ({ onClose }) => {
           type="text"
           placeholder="Comment"
           onChange={formik.handleChange}
-          value={formik.values.lastName}
+          value={formik.values.comment}
         />
         <button type="submit">Submit</button>
       </form>
