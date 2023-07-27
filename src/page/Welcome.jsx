@@ -6,7 +6,7 @@ const Welcome = () => {
     <>
       <h1>Start page</h1>
       <Link to="/home">To Home Page</Link>
-      <Card/>
+      <Card />
     </>
   );
 };
