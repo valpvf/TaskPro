@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import sprite from '../../images/sprite.svg';
 import {
   BackdropStyled,
@@ -13,12 +13,12 @@ const Modal = ({ children, onClose }) => {
     onClose();
   };
 
-  useEffect(() => {
-    window.addEventListener('keydown', onCloseBackdropEscape);
-    return () => {
-      window.removeEventListener('keydown', onCloseBackdropEscape);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener('keydown', onCloseBackdropEscape);
+  //   return () => {
+  //     window.removeEventListener('keydown', onCloseBackdropEscape);
+  //   };
+  // }, []);
 
   function onCloseBackdropEscape(e) {
     if (e.target.className === 'css-1pzlqj6' || e.key === 'Escape') {
