@@ -1,5 +1,5 @@
 import { Container } from './ScreensPageStyled';
-
+import Card from 'components/Card/Card';
 const ScreensPage = () => {
   return (
     <Container>
@@ -11,6 +11,7 @@ const ScreensPage = () => {
       </button>
 
       {/* Тут можуть бути ваші колонки з картками */}
+      <Card />
     </Container>
   );
 };

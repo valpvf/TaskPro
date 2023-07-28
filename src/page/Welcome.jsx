@@ -1,4 +1,3 @@
-import Card from 'components/Card/Card';
 import { Link } from 'react-router-dom';
 
 const Welcome = () => {
@@ -6,7 +5,6 @@ const Welcome = () => {
     <>
       <h1>Start page</h1>
       <Link to="/home">To Home Page</Link>
-      <Card />
     </>
   );
 };
