@@ -5,6 +5,7 @@ export const StyledButton = styled(Button)`
   gap: 8px;
   width: 287px;
   height: 49px;
+  margin-top: 24px;
   box-sizing: border-box;
   border-radius: 8px;
   background-color: var(--BEDBB0);

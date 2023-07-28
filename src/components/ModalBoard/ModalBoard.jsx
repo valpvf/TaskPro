@@ -5,15 +5,17 @@ import ModalTitle from 'components/ModalTitle/ModalTitle';
 import ButtonMain from 'shared/components/button/Button';
 import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import InputField from 'shared/components/inputField/InputField';
+import RadioImages from 'shared/components/radioButtons/RadioImages';
+import { SubtitleStyled } from './ModalBoard.styled';
 
 const TitleSchema = Yup.object().shape({
   boardTitle: Yup.string().required('required'),
 });
 
-const ModalBoard = ({ onClose }) => {
+const ModalBoard = ({ onClose, title, btnName }) => {
   return (
     <Modal onClose={onClose}>
-      <ModalTitle>New board</ModalTitle>
+      <ModalTitle>{title}</ModalTitle>
 
       <Formik
         initialValues={{
@@ -25,24 +27,24 @@ const ModalBoard = ({ onClose }) => {
           resetForm();
         }}
       >
-        {({ handleChange }) => (
+        {({ handleChange, values }) => (
           <Form>
             <label htmlFor="boardTitle"></label>
             <InputField
-              as={Field}
               text="Title"
               id="boardTitle"
               name="boardTitle"
               type="text"
               onChange={handleChange}
-              //value={formik.values.boardTitle}
+              value={values.boardTitle}
             />
             <ErrorMessage name="boardTitle" component={'p'} />
-            <p>Icons</p>
-            <p>Background</p>
+            <SubtitleStyled>Icons</SubtitleStyled>
+            <SubtitleStyled>Background</SubtitleStyled>
+            <RadioImages />
             <ButtonMain type="submit">
               <BlackPlusButton />
-              Create
+              {btnName}
             </ButtonMain>
           </Form>
         )}

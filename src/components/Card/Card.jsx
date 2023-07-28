@@ -1,5 +1,7 @@
 import React from 'react';
-import sprite from "../../images/sprite.svg";
+import { useState } from 'react';
+import sprite from '../../images/sprite.svg';
+import ModalCard from 'components/ModalCard/ModalCard';
 import {
   Title,
   CardWrapper,
@@ -16,6 +18,15 @@ import {
 } from './Card.styled';
 
 const Card = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const onOpen = () => {
+    setShowModal(true);
+  };
+  const onClose = () => {
+    setShowModal(false);
+  };
+
   return (
     <CardWrapper>
       <div>
@@ -30,7 +41,10 @@ const Card = () => {
         <PriorityWrapper>
           <div>
             <PrioryTitle>Priority</PrioryTitle>
-            <PriorySubTitle><Ball/>Low</PriorySubTitle>
+            <PriorySubTitle>
+              <Ball />
+              Low
+            </PriorySubTitle>
           </div>
           <div>
             <DeadlineTitle>Deadline</DeadlineTitle>
@@ -38,18 +52,19 @@ const Card = () => {
           </div>
           <IconWrapper>
             <Icon width="16px" height="16px">
-            <use xlinkHref={`${sprite}#icon-bell`} />
-            </Icon>
-          <Icon width="16px" height="16px">
-            <use xlinkHref={`${sprite}#icon-goto`} />
+              <use xlinkHref={`${sprite}#icon-bell`} />
             </Icon>
             <Icon width="16px" height="16px">
-            <use xlinkHref={`${sprite}#icon-pencil`} />
+              <use xlinkHref={`${sprite}#icon-goto`} />
             </Icon>
+            <Icon width="16px" height="16px" onClick={onOpen}>
+              <use xlinkHref={`${sprite}#icon-pencil`} />
+            </Icon>
+            {showModal && <ModalCard onClose={onClose} />}
             <Icon width="16px" height="16px">
-            <use xlinkHref={`${sprite}#icon-trash`} />
-          </Icon>
-        </IconWrapper>
+              <use xlinkHref={`${sprite}#icon-trash`} />
+            </Icon>
+          </IconWrapper>
         </PriorityWrapper>
       </div>
     </CardWrapper>

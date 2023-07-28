@@ -26,18 +26,16 @@ const ModalNeedHelp = ({ onClose }) => {
           resetForm();
         }}
       >
-        {({ handleChange }) => (
+        {({ handleChange, values }) => (
           <Form>
             <label htmlFor="email"></label>
             <InputField
-              as={Field}
               text="Email address"
               id="email"
               name="email"
               type="email"
-              //placeholder="Email address"
               onChange={handleChange}
-              // value={formik.values.email}
+              value={values.email}
             />
             <ErrorMessage name="email" component={'p'} />
 

@@ -12,8 +12,11 @@ import icons from '../../images/sprite.svg';
 import { useState } from 'react';
 import Card from 'components/Card/Card';
 import ModalColumn from 'components/ModalColumn/ModalColumn';
+import ModalFilters from 'components/ModalFilters/ModalFilters';
+
 const ScreensPage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
 
   const onOpen = () => {
     setShowModal(true);
@@ -22,15 +25,23 @@ const ScreensPage = () => {
     setShowModal(false);
   };
 
+  const onOpenFilters = () => {
+    setShowFilters(true);
+  };
+  const onCloseFilters = () => {
+    setShowFilters(false);
+  };
+
   return (
     <Container>
       <ScreensHeader>
         <HeaderTxt>Project office</HeaderTxt>
-        <HeaderFiltres>
+        <HeaderFiltres onClick={onOpenFilters}>
           <IconFiltre>
             <use href={`${icons}#icon-filter`}></use>
           </IconFiltre>
           <div>Filtres</div>
+          {showFilters && <ModalFilters onClose={onCloseFilters} />}
         </HeaderFiltres>
       </ScreensHeader>
 

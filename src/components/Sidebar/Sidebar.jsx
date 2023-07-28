@@ -30,6 +30,8 @@ import plant from '../../images/plant_min.png';
 const Sidebar = ({ showSidebar }) => {
   const [showModal, setShowModal] = useState(false);
   const [showHelpText, setShowHelpText] = useState(false);
+  const [showModalBoard, setShowModalBoard] = useState(false);
+  const [showEditBoard, setShowEditBoard] = useState(false);
 
   const onMouseEnterHelpBtn = () => {
     setShowHelpText(true);
@@ -46,6 +48,20 @@ const Sidebar = ({ showSidebar }) => {
     setShowModal(false);
   };
 
+  const onOpenBoard = () => {
+    setShowModalBoard(true);
+  };
+  const onCloseBoard = () => {
+    setShowModalBoard(false);
+  };
+
+  const onOpenEditBoard = () => {
+    setShowEditBoard(true);
+  };
+  const onCloseEditBoard = () => {
+    setShowEditBoard(false);
+  };
+
   return (
     <SidebarContainer>
       <div>
@@ -60,11 +76,24 @@ const Sidebar = ({ showSidebar }) => {
           <div>
             Create a<br></br> new board
           </div>
-          <div onClick={onOpen}>
-            <IconPlus>
+          <div>
+            <IconPlus onClick={onOpenBoard}>
               <use href={`${icons}#icon-plus`}></use>
             </IconPlus>
-            {showModal && <ModalBoard onClose={onClose} />}
+            {showModalBoard && (
+              <ModalBoard
+                onClose={onCloseBoard}
+                title="New board"
+                btnName="Create"
+              />
+            )}
+            {showEditBoard && (
+              <ModalBoard
+                onClose={onCloseEditBoard}
+                title="Edit board"
+                btnName="Edit"
+              />
+            )}
           </div>
         </CreateBoard>
         <BoardList>
@@ -76,9 +105,10 @@ const Sidebar = ({ showSidebar }) => {
               <div>Name</div>
             </ProgName>
             <IconEditCustom>
-              <IconEdit>
+              <IconEdit onClick={onOpenEditBoard}>
                 <use href={`${icons}#icon-pencil`}></use>
               </IconEdit>
+
               <IconEdit>
                 <use href={`${icons}#icon-trash`}></use>
               </IconEdit>

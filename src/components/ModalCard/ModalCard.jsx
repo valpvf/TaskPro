@@ -5,9 +5,11 @@ import ModalTitle from 'components/ModalTitle/ModalTitle';
 import ButtonMain from 'shared/components/button/Button';
 import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import InputField from 'shared/components/inputField/InputField';
+import RadioColored from 'shared/components/radioButtons/RadioColored';
 import {
   TextareaStyled,
   SubtitleStyled,
+  LabelStyled,
   DateInputStyled,
 } from './ModalCard.styled';
 
@@ -19,7 +21,7 @@ const TitleSchema = Yup.object().shape({
 const ModalCard = ({ onClose }) => {
   return (
     <Modal onClose={onClose}>
-      <ModalTitle>Add card</ModalTitle>
+      <ModalTitle>Edit card</ModalTitle>
 
       <Formik
         initialValues={{
@@ -32,22 +34,22 @@ const ModalCard = ({ onClose }) => {
           resetForm();
         }}
       >
-        {({ handleChange }) => (
+        {({ handleChange, values }) => (
           <Form>
             <label htmlFor="cardTitle"></label>
             <InputField
-              as={Field}
+              text="Title"
               id="cardTitle"
               name="cardTitle"
               type="text"
               onChange={handleChange}
-              //value={formik.values.cardTitle}
+              value={values.cardTitle}
             />
             <ErrorMessage name="cardTitle" component={'p'} />
             <label htmlFor="cardDescr"></label>
             <TextareaStyled
               as="textarea"
-              text="Description"
+              placeholder="Description"
               id="cardDescr"
               name="cardDescr"
               type="text"
@@ -55,11 +57,13 @@ const ModalCard = ({ onClose }) => {
               // value={formik.values.cardDescr}
             />
             <ErrorMessage name="cardDescr" component={'p'} />
-            <SubtitleStyled htmlFor="date">Deadline</SubtitleStyled>
+            <SubtitleStyled>Label color</SubtitleStyled>
+            <RadioColored />
+            <LabelStyled htmlFor="date">Deadline</LabelStyled>
             <DateInputStyled id="date" name="date" type="date" />
             <ButtonMain type="submit">
               <BlackPlusButton />
-              Add
+              Edit
             </ButtonMain>
           </Form>
         )}
