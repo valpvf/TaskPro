@@ -9,8 +9,19 @@ import {
   ButtonAdd,
 } from './ScreensPageStyled';
 import icons from '../../images/sprite.svg';
-
+import { useState } from 'react';
+import Card from 'components/Card/Card';
+import ModalColumn from 'components/ModalColumn/ModalColumn';
 const ScreensPage = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const onOpen = () => {
+    setShowModal(true);
+  };
+  const onClose = () => {
+    setShowModal(false);
+  };
+
   return (
     <Container>
       <ScreensHeader>
@@ -25,7 +36,9 @@ const ScreensPage = () => {
 
       <AddColumn>
         <ButtonAdd
-        // onClick={handleAddColumnClick}
+          type="button"
+          // onClick={handleAddColumnClick}
+          onClick={onOpen}
         >
           <IconPlus>
             <use href={`${icons}#icon-plus-01`}></use>
@@ -33,6 +46,12 @@ const ScreensPage = () => {
           Add another column
         </ButtonAdd>
       </AddColumn>
+      {/* Тут можуть бути ваші колонки з картками */}
+      <Card />
+      <Card />
+      <Card />
+
+      {showModal && <ModalColumn onClose={onClose} />}
     </Container>
   );
 };
