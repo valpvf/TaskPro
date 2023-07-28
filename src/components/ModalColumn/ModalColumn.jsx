@@ -1,31 +1,50 @@
-import { useFormik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
+import ButtonMain from 'shared/components/button/Button';
+import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
+import InputField from 'shared/components/inputField/InputField';
+
+const TitleSchema = Yup.object().shape({
+  columnTitle: Yup.string().required('required'),
+});
 
 const ModalColumn = ({ onClose }) => {
-  const formik = useFormik({
-    initialValues: {
-      cardTitle: '',
-    },
-    onSubmit: values => {
-      console.log(JSON.stringify(values, null, 2));
-    },
-  });
-
   return (
     <Modal onClose={onClose}>
       <ModalTitle>Add column</ModalTitle>
-      <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="cardTitle"></label>
-        <input
-          id="cardTitle"
-          name="cardTitle"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.cardTitle}
-        />
-        <button type="submit">Submit</button>
-      </form>
+
+      <Formik
+        initialValues={{
+          columnTitle: '',
+        }}
+        validationSchema={TitleSchema}
+        onSubmit={(values, { resetForm }) => {
+          console.log(values);
+          resetForm();
+        }}
+      >
+        {({ handleChange, values }) => (
+          <Form>
+            <label htmlFor="columnTitle"></label>
+            <InputField
+              as={Field}
+              text="Title"
+              id="columnTitle"
+              name="columnTitle"
+              type="text"
+              onChange={handleChange}
+              value={values.columnTitle}
+            />
+            <ErrorMessage name="columnTitle" component={'p'} />
+            <ButtonMain>
+              <BlackPlusButton />
+              Add
+            </ButtonMain>
+          </Form>
+        )}
+      </Formik>
     </Modal>
   );
 };

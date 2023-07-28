@@ -8,7 +8,7 @@ const RadioColored = () => {
         flexDirection: 'column',
         alignItems: 'flex-start',
         width: '140px',
-        margin: '0 auto',
+        // margin: '0 auto',
       }}
     >
       <RadioGroup

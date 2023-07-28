@@ -44,7 +44,7 @@ export const CloseBtnStyled = styled.div`
 
   &:hover,
   :focus {
-    background-color: rgba(137, 137, 137, 0.2);
+    background-color: var(--9DC888);
   }
 `;
 
