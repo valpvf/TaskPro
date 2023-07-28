@@ -1,5 +1,15 @@
+import {
+  Container,
+  ScreensHeader,
+  HeaderTxt,
+  HeaderFiltres,
+  IconFiltre,
+  AddColumn,
+  IconPlus,
+  ButtonAdd,
+} from './ScreensPageStyled';
+import icons from '../../images/sprite.svg';
 import { useState } from 'react';
-import { Container } from './ScreensPageStyled';
 import Card from 'components/Card/Card';
 import ModalColumn from 'components/ModalColumn/ModalColumn';
 const ScreensPage = () => {
@@ -14,19 +24,33 @@ const ScreensPage = () => {
 
   return (
     <Container>
-      {/* Кнопка для створення нової колонки */}
-      <button
-        type="button"
-        // onClick={handleAddColumnClick}
-        onClick={onOpen}
-      >
-        Add Column
-      </button>
+      <ScreensHeader>
+        <HeaderTxt>Project office</HeaderTxt>
+        <HeaderFiltres>
+          <IconFiltre>
+            <use href={`${icons}#icon-filter`}></use>
+          </IconFiltre>
+          <div>Filtres</div>
+        </HeaderFiltres>
+      </ScreensHeader>
 
+      <AddColumn>
+        <ButtonAdd
+          type="button"
+          // onClick={handleAddColumnClick}
+          onClick={onOpen}
+        >
+          <IconPlus>
+            <use href={`${icons}#icon-plus-01`}></use>
+          </IconPlus>
+          Add another column
+        </ButtonAdd>
+      </AddColumn>
       {/* Тут можуть бути ваші колонки з картками */}
       <Card />
       <Card />
       <Card />
+
       {showModal && <ModalColumn onClose={onClose} />}
     </Container>
   );
