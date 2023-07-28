@@ -1,16 +1,38 @@
-import { Container } from './ScreensPageStyled';
+import {
+  Container,
+  ScreensHeader,
+  HeaderTxt,
+  HeaderFiltres,
+  IconFiltre,
+  AddColumn,
+  IconPlus,
+  ButtonAdd,
+} from './ScreensPageStyled';
+import icons from '../../images/sprite.svg';
 
 const ScreensPage = () => {
   return (
     <Container>
-      {/* Кнопка для створення нової колонки */}
-      <button
-      // onClick={handleAddColumnClick}
-      >
-        Add Column
-      </button>
+      <ScreensHeader>
+        <HeaderTxt>Project office</HeaderTxt>
+        <HeaderFiltres>
+          <IconFiltre>
+            <use href={`${icons}#icon-filter`}></use>
+          </IconFiltre>
+          <div>Filtres</div>
+        </HeaderFiltres>
+      </ScreensHeader>
 
-      {/* Тут можуть бути ваші колонки з картками */}
+      <AddColumn>
+        <ButtonAdd
+        // onClick={handleAddColumnClick}
+        >
+          <IconPlus>
+            <use href={`${icons}#icon-plus-01`}></use>
+          </IconPlus>
+          Add another column
+        </ButtonAdd>
+      </AddColumn>
     </Container>
   );
 };
