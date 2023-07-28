@@ -14,6 +14,7 @@ export const SidebarContainer = styled.div`
   @media (max-width: 768px) {
     position: absolute;
     height: 100vh;
+    width: 225px;
   }
 `;
 
