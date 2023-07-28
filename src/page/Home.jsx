@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 const Home = () => {
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(true);
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);

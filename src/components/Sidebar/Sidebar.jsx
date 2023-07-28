@@ -27,7 +27,7 @@ import {
 import icons from '../../images/sprite.svg';
 import plant from '../../images/plant_min.png';
 
-const Sidebar = ({ showSidebar }) => {
+const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
   const [showHelpText, setShowHelpText] = useState(false);
   const [showModalBoard, setShowModalBoard] = useState(false);
