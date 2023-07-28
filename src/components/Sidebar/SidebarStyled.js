@@ -77,26 +77,26 @@ export const IconPlus = styled.svg`
   stroke: #121212;
 `;
 
-export const Button = styled.button`
-  /* margin-bottom: 20px; */
+// export const Button = styled.button`
+//   /* margin-bottom: 20px; */
 
-  text-align: center;
-  width: 40px;
-  height: 36px;
+//   text-align: center;
+//   width: 40px;
+//   height: 36px;
 
-  background-color: #1e272f;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background-color 0.3s;
+//   background-color: #1e272f;
+//   color: #fff;
+//   border: none;
+//   border-radius: 8px;
+//   cursor: pointer;
+//   font-size: 16px;
+//   font-weight: bold;
+//   transition: background-color 0.3s;
 
-  &:hover {
-    background-color: #1e90ff;
-  }
-`;
+//   &:hover {
+//     background-color: #1e90ff;
+//   }
+// `;
 
 export const BoardList = styled.div`
   margin-top: 40px;
