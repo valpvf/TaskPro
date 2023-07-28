@@ -12,7 +12,7 @@ import {
 } from './HeaderStyled';
 import icons from '../../images/sprite.svg';
 
-const Header = () => {
+const Header = ({ onToggleSidebar }) => {
   const [selectedTheme, setSelectedTheme] = useState('light');
 
   const [isCustomOptionListOpen, setCustomOptionListOpen] = useState(false);
@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <Container>
-      <div>
+      <div onClick={onToggleSidebar}>
         <IconBM>
           <use href={`${icons}#icon-menu`}></use>
         </IconBM>
