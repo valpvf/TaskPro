@@ -1,18 +1,20 @@
 import styled from '@emotion/styled';
 
 export const SidebarContainer = styled.div`
-  /* height: 100vh; */
   width: 260px;
-  background-color: #121212;
+  background-color: var(--121212);
 
-  color: #fff;
+  color: var(--FFFFFF);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Висота на всю сторінку */
   transition: transform 0.3s ease-in-out;
+  z-index: 11;
 
-  font-family: Poppins;
+  @media (max-width: 768px) {
+    position: absolute;
+    height: 100vh;
+  }
 `;
 
 export const Logo = styled.h1`
@@ -26,9 +28,9 @@ export const Logo = styled.h1`
 
   font-size: 16px;
   font-weight: 600;
-  line-height: 24px;
+  /* line-height: 24px; */
+  line-height: calc(24 / 16);
   letter-spacing: -0.04em;
-  text-align: left;
 `;
 
 export const IconLogo = styled.svg`
@@ -38,12 +40,12 @@ export const IconLogo = styled.svg`
 `;
 
 export const H3Board = styled.h3`
-  /* margin-top: 60px; */
   font-size: 12px;
   font-weight: 400;
-  line-height: 18px;
+  line-height: calc(18 / 12);
   letter-spacing: -0.02em;
-  color: grey;
+  color: var(--FFFFFF);
+  opacity: 0.5;
 
   padding-left: 24px;
   padding-right: 24px;
@@ -58,7 +60,7 @@ export const CreateBoard = styled.div`
 
   font-size: 14px;
   font-weight: 500;
-  line-height: 21px;
+  line-height: calc(21 / 14);
   letter-spacing: -0.02em;
 
   margin-left: 24px;
@@ -66,44 +68,26 @@ export const CreateBoard = styled.div`
   padding-bottom: 14px;
   padding-top: 14px;
 
-  border-top: solid 1px gray;
-  border-bottom: solid 1px gray;
+  border-top: solid 1px #ffffff1a;
+  border-bottom: solid 1px #ffffff1a;
 `;
 
 export const IconPlus = styled.svg`
   width: 32px;
   height: 32px;
-  fill: #bedbb0;
-  stroke: #121212;
+  fill: var(--BEDBB0);
+  stroke: var(--121212);
+  &:hover {
+    fill: var(--9DC888);
+    cursor: pointer;
+  }
 `;
-
-// export const Button = styled.button`
-//   /* margin-bottom: 20px; */
-
-//   text-align: center;
-//   width: 40px;
-//   height: 36px;
-
-//   background-color: #1e272f;
-//   color: #fff;
-//   border: none;
-//   border-radius: 8px;
-//   cursor: pointer;
-//   font-size: 16px;
-//   font-weight: bold;
-//   transition: background-color 0.3s;
-
-//   &:hover {
-//     background-color: #1e90ff;
-//   }
-// `;
 
 export const BoardList = styled.div`
   margin-top: 40px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* gap: 12px; */
 `;
 
 export const BoardItem = styled.div`
@@ -113,20 +97,20 @@ export const BoardItem = styled.div`
   align-items: center;
 
   padding: 20px 24px;
-  background-color: #1f1f1f;
-  color: #fff;
+  background-color: var(--161616);
+  color: var(--FFFFFF);
 
   cursor: pointer;
 
   font-size: 14px;
   font-weight: 500;
-  line-height: 21px;
+  line-height: calc(24 / 14);
   letter-spacing: -0.02em;
   text-align: left;
 
-  &:hover {
+  /* &:hover {
     background-color: #1e90ff;
-  }
+  } */
 `;
 
 export const BorderRight = styled.div`
@@ -136,7 +120,7 @@ export const BorderRight = styled.div`
   right: -1px;
   height: 100%;
   width: 3px;
-  background-color: #bedbb0;
+  background-color: var(--BEDBB0);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 `;
@@ -149,7 +133,7 @@ export const ProgName = styled.div`
 export const IconProgect = styled.svg`
   width: 18px;
   height: 18px;
-  stroke: #ffffff;
+  stroke: var(--FFFFFF);
 `;
 export const IconEditCustom = styled.div`
   display: flex;
@@ -161,17 +145,48 @@ export const IconEdit = styled.svg`
   margin-left: 8px;
   width: 16px;
   height: 16px;
-  stroke: grey;
+  stroke: #ffffff80;
   fill: none;
+  &:hover {
+    stroke: var(--9DC888);
+    filter: drop-shadow(0 0 7px var(--9DC888));
+  }
 `;
 
 export const HelpBar = styled.div`
-  min-height: 212px;
-  background-color: #1f1f1f;
+  position: relative;
+`;
+
+export const HelpTextContainer = styled.div`
+  position: absolute;
+  top: -210px;
+  background-color: var(--1F1F1F);
+  padding: 20px;
+  padding-bottom: 0;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  margin-left: 24px;
+  margin-right: 24px;
+`;
+
+export const HelpBtn = styled.div`
+  background-color: var(--1F1F1F);
   padding: 20px;
   border-radius: 8px;
   margin-left: 24px;
   margin-right: 24px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: calc(20 / 14);
+  letter-spacing: -0.02em;
+  &:hover {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 `;
 
 export const HelpImg = styled.img`
@@ -181,19 +196,10 @@ export const HelpImg = styled.img`
 `;
 
 export const HelpTxt = styled.p`
-  margin-bottom: 18px;
+  /* margin-bottom: 18px; */
   font-size: 14px;
   font-weight: 400;
-  line-height: 20px;
-  letter-spacing: -0.02em;
-`;
-
-export const HelpBtn = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
+  line-height: calc(20 / 14);
   letter-spacing: -0.02em;
 `;
 
@@ -201,7 +207,7 @@ export const IconHelp = styled.svg`
   width: 16px;
   height: 16px;
   fill: none;
-  stroke: #ffffff;
+  stroke: var(--FFFFFF);
   margin-right: 8px;
 `;
 
@@ -209,17 +215,23 @@ export const LogOut = styled.div`
   display: flex;
   align-items: center;
   margin: 24px;
+  cursor: pointer;
 
   font-size: 16px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: calc(24 / 16);
   letter-spacing: 0em;
+
+  &:hover {
+    stroke: var(--9DC888);
+    filter: drop-shadow(0 0 1px var(--9DC888));
+  }
 `;
 
 export const IconLogOut = styled.svg`
-  width: 16px;
-  height: 16px;
+  width: 32px;
+  height: 32px;
   fill: none;
-  stroke: #bedbb0;
+  stroke: var(--BEDBB0);
   margin-right: 8px;
 `;
