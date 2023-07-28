@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
+import '../../shared/basicStyles/variables.scss';
 
 export const TitleStyled = styled.h2`
   margin-bottom: 24px;
-  color: #fff;
-  font-family: Poppins;
+  color: var(--FFFFFF);
   font-size: 18px;
-  font-style: normal;
   font-weight: 500;
-  line-height: normal;
+  line-height: 1.5;
   letter-spacing: -0.36px;
 `;
