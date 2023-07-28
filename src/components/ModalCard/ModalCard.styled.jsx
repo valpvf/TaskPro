@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import '../../shared/basicStyles/variables.scss';
 
 export const FormStyled = styled.form`
   width: 100%;
@@ -12,23 +13,20 @@ export const TextareaStyled = styled.textarea`
   resize: none;
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.4);
-  /* opacity: 0.4000000059604645; */
-  background-color: #1f1f1f;
+  background-color: var(--1F1F1F);
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 
-  color: #fff;
+  color: var(--FFFFFF);
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 1.29;
   letter-spacing: -0.28px;
 
   ::placeholder {
-    color: #fff;
+    color: var(--FFFFFF);
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 1.29;
     letter-spacing: -0.28px;
   }
 
@@ -40,15 +38,13 @@ export const TextareaStyled = styled.textarea`
 
 export const SubtitleStyled = styled.label`
   color: rgba(255, 255, 255, 0.5);
-  font-family: Poppins;
   font-size: 12px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 1.5;
   letter-spacing: -0.24px;
 `;
 
 export const DateInputStyled = styled.input`
   display: block;
-  background-color: #fff;
+  background-color: var(--FFFFFF);
 `;

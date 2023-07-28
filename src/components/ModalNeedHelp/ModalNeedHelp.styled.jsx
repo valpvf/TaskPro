@@ -5,21 +5,18 @@ export const InputStyled = styled.input`
   padding: 14px 18px;
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.4);
-  /* opacity: 0.4000000059604645; */
 
-  color: #fff;
+  color: var(--FFFFFF);
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 1.29;
   letter-spacing: -0.28px;
 
   ::placeholder {
-    color: #fff;
+    color: var(--FFFFFF);
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 1.29;
     letter-spacing: -0.28px;
   }
 
@@ -37,23 +34,20 @@ export const TextareaStyled = styled.textarea`
   resize: none;
   border-radius: 8px;
   border: 1px solid rgba(190, 219, 176, 0.4);
-  /* opacity: 0.4000000059604645; */
   background-color: transparent;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
 
-  color: #fff;
+  color: var(--FFFFFF);
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 1.29;
   letter-spacing: -0.28px;
 
   ::placeholder {
-    color: #fff;
+    color: var(--FFFFFF);
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 1.29;
     letter-spacing: -0.28px;
   }
 
