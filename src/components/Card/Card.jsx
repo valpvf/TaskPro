@@ -1,4 +1,5 @@
 import React from 'react';
+import sprite from "../../images/sprite.svg";
 import {
   Title,
   CardWrapper,
@@ -10,6 +11,8 @@ import {
   DeadlineSubTitle,
   DeadlineTitle,
   Line,
+  Icon,
+  IconWrapper,
 } from './Card.styled';
 
 const Card = () => {
@@ -33,6 +36,20 @@ const Card = () => {
             <DeadlineTitle>Deadline</DeadlineTitle>
             <DeadlineSubTitle>12/05/2023</DeadlineSubTitle>
           </div>
+          <IconWrapper>
+            <Icon width="16px" height="16px">
+            <use xlinkHref={`${sprite}#icon-bell`} />
+            </Icon>
+          <Icon width="16px" height="16px">
+            <use xlinkHref={`${sprite}#icon-goto`} />
+            </Icon>
+            <Icon width="16px" height="16px">
+            <use xlinkHref={`${sprite}#icon-pencil`} />
+            </Icon>
+            <Icon width="16px" height="16px">
+            <use xlinkHref={`${sprite}#icon-trash`} />
+          </Icon>
+        </IconWrapper>
         </PriorityWrapper>
       </div>
     </CardWrapper>
