@@ -7,7 +7,8 @@ import {
 } from './Modal.styled';
 
 const Modal = ({ children, onClose }) => {
-  const handleClose = () => {
+  const handleClose = e => {
+    e.stopPropagation();
     onClose();
   };
   return (

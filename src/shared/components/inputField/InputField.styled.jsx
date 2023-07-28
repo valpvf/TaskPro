@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import { Field } from 'formik';
 
-export const StyledInputField = styled.input`
+export const StyledInputField = styled(Field)`
   width: 287px;
   height: 49px;
   padding: 0 18px;
