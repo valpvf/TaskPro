@@ -12,6 +12,8 @@ const ScreensPage = () => {
 
       {/* Тут можуть бути ваші колонки з картками */}
       <Card />
+      <Card />
+      <Card />
     </Container>
   );
 };
