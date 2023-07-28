@@ -5,7 +5,7 @@ export const CardWrapper = styled.div`
   background-color: #121212;
   width: 334px;
   border-radius: 8px;
-  padding: 15px;
+  padding: 15px 15px 5px 15px;
   border-left: 4px solid #8fa1d0;
 `;
 export const PriorityWrapper = styled.div`
@@ -75,4 +75,23 @@ export const Ball = styled.hr`
 export const Line = styled.hr`
     border: 1px solid #232323;
     margin: 10px 0;
+`;
+
+export const Icon = styled.svg`
+  stroke: #949393;
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+  fill: none;
+  &:hover,
+  &:focus {
+    stroke: #bedbb0;
+    filter: drop-shadow(0 0 5px #bedbb0);
+  }
+`;
+
+export const IconWrapper = styled.div`
+    margin-left: 90px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 `;
