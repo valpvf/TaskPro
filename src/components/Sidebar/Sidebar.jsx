@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import ModalBoard from 'components/ModalBoard/ModalBoard';
 import ModalNeedHelp from 'components/ModalNeedHelp/ModalNeedHelp';
-
 import {
   SidebarContainer,
-  // Button,
   Logo,
   BoardList,
   BoardItem,
@@ -24,12 +22,22 @@ import {
   IconHelp,
   LogOut,
   IconLogOut,
+  HelpTextContainer,
 } from './SidebarStyled';
 import icons from '../../images/sprite.svg';
 import plant from '../../images/plant_min.png';
 
-const Sidebar = () => {
+const Sidebar = ({ showSidebar }) => {
   const [showModal, setShowModal] = useState(false);
+  const [showHelpText, setShowHelpText] = useState(false);
+
+  const onMouseEnterHelpBtn = () => {
+    setShowHelpText(true);
+  };
+
+  const onMouseLeaveHelpBtn = () => {
+    setShowHelpText(false);
+  };
 
   const onOpen = () => {
     setShowModal(true);
@@ -57,15 +65,8 @@ const Sidebar = () => {
               <use href={`${icons}#icon-plus`}></use>
             </IconPlus>
             {showModal && <ModalBoard onClose={onClose} />}
-
-            {/* <Button type="button" onClick={onOpen}>
-              +
-            </Button> */}
           </div>
         </CreateBoard>
-
-        {/* <button onClick={handleFilterClick}>Filters</button> */}
-
         <BoardList>
           <BoardItem>
             <ProgName>
@@ -84,29 +85,39 @@ const Sidebar = () => {
             </IconEditCustom>
             <BorderRight />
           </BoardItem>
-
-          {/* <BoardItem>Board 1</BoardItem> */}
         </BoardList>
       </div>
 
       <div>
-        <HelpBar>
-          <div>
-            <HelpImg src={plant} alt="Help" />
-            <HelpTxt>
-              If you need help with{' '}
-              <span style={{ color: '#bedbb0' }}>TaskPro</span>, check out our
-              support resources or reach out to our customer support team.
-            </HelpTxt>
+        <div>
+          <div
+            onMouseEnter={onMouseEnterHelpBtn}
+            onMouseLeave={onMouseLeaveHelpBtn}
+          >
+            <HelpBar>
+              {showHelpText && (
+                <HelpTextContainer>
+                  <HelpImg src={plant} alt="Help" />
+                  <HelpTxt>
+                    If you need help with{' '}
+                    <span style={{ color: '#bedbb0' }}>TaskPro</span>, check out
+                    our support resources or reach out to our customer support
+                    team.
+                  </HelpTxt>
+                </HelpTextContainer>
+              )}
+            </HelpBar>
+
             <HelpBtn onClick={onOpen}>
               <IconHelp>
                 <use href={`${icons}#icon-help`}></use>
               </IconHelp>
               Need help?
             </HelpBtn>
+
             {showModal && <ModalNeedHelp onClose={onClose} />}
           </div>
-        </HelpBar>
+        </div>
 
         <LogOut>
           <IconLogOut>
