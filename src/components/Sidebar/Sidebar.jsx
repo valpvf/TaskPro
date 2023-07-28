@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState } from 'react';
+import ModalBoard from 'components/ModalBoard/ModalBoard';
 import {
   SidebarContainer,
   Button,
@@ -11,6 +13,15 @@ import {
 } from './SidebarStyles';
 
 const Sidebar = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const onOpen = () => {
+    setShowModal(true);
+  };
+  const onClose = () => {
+    setShowModal(false);
+  };
+
   return (
     <SidebarContainer>
       <div>
@@ -21,7 +32,10 @@ const Sidebar = () => {
             Create a<br></br> new board
           </div>
           <div>
-            <Button>+</Button>
+            <Button type="button" onClick={onOpen}>
+              +
+            </Button>
+            {showModal && <ModalBoard onClose={onClose} />}
           </div>
         </CreateBoard>
 
