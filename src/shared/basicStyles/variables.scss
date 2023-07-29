@@ -1,19 +1,44 @@
-:root {
-  --121212: #121212;
-  --BEDBB0: #bedbb0;
-  --FFFFFF: #ffffff;
-  --8FA1D0: #8fa1d0;
-  --E09CB5: #e09cb5;
-  --1F1F1F: #1f1f1f;
-  --9DC888: #9dc888;
-  --161616: #161616;
-  --F6F6F7: #f6f6f7;
-  --8FA1D0: #8fa1d0;
-  --5255BC: #5255bc;
-  --B8BCFD: #b8bcfd;
-  --979CEA: #979cea;
-  --7B7EDE: #7b7ede;
-  --ECEDFD: #ecedfd;
+// :root {
+//   --121212: #121212;
+//   --BEDBB0: #bedbb0;
+//   --FFFFFF: #ffffff;
+//   --8FA1D0: #8fa1d0;
+//   --E09CB5: #e09cb5;
+//   --1F1F1F: #1f1f1f;
+//   --9DC888: #9dc888;
+//   --161616: #161616;
+//   --F6F6F7: #f6f6f7;
+//   --8FA1D0: #8fa1d0;
+//   --5255BC: #5255bc;
+//   --B8BCFD: #b8bcfd;
+//   --979CEA: #979cea;
+//   --7B7EDE: #7b7ede;
+//   --ECEDFD: #ecedfd;
+//   --welcomeBgColor: linear-gradient(
+//     180deg,
+//     #ffffff 0%,
+//     #ffffff 25%,
+//     #bedbb0 92.19%
+//   );
+// }
+
+// dark theme
+html[data-theme='dark'] {
+  --primary-background-color: #121212;
+  --secondary-background-color: #1f1f1f;
+  --header-background-color: #161616;
+  --primary-button-color: #bedbb0;
+  --secondary-button-color: #9dc888;
+
+  --primary-heading-color: #ffffff;
+  --primary-text-color: #b7b7b7;
+  --secondary-deadline-color: #999999;
+  --secondary-line-color: #232323;
+  --primary-priority-color: #8fa1d0;
+  --secondary-priority-color: #e09cb5;
+  --tertiary-priority-color: #999999;
+  --primary-icon-stroke-color: #ffffff;
+
   --welcomeBgColor: linear-gradient(
     180deg,
     #ffffff 0%,
@@ -22,18 +47,38 @@
   );
 }
 
-// dark theme
-html[data-theme='dark'] {
-  --121212: #121212;
-  --BEDBB0: #bedbb0;
-  --9DC888: #9dc888;
-  ----1F1F1F: #1f1f1f;
-}
-
 // light theme
 html[data-theme='light'] {
-  --121212: #fdfdfd;
-  --BEDBB0: #bedbb0;
-  --9DC888: #9dc888;
-  --1F1F1F: #f6f6f7;
+  --primary-background-color: #fdfdfd;
+  --secondary-background-color: #f6f6f7;
+  --header-background-color: #fcfcfc;
+  --primary-button-color: #bedbb0;
+  --secondary-button-color: #9dc888;
+
+  --primary-heading-color: #ffffff;
+  --primary-text-color: #b7b7b7;
+  --secondary-deadline-color: #999999;
+  --secondary-line-color: #999999;
+  --primary-priority-color: #8fa1d0;
+  --secondary-priority-color: #e09cb5;
+  --tertiary-priority-color: #999999;
+  --primary-icon-stroke-color: #ffffff;
+}
+
+// purple theme
+html[data-theme='violet'] {
+  --primary-background-color: #ecedfd;
+  --secondary-background-color: #5255bc;
+  --header-background-color: #ffffff;
+  --primary-button-color: #5255bc;
+  --secondary-button-color: #7b7ede;
+
+  --primary-heading-color: #161616;
+  --primary-text-color: #b7b7b7;
+  --secondary-deadline-color: #999999;
+  --secondary-line-color: #999999;
+  --primary-priority-color: #8fa1d0;
+  --secondary-priority-color: #e09cb5;
+  --tertiary-priority-color: #999999;
+  --primary-icon-stroke-color: #ffffff;
 }

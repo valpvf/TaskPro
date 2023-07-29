@@ -5,8 +5,10 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #161616;
-  color: #fff;
+  /* background-color: #161616; */
+  background-color: var(--header-background-color);
+  /* color: #fff; */
+  color: var(--primary-heading-color);
   height: 68px;
   padding-left: 32px;
   padding-right: 24px;
@@ -16,7 +18,8 @@ export const IconBM = styled.svg`
   width: 32px;
   height: 32px;
   fill: none;
-  stroke: #ffffff;
+  /* stroke: #ffffff; */
+  stroke: var(--primary-icon-stroke-color);
 
   @media (min-width: 768px) {
     display: none;
@@ -40,7 +43,8 @@ export const CustomOptionList = styled.ul`
   position: absolute;
   top: 20px;
   left: -90px;
-  background-color: #161616;
+  /* background-color: #161616; */
+  background-color: var(--header-background-color);
   border: solid 1px #bedbb0;
   border-radius: 8px;
 `;

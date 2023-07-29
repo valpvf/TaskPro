@@ -46,7 +46,7 @@ const Header = ({ onToggleSidebar }) => {
       </div>
       <HeaderInfo>
         <TheamBtn onClick={toggleCustomOptionList}>
-          Theam
+          Theme
           <IconDown>
             <use href={`${icons}#icon-chevron-down`}></use>
           </IconDown>
