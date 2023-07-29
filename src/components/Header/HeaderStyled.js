@@ -45,7 +45,8 @@ export const CustomOptionList = styled.ul`
   left: -90px;
   /* background-color: #161616; */
   background-color: var(--header-background-color);
-  border: solid 1px #bedbb0;
+  /* border: solid 1px #bedbb0; */
+  border: solid 1px var(--primary-button-color);
   border-radius: 8px;
 `;
 
@@ -55,12 +56,18 @@ export const CustomOption = styled.li`
 
   &:hover {
     color: #bedbb0;
+    color: var(--primary-button-color);
   }
 
-  ${props =>
+  /* ${props =>
     props.selected &&
     `
     color: #BEDBB0;
+  `} */
+  ${props =>
+    props.selected &&
+    `
+    color: var(--primary-button-color);
   `}
 `;
 
@@ -76,4 +83,5 @@ export const IconDown = styled.svg`
   margin-left: 4px;
 
   stroke: white;
+  stroke: var(--primary-icon-stroke-color);
 `;

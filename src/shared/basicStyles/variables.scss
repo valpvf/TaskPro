@@ -1,44 +1,27 @@
-// :root {
-//   --121212: #121212;
-//   --BEDBB0: #bedbb0;
-//   --FFFFFF: #ffffff;
-//   --8FA1D0: #8fa1d0;
-//   --E09CB5: #e09cb5;
-//   --1F1F1F: #1f1f1f;
-//   --9DC888: #9dc888;
-//   --161616: #161616;
-//   --F6F6F7: #f6f6f7;
-//   --8FA1D0: #8fa1d0;
-//   --5255BC: #5255bc;
-//   --B8BCFD: #b8bcfd;
-//   --979CEA: #979cea;
-//   --7B7EDE: #7b7ede;
-//   --ECEDFD: #ecedfd;
-//   --welcomeBgColor: linear-gradient(
-//     180deg,
-//     #ffffff 0%,
-//     #ffffff 25%,
-//     #bedbb0 92.19%
-//   );
-// }
+:root {
+  // --121212: #121212;
+  // --BEDBB0: #bedbb0;
+  // --FFFFFF: #ffffff;
+  // --8FA1D0: #8fa1d0;
+  // --E09CB5: #e09cb5;
+  // --1F1F1F: #1f1f1f;
+  // --9DC888: #9dc888;
+  // --161616: #161616;
+  // --F6F6F7: #f6f6f7;
+  // --8FA1D0: #8fa1d0;
+  // --5255BC: #5255bc;
+  // --B8BCFD: #b8bcfd;
+  // --979CEA: #979cea;
+  // --7B7EDE: #7b7ede;
+  // --ECEDFD: #ecedfd;
 
-// dark theme
-html[data-theme='dark'] {
-  --primary-background-color: #121212;
-  --secondary-background-color: #1f1f1f;
-  --header-background-color: #161616;
-  --primary-button-color: #bedbb0;
-  --secondary-button-color: #9dc888;
-
-  --primary-heading-color: #ffffff;
-  --primary-text-color: #b7b7b7;
-  --secondary-deadline-color: #999999;
-  --secondary-line-color: #232323;
-  --primary-priority-color: #8fa1d0;
-  --secondary-priority-color: #e09cb5;
-  --tertiary-priority-color: #999999;
-  --primary-icon-stroke-color: #ffffff;
-
+  --welcome-title-color: #161616;
+  --welcome-background-color: #161616;
+  --welcome-hover-text-color: #ffffff;
+  --user-icon-fill-color: #1f1f1f;
+  --user-icon-stroke-color: #ffffff;
+  --user-icon-plus-fill-color: #bedbb0;
+  --user-icon-plus-stroke-color: #121212;
   --welcomeBgColor: linear-gradient(
     180deg,
     #ffffff 0%,
@@ -47,38 +30,146 @@ html[data-theme='dark'] {
   );
 }
 
+// dark theme
+html[data-theme='dark'] {
+  --primary-background-color: #121212;
+  --secondary-background-color: #1f1f1f;
+  --header-background-color: #161616;
+  --sidebar-help-backgound-color: #1f1f1f;
+  --needhelp-backdrop-background-color: rgba(0, 0, 0, 0.7);
+  --primary-button-color: #bedbb0;
+  --secondary-button-color: #9dc888;
+  --plus-button-color: #bedbb0;
+  --plus-button-hover-color: #9dc888;
+  --logout-button-color: #bedbb0;
+  --logout-hover-button-color: #9dc888;
+  --scrollbar-color: #bedbb0;
+  --add-column-button-color: #121212;
+  --primary-card-background-color: #121212;
+  --primary-background-sidebar-color: #121212;
+  --secondary-text-sidebar-color: #ffffff;
+  --line-border-sidebar-color: #ffffff1a;
+  --board-item-sidebar-background-color: #161616;
+  --board-item-sidebar-color: #ffffff;
+
+  --primary-heading-color: #ffffff;
+  --secondary-heading-color: #ffffff;
+  --primary-text-color: #b7b7b7;
+  --secondary-deadline-color: #999999;
+  --secondary-line-color: #232323;
+  --primary-priority-color: #8fa1d0;
+  --secondary-priority-color: #e09cb5;
+  --tertiary-priority-color: #999999;
+  --primary-icon-stroke-color: #ffffff;
+  --secondary-icon-stroke-color: #121212;
+  --sidebar-icon-stroke-color: #ffffff;
+  --sidebar-icon-edit-stroke-color: #ffffff80;
+
+  --shared-button-text-color: #161616;
+  --shared-input-border-color: rgba(190, 219, 176, 0.4);
+  --shared-input-border-hover-color: #bedbb0;
+  --shared-input-text-color: #ffffff;
+  --shared-input-placeholder-color: #ffffff;
+  --shared-plus-icon-dark-big: #121212;
+  --shared-plus-icon-dark-small: #121212;
+  --shared-plus-icon-color: #ffffff;
+  --shared-add-column-button: #ffffff;
+  --shared-add-column-button-border: #121212;
+  --shared-black-plus-button: #161616;
+}
+
 // light theme
 html[data-theme='light'] {
   --primary-background-color: #fdfdfd;
   --secondary-background-color: #f6f6f7;
   --header-background-color: #fcfcfc;
+  --sidebar-help-backgound-color: #f6f6f7;
+  --needhelp-backdrop-background-color: #ffffff;
   --primary-button-color: #bedbb0;
   --secondary-button-color: #9dc888;
+  --plus-button-color: #bedbb0;
+  --plus-button-hover-color: #9dc888;
+  --logout-button-color: #bedbb0;
+  --logout-hover-button-color: #9dc888;
+  --scrollbar-color: #bedbb0;
+  --add-column-button-color: #ffffff;
+  --primary-card-background-color: #fdfdfd;
+  --primary-background-sidebar-color: #fdfdfd;
+  --secondary-text-sidebar-color: #161616;
+  --line-border-sidebar-color: #d6d2d2;
+  --board-item-sidebar-background-color: #f6f6f7;
+  --board-item-sidebar-color: #161616;
 
-  --primary-heading-color: #ffffff;
+  --primary-heading-color: #161616;
+  --secondary-heading-color: #161616;
   --primary-text-color: #b7b7b7;
   --secondary-deadline-color: #999999;
   --secondary-line-color: #999999;
   --primary-priority-color: #8fa1d0;
   --secondary-priority-color: #e09cb5;
   --tertiary-priority-color: #999999;
-  --primary-icon-stroke-color: #ffffff;
+  --primary-icon-stroke-color: #161616;
+  --secondary-icon-stroke-color: #121212;
+  --sidebar-icon-stroke-color: #161616;
+  --sidebar-icon-edit-stroke-color: #b7b7b7;
+
+  --shared-button-text-color: #161616;
+  --shared-input-border-color: rgba(190, 219, 176, 0.4);
+  --shared-input-border-hover-color: #bedbb0;
+  --shared-input-text-color: #ffffff;
+  --shared-input-placeholder-color: #161616;
+  --shared-plus-icon-dark-big: #121212;
+  --shared-plus-icon-dark-small: #121212;
+  --shared-plus-icon-color: #ffffff;
+  --shared-add-column-button: #ffffff;
+  --shared-add-column-button-border: #121212;
+  --shared-black-plus-button: #161616;
 }
 
 // purple theme
 html[data-theme='violet'] {
   --primary-background-color: #ecedfd;
-  --secondary-background-color: #5255bc;
+  --secondary-background-color: #ecedfd;
   --header-background-color: #ffffff;
+  --sidebar-help-backgound-color: rgba(236, 237, 253, 0.4);
+  --needhelp-backdrop-background-color: #ffffff;
   --primary-button-color: #5255bc;
   --secondary-button-color: #7b7ede;
+  --plus-button-color: #7b7ede;
+  --plus-button-hover-color: #979cea;
+  --logout-button-color: #ffffff;
+  --logout-hover-button-color: #161616;
+  --scrollbar-color: #ffffff;
+  --primary-card-background-color: #fdfdfd;
+  --primary-background-card-color: #ecedfd;
+  --primary-background-sidebar-color: #5255bc;
+  --secondary-text-sidebar-color: #ffffff;
+  --line-border-sidebar-color: #ffffff1a;
+  --board-item-sidebar-background-color: #979cea;
+  --board-item-sidebar-color: #ffffff;
 
   --primary-heading-color: #161616;
+  --secondary-heading-color: #ffffff;
   --primary-text-color: #b7b7b7;
   --secondary-deadline-color: #999999;
   --secondary-line-color: #999999;
   --primary-priority-color: #8fa1d0;
   --secondary-priority-color: #e09cb5;
   --tertiary-priority-color: #999999;
-  --primary-icon-stroke-color: #ffffff;
+  --primary-icon-stroke-color: #161616;
+  --secondary-icon-stroke-color: #ffffff;
+  --sidebar-icon-stroke-color: #ffffff;
+  --sidebar-icon-edit-stroke-color: #ffffff80;
+
+  --shared-button-text-color: #ffffff;
+  --shared-input-border-color: #7b7ede;
+  --shared-input-border-hover-color: #5255bc;
+  --shared-input-text-color: #ffffff;
+  --shared-input-placeholder-color: #161616;
+  --shared-plus-icon-dark-big: #ffffff;
+  --shared-plus-icon-dark-small: #ffffff;
+  --shared-plus-icon-color: #161616;
+  --shared-add-column-button: #121212;
+  --shared-add-column-button-border: #ffffff;
+  --shared-black-plus-button: #ffffff;
 }

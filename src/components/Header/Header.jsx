@@ -22,6 +22,9 @@ const Header = ({ onToggleSidebar }) => {
   const handleDarkThemeClick = () => {
     setTheme('dark');
   };
+  const handleVioletThemeClick = () => {
+    setTheme('violet');
+  };
 
   const [selectedTheme, setSelectedTheme] = useState('light');
 
@@ -69,7 +72,7 @@ const Header = ({ onToggleSidebar }) => {
             </CustomOption>
 
             <CustomOption
-              onClick={() => handleThemeChange('violet')}
+              onClick={() => handleVioletThemeClick('violet')}
               selected={selectedTheme === 'violet'}
             >
               Violet

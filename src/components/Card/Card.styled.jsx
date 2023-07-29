@@ -4,7 +4,7 @@ export const CardWrapper = styled.div`
   margin-left: 20px;
   margin-top: 10px;
   /* background-color: #121212; */
-  background-color: var(--primary-background-color);
+  background-color: var(--primary-card-background-color);
   width: 334px;
   border-radius: 8px;
   padding: 15px 15px 5px 15px;

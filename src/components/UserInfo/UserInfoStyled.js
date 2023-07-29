@@ -14,16 +14,20 @@ export const AvasarSetin = styled.div`
 export const IconAvatar = styled.svg`
   width: 32px;
   height: 32px;
-  fill: #1f1f1f;
+  /* fill: #1f1f1f; */
+  fill: var(--user-icon-fill-color);
   /* stroke: white; */
+  stroke: var(--user-icon-stroke-color);
 `;
 
 export const IconPlus = styled.svg`
   position: absolute;
   width: 12px;
   height: 12px;
-  fill: #bedbb0;
-  stroke: #121212;
+  /* fill: #bedbb0; */
+  fill: var(--user-icon-plus-fill-color);
+  /* stroke: #121212; */
+  stroke: var(--user-icon-plus-stroke-color);
   top: 27px;
   left: 10px;
 `;

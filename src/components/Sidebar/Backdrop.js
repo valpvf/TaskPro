@@ -7,7 +7,8 @@ const BackdropContainer = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    background-color: var(--needhelp-backdrop-background-color);
     z-index: 10;
   }
 `;
