@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import UserInfo from 'components/UserInfo/UserInfo';
 import {
@@ -11,8 +12,17 @@ import {
   TheamBtn,
 } from './HeaderStyled';
 import icons from '../../images/sprite.svg';
+import { useTheme } from '../../shared/hooks/useTheme';
 
 const Header = ({ onToggleSidebar }) => {
+  const { theme, setTheme } = useTheme();
+  const handleLightThemeClick = () => {
+    setTheme('light');
+  };
+  const handleDarkThemeClick = () => {
+    setTheme('dark');
+  };
+
   const [selectedTheme, setSelectedTheme] = useState('light');
 
   const [isCustomOptionListOpen, setCustomOptionListOpen] = useState(false);
@@ -45,14 +55,14 @@ const Header = ({ onToggleSidebar }) => {
         <CustomSelect>
           <CustomOptionList open={isCustomOptionListOpen}>
             <CustomOption
-              onClick={() => handleThemeChange('light')}
+              onClick={() => handleLightThemeClick()}
               selected={selectedTheme === 'light'}
             >
               Light
             </CustomOption>
 
             <CustomOption
-              onClick={() => handleThemeChange('dark')}
+              onClick={() => handleDarkThemeClick()}
               selected={selectedTheme === 'dark'}
             >
               Dark
