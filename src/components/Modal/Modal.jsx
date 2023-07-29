@@ -32,7 +32,7 @@ const Modal = ({ children, onClose }) => {
       <ModalWindowStyled>
         <CloseBtnStyled onClick={handleClose}>
           <IconStyled width={18} height={18}>
-            <use href={sprite + '#icon-close'}></use>
+            <use href={`${sprite}#icon-close`}></use>
           </IconStyled>
         </CloseBtnStyled>
         {children}

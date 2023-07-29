@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 
 export const StyledButton = styled(Button)`
   gap: 8px;
-  width: 287px;
+  width: 100%;
   height: 49px;
   margin-top: 24px;
   box-sizing: border-box;
@@ -15,10 +15,8 @@ export const StyledButton = styled(Button)`
   font-size: 14px;
   text-transform: capitalize !important;
 
-  &:hover {
+  &:hover,
+  :focus {
     background-color: var(--9DC888);
-  }
-  @media screen and (min-width: 768px) {
-    width: 302px;
   }
 `;

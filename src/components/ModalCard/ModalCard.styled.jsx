@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
+import 'react-datepicker/dist/react-datepicker.css';
 import '../../shared/basicStyles/variables.scss';
 
 export const FormStyled = styled.form`
@@ -34,8 +35,10 @@ export const TextareaStyled = styled(Field)`
   }
 
   &:hover,
-  :focus {
-    border: 1px solid #bedbb0;
+  :focus,
+  :active {
+    outline: none;
+    border: 1px solid var(--BEDBB0);
   }
 `;
 
@@ -58,7 +61,71 @@ export const LabelStyled = styled.label`
   letter-spacing: -0.24px;
 `;
 
-export const DateInputStyled = styled.input`
-  display: block;
-  background-color: var(--FFFFFF);
+export const DatePickerWrapper = styled.div`
+  position: relative;
+
+  & .react-datepicker__input-container input {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.28px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--BEDBB0);
+  }
+  & .react-datepicker__triangle {
+    display: none;
+  }
+  & .react-datepicker {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--1F1F1F);
+    border-radius: 6px;
+    border: 1px solid var(--BEDBB0);
+  }
+  & .react-datepicker__header {
+    background-color: var(--1F1F1F);
+  }
+  & .react-datepicker__current-month {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.32px;
+    color: var(--FFFFFF);
+  }
+  & .react-datepicker__navigation-icon--next {
+    background-color: var(--BEDBB0);
+  }
+  & .react-datepicker__day-name {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  & .react-datepicker__day {
+    color: var(--FFFFFF);
+    background-color: transparent;
+  }
+  & .react-datepicker__day--selected {
+    background-color: var(--BEDBB0);
+    border-radius: 50%;
+    color: var(--1F1F1F);
+  }
+  & .react-datepicker__day--disabled {
+    color: rgba(255, 255, 255, 0.2);
+  }
+  & .react-datepicker__day:hover {
+    background-color: var(--BEDBB0);
+    border-radius: 50%;
+    color: var(--1F1F1F);
+  }
+  & .react-datepicker__day--disabled:hover {
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.2);
+  }
+`;
+
+export const IconStyled = styled.svg`
+  position: absolute;
+  top: 2px;
+  left: 50px;
+  stroke: var(--BEDBB0);
 `;
