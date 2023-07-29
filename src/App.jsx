@@ -4,15 +4,15 @@ import Auth from 'page/Auth';
 import { Suspense, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-const Welcome = lazy(() => import('page/Welcome'));
+const WelcomePage = lazy(() => import('page/WelcomePage'));
 const Home = lazy(() => import('page/Home'));
 
 export const App = () => {
   return (
     <Suspense fallback={<h1>Loading ...</h1>}>
       <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route index element={<Welcome />} />
+        <Route path="/" element={<WelcomePage />} />
+        <Route index element={<WelcomePage />} />
         <Route path="auth" element={<Auth />} />
         <Route path="auth/:login" element={<Auth />} />
         <Route path="auth/:register" element={<Auth />} />
