@@ -84,14 +84,14 @@ export const IconPlus = styled.svg`
   }
 `;
 
-export const BoardList = styled.div`
+export const BoardList = styled.ul`
   margin-top: 40px;
   width: 100%;
   display: flex;
   flex-direction: column;
 `;
 
-export const BoardItem = styled.div`
+export const BoardItem = styled.li`
   position: relative;
   display: flex;
   justify-content: space-between;

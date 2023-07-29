@@ -13,6 +13,7 @@ import { useState } from 'react';
 import Card from 'components/Card/Card';
 import ModalColumn from 'components/ModalColumn/ModalColumn';
 import ModalFilters from 'components/ModalFilters/ModalFilters';
+// import img1 from '../../images/photo_2020-02-16_07-56-08.jpg';
 
 const ScreensPage = () => {
   const [showModal, setShowModal] = useState(false);
