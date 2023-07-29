@@ -1,6 +1,6 @@
 import React from 'react';
 import icons from '../../images/sprite.svg';
-import {Container,  Wrapper, Logo, LogoWrapper, Icon, Title, Text, AuthWrapper, AuthButton, LoginBtn } from "./Welcome.styled"
+import {Container,  Wrapper, Logo, LogoWrapper, Icon, Title, Text, AuthWrapper, AuthButton} from "./Welcome.styled"
 
 function Welcome() {
   return (
