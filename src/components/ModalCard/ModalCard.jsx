@@ -1,5 +1,11 @@
+import { useState } from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker';
+import { registerLocale } from 'react-datepicker';
+import uk from 'date-fns/locale/uk';
+import sprite from '../../images/sprite.svg';
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
 import ButtonMain from 'shared/components/button/Button';
@@ -10,7 +16,8 @@ import {
   TextareaStyled,
   SubtitleStyled,
   LabelStyled,
-  DateInputStyled,
+  DatePickerWrapper,
+  IconStyled,
 } from './ModalCard.styled';
 
 const TitleSchema = Yup.object().shape({
@@ -19,6 +26,9 @@ const TitleSchema = Yup.object().shape({
 });
 
 const ModalCard = ({ onClose }) => {
+  registerLocale('en', uk);
+  const [startDate, setStartDate] = useState(new Date());
+
   return (
     <Modal onClose={onClose}>
       <ModalTitle>Edit card</ModalTitle>
@@ -60,7 +70,19 @@ const ModalCard = ({ onClose }) => {
             <SubtitleStyled>Label color</SubtitleStyled>
             <RadioColored />
             <LabelStyled htmlFor="date">Deadline</LabelStyled>
-            <DateInputStyled id="date" name="date" type="date" />
+            <DatePickerWrapper>
+              <DatePicker
+                locale="en"
+                selected={startDate}
+                onChange={date => setStartDate(date)}
+                minDate={new Date()}
+                name="date"
+                dateFormat="MMMM d"
+              />
+              <IconStyled width={18} height={18}>
+                <use href={`${sprite}#icon-chevron-down`}></use>
+              </IconStyled>
+            </DatePickerWrapper>
             <ButtonMain type="submit">
               <BlackPlusButton />
               Edit

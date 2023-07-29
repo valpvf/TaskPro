@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import userReducer from './tasksSlice';
+import taskReducer from './taskSlice';
 
 const persistConfig = {
   key: 'tasks',
@@ -18,7 +18,7 @@ const persistConfig = {
   blacklist: [],
 };
 
-const persistedReducer = persistReducer(persistConfig, userReducer);
+const persistedReducer = persistReducer(persistConfig, taskReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
