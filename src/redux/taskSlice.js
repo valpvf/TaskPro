@@ -2,11 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 // import { changeUser, getUser } from './userOperations';
 
 const initialState = {
+  board: {
+    title: '',
+    icon: '',
+    background: '00',
+  },
   tasks: [],
 };
 
-const tasksSlice = createSlice({
-  name: 'tasks',
+const taskSlice = createSlice({
+  name: 'task',
   initialState,
   reducers: {
     changePart: (state, { payload }) => {
@@ -15,5 +20,5 @@ const tasksSlice = createSlice({
   },
 });
 
-export const { changePart } = tasksSlice.actions;
-export default tasksSlice.reducer;
+export const { changePart } = taskSlice.actions;
+export default taskSlice.reducer;
