@@ -2,6 +2,11 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   background-color: #1f1f1f;
+  /* background-image: url('img/01d.jpg'); */
+  background-position-y: bottom;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   flex-grow: 1;
   padding-left: 24px;
   padding-right: 24px;
