@@ -12,18 +12,31 @@ const TitleSchema = Yup.object().shape({
   boardTitle: Yup.string().required('required'),
 });
 
-const ModalBoard = ({ onClose, title, btnName }) => {
+const ModalBoard = ({
+  onClose,
+  onCreateBoard,
+  onEditBoard,
+  title,
+  btnName,
+  boardName,
+  editingBoardId,
+}) => {
   return (
     <Modal onClose={onClose}>
       <ModalTitle>{title}</ModalTitle>
 
       <Formik
         initialValues={{
-          boardTitle: '',
+          boardTitle: boardName,
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
           console.log(values);
+          if (btnName === 'Create') {
+            onCreateBoard(values);
+          } else if (btnName === 'Edit') {
+            onEditBoard(editingBoardId, values.boardTitle);
+          }
           resetForm();
         }}
       >

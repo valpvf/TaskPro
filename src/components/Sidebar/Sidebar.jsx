@@ -32,34 +32,61 @@ const Sidebar = () => {
   const [showHelpText, setShowHelpText] = useState(false);
   const [showModalBoard, setShowModalBoard] = useState(false);
   const [showEditBoard, setShowEditBoard] = useState(false);
+  const [boardList, setBoardList] = useState([
+    { id: 1, name: 'Board 1', icon: 'icon-project' },
+    { id: 2, name: 'Board 2', icon: 'icon-project' },
+  ]);
+  const [editingBoardId, setEditingBoardId] = useState(null);
 
   const onMouseEnterHelpBtn = () => {
     setShowHelpText(true);
   };
-
   const onMouseLeaveHelpBtn = () => {
     setShowHelpText(false);
   };
-
   const onOpen = () => {
     setShowModal(true);
   };
   const onClose = () => {
     setShowModal(false);
   };
-
   const onOpenBoard = () => {
     setShowModalBoard(true);
   };
   const onCloseBoard = () => {
     setShowModalBoard(false);
   };
-
-  const onOpenEditBoard = () => {
+  const onOpenEditBoard = boardId => {
+    setEditingBoardId(boardId);
     setShowEditBoard(true);
   };
   const onCloseEditBoard = () => {
     setShowEditBoard(false);
+  };
+
+  const handleCreateBoard = boardData => {
+    // Унікальний ідентифікатор для нової дошки
+    const newId = Date.now();
+    setBoardList(prevBoardList => [
+      ...prevBoardList,
+      { id: newId, name: boardData.boardTitle, icon: 'icon-project' },
+    ]);
+    setShowModalBoard(false);
+  };
+
+  const handleEditBoardName = (boardId, newName) => {
+    setBoardList(prevBoardList =>
+      prevBoardList.map(board =>
+        board.id === boardId ? { ...board, name: newName } : board
+      )
+    );
+    setEditingBoardId(null);
+  };
+
+  const handleDeleteBoard = boardId => {
+    setBoardList(prevBoardList =>
+      prevBoardList.filter(board => board.id !== boardId)
+    );
   };
 
   return (
@@ -83,6 +110,7 @@ const Sidebar = () => {
             {showModalBoard && (
               <ModalBoard
                 onClose={onCloseBoard}
+                onCreateBoard={handleCreateBoard}
                 title="New board"
                 btnName="Create"
               />
@@ -90,31 +118,41 @@ const Sidebar = () => {
             {showEditBoard && (
               <ModalBoard
                 onClose={onCloseEditBoard}
-                title="Edit board"
-                btnName="Edit"
+                onCreateBoard={handleCreateBoard}
+                onEditBoard={handleEditBoardName}
+                title={editingBoardId ? 'Edit board' : 'New board'}
+                btnName={editingBoardId ? 'Edit' : 'Create'}
+                boardName={
+                  editingBoardId
+                    ? boardList.find(board => board.id === editingBoardId).name
+                    : ''
+                }
+                editingBoardId={editingBoardId}
               />
             )}
           </div>
         </CreateBoard>
-        <BoardList>
-          <BoardItem>
-            <ProgName>
-              <IconProgect>
-                <use href={`${icons}#icon-project`}></use>
-              </IconProgect>
-              <div>Name</div>
-            </ProgName>
-            <IconEditCustom>
-              <IconEdit onClick={onOpenEditBoard}>
-                <use href={`${icons}#icon-pencil`}></use>
-              </IconEdit>
 
-              <IconEdit>
-                <use href={`${icons}#icon-trash`}></use>
-              </IconEdit>
-            </IconEditCustom>
-            <BorderRight />
-          </BoardItem>
+        <BoardList>
+          {boardList.map(board => (
+            <BoardItem key={board.id}>
+              <ProgName>
+                <IconProgect>
+                  <use href={`${icons}#${board.icon}`}></use>
+                </IconProgect>
+                <div>{board.name}</div>
+              </ProgName>
+              <IconEditCustom>
+                <IconEdit onClick={() => onOpenEditBoard(board.id)}>
+                  <use href={`${icons}#icon-pencil`}></use>
+                </IconEdit>
+                <IconEdit onClick={() => handleDeleteBoard(board.id)}>
+                  <use href={`${icons}#icon-trash`}></use>
+                </IconEdit>
+              </IconEditCustom>
+              <BorderRight />
+            </BoardItem>
+          ))}
         </BoardList>
       </div>
 
