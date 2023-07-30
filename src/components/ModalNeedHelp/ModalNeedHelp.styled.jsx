@@ -11,7 +11,7 @@ export const TextareaStyled = styled(Field)`
   /* border: 1px solid rgba(190, 219, 176, 0.4); */
   border: 1px solid var(--textarea-border-color);
   background-color: transparent;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  transition: border 250ms ease-in;
 
   /* color: var(--FFFFFF); */
   color: var(--modal-need-help-text);

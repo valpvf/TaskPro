@@ -1,14 +1,15 @@
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
 import { TextareaStyled } from './ModalNeedHelp.styled';
 import ButtonMain from 'shared/components/button/Button';
 import InputField from 'shared/components/inputField/InputField';
+import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 
 const NeedHelpSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('required'),
-  comment: Yup.string().required('required'),
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  comment: Yup.string().required('Comment is required'),
 });
 
 const ModalNeedHelp = ({ onClose }) => {
@@ -37,7 +38,7 @@ const ModalNeedHelp = ({ onClose }) => {
               onChange={handleChange}
               value={values.email}
             />
-            <ErrorMessage name="email" component={'p'} />
+            <InputErrorMessage name="email" component={'p'} />
 
             <label htmlFor="comment"></label>
             <TextareaStyled
@@ -49,7 +50,7 @@ const ModalNeedHelp = ({ onClose }) => {
               onChange={handleChange}
               // value={formik.values.comment}
             />
-            <ErrorMessage name="comment" component={'p'} />
+            <InputErrorMessage name="comment" component={'p'} />
             <ButtonMain type="submit">Send</ButtonMain>
           </Form>
         )}

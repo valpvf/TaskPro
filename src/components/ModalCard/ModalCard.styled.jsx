@@ -3,21 +3,17 @@ import { Field } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../shared/basicStyles/variables.scss';
 
-export const FormStyled = styled.form`
-  width: 100%;
-`;
-
 export const TextareaStyled = styled(Field)`
   width: 100%;
   height: 154px;
-  margin: 14px 0 24px 0;
+  margin-top: 14px;
   padding: 14px 18px;
   resize: none;
   border-radius: 8px;
   /* border: 1px solid rgba(190, 219, 176, 0.4); */
   border: 1px solid var(--textarea-border-color);
   background-color: transparent;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  transition: border 250ms ease-in;
 
   /* color: var(--FFFFFF); */
   color: var(--modal-board-text);
@@ -47,8 +43,9 @@ export const TextareaStyled = styled(Field)`
 `;
 
 export const SubtitleStyled = styled.p`
-  margin-bottom: 4px;
-  color: rgba(255, 255, 255, 0.5);
+  margin: 24px 0 4px 0;
+  color: var(--datepicker-dayname-color);
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
@@ -58,7 +55,8 @@ export const SubtitleStyled = styled.p`
 export const LabelStyled = styled.label`
   display: block;
   margin: 14px 0 4px 0;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--datepicker-dayname-color);
+  font-family: 'Poppins', sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
@@ -66,9 +64,9 @@ export const LabelStyled = styled.label`
 `;
 
 export const DatePickerWrapper = styled.div`
-  position: relative;
-
   & .react-datepicker__input-container input {
+    position: relative;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -110,11 +108,20 @@ export const DatePickerWrapper = styled.div`
   & .react-datepicker__day-name {
     /* color: rgba(255, 255, 255, 0.5); */
     color: var(--datepicker-dayname-color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
   }
   & .react-datepicker__day {
     /* color: var(--FFFFFF); */
     color: var(--datepicker-current-day);
     background-color: transparent;
+    border-radius: 50%;
+    transition: background-color 250ms ease-in, color 250ms ease-in;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
   }
   & .react-datepicker__day--selected {
     /* background-color: var(--BEDBB0); */
@@ -130,7 +137,6 @@ export const DatePickerWrapper = styled.div`
   & .react-datepicker__day:hover {
     /* background-color: var(--BEDBB0); */
     background-color: var(--datepicker-hover-background-color);
-    border-radius: 50%;
     /* color: var(--1F1F1F); */
     color: var(--datepicker-background-color);
   }
@@ -143,8 +149,7 @@ export const DatePickerWrapper = styled.div`
 
 export const IconStyled = styled.svg`
   position: absolute;
-  top: 2px;
-  left: 50px;
+  left: 120px;
   /* stroke: var(--BEDBB0); */
   stroke: var(--primary-modal-card-color);
   fill: transparent;

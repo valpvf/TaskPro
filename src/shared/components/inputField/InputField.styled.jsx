@@ -15,6 +15,7 @@ export const StyledInputField = styled(Field)`
   color: var(--shared-input-text-color);
   text-transform: capitalize;
   outline: none;
+  transition: border 250ms ease-in;
 
   &::placeholder {
     /* color: white; */

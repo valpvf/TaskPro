@@ -1,6 +1,6 @@
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
-import RadioColored from 'shared/components/radioButtons/RadioColored';
+import RadioFilters from 'shared/components/radioButtons/RadioFilters';
 import {
   FormStyled,
   BoxStyled,
@@ -17,7 +17,7 @@ const ModalFilters = ({ onClose }) => {
           <SubtitleStyled>Label color</SubtitleStyled>
           <ButtonStyled type="button">Show all</ButtonStyled>
         </BoxStyled>
-        <RadioColored />
+        <RadioFilters />
       </FormStyled>
     </Modal>
   );

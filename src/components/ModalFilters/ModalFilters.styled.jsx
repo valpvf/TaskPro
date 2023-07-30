@@ -11,7 +11,7 @@ export const BoxStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 24px 0 14px 0;
+  margin-bottom: 14px;
 `;
 
 export const SubtitleStyled = styled.p`

@@ -6,6 +6,7 @@ export const StyledRadioWrapper = styled.div`
   gap: 4px;
   width: 252px;
   height: 60px;
+  margin-bottom: 16px;
 `;
 
 export const StyledLabel = styled.label`

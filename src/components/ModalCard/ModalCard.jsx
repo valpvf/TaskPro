@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
@@ -12,6 +12,7 @@ import ButtonMain from 'shared/components/button/Button';
 import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import InputField from 'shared/components/inputField/InputField';
 import RadioColored from 'shared/components/radioButtons/RadioColored';
+import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 import {
   TextareaStyled,
   SubtitleStyled,
@@ -21,8 +22,8 @@ import {
 } from './ModalCard.styled';
 
 const TitleSchema = Yup.object().shape({
-  cardTitle: Yup.string().required('required'),
-  cardDescr: Yup.string().required('required'),
+  cardTitle: Yup.string().required('Title is required'),
+  cardDescr: Yup.string().required('Description is required'),
 });
 
 const ModalCard = ({ onClose }) => {
@@ -55,7 +56,7 @@ const ModalCard = ({ onClose }) => {
               onChange={handleChange}
               value={values.cardTitle}
             />
-            <ErrorMessage name="cardTitle" component={'p'} />
+            <InputErrorMessage name="cardTitle" component={'p'} />
             <label htmlFor="cardDescr"></label>
             <TextareaStyled
               as="textarea"
@@ -66,7 +67,7 @@ const ModalCard = ({ onClose }) => {
               onChange={handleChange}
               // value={formik.values.cardDescr}
             />
-            <ErrorMessage name="cardDescr" component={'p'} />
+            <InputErrorMessage name="cardDescr" component={'p'} />
             <SubtitleStyled>Label color</SubtitleStyled>
             <RadioColored />
             <LabelStyled htmlFor="date">Deadline</LabelStyled>
