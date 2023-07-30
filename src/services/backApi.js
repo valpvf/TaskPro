@@ -2,6 +2,10 @@ import axios from 'axios';
 
 const baseUrl = 'https://taskspro-backend.onrender.com';
 
+// /api/boards
+// /api/columns
+// /api/tasks
+
 axios.defaults.baseURL = baseUrl;
 
 /* ================== BOARD =========================== */
