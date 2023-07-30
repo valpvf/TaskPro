@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import UserInfo from 'components/UserInfo/UserInfo';
 import {
@@ -11,8 +12,20 @@ import {
   TheamBtn,
 } from './HeaderStyled';
 import icons from '../../images/sprite.svg';
+import { useTheme } from '../../shared/hooks/useTheme';
 
 const Header = ({ onToggleSidebar }) => {
+  const { theme, setTheme } = useTheme();
+  const handleLightThemeClick = () => {
+    setTheme('light');
+  };
+  const handleDarkThemeClick = () => {
+    setTheme('dark');
+  };
+  const handleVioletThemeClick = () => {
+    setTheme('violet');
+  };
+
   const [selectedTheme, setSelectedTheme] = useState('light');
 
   const [isCustomOptionListOpen, setCustomOptionListOpen] = useState(false);
@@ -36,7 +49,7 @@ const Header = ({ onToggleSidebar }) => {
       </div>
       <HeaderInfo>
         <TheamBtn onClick={toggleCustomOptionList}>
-          Theam
+          Theme
           <IconDown>
             <use href={`${icons}#icon-chevron-down`}></use>
           </IconDown>
@@ -45,21 +58,21 @@ const Header = ({ onToggleSidebar }) => {
         <CustomSelect>
           <CustomOptionList open={isCustomOptionListOpen}>
             <CustomOption
-              onClick={() => handleThemeChange('light')}
+              onClick={() => handleLightThemeClick()}
               selected={selectedTheme === 'light'}
             >
               Light
             </CustomOption>
 
             <CustomOption
-              onClick={() => handleThemeChange('dark')}
+              onClick={() => handleDarkThemeClick()}
               selected={selectedTheme === 'dark'}
             >
               Dark
             </CustomOption>
 
             <CustomOption
-              onClick={() => handleThemeChange('violet')}
+              onClick={() => handleVioletThemeClick('violet')}
               selected={selectedTheme === 'violet'}
             >
               Violet
