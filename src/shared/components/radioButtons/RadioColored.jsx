@@ -1,14 +1,13 @@
-import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import { Box, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 
 const RadioColored = () => {
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
         width: '140px',
-        // margin: '0 auto',
       }}
     >
       <RadioGroup
@@ -27,9 +26,9 @@ const RadioColored = () => {
                 width: '14px',
                 height: '14px',
                 color: 'transparent',
-                backgroundColor: 'var(--8FA1D0)',
+                backgroundColor: '#8FA1D0',
                 '&.Mui-checked': {
-                  color: 'var(--8FA1D0)',
+                  color: '#8FA1D0',
                   backgroundColor: '#151512',
                 },
               }}
@@ -46,9 +45,9 @@ const RadioColored = () => {
                 width: '14px',
                 height: '14px',
                 color: 'transparent',
-                backgroundColor: 'var(--E09CB5)',
+                backgroundColor: '#E09CB5',
                 '&.Mui-checked': {
-                  color: 'var(--E09CB5)',
+                  color: '#E09CB5',
                   backgroundColor: '#151512',
                 },
               }}
@@ -65,9 +64,9 @@ const RadioColored = () => {
                 width: '14px',
                 height: '14px',
                 color: 'transparent',
-                backgroundColor: 'var(--BEDBB0)',
+                backgroundColor: '#BEDBB0',
                 '&.Mui-checked': {
-                  color: 'var(--BEDBB0)',
+                  color: '#BEDBB0',
                   backgroundColor: '#151512',
                 },
               }}
@@ -95,7 +94,7 @@ const RadioColored = () => {
           }
         />
       </RadioGroup>
-    </div>
+    </Box>
   );
 };
 
