@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/taskpro/static/css/main.e13dcbb9.css",
-    "main.js": "/taskpro/static/js/main.f509b4d2.js",
+    "main.js": "/taskpro/static/js/main.16c3a8a3.js",
     "static/js/104.2036853f.chunk.js": "/taskpro/static/js/104.2036853f.chunk.js",
     "static/css/706.a4de6f05.chunk.css": "/taskpro/static/css/706.a4de6f05.chunk.css",
-    "static/js/706.4d2b8453.chunk.js": "/taskpro/static/js/706.4d2b8453.chunk.js",
+    "static/js/706.198ef0ef.chunk.js": "/taskpro/static/js/706.198ef0ef.chunk.js",
     "static/js/106.8e2e1706.chunk.js": "/taskpro/static/js/106.8e2e1706.chunk.js",
-    "static/js/486.44826c40.chunk.js": "/taskpro/static/js/486.44826c40.chunk.js",
+    "static/js/589.940e48ec.chunk.js": "/taskpro/static/js/589.940e48ec.chunk.js",
     "static/media/01d2.jpg": "/taskpro/static/media/01d2.ace7bb0943d2df122897.jpg",
     "static/media/01t2.jpg": "/taskpro/static/media/01t2.0e3a99728577b53ef478.jpg",
     "static/media/13d2.jpg": "/taskpro/static/media/13d2.e09f81e177cde4dc076c.jpg",
@@ -106,15 +106,15 @@
     "static/media/05m.jpg": "/taskpro/static/media/05m.8d2ee85ac2825da63fe0.jpg",
     "index.html": "/taskpro/index.html",
     "main.e13dcbb9.css.map": "/taskpro/static/css/main.e13dcbb9.css.map",
-    "main.f509b4d2.js.map": "/taskpro/static/js/main.f509b4d2.js.map",
+    "main.16c3a8a3.js.map": "/taskpro/static/js/main.16c3a8a3.js.map",
     "104.2036853f.chunk.js.map": "/taskpro/static/js/104.2036853f.chunk.js.map",
     "706.a4de6f05.chunk.css.map": "/taskpro/static/css/706.a4de6f05.chunk.css.map",
-    "706.4d2b8453.chunk.js.map": "/taskpro/static/js/706.4d2b8453.chunk.js.map",
+    "706.198ef0ef.chunk.js.map": "/taskpro/static/js/706.198ef0ef.chunk.js.map",
     "106.8e2e1706.chunk.js.map": "/taskpro/static/js/106.8e2e1706.chunk.js.map",
-    "486.44826c40.chunk.js.map": "/taskpro/static/js/486.44826c40.chunk.js.map"
+    "589.940e48ec.chunk.js.map": "/taskpro/static/js/589.940e48ec.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e13dcbb9.css",
-    "static/js/main.f509b4d2.js"
+    "static/js/main.16c3a8a3.js"
   ]
 }
