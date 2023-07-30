@@ -103,6 +103,9 @@ html[data-theme='dark'] {
 
   --radio-label-checked-background-color: #151512;
   --radio-label-grey-color: rgba(255, 255, 255, 0.3);
+
+  --radio-icons-color: rgba(255, 255, 255, 0.5);
+  --radio-icons-checked: #fff;
 }
 
 // light theme
@@ -172,6 +175,9 @@ html[data-theme='light'] {
 
   --radio-label-checked-background-color: #ffffff;
   --radio-label-grey-color: rgba(22, 22, 22, 0.3);
+
+  --radio-icons-color: rgba(22, 22, 22, 0.6);
+  --radio-icons-checked: #161616;
 }
 
 // purple theme
@@ -241,4 +247,7 @@ html[data-theme='violet'] {
 
   --radio-label-checked-background-color: #ffffff;
   --radio-label-grey-color: rgba(22, 22, 22, 0.3);
+
+  --radio-icons-color: rgba(22, 22, 22, 0.6);
+  --radio-icons-checked: #161616;
 }

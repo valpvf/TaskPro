@@ -1,4 +1,4 @@
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
@@ -6,10 +6,12 @@ import ButtonMain from 'shared/components/button/Button';
 import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import InputField from 'shared/components/inputField/InputField';
 import RadioImages from 'shared/components/radioButtons/RadioImages';
+import RadioIcons from 'shared/components/radioButtons/RadioIcons';
 import { SubtitleStyled } from './ModalBoard.styled';
+import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 
 const TitleSchema = Yup.object().shape({
-  boardTitle: Yup.string().required('required'),
+  boardTitle: Yup.string().required('Title is required'),
 });
 
 const ModalBoard = ({
@@ -51,8 +53,9 @@ const ModalBoard = ({
               onChange={handleChange}
               value={values.boardTitle}
             />
-            <ErrorMessage name="boardTitle" component={'p'} />
+            <InputErrorMessage name="boardTitle" component={'p'} />
             <SubtitleStyled>Icons</SubtitleStyled>
+            <RadioIcons />
             <SubtitleStyled>Background</SubtitleStyled>
             <RadioImages />
             <ButtonMain type="submit">

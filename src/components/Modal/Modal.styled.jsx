@@ -44,6 +44,7 @@ export const CloseBtnStyled = styled.div`
   border-radius: 50%;
   background-color: transparent;
   cursor: pointer;
+  transition: background-color 250ms ease-in;
 
   &:hover,
   :focus {
