@@ -10,15 +10,16 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import taskReducer from './taskSlice';
+// import taskReducer from './task/taskSlice';
+import { authReducer } from './auth/authSlice';
 
 const persistConfig = {
-  key: 'tasks',
+  key: 'auth',
   storage,
   blacklist: [],
 };
 
-const persistedReducer = persistReducer(persistConfig, taskReducer);
+const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
