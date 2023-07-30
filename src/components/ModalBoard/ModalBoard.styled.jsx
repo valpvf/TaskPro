@@ -3,7 +3,8 @@ import '../../shared/basicStyles/variables.scss';
 
 export const SubtitleStyled = styled.p`
   margin: 24px 0 14px 0;
-  color: var(--FFFFFF);
+  /* color: var(--FFFFFF); */
+  color: var(--modal-board-text);
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 500;
