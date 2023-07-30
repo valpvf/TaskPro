@@ -1,14 +1,13 @@
-import { FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import { Box, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 
 const RadioColored = () => {
   return (
-    <div
-      style={{
+    <Box
+      sx={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
         width: '140px',
-        // margin: '0 auto',
       }}
     >
       <RadioGroup
@@ -27,12 +26,11 @@ const RadioColored = () => {
                 width: '14px',
                 height: '14px',
                 color: 'transparent',
-                // backgroundColor: 'var(--8FA1D0)',
+
                 backgroundColor: 'var(--radio-label-background-color)',
                 '&.Mui-checked': {
-                  // color: 'var(--8FA1D0)',
                   color: 'var(--radio-label-color)',
-                  // backgroundColor: '#151512',
+
                   backgroundColor:
                     'var(--radio-label-checked-background-color)',
                 },
@@ -50,12 +48,11 @@ const RadioColored = () => {
                 width: '14px',
                 height: '14px',
                 color: 'transparent',
-                // backgroundColor: 'var(--E09CB5)',
+                //
                 backgroundColor: 'var(--radio-label-pink-color)',
                 '&.Mui-checked': {
-                  // color: 'var(--E09CB5)',
                   color: 'var(--radio-label-pink-color)',
-                  // backgroundColor: '#151512',
+
                   backgroundColor:
                     'var(--radio-label-checked-background-color)',
                 },
@@ -73,13 +70,12 @@ const RadioColored = () => {
                 width: '14px',
                 height: '14px',
                 color: 'transparent',
-                // backgroundColor: 'var(--BEDBB0)',
+                //
                 backgroundColor: 'var(--radio-label-green-color)',
 
                 '&.Mui-checked': {
-                  // color: 'var(--BEDBB0)',
                   color: 'var(--radio-label-green-color)',
-                  // backgroundColor: '#151512',
+
                   backgroundColor:
                     'var(--radio-label-checked-background-color)',
                 },
@@ -97,12 +93,12 @@ const RadioColored = () => {
                 width: '14px',
                 height: '14px',
                 color: 'transparent',
-                // backgroundColor: 'rgba(255, 255, 255, 0.30)',
+
                 backgroundColor: 'var(--radio-label-grey-color)',
                 '&.Mui-checked': {
-                  // color: 'rgba(255, 255, 255, 0.30)',
+                  // c
                   color: 'var(--radio-label-grey-color)',
-                  // backgroundColor: '#151512',
+
                   backgroundColor:
                     'var(--radio-label-checked-background-color)',
                 },
@@ -112,7 +108,7 @@ const RadioColored = () => {
           }
         />
       </RadioGroup>
-    </div>
+    </Box>
   );
 };
 
