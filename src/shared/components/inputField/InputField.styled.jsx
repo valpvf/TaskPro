@@ -26,6 +26,6 @@ export const StyledInputField = styled(Field)`
   &:active {
     outline: none;
     /* border: 1px solid var(--BEDBB0) !important; */
-    border: 1px solid var(--BEDBB0) !important;
+    border: 1px solid var(--shared-input-border-hover-color) !important;
   }
 `;
