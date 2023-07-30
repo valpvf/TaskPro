@@ -26,6 +26,9 @@ import {
 } from './SidebarStyled';
 import icons from '../../images/sprite.svg';
 import plant from '../../images/plant_min.png';
+import { useDispatch } from 'react-redux';
+import { logout } from 'redux/auth/authOperations';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -36,7 +39,14 @@ const Sidebar = () => {
     { id: 1, name: 'Board 1', icon: 'icon-project' },
     { id: 2, name: 'Board 2', icon: 'icon-project' },
   ]);
-  const [editingBoardId, setEditingBoardId] = useState(null);
+	const [editingBoardId, setEditingBoardId] = useState(null);
+	
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const handleLogout = () => {
+		dispatch(logout());
+		navigate('/')
+  };
 
   const onMouseEnterHelpBtn = () => {
     setShowHelpText(true);
@@ -187,7 +197,7 @@ const Sidebar = () => {
           </div>
         </div>
 
-        <LogOut>
+        <LogOut onClick={handleLogout}>
           <IconLogOut>
             <use href={`${icons}#icon-logout`}></use>
           </IconLogOut>

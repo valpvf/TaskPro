@@ -125,7 +125,8 @@ export const AuthButton = styled(NavLink)`
   text-transform: none;
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:active {
     /* background: var(--161616); */
     background: var(--welcome-background-color);
     color: var(--welcome-hover-text-color);

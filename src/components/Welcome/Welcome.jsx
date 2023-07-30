@@ -16,10 +16,10 @@ function Welcome() {
             Pro - Don't wait, start achieving your goals now!
           </Text>
         <AuthWrapper>
-            <AuthButton to="/home">Registration</AuthButton >
-            <AuthButton to="/home">Log In</AuthButton >
-            {/* <AuthButton to="/auth/register">Registration</AuthButton >
-            <AuthButton to="/auth/login">Log In</AuthButton > */}
+            {/* <AuthButton to="/home">Registration</AuthButton >
+            <AuthButton to="/home">Log In</AuthButton > */}
+            <AuthButton to="register">Registration</AuthButton >
+            <AuthButton to="login">Log In</AuthButton >
         </AuthWrapper>
         </Wrapper>
     </Container>
