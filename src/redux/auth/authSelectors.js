@@ -6,7 +6,7 @@ export const getTheme = state => state.auth.user.theme;
 
 export const getActiveBoard = state => state.auth.user.activeBoard;
 
-export const setToken = state => state.auth.token;
+export const setToken = state => state.token;
 
 export const isLoggedIn = state => state.auth.isLoggedIn;
 
