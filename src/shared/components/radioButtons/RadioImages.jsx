@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import {
   StyledInput,
   StyledLabel,
@@ -5,152 +6,46 @@ import {
 } from './RadioImages.styled';
 
 const RadioImages = () => {
+  const images = [
+    '00.png',
+    '01.png',
+    '02.png',
+    '03.png',
+    '04.png',
+    '05.png',
+    '06.png',
+    '07.png',
+    '08.png',
+    '09.png',
+    '10.png',
+    '11.png',
+    '12.png',
+    '13.png',
+    '14.png',
+    '15.png',
+  ];
+
   return (
     <StyledRadioWrapper>
-      <StyledLabel>
-        <StyledInput type="radio" value="01" name="image" defaultChecked />
-        <img
-          src={require('../../../images/background/00.png')}
-          alt="option 1"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="02" name="image" />
-        <img
-          src={require('../../../images/background/01.png')}
-          alt="option 2"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="03" name="image" />
-        <img
-          src={require('../../../images/background/02.png')}
-          alt="option 3"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="04" name="image" />
-        <img
-          src={require('../../../images/background/03.png')}
-          alt="option 4"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="05" name="image" />
-        <img
-          src={require('../../../images/background/04.png')}
-          alt="option 5"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="06" name="image" />
-        <img
-          src={require('../../../images/background/05.png')}
-          alt="option 6"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="07" name="image" />
-        <img
-          src={require('../../../images/background/06.png')}
-          alt="option 7"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="08" name="image" />
-        <img
-          src={require('../../../images/background/07.png')}
-          alt="option 8"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="09" name="image" />
-        <img
-          src={require('../../../images/background/08.png')}
-          alt="option 9"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="10" name="image" />
-        <img
-          src={require('../../../images/background/09.png')}
-          alt="option 10"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="11" name="image" />
-        <img
-          src={require('../../../images/background/10.png')}
-          alt="option 11"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="12" name="image" />
-        <img
-          src={require('../../../images/background/11.png')}
-          alt="option 12"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="13" name="image" />
-        <img
-          src={require('../../../images/background/12.png')}
-          alt="option 13"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="14" name="image" />
-        <img
-          src={require('../../../images/background/13.png')}
-          alt="option 14"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="15" name="image" />
-        <img
-          src={require('../../../images/background/14.png')}
-          alt="option 15"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
-      <StyledLabel>
-        <StyledInput type="radio" value="16" name="image" />
-        <img
-          src={require('../../../images/background/15.png')}
-          alt="option 16"
-          width="28px"
-          height="28px"
-        />
-      </StyledLabel>
+      {images.map((image, index) => {
+        const id = nanoid();
+        return (
+          <StyledLabel key={id}>
+            <StyledInput
+              type="radio"
+              value={index}
+              name="image"
+              defaultChecked={!index}
+            />
+            <img
+              src={require(`../../../images/background/${image}`)}
+              alt={`option ${index + 1}`}
+              width="28px"
+              height="28px"
+            />
+          </StyledLabel>
+        );
+      })}
     </StyledRadioWrapper>
   );
 };
