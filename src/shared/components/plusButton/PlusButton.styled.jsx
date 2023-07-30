@@ -6,21 +6,24 @@ export const PlusIcon = styled(AddIcon)`
   display: block;
   width: 14px;
   height: 14px;
-  color: var(--FFFFFF) !important;
+  /* color: var(--FFFFFF) !important; */
+  color: var(--shared-plus-icon-color) !important;
 `;
 
 export const PlusIconDarkBig = styled(AddIcon)`
   display: block;
   width: 20px;
   height: 20px;
-  color: var(--121212) !important;
+  /* color: var(--121212) !important; */
+  color: var(--shared-plus-icon-dark-big) !important;
 `;
 
 export const PlusIconDarkSmall = styled(AddIcon)`
   display: block;
   width: 14px;
   height: 14px;
-  color: var(--121212) !important;
+  /* color: var(--121212) !important; */
+  color: var(--shared-plus-icon-dark-small) !important;
 `;
 
 export const StyledColoredPlusButtonBig = styled.div`
@@ -30,10 +33,12 @@ export const StyledColoredPlusButtonBig = styled.div`
   width: 40px;
   height: 36px;
   border-radius: 6px;
-  background-color: var(--BEDBB0);
+  /* background-color: var(--BEDBB0); */
+  background-color: var(--primary-button-color);
 
   &:hover {
-    background-color: var(--9DC888);
+    /* background-color: var(--9DC888); */
+    background-color: var(--secondary-button-color);
   }
 `;
 
@@ -44,10 +49,12 @@ export const StyledColoredPlusButtonSmall = styled.div`
   width: 24px;
   height: 24px;
   border-radius: 3px;
-  background-color: var(--BEDBB0);
+  /* background-color: var(--BEDBB0); */
+  background-color: var(--primary-button-color);
 
   &:hover {
-    background-color: var(--9DC888);
+    /* background-color: var(--9DC888); */
+    background-color: var(--secondary-button-color);
   }
 `;
 
@@ -58,8 +65,10 @@ export const StyledWhitePlusButton = styled.div`
   width: 28px;
   height: 28px;
   border-radius: 3px;
-  background-color: var(--FFFFFF);
-  border: 1px solid var(--121212);
+  /* background-color: var(--FFFFFF); */
+  background-color: var(--shared-add-column-button);
+  /* border: 1px solid var(--121212); */
+  border: 1px solid var(--shared-add-column-button-border);
 `;
 
 export const StyledBlackPlusButton = styled.div`
@@ -69,5 +78,6 @@ export const StyledBlackPlusButton = styled.div`
   width: 28px;
   height: 28px;
   border-radius: 3px;
-  background-color: var(--161616);
+  /* background-color: var(--161616); */
+  background-color: var(--shared-black-plus-button);
 `;

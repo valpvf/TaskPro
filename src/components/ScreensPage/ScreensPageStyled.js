@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  background-color: #1f1f1f;
+  /* background-color: #1f1f1f; */
+  background-color: var(--secondary-background-color);
   /* background-image: url('img/01d.jpg'); */
   background-position-y: bottom;
   background-position-x: center;
@@ -25,6 +26,7 @@ export const HeaderTxt = styled.div`
   font-weight: 500;
   line-height: 27px;
   letter-spacing: -0.02em;
+  color: var(--primary-heading-color);
 `;
 
 export const HeaderFiltres = styled.div`
@@ -43,7 +45,8 @@ export const IconFiltre = styled.svg`
   margin-right: 8px;
 
   fill: none;
-  stroke: white;
+  /* stroke: white; */
+  stroke: var(--primary-icon-stroke-color);
 `;
 
 export const AddColumn = styled.div`
@@ -52,7 +55,8 @@ export const AddColumn = styled.div`
 
   width: 334px;
   height: 56px;
-  background-color: #121212;
+  /* background-color: #121212; */
+  background-color: var(--add-column-button-color);
 
   border-radius: 8px;
 `;
@@ -60,13 +64,15 @@ export const AddColumn = styled.div`
 export const IconPlus = styled.svg`
   width: 32px;
   height: 32px;
-  fill: white;
+  /* fill: white; */
+  fill: var(--primary-icon-stroke-color);
   stroke: #121212;
   margin-right: 8px;
 `;
 export const ButtonAdd = styled.button`
   margin-left: 80px;
-  color: white;
+  /* color: white; */
+  color: var(--primary-heading-color);
   display: flex;
   align-items: center;
   border: none;
