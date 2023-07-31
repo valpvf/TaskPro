@@ -14,26 +14,39 @@ import Card from 'components/Card/Card';
 import ModalColumn from 'components/ModalColumn/ModalColumn';
 import ModalFilters from 'components/ModalFilters/ModalFilters';
 import { persistor } from 'redux/store';
-import { useSelector } from 'react-redux';
+import ButtonMain from 'shared/components/button/Button';
+import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
+import ModalCard from 'components/ModalCard/ModalCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBoardSelector } from '../../redux/task/taskSelectors';
+import { getBoard } from '../../redux/task/taskOperations';
 
 const ScreensPage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const dispatch = useDispatch();
 
-  const backgroundValue = useSelector(state => state.board);
-  // const backgroundValue = useSelector(state => state.board[0].background);
-
-  // const backgroundValue = useSelector(selectBackground);
   useEffect(() => {
-    console.log(backgroundValue);
-  }, [backgroundValue]);
-  // const backgroundValue = '09d';
+    dispatch(getBoard());
+  }, [dispatch]);
+
+  const backgroundValue = useSelector(getBoardSelector);
+
+  console.log(backgroundValue);
 
   const onOpen = () => {
     setShowModal(true);
   };
   const onClose = () => {
     setShowModal(false);
+  };
+
+  const onOpenAddCard = () => {
+    setShowModalAddCard(true);
+  };
+  const onCloseAddCard = () => {
+    setShowModalAddCard(false);
   };
 
   const onOpenFilters = () => {
@@ -75,11 +88,21 @@ const ScreensPage = () => {
         </ButtonAdd>
       </AddColumn>
       {/* Тут можуть бути ваші колонки з картками */}
-      <Card />
-      <Card />
-      <Card />
-
-      {showModal && <ModalColumn onClose={onClose} />}
+      <div style={{ width: '334px' }}>
+        <Card />
+        <Card />
+        <Card />
+        <ButtonMain type="submit" onClick={onOpenAddCard}>
+          <BlackPlusButton />
+          Add another card
+        </ButtonMain>
+      </div>
+      {showModal && (
+        <ModalColumn onClose={onClose} title="Add column" btnName="Add" />
+      )}
+      {showModalAddCard && (
+        <ModalCard onClose={onCloseAddCard} title="Add card" btnName="Add" />
+      )}
     </Container>
   );
 };

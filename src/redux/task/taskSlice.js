@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 // import { changeUser, getUser } from './userOperations';
+import { getBoard } from './taskOperations';
 
 const initialState = {
   _id: '64c772d4906c009cfba4f8a9',
@@ -37,6 +38,7 @@ const initialState = {
       updatedAt: '2023-07-31T13:02:51.175Z',
     },
   ],
+  error: null,
 };
 
 const boardSlice = createSlice({
@@ -55,6 +57,19 @@ const boardSlice = createSlice({
         state.board[boardIndex].background = payload.background;
       }
     },
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(getBoard.pending, state => {
+        state.error = null;
+      })
+      .addCase(getBoard.fulfilled, (state, { payload }) => {
+        state.error = null;
+        state.board = payload;
+      })
+      .addCase(getBoard.rejected, (state, action) => {
+        state.error = action.error.message;
+      });
   },
 });
 

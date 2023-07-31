@@ -15,7 +15,7 @@ export const StyledButton = styled(Button)`
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 14px;
-  text-transform: capitalize !important;
+  text-transform: none !important;
 
   &:hover,
   :focus {
