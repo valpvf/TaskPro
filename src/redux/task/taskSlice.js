@@ -49,13 +49,13 @@ const boardSlice = createSlice({
       state.part += payload;
     },
     changeBackground: (state, { payload }) => {
-      const boardIndex = state.board.findIndex(
-        board => board._id === payload._id
-      );
+      // const boardIndex = state.auth.user.boards.findIndex(
+      //   board => board._id === payload._id
+      // );
       console.log('state,payload', state, payload);
-      if (boardIndex !== -1) {
-        state.board[boardIndex].background = payload.background;
-      }
+      // if (boardIndex !== -1) {
+      //   state.board[boardIndex].background = payload.background;
+      // }
     },
   },
   extraReducers: builder => {
