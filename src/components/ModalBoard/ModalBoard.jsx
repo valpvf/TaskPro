@@ -8,6 +8,7 @@ import InputField from 'shared/components/inputField/InputField';
 import RadioImages from 'shared/components/radioButtons/RadioImages';
 import RadioIcons from 'shared/components/radioButtons/RadioIcons';
 import { SubtitleStyled } from './ModalBoard.styled';
+
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 import { useDispatch } from 'react-redux';
 import { persistor } from 'redux/store';
@@ -28,12 +29,14 @@ const ModalBoard = ({
   editingBoardId,
 }) => {
   const dispatch = useDispatch();
+
   const [backgroundValue, setBackgroundValue] = useState('01d');
 
   const handleButtonClick = () => {
     dispatch(changeBackground({ _id: '123411', background: backgroundValue }));
     persistor.flush();
   };
+
   return (
     <Modal onClose={onClose}>
       <ModalTitle>{title}</ModalTitle>
@@ -41,10 +44,11 @@ const ModalBoard = ({
       <Formik
         initialValues={{
           boardTitle: boardName,
+          image: 'img/01d.jpg', // Додано початкове значення для картинки
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
+          dispatch(changeBackground(values.image)); // Виклик action для зміни картинки
           if (btnName === 'Create') {
             onCreateBoard(values);
           } else if (btnName === 'Edit') {
@@ -69,7 +73,9 @@ const ModalBoard = ({
             <SubtitleStyled>Icons</SubtitleStyled>
             <RadioIcons />
             <SubtitleStyled>Background</SubtitleStyled>
+
             <RadioImages onChangeImage={setBackgroundValue} />
+
             <ButtonMain type="submit">
               <BlackPlusButton />
               {btnName}

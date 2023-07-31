@@ -18,26 +18,26 @@ const Header = ({ onToggleSidebar }) => {
   const { theme, setTheme } = useTheme();
   const handleLightThemeClick = () => {
     setTheme('light');
+    setSelectedTheme('light');
+    toggleCustomOptionList();
   };
   const handleDarkThemeClick = () => {
     setTheme('dark');
+    setSelectedTheme('dark');
+    toggleCustomOptionList();
   };
   const handleVioletThemeClick = () => {
     setTheme('violet');
+    setSelectedTheme('violet');
+    toggleCustomOptionList();
   };
 
-  const [selectedTheme, setSelectedTheme] = useState('light');
+  const [selectedTheme, setSelectedTheme] = useState('dark');
 
   const [isCustomOptionListOpen, setCustomOptionListOpen] = useState(false);
 
   const toggleCustomOptionList = () => {
     setCustomOptionListOpen(!isCustomOptionListOpen);
-  };
-
-  const handleThemeChange = theme => {
-    setSelectedTheme(theme);
-    // Зміна теми
-    // Зберігання вибраної теми в стані компонента або в контексті
   };
 
   return (
