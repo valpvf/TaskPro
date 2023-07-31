@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { Field } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../shared/basicStyles/variables.scss';
+import Svg from '../../images/chevron-down.svg';
 
 export const TextareaStyled = styled(Field)`
   width: 100%;
@@ -64,9 +65,20 @@ export const LabelStyled = styled.label`
 `;
 
 export const DatePickerWrapper = styled.div`
+  & .react-datepicker-wrapper {
+    width: 100%;
+  }
+  & .react-datepicker__input-container {
+    width: 100%;
+  }
   & .react-datepicker__input-container input {
     position: relative;
+    width: 100%;
     padding: 0;
+    background-image: url(${Svg});
+    background-repeat: no-repeat;
+    background-position: top 6px right 100px;
+
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -77,6 +89,7 @@ export const DatePickerWrapper = styled.div`
     outline: none;
     /* color: var(--BEDBB0); */
     color: var(--primary-modal-card-color);
+    cursor: pointer;
   }
   & .react-datepicker__triangle {
     display: none;
@@ -145,12 +158,4 @@ export const DatePickerWrapper = styled.div`
     color: rgba(255, 255, 255, 0.2);
     color: var(--datepicker-hover-disabled-day);
   }
-`;
-
-export const IconStyled = styled.svg`
-  position: absolute;
-  left: 120px;
-  /* stroke: var(--BEDBB0); */
-  stroke: var(--primary-modal-card-color);
-  fill: transparent;
 `;
