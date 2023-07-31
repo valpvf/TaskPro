@@ -67,7 +67,7 @@ const ModalBoard = ({
               name="boardTitle"
               type="text"
               onChange={handleChange}
-              value={values.boardTitle}
+              value={values.boardTitle || ''}
             />
             <InputErrorMessage name="boardTitle" component={'p'} />
             <SubtitleStyled>Icons</SubtitleStyled>
