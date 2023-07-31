@@ -14,20 +14,22 @@ import Card from 'components/Card/Card';
 import ModalColumn from 'components/ModalColumn/ModalColumn';
 import ModalFilters from 'components/ModalFilters/ModalFilters';
 import { persistor } from 'redux/store';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBoardSelector } from '../../redux/task/taskSelectors';
+import { getBoard } from '../../redux/task/taskOperations';
 
 const ScreensPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const dispatch = useDispatch();
 
-  const backgroundValue = useSelector(state => state.board);
-  // const backgroundValue = useSelector(state => state.board[0].background);
-
-  // const backgroundValue = useSelector(selectBackground);
   useEffect(() => {
-    console.log(backgroundValue);
-  }, [backgroundValue]);
-  // const backgroundValue = '09d';
+    dispatch(getBoard());
+  }, [dispatch]);
+
+  const backgroundValue = useSelector(getBoardSelector);
+
+  console.log(backgroundValue);
 
   const onOpen = () => {
     setShowModal(true);
