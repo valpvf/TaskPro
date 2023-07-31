@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 // import { changeUser, getUser } from './userOperations';
+import { getBoard } from './taskOperations';
 
 const initialState = {
   board: [
@@ -7,7 +8,7 @@ const initialState = {
       _id: '123411',
       title: 'Project',
       icon: 'icon-star',
-      background: '00',
+      background: '04',
     },
   ],
   column: [
@@ -25,6 +26,7 @@ const initialState = {
       deadline: 1690718996895,
     },
   ],
+  error: null,
 };
 
 const taskSlice = createSlice({
@@ -42,6 +44,19 @@ const taskSlice = createSlice({
         state.board[boardIndex].background = payload.background;
       }
     },
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(getBoard.pending, state => {
+        state.error = null;
+      })
+      .addCase(getBoard.fulfilled, (state, { payload }) => {
+        state.error = null;
+        state.board = payload;
+      })
+      .addCase(getBoard.rejected, (state, action) => {
+        state.error = action.error.message;
+      });
   },
 });
 
