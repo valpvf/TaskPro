@@ -94,12 +94,13 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
 export const patchBoard = createAsyncThunk(
   'auth/patchBoard',
   async ({ boardId }, thunkAPI) => {
     try {
       const { data } = await axios.patch(`/api/boards`, {
-        activeBoard: boardId,
+        boards: boardId,
       });
 
       return data;

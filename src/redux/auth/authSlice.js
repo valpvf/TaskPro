@@ -49,7 +49,7 @@ export const authSlice = createSlice({
         state.user.name = '';
         state.user.avatarURL = '';
         state.user.theme = '';
-        state.user.activeBoard = '';
+        state.user.boards = [];
         state.token = '';
         state.isLoggedIn = false;
         state.isRefreshing = false;
@@ -87,7 +87,7 @@ export const authSlice = createSlice({
         toast.error(payload);
       })
       .addCase(patchBoard.fulfilled, (state, { payload }) => {
-        state.user.activeBoard = payload.activeBoard;
+        state.user.boards = payload.boards;
       }),
 });
 
