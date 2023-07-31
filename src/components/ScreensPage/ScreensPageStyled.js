@@ -1,9 +1,12 @@
 import styled from '@emotion/styled';
+// Імпортуйте ваш Redux slice
 
 export const Container = styled.div`
   /* background-color: #1f1f1f; */
   background-color: var(--secondary-background-color);
-  /* background-image: url('img/01d.jpg'); */
+  /* background-image: url('images/background/06d.jpg'); */
+
+  /* Отримайте значення background з Redux стейту */
   background-position-y: bottom;
   background-position-x: center;
   background-repeat: no-repeat;
