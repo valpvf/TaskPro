@@ -42,21 +42,23 @@ export const CustomOptionList = styled.ul`
   display: ${props => (props.open ? 'block' : 'none')};
   position: absolute;
   top: 20px;
-  left: -90px;
+  left: -105px;
   /* background-color: #161616; */
   background-color: var(--header-background-color);
   /* border: solid 1px #bedbb0; */
-  border: solid 1px var(--primary-button-color);
+  border: solid 1px var(--theme-switcher-dropdown-border-color);
   border-radius: 8px;
+  box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
 `;
 
 export const CustomOption = styled.li`
   padding: 5px 10px;
   cursor: pointer;
+  color: var(--theme-switcher-dropdown-text-color);
 
   &:hover {
-    color: #bedbb0;
-    color: var(--primary-button-color);
+    /* color: #bedbb0; */
+    color: var(--theme-switcher-dropdown-hover-color);
   }
 
   ${props =>
@@ -77,6 +79,7 @@ export const IconDown = styled.svg`
   height: 16px;
   margin-left: 4px;
 
+  fill: transparent;
   stroke: white;
   stroke: var(--primary-icon-stroke-color);
 `;
