@@ -18,7 +18,7 @@ export const authSlice = createSlice({
       name: '',
       avatarURL: '',
       theme: 'dark',
-      activeBoard: '',
+      boards: [],
     },
     token: '',
     isLoggedIn: false,
@@ -59,7 +59,7 @@ export const authSlice = createSlice({
         state.isRefreshing = true;
       })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
-        state.user = payload;
+        // state.user = payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })

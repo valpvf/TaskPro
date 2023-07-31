@@ -6,10 +6,8 @@ import { ToastContainer } from 'react-toastify';
 const Auth = () => {
 	const {register} = useParams();
 	
-	// console.log(blablabla)
   return (
 	  <div>
-		  {/* <RegisterForm /> */}
       {register === 'register' && <RegisterForm /> }
       {register === 'login' && <LoginForm />}
       <ToastContainer />
