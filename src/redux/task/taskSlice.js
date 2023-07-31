@@ -3,34 +3,46 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getBoard } from './taskOperations';
 
 const initialState = {
-  board: [
+  _id: '64c772d4906c009cfba4f8a9',
+  title: 'Board01',
+  icon: 'icon-project',
+  background: '11',
+  columns: [
     {
-      _id: '123411',
-      title: 'Project',
-      icon: 'icon-star',
-      background: '04',
+      _id: '64c7a72cef9d0ebaa3b7b7b9',
+      title: 'Column2',
+      tasks: [
+        {
+          _id: '64c7b6a27e966dce4df1fc5a',
+          title: 'Task',
+          description: '',
+          priority: 'Without',
+          deadline: '2023-07-31T13:26:58.053Z',
+          updatedAt: '2023-07-31T13:26:58.060Z',
+        },
+        {
+          _id: '64c7b6fd7e966dce4df1fc5e',
+          title: 'Task1',
+          description: 'Description for test task',
+          priority: 'Medium',
+          deadline: '2023-08-06T21:30:09.640Z',
+          updatedAt: '2023-07-31T13:31:14.219Z',
+        },
+      ],
+      updatedAt: '2023-07-31T13:28:30.055Z',
     },
-  ],
-  column: [
     {
-      _id: '123421',
-      title: 'Project',
-    },
-  ],
-  task: [
-    {
-      _id: '123431',
-      title: '',
-      description: '',
-      priority: 'Without',
-      deadline: 1690718996895,
+      _id: '64c7a744ef9d0ebaa3b7b7c0',
+      title: 'Column101',
+      tasks: [],
+      updatedAt: '2023-07-31T13:02:51.175Z',
     },
   ],
   error: null,
 };
 
-const taskSlice = createSlice({
-  name: 'task',
+const boardSlice = createSlice({
+  name: 'board',
   initialState,
   reducers: {
     changePart: (state, { payload }) => {
@@ -40,6 +52,7 @@ const taskSlice = createSlice({
       const boardIndex = state.board.findIndex(
         board => board._id === payload._id
       );
+      console.log('state,payload', state, payload);
       if (boardIndex !== -1) {
         state.board[boardIndex].background = payload.background;
       }
@@ -60,5 +73,5 @@ const taskSlice = createSlice({
   },
 });
 
-export const { changePart, changeBackground } = taskSlice.actions;
-export default taskSlice.reducer;
+export const { changePart, changeBackground } = boardSlice.actions;
+export default boardSlice.reducer;
