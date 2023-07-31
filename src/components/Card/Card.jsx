@@ -60,7 +60,9 @@ const Card = () => {
             <Icon width="16px" height="16px" onClick={onOpen}>
               <use xlinkHref={`${sprite}#icon-pencil`} />
             </Icon>
-            {showModal && <ModalCard onClose={onClose} />}
+            {showModal && (
+              <ModalCard onClose={onClose} title="Edit card" btnName="Edit" />
+            )}
             <Icon width="16px" height="16px">
               <use xlinkHref={`${sprite}#icon-trash`} />
             </Icon>

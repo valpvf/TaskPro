@@ -11,10 +11,10 @@ const TitleSchema = Yup.object().shape({
   columnTitle: Yup.string().required('Title is required'),
 });
 
-const ModalColumn = ({ onClose }) => {
+const ModalColumn = ({ onClose, title, btnName }) => {
   return (
     <Modal onClose={onClose}>
-      <ModalTitle>Add column</ModalTitle>
+      <ModalTitle>{title}</ModalTitle>
 
       <Formik
         initialValues={{
@@ -41,7 +41,7 @@ const ModalColumn = ({ onClose }) => {
             <InputErrorMessage name="columnTitle" component={'p'} />
             <ButtonMain>
               <BlackPlusButton />
-              Add
+              {btnName}
             </ButtonMain>
           </Form>
         )}
