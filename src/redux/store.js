@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import taskReducer from './task/taskSlice';
+import boardReducer from './task/taskSlice';
 import { authReducer } from './auth/authSlice';
 
 const persistConfig = {
@@ -22,7 +22,10 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
-  reducer: { auth: persistedReducer, task: taskReducer },
+  reducer: {
+    auth: persistedReducer,
+    board: boardReducer,
+  },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
       serializableCheck: {
