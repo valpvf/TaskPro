@@ -5,7 +5,9 @@ import {
   StyledRadioWrapper,
 } from './RadioImages.styled';
 
-const RadioImages = () => {
+import { useState } from 'react';
+
+const RadioImages = ({ onChangeImage }) => {
   const images = [
     '00.png',
     '01.png',
@@ -25,6 +27,15 @@ const RadioImages = () => {
     '15.png',
   ];
 
+  const [selectedValue, setSelectedValue] = useState(0);
+
+  const handleRadioChange = index => {
+    setSelectedValue(index);
+    const paddedIndex = index.toString().padStart(2, '0');
+    const backgroundValue = `${paddedIndex}d`;
+    onChangeImage(backgroundValue);
+  };
+
   return (
     <StyledRadioWrapper>
       {images.map((image, index) => {
@@ -35,7 +46,8 @@ const RadioImages = () => {
               type="radio"
               value={index}
               name="image"
-              defaultChecked={!index}
+              checked={selectedValue === index}
+              onChange={() => handleRadioChange(index)}
             />
             <img
               src={require(`../../../images/background/${image}`)}

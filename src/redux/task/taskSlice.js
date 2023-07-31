@@ -34,8 +34,16 @@ const taskSlice = createSlice({
     changePart: (state, { payload }) => {
       state.part += payload;
     },
+    changeBackground: (state, { payload }) => {
+      const boardIndex = state.board.findIndex(
+        board => board._id === payload._id
+      );
+      if (boardIndex !== -1) {
+        state.board[boardIndex].background = payload.background;
+      }
+    },
   },
 });
 
-export const { changePart } = taskSlice.actions;
+export const { changePart, changeBackground } = taskSlice.actions;
 export default taskSlice.reducer;

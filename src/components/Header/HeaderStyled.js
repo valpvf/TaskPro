@@ -59,16 +59,11 @@ export const CustomOption = styled.li`
     color: var(--primary-button-color);
   }
 
-  /* ${props =>
-    props.selected &&
-    `
-    color: #BEDBB0;
-  `} */
   ${props =>
     props.selected &&
     `
-    color: var(--primary-button-color);
-  `}
+      color: var(--primary-button-color);
+    `}
 `;
 
 export const TheamBtn = styled.div`

@@ -9,15 +9,25 @@ import {
   ButtonAdd,
 } from './ScreensPageStyled';
 import icons from '../../images/sprite.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from 'components/Card/Card';
 import ModalColumn from 'components/ModalColumn/ModalColumn';
 import ModalFilters from 'components/ModalFilters/ModalFilters';
-// import img1 from '../../images/photo_2020-02-16_07-56-08.jpg';
+import { persistor } from 'redux/store';
+import { useSelector } from 'react-redux';
 
 const ScreensPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+
+  const backgroundValue = useSelector(state => state.board);
+  // const backgroundValue = useSelector(state => state.board[0].background);
+
+  // const backgroundValue = useSelector(selectBackground);
+  useEffect(() => {
+    console.log(backgroundValue);
+  }, [backgroundValue]);
+  // const backgroundValue = '09d';
 
   const onOpen = () => {
     setShowModal(true);
@@ -33,8 +43,14 @@ const ScreensPage = () => {
     setShowFilters(false);
   };
 
+  persistor.persist();
+
   return (
-    <Container>
+    <Container
+      style={{
+        backgroundImage: `url('images/background/${backgroundValue}.jpg')`,
+      }}
+    >
       <ScreensHeader>
         <HeaderTxt>Project office</HeaderTxt>
         <HeaderFiltres onClick={onOpenFilters}>
@@ -53,7 +69,7 @@ const ScreensPage = () => {
           onClick={onOpen}
         >
           <IconPlus>
-            <use href={`${icons}#icon-plus-01`}></use>
+            <use href={`${icons}#icon-plus`}></use>
           </IconPlus>
           Add another column
         </ButtonAdd>
