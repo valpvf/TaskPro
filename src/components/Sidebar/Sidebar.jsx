@@ -27,25 +27,25 @@ import {
 import icons from '../../images/sprite.svg';
 import plant from '../../images/plant_min.png';
 import { useDispatch } from 'react-redux';
-import { logout } from 'redux/auth/authOperations';
+import { createBoard, deleteBoard, logout } from 'redux/auth/authOperations';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getBoardSelector } from 'redux/auth/authSelectors';
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
   const [showHelpText, setShowHelpText] = useState(false);
   const [showModalBoard, setShowModalBoard] = useState(false);
   const [showEditBoard, setShowEditBoard] = useState(false);
-  const [boardList, setBoardList] = useState([
-    { id: 1, name: 'Board 1', icon: 'icon-project' },
-    { id: 2, name: 'Board 2', icon: 'icon-project' },
-  ]);
-	const [editingBoardId, setEditingBoardId] = useState(null);
-	
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
-	const handleLogout = () => {
-		dispatch(logout());
-		navigate('/')
+  const [editingBoardId, setEditingBoardId] = useState(null);
+
+  const dispatch = useDispatch();
+  const getBoard = useSelector(getBoardSelector);
+
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/');
   };
 
   const onMouseEnterHelpBtn = () => {
@@ -75,28 +75,36 @@ const Sidebar = () => {
   };
 
   const handleCreateBoard = boardData => {
-    // Унікальний ідентифікатор для нової дошки
-    const newId = Date.now();
-    setBoardList(prevBoardList => [
-      ...prevBoardList,
-      { id: newId, name: boardData.boardTitle, icon: 'icon-project' },
-    ]);
-    setShowModalBoard(false);
-  };
-
-  const handleEditBoardName = (boardId, newName) => {
-    setBoardList(prevBoardList =>
-      prevBoardList.map(board =>
-        board.id === boardId ? { ...board, name: newName } : board
-      )
-    );
-    setEditingBoardId(null);
+    const boardMainData = {
+      title: boardData.boardTitle,
+    };
+    dispatch(createBoard(boardMainData))
+      .then(() => {
+        setShowModalBoard(false);
+      })
+      .catch(error => {
+        console.error('Помилка при створенні борду:', error);
+      });
   };
 
   const handleDeleteBoard = boardId => {
-    setBoardList(prevBoardList =>
-      prevBoardList.filter(board => board.id !== boardId)
-    );
+    dispatch(deleteBoard(boardId)).catch(error => {
+      console.error('Помилка при видаленні борду:', error);
+    });
+  };
+
+  const handleEditBoardName = (boardId, newName) => {
+    // setBoardList(prevBoardList =>
+    //   prevBoardList.map(board =>
+    //     board.id === boardId ? { ...board, title: newName } : board
+    //   )
+    // );
+    // setEditingBoardId(null);
+  };
+
+  const handleBoardInfo = boardId => {
+    console.log('Clicked board ID:', boardId);
+    // Або зробіть інші дії з цим ID, які вам потрібні
   };
 
   return (
@@ -134,7 +142,7 @@ const Sidebar = () => {
                 btnName={editingBoardId ? 'Edit' : 'Create'}
                 boardName={
                   editingBoardId
-                    ? boardList.find(board => board.id === editingBoardId).name
+                    ? getBoard.find(board => board.id === editingBoardId).title
                     : ''
                 }
                 editingBoardId={editingBoardId}
@@ -144,25 +152,30 @@ const Sidebar = () => {
         </CreateBoard>
 
         <BoardList>
-          {boardList.map(board => (
-            <BoardItem key={board.id}>
-              <ProgName>
-                <IconProgect>
-                  <use href={`${icons}#${board.icon}`}></use>
-                </IconProgect>
-                <div>{board.name}</div>
-              </ProgName>
-              <IconEditCustom>
-                <IconEdit onClick={() => onOpenEditBoard(board.id)}>
-                  <use href={`${icons}#icon-pencil`}></use>
-                </IconEdit>
-                <IconEdit onClick={() => handleDeleteBoard(board.id)}>
-                  <use href={`${icons}#icon-trash`}></use>
-                </IconEdit>
-              </IconEditCustom>
-              <BorderRight />
-            </BoardItem>
-          ))}
+          {getBoard
+            .filter(board => board !== null)
+            .map(board => (
+              <BoardItem
+                key={board._id}
+                onClick={() => handleBoardInfo(board._id)}
+              >
+                <ProgName>
+                  <IconProgect>
+                    <use href={`${icons}#${board.icon}`}></use>
+                  </IconProgect>
+                  <div>{board.title}</div>
+                </ProgName>
+                <IconEditCustom>
+                  <IconEdit onClick={() => onOpenEditBoard(board._id)}>
+                    <use href={`${icons}#icon-pencil`}></use>
+                  </IconEdit>
+                  <IconEdit onClick={() => handleDeleteBoard(board._id)}>
+                    <use href={`${icons}#icon-trash`}></use>
+                  </IconEdit>
+                </IconEditCustom>
+                <BorderRight />
+              </BoardItem>
+            ))}
         </BoardList>
       </div>
 

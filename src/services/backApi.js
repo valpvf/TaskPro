@@ -6,15 +6,15 @@ axios.defaults.baseURL = baseUrl;
 
 /* ================== BOARD =========================== */
 export const addBoardApi = async boardForm => {
-  return await axios.post('/boards', { ...boardForm }).then(res => res);
+  return await axios.post('/api/boards', { ...boardForm }).then(res => res);
 };
 
 export const getBoardApi = async ({ id }) => {
-  return await axios.get(`/boards/${id}`).then(res => res);
+  return await axios.get(`/api/boards/${id}`).then(res => res);
 };
 
-export const deleteBoardApi = async boardId => {
-  return await axios.delete(`/boards/${boardId}`).then(res => res);
+export const deleteBoardApi = async id => {
+  return await axios.delete(`/api/boards/${id}`).then(res => res);
 };
 
 export const addColumnApi = async columnForm => {

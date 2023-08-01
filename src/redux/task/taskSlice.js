@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 // import { changeUser, getUser } from './userOperations';
-import { addColumn, getBoard } from './taskOperations';
+import { getBoard } from './taskOperations';
 
 const initialState = {
   _id: '64c772d4906c009cfba4f8a9',
@@ -68,17 +68,6 @@ const boardSlice = createSlice({
         state.board = payload;
       })
       .addCase(getBoard.rejected, (state, action) => {
-        state.error = action.error.message;
-      })
-      .addCase(addColumn.pending, state => {
-        state.error = null;
-      })
-      .addCase(addColumn.fulfilled, (state, { payload }) => {
-        console.log('state, payload', state, payload);
-        // state.error = null;
-        // state.board = payload;
-      })
-      .addCase(addColumn.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
