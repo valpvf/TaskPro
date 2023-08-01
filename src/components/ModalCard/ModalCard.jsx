@@ -17,6 +17,7 @@ import {
   SubtitleStyled,
   LabelStyled,
   DatePickerWrapper,
+  SpanStyled,
 } from './ModalCard.styled';
 
 const TitleSchema = Yup.object().shape({
@@ -27,6 +28,13 @@ const TitleSchema = Yup.object().shape({
 const ModalCard = ({ onClose, title, btnName }) => {
   registerLocale('en', uk);
   const [startDate, setStartDate] = useState(new Date());
+
+  const compareDate = () => {
+    const curDate = startDate.toISOString().split('T')[0];
+    const dateNow = Date.now();
+    const date = new Date(dateNow).toISOString().split('T')[0];
+    return curDate === date ? true : false;
+  };
 
   return (
     <Modal onClose={onClose}>
@@ -70,6 +78,7 @@ const ModalCard = ({ onClose, title, btnName }) => {
             <RadioColored />
             <LabelStyled htmlFor="date">Deadline</LabelStyled>
             <DatePickerWrapper>
+              {compareDate() && <SpanStyled>Today,&nbsp;</SpanStyled>}
               <DatePicker
                 locale="en"
                 selected={startDate}
@@ -77,7 +86,7 @@ const ModalCard = ({ onClose, title, btnName }) => {
                 minDate={new Date()}
                 name="date"
                 value={date => date}
-                dateFormat="EEEE, MMMM d"
+                dateFormat="MMMM d"
               />
             </DatePickerWrapper>
             <ButtonMain type="submit">
