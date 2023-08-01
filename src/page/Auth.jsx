@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import RegisterForm from '../components/RegisterForm/RegisterForm';
 import LoginForm from '../components/LoginForm/LoginForm';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Auth = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const Auth = () => {
       {id === 'login' && <LoginForm />}
       <ToastContainer
         position="top-center"
-        autoClose={5000}
+        autoClose={2500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
