@@ -7,7 +7,7 @@ export default function InputField({ text, id, name, type, value, onChange }) {
       id={id}
       name={name}
       type={type}
-      value={value}
+      value={value || ''}
       onChange={onChange}
     ></StyledInputField>
   );
