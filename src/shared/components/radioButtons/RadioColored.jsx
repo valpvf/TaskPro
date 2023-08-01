@@ -1,6 +1,6 @@
 import { Box, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 
-const RadioColored = () => {
+const RadioColored = ({ onRadioChange }) => {
   return (
     <Box
       sx={{
@@ -12,13 +12,14 @@ const RadioColored = () => {
     >
       <RadioGroup
         aria-labelledby="label-changer"
-        defaultValue="gray"
+        defaultValue="Without"
         name="radio-buttons-group"
+        onChange={ev => onRadioChange(ev.target.value)}
         sx={{ display: 'flex', gap: '8px' }}
         row
       >
         <FormControlLabel
-          value="blue"
+          value="High"
           sx={{ margin: '0' }}
           control={
             <Radio
@@ -40,7 +41,7 @@ const RadioColored = () => {
           }
         />
         <FormControlLabel
-          value="pink"
+          value="Medium"
           sx={{ margin: '0' }}
           control={
             <Radio
@@ -62,7 +63,7 @@ const RadioColored = () => {
           }
         />
         <FormControlLabel
-          value="green"
+          value="Low"
           sx={{ margin: '0' }}
           control={
             <Radio
@@ -85,7 +86,7 @@ const RadioColored = () => {
           }
         />
         <FormControlLabel
-          value="gray"
+          value="Without"
           sx={{ margin: '0' }}
           control={
             <Radio
