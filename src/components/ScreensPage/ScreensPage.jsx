@@ -9,31 +9,30 @@ import {
   ButtonAdd,
 } from './ScreensPageStyled';
 import icons from '../../images/sprite.svg';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Card from 'components/Card/Card';
 import ModalColumn from 'components/ModalColumn/ModalColumn';
 import ModalFilters from 'components/ModalFilters/ModalFilters';
-import { persistor } from 'redux/store';
 import ButtonMain from 'shared/components/button/Button';
 import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import ModalCard from 'components/ModalCard/ModalCard';
-import { useDispatch, useSelector } from 'react-redux';
-import { getBoardSelector } from '../../redux/task/taskSelectors';
-import { getBoard } from '../../redux/task/taskOperations';
+import { useSelector } from 'react-redux';
+import { getBoardSelector } from 'redux/auth/authSelectors';
+// import { addBoardApi } from 'services/backApi';
 
 const ScreensPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getBoard());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(addBoardApi());
+  // }, [dispatch]);
 
   const backgroundValue = useSelector(getBoardSelector);
 
-  console.log(backgroundValue);
+  // console.log(backgroundValue);
 
   const onOpen = () => {
     setShowModal(true);
@@ -55,8 +54,6 @@ const ScreensPage = () => {
   const onCloseFilters = () => {
     setShowFilters(false);
   };
-
-  persistor.persist();
 
   return (
     <Container

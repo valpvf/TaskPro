@@ -6,8 +6,9 @@ import {
   StyledRadioWrapper,
   StyledSVG,
 } from './RadioIcons.styled';
+import { useState } from 'react';
 
-const RadioIcons = () => {
+const RadioIcons = ({ onChangeIcon }) => {
   const icons = [
     'icon-project',
     'icon-star',
@@ -18,6 +19,13 @@ const RadioIcons = () => {
     'icon-colors',
     'icon-hexagon',
   ];
+
+  const [selectedValue, setSelectedValue] = useState('');
+
+  const handleRadioChange = index => {
+    setSelectedValue(index);
+    onChangeIcon(selectedValue);
+  };
 
   return (
     <StyledRadioWrapper>
@@ -30,6 +38,7 @@ const RadioIcons = () => {
               value={index}
               name="icon"
               defaultChecked={index === 0}
+              onChange={() => handleRadioChange(icon)}
             />
             <StyledSVG>
               <use href={`${sprite}#${icon}`} />

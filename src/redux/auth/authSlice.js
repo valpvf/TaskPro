@@ -8,7 +8,8 @@ import {
   refreshUser,
   updateTheme,
   updateUser,
-  patchBoard,
+  createBoard,
+  deleteBoard,
 } from './authOperations';
 export const authSlice = createSlice({
   name: 'auth',
@@ -92,8 +93,31 @@ export const authSlice = createSlice({
         state.error = payload;
         toast.error(payload);
       })
-      .addCase(patchBoard.fulfilled, (state, { payload }) => {
-        state.user.boards = payload.boards;
+      .addCase(createBoard.fulfilled, (state, { payload }) => {
+        state.user.boards.push(payload);
+        state.isRefreshing = false;
+        state.error = null;
+      })
+      .addCase(createBoard.rejected, (state, { payload }) => {
+        state.isRefreshing = false;
+        state.error = payload;
+      })
+      .addCase(deleteBoard.fulfilled, (state, { payload }) => {
+        // state.user.boards = state.user.boards.filter(
+        //   board => board.id !== payload.boardId
+        // );
+        const indexToRemove = state.user.boards.findIndex(
+          board => board._id === payload
+        );
+        if (indexToRemove !== -1) {
+          state.user.boards.splice(indexToRemove, 1);
+        }
+        state.isRefreshing = false;
+        state.error = null;
+      })
+      .addCase(deleteBoard.rejected, (state, { payload }) => {
+        state.isRefreshing = false;
+        state.error = payload;
       }),
 });
 
