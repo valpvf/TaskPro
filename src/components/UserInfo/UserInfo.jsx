@@ -1,11 +1,21 @@
+import { useState } from 'react';
 import icons from '../../images/sprite.svg';
 import { IconAvatar, Container, IconPlus, AvasarSetin } from './UserInfoStyled';
+import ModalEditProfile from 'components/ModalEditProfile/ModalEditProfile';
 
 const UserInfo = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const onOpen = () => {
+    setShowModal(true);
+  };
+  const onClose = () => {
+    setShowModal(false);
+  };
   return (
     <Container>
       <div>Name</div>
-      <AvasarSetin>
+      <AvasarSetin onClick={onOpen}>
         <IconAvatar>
           <use href={`${icons}#icon-user`}></use>
         </IconAvatar>
@@ -15,6 +25,7 @@ const UserInfo = () => {
           </IconPlus>
         </div>
       </AvasarSetin>
+      {showModal && <ModalEditProfile onClose={onClose} />}
     </Container>
   );
 };
