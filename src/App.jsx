@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { PrivateRoute, RestrictedRoute } from 'components/AuthRoutes';
 import { refreshUser } from 'redux/auth/authOperations';
-import { isLogin, isRefreshing } from 'redux/auth/authSelectors';
+import { isLogin} from 'redux/auth/authSelectors';
 import Loader from 'components/Loader/Loader';
 
 const WelcomePage = lazy(() => import('page/WelcomePage'));
@@ -13,7 +13,6 @@ const Home = lazy(() => import('page/Home'));
 export const App = () => {
   const dispatch = useDispatch();
 
-	const isRefreshUser = useSelector(isRefreshing);
 	const isAuth = useSelector(isLogin);
 
   useEffect(() => {
@@ -42,7 +41,3 @@ export const App = () => {
 };
 
 export default App;
-
-// isRefreshUser ? (
-//     <Loader />
-//   ) : 
