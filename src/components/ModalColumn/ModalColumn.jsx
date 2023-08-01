@@ -6,23 +6,32 @@ import ButtonMain from 'shared/components/button/Button';
 import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import InputField from 'shared/components/inputField/InputField';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
+import { useDispatch, useSelector } from 'react-redux';
+import { addColumn } from 'redux/task/taskOperations';
+import { getBoardId } from 'redux/task/taskSelectors';
 
 const TitleSchema = Yup.object().shape({
-  columnTitle: Yup.string().required('Title is required'),
+  title: Yup.string().required('Title is required'),
 });
 
 const ModalColumn = ({ onClose, title, btnName }) => {
+  const dispatch = useDispatch();
+
+  const a = useSelector(getBoardId);
+  console.log(a);
+
   return (
     <Modal onClose={onClose}>
       <ModalTitle>{title}</ModalTitle>
 
       <Formik
         initialValues={{
-          columnTitle: '',
+          title: 'Start',
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
+          console.log('col', values);
+          dispatch(addColumn({ ...values, board: a }));
           resetForm();
         }}
       >
@@ -33,10 +42,10 @@ const ModalColumn = ({ onClose, title, btnName }) => {
               as={Field}
               text="Title"
               id="columnTitle"
-              name="columnTitle"
+              name="title"
               type="text"
-              onChange={handleChange}
-              value={values.columnTitle}
+              onChange={handleChange('title')}
+              value={values.title || ''}
             />
             <InputErrorMessage name="columnTitle" component={'p'} />
             <ButtonMain>
