@@ -1,6 +1,6 @@
 import { Box, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 
-const RadioFilters = () => {
+const RadioFilters = ({ onFilterChange }) => {
   return (
     <Box
       sx={{
@@ -14,6 +14,7 @@ const RadioFilters = () => {
         aria-labelledby="label-changer"
         defaultValue="none"
         name="radio-buttons-group"
+        onChange={ev => onFilterChange(ev.target.value)}
         sx={{ display: 'flex', flexDirection: 'row', gap: '8px' }}
       >
         <FormControlLabel
@@ -39,7 +40,8 @@ const RadioFilters = () => {
                 backgroundColor: 'var(--radio-label-grey-color)',
                 '&.Mui-checked': {
                   color: 'var(--radio-label-grey-color)',
-                  backgroundColor: 'var(--radio-label-checked-background-color)',
+                  backgroundColor:
+                    'var(--radio-label-checked-background-color)',
                 },
               }}
               disableRipple
@@ -70,7 +72,8 @@ const RadioFilters = () => {
                 backgroundColor: 'var(--radio-label-background-color)',
                 '&.Mui-checked': {
                   color: 'var(--radio-label-background-color)',
-                  backgroundColor: 'var(--radio-label-checked-background-color)',
+                  backgroundColor:
+                    'var(--radio-label-checked-background-color)',
                 },
               }}
               disableRipple
@@ -101,7 +104,8 @@ const RadioFilters = () => {
                 backgroundColor: 'var(--radio-label-pink-color)',
                 '&.Mui-checked': {
                   color: 'var(--radio-label-pink-color)',
-                  backgroundColor: 'var(--radio-label-checked-background-color)',
+                  backgroundColor:
+                    'var(--radio-label-checked-background-color)',
                 },
               }}
               disableRipple
@@ -132,7 +136,8 @@ const RadioFilters = () => {
                 backgroundColor: 'var(--radio-label-green-color)',
                 '&.Mui-checked': {
                   color: 'var(--radio-label-green-color)',
-                  backgroundColor: 'var(--radio-label-checked-background-color)',
+                  backgroundColor:
+                    'var(--radio-label-checked-background-color)',
                 },
               }}
               disableRipple
