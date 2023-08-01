@@ -134,3 +134,15 @@ export const deleteBoard = createAsyncThunk(
     }
   }
 );
+
+export const editBoard = createAsyncThunk(
+  'boards/editBoard',
+  async ({ id, data }) => {
+    try {
+      await axios.put(`/api/boards/${id}`, data);
+      return { id, data };
+    } catch (error) {
+      throw error;
+    }
+  }
+);

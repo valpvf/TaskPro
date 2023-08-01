@@ -9,7 +9,7 @@ import RadioImages from 'shared/components/radioButtons/RadioImages';
 import RadioIcons from 'shared/components/radioButtons/RadioIcons';
 import { SubtitleStyled } from './ModalBoard.styled';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
-// import { useState } from 'react';
+import { useState } from 'react';
 
 const TitleSchema = Yup.object().shape({
   boardTitle: Yup.string().required('Title is required'),
@@ -24,10 +24,9 @@ const ModalBoard = ({
   boardName,
   editingBoardId,
 }) => {
-  // const [backgroundName, setBackgroundName] = useState('');
-  // const [iconName, setIconName] = useState('');
+  const [backgroundName, setBackgroundName] = useState('');
+  const [iconName, setIconName] = useState('');
 
-  // console.log(backgroundName);
   // const dispatch = useDispatch();
 
   // const [backgroundValue, setBackgroundValue] = useState('01d');
@@ -46,16 +45,22 @@ const ModalBoard = ({
           boardTitle: boardName,
           // image: 'img/01d.jpg',
           // icon: iconName,
-          // background: backgroundName,
+          // background: `${helpbackgroundName}`,
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
+          const boardInfo = {
+            values,
+            background: backgroundName,
+            icon: iconName,
+          };
           if (btnName === 'Create') {
-            onCreateBoard(values);
+            onCreateBoard(boardInfo);
+            console.log(boardInfo);
           } else if (btnName === 'Edit') {
-            onEditBoard(values);
+            onEditBoard(boardInfo);
           }
-          // console.log(values);
+
           // handleButtonClick();
           resetForm();
         }}
@@ -73,14 +78,10 @@ const ModalBoard = ({
             />
             <InputErrorMessage name="boardTitle" component={'p'} />
             <SubtitleStyled>Icons</SubtitleStyled>
-            <RadioIcons
-            // onChangeIcon={setIconName}
-            />
+            <RadioIcons onChangeIcon={setIconName} />
             <SubtitleStyled>Background</SubtitleStyled>
 
-            <RadioImages
-            // onChangeImage={setBackgroundName}
-            />
+            <RadioImages onChangeImage={setBackgroundName} />
 
             <ButtonMain type="submit">
               <BlackPlusButton />

@@ -27,7 +27,12 @@ import {
 import icons from '../../images/sprite.svg';
 import plant from '../../images/plant_min.png';
 import { useDispatch } from 'react-redux';
-import { createBoard, deleteBoard, logout } from 'redux/auth/authOperations';
+import {
+  createBoard,
+  deleteBoard,
+  editBoard,
+  logout,
+} from 'redux/auth/authOperations';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getBoardSelector } from 'redux/auth/authSelectors';
@@ -66,8 +71,8 @@ const Sidebar = () => {
   const onCloseBoard = () => {
     setShowModalBoard(false);
   };
-  const onOpenEditBoard = boardId => {
-    setEditingBoardId(boardId);
+  const onOpenEditBoard = board => {
+    setEditingBoardId(board._id);
     setShowEditBoard(true);
   };
   const onCloseEditBoard = () => {
@@ -76,11 +81,13 @@ const Sidebar = () => {
 
   const handleCreateBoard = boardData => {
     const boardMainData = {
-      title: boardData.boardTitle,
+      title: boardData.values.boardTitle,
+      background: boardData.background,
+      icon: boardData.icon,
     };
     dispatch(createBoard(boardMainData))
       .then(() => {
-        setShowModalBoard(false);
+        onCloseBoard();
       })
       .catch(error => {
         console.error('Помилка при створенні борду:', error);
@@ -93,18 +100,29 @@ const Sidebar = () => {
     });
   };
 
-  const handleEditBoardName = (boardId, newName) => {
-    // setBoardList(prevBoardList =>
-    //   prevBoardList.map(board =>
-    //     board.id === boardId ? { ...board, title: newName } : board
-    //   )
-    // );
-    // setEditingBoardId(null);
+  const handleEditBoardName = boardData => {
+    dispatch(
+      editBoard({
+        id: editingBoardId,
+        data: {
+          title: boardData.values.boardTitle,
+          background: boardData.background,
+          icon: boardData.icon,
+        },
+      })
+    )
+      .then(() => {
+        onCloseEditBoard();
+      })
+      .catch(error => {
+        console.error('Помилка при редагуванні борду:', error);
+      });
+
+    setEditingBoardId(null);
   };
 
   const handleBoardInfo = boardId => {
     console.log('Clicked board ID:', boardId);
-    // Або зробіть інші дії з цим ID, які вам потрібні
   };
 
   return (
@@ -136,13 +154,13 @@ const Sidebar = () => {
             {showEditBoard && (
               <ModalBoard
                 onClose={onCloseEditBoard}
-                onCreateBoard={handleCreateBoard}
+                // onCreateBoard={handleCreateBoard}
                 onEditBoard={handleEditBoardName}
                 title={editingBoardId ? 'Edit board' : 'New board'}
                 btnName={editingBoardId ? 'Edit' : 'Create'}
                 boardName={
                   editingBoardId
-                    ? getBoard.find(board => board.id === editingBoardId).title
+                    ? getBoard.find(board => board._id === editingBoardId).title
                     : ''
                 }
                 editingBoardId={editingBoardId}
@@ -166,7 +184,7 @@ const Sidebar = () => {
                   <div>{board.title}</div>
                 </ProgName>
                 <IconEditCustom>
-                  <IconEdit onClick={() => onOpenEditBoard(board._id)}>
+                  <IconEdit onClick={() => onOpenEditBoard(board)}>
                     <use href={`${icons}#icon-pencil`}></use>
                   </IconEdit>
                   <IconEdit onClick={() => handleDeleteBoard(board._id)}>

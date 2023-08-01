@@ -10,6 +10,7 @@ import {
   updateUser,
   createBoard,
   deleteBoard,
+  editBoard,
 } from './authOperations';
 export const authSlice = createSlice({
   name: 'auth',
@@ -116,6 +117,22 @@ export const authSlice = createSlice({
         state.error = null;
       })
       .addCase(deleteBoard.rejected, (state, { payload }) => {
+        state.isRefreshing = false;
+        state.error = payload;
+      })
+      .addCase(editBoard.fulfilled, (state, { payload }) => {
+        const targetBoard = state.user.boards.find(
+          board => board._id === payload.id
+        );
+        if (targetBoard) {
+          targetBoard.title = payload.data.title;
+          targetBoard.icon = payload.data.icon;
+          targetBoard.background = payload.data.background;
+        }
+        state.isRefreshing = false;
+        state.error = null;
+      })
+      .addCase(editBoard.rejected, (state, { payload }) => {
         state.isRefreshing = false;
         state.error = payload;
       }),

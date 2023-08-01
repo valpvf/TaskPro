@@ -35,7 +35,7 @@ const RadioImages = ({ onChangeImage }) => {
     const paddedIndex = index.toString().padStart(2, '0');
     const backgroundValue = `${paddedIndex}`;
     onChangeImage(backgroundValue);
-    // console.log(backgroundValue);
+    console.log(backgroundValue);
   };
 
   // console.log(onChangeImage);
