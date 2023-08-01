@@ -6,21 +6,21 @@ import { toast } from 'react-toastify';
 import { register } from '../../redux/auth/authOperations';
 import { RegisterSchema } from '../../Schemas/authSchemas';
 import {
-	Container,
-	Wrapper,
-	Navigate,
-	RegisterLink,
-	LoginLink,
-	ErrorText,
-	PasswordView,
-	Inputs,
-	PasswordInput,
-	PasswordIcon,
-	Svg,
-	RegisterBtn,
+  Container,
+  Wrapper,
+  Navigate,
+  RegisterLink,
+  LoginLink,
+  ErrorText,
+  PasswordView,
+  Inputs,
+  PasswordInput,
+  PasswordIcon,
+  Svg,
+  RegisterBtn,
 } from './RegisterForm.styled';
 import sprite from '../../images/sprite.svg';
-import eyeHide from '../../images/eye-hide.svg'
+import eyeHide from '../../images/eye-hide.svg';
 
 function RegisterForm() {
   const navigate = useNavigate();
@@ -43,13 +43,13 @@ function RegisterForm() {
     const response = await dispatch(register(newUser));
 
     if (response.error) {
-		toast(response.payload);
+		toast.error(response.payload);
     } else {
-		navigate('/home');
+      navigate('/home');
     }
   };
 
-	return (
+  return (
     <Container>
       <form onSubmit={handleSubmit}>
         <Formik

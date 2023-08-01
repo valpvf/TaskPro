@@ -1,9 +1,18 @@
-import React from 'react'
+import { RotatingLines } from 'react-loader-spinner';
+import { LoaderContainer } from './Loader.styled';
 
 const Loader = () => {
   return (
-	<div>Loader</div>
-  )
-}
+    <LoaderContainer>
+      <RotatingLines
+        strokeColor="#9dc888"
+        strokeWidth="5"
+        animationDuration="0.75"
+        width="96"
+        visible={true}
+      />
+    </LoaderContainer>
+  );
+};
 
-export default Loader
+export default Loader;

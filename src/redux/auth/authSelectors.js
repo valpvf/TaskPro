@@ -4,11 +4,11 @@ export const avatarURL = state => state.auth.user.avatarURL;
 
 export const getTheme = state => state.auth.user.theme;
 
-export const getActiveBoard = state => state.auth.user.activeBoard;
+export const getBoard = state => state.auth.user.boards;
 
 export const setToken = state => state.token;
 
-export const isLoggedIn = state => state.auth.isLoggedIn;
+export const isLogin = state => state.auth.isLoggedIn;
 
 export const isRefreshing = state => state.auth.isRefreshing;
 

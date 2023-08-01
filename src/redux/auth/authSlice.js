@@ -27,6 +27,9 @@ export const authSlice = createSlice({
   },
   extraReducers: builder =>
     builder
+      .addCase(register.pending, state => {
+        state.isRefreshing = true;
+      })
       .addCase(register.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
@@ -36,6 +39,9 @@ export const authSlice = createSlice({
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.error = payload;
+      })
+      .addCase(login.pending, state => {
+        state.isRefreshing = true;
       })
       .addCase(login.fulfilled, (state, { payload }) => {
         state.user = payload.user;
