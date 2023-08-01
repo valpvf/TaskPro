@@ -9,7 +9,6 @@ export const Container = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100%;
-  /* background: var(--welcomeBgColor); */
   background: var(--welcomeBgColor);
   background-repeat: no-repeat;
   background-size: cover;
@@ -68,7 +67,6 @@ export const Title = styled.p`
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: -1.12px;
-  /* color: var(--161616); */
   color: var(--welcome-title-color);
 
   @media screen and (min-width: 768px) {
@@ -87,7 +85,6 @@ export const Text = styled.p`
   line-height: 1.28;
   letter-spacing: -0.28px;
 
-  /* color: var(--161616); */
   color: var(--welcome-title-color);
 
   @media screen and (min-width: 768px) {
@@ -115,7 +112,6 @@ export const AuthButton = styled(NavLink)`
   line-height: 1.5;
   letter-spacing: -0.28px;
 
-  /* color: var(--161616); */
   color: var(--welcome-title-color);
 
   text-align: center;
@@ -127,9 +123,12 @@ export const AuthButton = styled(NavLink)`
   &:hover,
   &:focus,
   &:active {
-    /* background: var(--161616); */
     background: var(--welcome-background-color);
     color: var(--welcome-hover-text-color);
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 
   @media screen and (min-width: 768px) {

@@ -122,6 +122,10 @@ export const RegisterBtn = styled.button`
   color: var(--welcome-title-color);
   cursor: pointer;
 
+  &:active {
+    transform: scale(0.95);
+  }
+
   @media screen and (max-width: 768px) {
     width: 287px;
   }
