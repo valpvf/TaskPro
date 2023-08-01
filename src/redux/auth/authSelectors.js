@@ -13,3 +13,5 @@ export const isLogin = state => state.auth.isLoggedIn;
 export const isRefreshing = state => state.auth.isRefreshing;
 
 export const getError = state => state.auth.error;
+
+export const getBoardSelector = state => state.auth.user.boards;

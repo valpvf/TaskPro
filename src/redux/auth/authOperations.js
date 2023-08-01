@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { addBoardApi, deleteBoardApi } from 'services/backApi';
 
 axios.defaults.baseURL = 'https://taskspro-backend.onrender.com';
 
@@ -106,6 +107,30 @@ export const patchBoard = createAsyncThunk(
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const createBoard = createAsyncThunk(
+  'boards/createBoard',
+  async boardData => {
+    try {
+      const response = await addBoardApi(boardData);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
+export const deleteBoard = createAsyncThunk(
+  'boards/deleteBoard',
+  async boardId => {
+    try {
+      await deleteBoardApi(boardId);
+      return boardId;
+    } catch (error) {
+      throw error;
     }
   }
 );

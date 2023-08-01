@@ -8,12 +8,8 @@ import InputField from 'shared/components/inputField/InputField';
 import RadioImages from 'shared/components/radioButtons/RadioImages';
 import RadioIcons from 'shared/components/radioButtons/RadioIcons';
 import { SubtitleStyled } from './ModalBoard.styled';
-
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
-import { useDispatch } from 'react-redux';
-import { persistor } from 'redux/store';
-import { changeBackground } from '../../redux/task/taskSlice';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const TitleSchema = Yup.object().shape({
   boardTitle: Yup.string().required('Title is required'),
@@ -28,14 +24,18 @@ const ModalBoard = ({
   boardName,
   editingBoardId,
 }) => {
-  const dispatch = useDispatch();
+  // const [backgroundName, setBackgroundName] = useState('');
+  // const [iconName, setIconName] = useState('');
 
-  const [backgroundValue, setBackgroundValue] = useState('01d');
+  // console.log(backgroundName);
+  // const dispatch = useDispatch();
 
-  const handleButtonClick = () => {
-    dispatch(changeBackground({ _id: '123411', background: backgroundValue }));
-    persistor.flush();
-  };
+  // const [backgroundValue, setBackgroundValue] = useState('01d');
+
+  // const handleButtonClick = () => {
+  //   dispatch(changeBackground({ background: backgroundValue }));
+  //   persistor.flush();
+  // };
 
   return (
     <Modal onClose={onClose}>
@@ -44,17 +44,19 @@ const ModalBoard = ({
       <Formik
         initialValues={{
           boardTitle: boardName,
-          image: 'img/01d.jpg', // Додано початкове значення для картинки
+          // image: 'img/01d.jpg',
+          // icon: iconName,
+          // background: backgroundName,
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
-          dispatch(changeBackground(values.image)); // Виклик action для зміни картинки
           if (btnName === 'Create') {
             onCreateBoard(values);
           } else if (btnName === 'Edit') {
-            onEditBoard(editingBoardId, values.boardTitle);
+            onEditBoard(values);
           }
-          handleButtonClick();
+          // console.log(values);
+          // handleButtonClick();
           resetForm();
         }}
       >
@@ -71,10 +73,14 @@ const ModalBoard = ({
             />
             <InputErrorMessage name="boardTitle" component={'p'} />
             <SubtitleStyled>Icons</SubtitleStyled>
-            <RadioIcons />
+            <RadioIcons
+            // onChangeIcon={setIconName}
+            />
             <SubtitleStyled>Background</SubtitleStyled>
 
-            <RadioImages onChangeImage={setBackgroundValue} />
+            <RadioImages
+            // onChangeImage={setBackgroundName}
+            />
 
             <ButtonMain type="submit">
               <BlackPlusButton />

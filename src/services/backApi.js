@@ -17,6 +17,6 @@ export const getBoardApi = async ({ id }) => {
   return await axios.get(`/api/boards/${id}`).then(res => res);
 };
 
-export const deleteBoardApi = async boardId => {
-  return await axios.delete(`/api/boards/${boardId}`).then(res => res);
+export const deleteBoardApi = async id => {
+  return await axios.delete(`/api/boards/${id}`).then(res => res);
 };

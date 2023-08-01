@@ -4,8 +4,9 @@ import {
   StyledLabel,
   StyledRadioWrapper,
 } from './RadioImages.styled';
-
 import { useState } from 'react';
+
+// import { useState } from 'react';
 
 const RadioImages = ({ onChangeImage }) => {
   const images = [
@@ -32,9 +33,12 @@ const RadioImages = ({ onChangeImage }) => {
   const handleRadioChange = index => {
     setSelectedValue(index);
     const paddedIndex = index.toString().padStart(2, '0');
-    const backgroundValue = `${paddedIndex}d`;
+    const backgroundValue = `${paddedIndex}`;
     onChangeImage(backgroundValue);
+    // console.log(backgroundValue);
   };
+
+  // console.log(onChangeImage);
 
   return (
     <StyledRadioWrapper>
