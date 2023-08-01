@@ -65,9 +65,9 @@ export const LabelStyled = styled.label`
 `;
 
 export const DatePickerWrapper = styled.div`
-  & .react-datepicker-wrapper {
+  /* & .react-datepicker-wrapper {
     width: 100%;
-  }
+  } */
   & .react-datepicker__input-container {
     width: 100%;
   }
@@ -77,7 +77,7 @@ export const DatePickerWrapper = styled.div`
     padding: 0;
     background-image: url(${Svg});
     background-repeat: no-repeat;
-    background-position: top 6px right 100px;
+    background-position: top 6px right 65px;
 
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
@@ -158,4 +158,14 @@ export const DatePickerWrapper = styled.div`
     color: rgba(255, 255, 255, 0.2);
     color: var(--datepicker-hover-disabled-day);
   }
+`;
+
+export const SpanStyled = styled.span`
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.28px;
+  /* color: var(--BEDBB0); */
+  color: var(--primary-modal-card-color);
 `;
