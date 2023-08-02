@@ -20,9 +20,9 @@ const RadioIcons = ({ onChangeIcon }) => {
     'icon-hexagon',
   ];
 
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState('icon-project');
 
-  const handleRadioChange = index => {
+  const handleRadioChange = (index) => {
     setSelectedValue(index);
     onChangeIcon(selectedValue);
   };
@@ -35,9 +35,9 @@ const RadioIcons = ({ onChangeIcon }) => {
           <StyledLabel key={id}>
             <StyledInput
               type="radio"
-              value={index}
+              value={icon}
               name="icon"
-              defaultChecked={index === 0}
+              checked={selectedValue === icon}
               onChange={() => handleRadioChange(icon)}
             />
             <StyledSVG>

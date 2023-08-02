@@ -15,7 +15,6 @@ export const StyledLabel = styled.label`
 export const StyledSVG = styled.svg`
   width: 18px;
   height: 18px;
-  /* stroke: rgba(255, 255, 255, 0.5); */
   stroke: var(--radio-icons-color);
   fill: transparent;
 `;
@@ -27,8 +26,6 @@ export const StyledInput = styled.input`
   height: 0;
 
   &:checked + svg {
-    /* stroke: #fff; */
     stroke: var(--radio-icons-checked);
-    transition: stroke 280ms ease-in;
   }
 `;
