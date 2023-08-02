@@ -44,9 +44,12 @@ const Sidebar = () => {
   const [showModalBoard, setShowModalBoard] = useState(false);
   const [showEditBoard, setShowEditBoard] = useState(false);
   const [editingBoardId, setEditingBoardId] = useState(null);
+  const [activeBoardId, setActiveBoardId] = useState(null);
 
   const dispatch = useDispatch();
   const getBoard = useSelector(getBoardSelector);
+
+  // console.log(getBoard);
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -86,6 +89,7 @@ const Sidebar = () => {
       background: boardData.background,
       icon: boardData.icon,
     };
+
     dispatch(createBoard(boardMainData))
       .then(() => {
         onCloseBoard();
@@ -106,6 +110,7 @@ const Sidebar = () => {
       editBoard({
         id: editingBoardId,
         data: {
+          // title: boardData.title,
           title: boardData.values.boardTitle,
           background: boardData.background,
           icon: boardData.icon,
@@ -118,7 +123,7 @@ const Sidebar = () => {
       .catch(error => {
         console.error('Помилка при редагуванні борду:', error);
       });
-
+    // console.log(boardData);
     setEditingBoardId(null);
   };
 
@@ -155,7 +160,6 @@ const Sidebar = () => {
             {showEditBoard && (
               <ModalBoard
                 onClose={onCloseEditBoard}
-                // onCreateBoard={handleCreateBoard}
                 onEditBoard={handleEditBoardName}
                 title={editingBoardId ? 'Edit board' : 'New board'}
                 btnName={editingBoardId ? 'Edit' : 'Create'}
@@ -164,7 +168,10 @@ const Sidebar = () => {
                     ? getBoard.find(board => board._id === editingBoardId).title
                     : ''
                 }
-                editingBoardId={editingBoardId}
+                // editingBoardId={editingBoardId}
+                currentBoard={getBoard.find(
+                  board => board._id === activeBoardId
+                )}
               />
             )}
           </div>
@@ -176,7 +183,11 @@ const Sidebar = () => {
             .map(board => (
               <BoardItem
                 key={board._id}
-                onClick={() => handleBoardInfo(board._id)}
+                onClick={() => {
+                  setActiveBoardId(board._id);
+                  handleBoardInfo(board._id);
+                }}
+                isActive={activeBoardId === board._id}
               >
                 <ProgName>
                   <IconProgect>
@@ -192,7 +203,7 @@ const Sidebar = () => {
                     <use href={`${icons}#icon-trash`}></use>
                   </IconEdit>
                 </IconEditCustom>
-                <BorderRight />
+                <BorderRight isActive={activeBoardId === board._id} />
               </BoardItem>
             ))}
         </BoardList>

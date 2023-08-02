@@ -23,7 +23,7 @@ import { getBoardBg, getBoardName, getColumn } from 'redux/task/taskSelectors';
 import Column from 'components/Column/Column';
 // import { addBoardApi } from 'services/backApi';
 
-const ScreensPage = () => {
+const ScreensPage = ({ title }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
@@ -96,7 +96,7 @@ const ScreensPage = () => {
         <ColumnsContainer>
           {column.map(el => (
             <div key={el._id}>
-              <Column title={el.title} />
+              <Column title={el.title} columnId={el._id} />
               {el.tasks
                 .toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
                 .map(task => (
@@ -113,7 +113,12 @@ const ScreensPage = () => {
         </ColumnsContainer>
       )}
       {showModal && (
-        <ModalColumn onClose={onClose} title="Add column" btnName="Add" />
+        <ModalColumn
+          onClose={onClose}
+          title="Add column"
+          btnName="Add"
+          columnTitle={title}
+        />
       )}
       {showModalAddCard && (
         <ModalCard onClose={onCloseAddCard} title="Add card" btnName="Add" />
