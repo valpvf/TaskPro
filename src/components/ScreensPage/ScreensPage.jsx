@@ -95,9 +95,8 @@ const ScreensPage = () => {
       {boardName && (
         <ColumnsContainer>
           {column.map(el => (
-            // Заменить на Column
-            <div style={{ width: '334px' }} key={el._id}>
-              {el.title}
+            <div key={el._id}>
+              <Column title={el.title} />
               {el.tasks
                 .toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
                 .map(task => (
