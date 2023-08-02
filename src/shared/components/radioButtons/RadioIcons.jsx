@@ -29,7 +29,7 @@ const RadioIcons = ({ onChangeIcon }) => {
 
   return (
     <StyledRadioWrapper>
-      {icons.map((icon, index) => {
+      {icons.map((icon) => {
         const id = nanoid();
         return (
           <StyledLabel key={id}>
