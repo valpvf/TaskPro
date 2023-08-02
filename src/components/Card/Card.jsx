@@ -17,8 +17,10 @@ import {
   IconWrapper,
 } from './Card.styled';
 
-const Card = () => {
+const Card = ({ task }) => {
+  const { title, description, priority, deadline } = task;
   const [showModal, setShowModal] = useState(false);
+  console.log('task', task);
 
   const onOpen = () => {
     setShowModal(true);
@@ -30,25 +32,20 @@ const Card = () => {
   return (
     <CardWrapper>
       <div>
-        <Title>The Watch Spot Design</Title>
-        <SubTitle>
-          Create a visually stunning and eye-catching watch dial design that
-          embodies our brand's essence of sleek aesthetics and modern elegance.
-          Your design should be unique, innovative, and reflective of the latest
-          trends in watch design.
-        </SubTitle>
+        <Title>{title}</Title>
+        <SubTitle>{description}</SubTitle>
         <Line />
         <PriorityWrapper>
           <div>
             <PrioryTitle>Priority</PrioryTitle>
             <PriorySubTitle>
               <Ball />
-              Low
+              {priority}
             </PriorySubTitle>
           </div>
           <div>
             <DeadlineTitle>Deadline</DeadlineTitle>
-            <DeadlineSubTitle>12/05/2023</DeadlineSubTitle>
+            <DeadlineSubTitle>{deadline}</DeadlineSubTitle>
           </div>
           <IconWrapper>
             <Icon width="16px" height="16px">
