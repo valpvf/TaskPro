@@ -23,6 +23,5 @@ export const StyledInput = styled.input`
 
   &:checked + img {
     transform: scale(1.2);
-    transition: transform 280ms ease-in;
   }
 `;

@@ -33,6 +33,7 @@ const ModalColumn = ({ onClose, title, btnName }) => {
           console.log('col', values);
           dispatch(addColumn({ ...values, board: a }));
           resetForm();
+          onClose();
         }}
       >
         {({ handleChange, values }) => (

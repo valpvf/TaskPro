@@ -104,7 +104,7 @@ const ScreensPage = () => {
                 ))}
               {/* <Card />
             <Card /> */}
-              <ButtonMain type="submit" onClick={() => onOpenAddCard}>
+              <ButtonMain type="submit" onClick={onOpenAddCard}>
                 <BlackPlusButton />
                 {el.tasks.length === 0 ? 'Add card' : 'Add another card'}
               </ButtonMain>
