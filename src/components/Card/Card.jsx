@@ -28,7 +28,7 @@ const Card = ({ task }) => {
   const onClose = () => {
     setShowModal(false);
   };
-
+  const convertedDeadline = deadline.split('T')[0];
   return (
     <CardWrapper>
       <div>
@@ -45,7 +45,7 @@ const Card = ({ task }) => {
           </div>
           <div>
             <DeadlineTitle>Deadline</DeadlineTitle>
-            <DeadlineSubTitle>{deadline.split('T')[0]}</DeadlineSubTitle>
+            <DeadlineSubTitle>{convertedDeadline}</DeadlineSubTitle>
           </div>
           <IconWrapper>
             <Icon width="16px" height="16px">
@@ -58,7 +58,15 @@ const Card = ({ task }) => {
               <use xlinkHref={`${sprite}#icon-pencil`} />
             </Icon>
             {showModal && (
-              <ModalCard onClose={onClose} title="Edit card" btnName="Edit" />
+              <ModalCard
+                onClose={onClose}
+                title="Edit card"
+                btnName="Edit"
+                cardTitle={title}
+                cardDescription={description}
+                currentPriority={priority}
+                deadline={deadline}
+              />
             )}
             <Icon width="16px" height="16px">
               <use xlinkHref={`${sprite}#icon-trash`} />
