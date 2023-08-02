@@ -35,9 +35,10 @@ const ScreensPage = ({ title }) => {
 
   // const backgroundValue = useSelector(getBoardSelector);
   const boardName = useSelector(getBoardName);
-  const column = useSelector(getColumn).toSorted((a, b) =>
+  const column = useSelector(getColumn)?.toSorted((a, b) =>
     a.updatedAt.localeCompare(b.updatedAt)
   );
+  console.log((boardName, column));
   // console.log(backgroundValue);
 
   const onOpen = () => {
@@ -80,7 +81,7 @@ const ScreensPage = ({ title }) => {
             <IconPlus>
               <use href={`${icons}#icon-plus`}></use>
             </IconPlus>
-            {column.length === 0 ? 'Add column' : 'Add another column'}
+            {column?.length === 0 ? 'Add column' : 'Add another column'}
           </ButtonAdd>
         </AddColumn>
         <HeaderFiltres onClick={onOpenFilters}>
