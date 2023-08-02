@@ -20,6 +20,7 @@ import ModalCard from 'components/ModalCard/ModalCard';
 import { useSelector } from 'react-redux';
 // import { getBoard, getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardBg, getBoardName, getColumn } from 'redux/task/taskSelectors';
+import Column from 'components/Column/Column';
 // import { addBoardApi } from 'services/backApi';
 
 const ScreensPage = () => {
@@ -94,9 +95,8 @@ const ScreensPage = () => {
       {boardName && (
         <ColumnsContainer>
           {column.map(el => (
-            // Заменить на Column
-            <div style={{ width: '334px' }} key={el._id}>
-              {el.title}
+            <div key={el._id}>
+              <Column title={el.title} />
               {el.tasks
                 .toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
                 .map(task => (

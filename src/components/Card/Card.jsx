@@ -45,7 +45,7 @@ const Card = ({ task }) => {
           </div>
           <div>
             <DeadlineTitle>Deadline</DeadlineTitle>
-            <DeadlineSubTitle>{deadline}</DeadlineSubTitle>
+            <DeadlineSubTitle>{deadline.split('T')[0]}</DeadlineSubTitle>
           </div>
           <IconWrapper>
             <Icon width="16px" height="16px">

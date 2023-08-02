@@ -146,6 +146,7 @@ export const IconProgect = styled.svg`
   width: 18px;
   height: 18px;
   /* stroke: var(--FFFFFF); */
+  fill: var(--sidebar-icon-fill-color);
   stroke: var(--sidebar-icon-stroke-color);
 `;
 export const IconEditCustom = styled.div`
