@@ -63,6 +63,7 @@ const ModalBoard = ({
 
           // handleButtonClick();
           resetForm();
+          onClose();
         }}
       >
         {({ handleChange, values }) => (
