@@ -9,7 +9,7 @@ export const addBoardApi = async boardForm => {
   return await axios.post('/api/boards', { ...boardForm }).then(res => res);
 };
 
-export const getBoardApi = async ({ id }) => {
+export const getBoardApi = async id => {
   return await axios.get(`/api/boards/${id}`).then(res => res);
 };
 
