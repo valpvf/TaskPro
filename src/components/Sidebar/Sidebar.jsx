@@ -44,6 +44,7 @@ const Sidebar = () => {
   const [showModalBoard, setShowModalBoard] = useState(false);
   const [showEditBoard, setShowEditBoard] = useState(false);
   const [editingBoardId, setEditingBoardId] = useState(null);
+  const [activeBoardId, setActiveBoardId] = useState(null);
 
   const dispatch = useDispatch();
   const getBoard = useSelector(getBoardSelector);
@@ -176,7 +177,11 @@ const Sidebar = () => {
             .map(board => (
               <BoardItem
                 key={board._id}
-                onClick={() => handleBoardInfo(board._id)}
+                onClick={() => {
+                  setActiveBoardId(board._id);
+                  handleBoardInfo(board._id);
+                }}
+                isActive={activeBoardId === board._id}
               >
                 <ProgName>
                   <IconProgect>
@@ -192,7 +197,7 @@ const Sidebar = () => {
                     <use href={`${icons}#icon-trash`}></use>
                   </IconEdit>
                 </IconEditCustom>
-                <BorderRight />
+                <BorderRight isActive={activeBoardId === board._id} />
               </BoardItem>
             ))}
         </BoardList>

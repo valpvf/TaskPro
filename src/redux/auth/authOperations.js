@@ -113,36 +113,36 @@ export const patchBoard = createAsyncThunk(
 
 export const createBoard = createAsyncThunk(
   'boards/createBoard',
-  async boardData => {
+  async (boardData, thunkAPI) => {
     try {
       const response = await addBoardApi(boardData);
       return response.data;
     } catch (error) {
-      throw error;
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const deleteBoard = createAsyncThunk(
   'boards/deleteBoard',
-  async boardId => {
+  async (boardId, thunkAPI) => {
     try {
       await deleteBoardApi(boardId);
       return boardId;
     } catch (error) {
-      throw error;
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const editBoard = createAsyncThunk(
   'boards/editBoard',
-  async ({ id, data }) => {
+  async ({ id, data }, thunkAPI) => {
     try {
       await axios.put(`/api/boards/${id}`, data);
       return { id, data };
     } catch (error) {
-      throw error;
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
