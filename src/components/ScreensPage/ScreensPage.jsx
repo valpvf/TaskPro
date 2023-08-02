@@ -7,6 +7,7 @@ import {
   AddColumn,
   IconPlus,
   ButtonAdd,
+  ColumnsContainer,
 } from './ScreensPageStyled';
 import icons from '../../images/sprite.svg';
 import { useState } from 'react';
@@ -34,9 +35,9 @@ const ScreensPage = () => {
 
   // const backgroundValue = useSelector(getBoardSelector);
   const boardName = useSelector(getBoardName);
-  const column = useSelector(getColumn);
-  console.log('column', column);
-
+  const column = useSelector(getColumn).toSorted((a, b) =>
+    a.updatedAt.localeCompare(b.updatedAt)
+  );
   // console.log(backgroundValue);
 
   const onOpen = () => {
@@ -70,6 +71,18 @@ const ScreensPage = () => {
     >
       <ScreensHeader>
         <HeaderTxt>{boardName ?? ''}</HeaderTxt>
+        <AddColumn>
+          <ButtonAdd
+            type="button"
+            // onClick={handleAddColumnClick}
+            onClick={onOpen}
+          >
+            <IconPlus>
+              <use href={`${icons}#icon-plus`}></use>
+            </IconPlus>
+            {column.length === 0 ? 'Add column' : 'Add another column'}
+          </ButtonAdd>
+        </AddColumn>
         <HeaderFiltres onClick={onOpenFilters}>
           <IconFiltre>
             <use href={`${icons}#icon-filter`}></use>
@@ -78,30 +91,28 @@ const ScreensPage = () => {
           {showFilters && <ModalFilters onClose={onCloseFilters} />}
         </HeaderFiltres>
       </ScreensHeader>
-      <AddColumn>
-        <ButtonAdd
-          type="button"
-          // onClick={handleAddColumnClick}
-          onClick={onOpen}
-        >
-          <IconPlus>
-            <use href={`${icons}#icon-plus`}></use>
-          </IconPlus>
-          Add another column
-        </ButtonAdd>
-      </AddColumn>
       {/* Тут можуть бути ваші колонки з картками */}
-      {/* {column.map(el => { */}
-      <div style={{ width: '334px' }}>
-        <Card />
-        <Card />
-        <Card />
-        <ButtonMain type="submit" onClick={() => onOpenAddCard}>
-          <BlackPlusButton />
-          Add another card
-        </ButtonMain>
-      </div>
-      {/* })} */}
+      {boardName && (
+        <ColumnsContainer>
+          {column.map(el => (
+            // Заменить на Column
+            <div style={{ width: '334px' }} key={el._id}>
+              {el.title}
+              {el.tasks
+                .toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
+                .map(task => (
+                  <Card key={task._id} task={task} />
+                ))}
+              {/* <Card />
+            <Card /> */}
+              <ButtonMain type="submit" onClick={() => onOpenAddCard}>
+                <BlackPlusButton />
+                {el.tasks.length === 0 ? 'Add card' : 'Add another card'}
+              </ButtonMain>
+            </div>
+          ))}
+        </ColumnsContainer>
+      )}
       {showModal && (
         <ModalColumn onClose={onClose} title="Add column" btnName="Add" />
       )}

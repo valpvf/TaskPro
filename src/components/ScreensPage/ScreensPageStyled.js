@@ -73,6 +73,14 @@ export const IconPlus = styled.svg`
   stroke: var(--column-icon-plus-stroke-color);
   margin-right: 8px;
 `;
+
+export const ColumnsContainer = styled.div`
+  display: flex;
+  gap: 18px;
+  padding-top: 14px;
+  padding-left: 24px;
+`;
+
 export const ButtonAdd = styled.button`
   margin-left: 80px;
   /* color: white; */
