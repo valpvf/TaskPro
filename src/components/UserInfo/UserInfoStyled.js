@@ -31,3 +31,9 @@ export const IconPlus = styled.svg`
   top: 27px;
   left: 10px;
 `;
+
+export const AvatarImg = styled.img`
+  display: block;
+  width: 32px;
+  height: 32px;
+`;

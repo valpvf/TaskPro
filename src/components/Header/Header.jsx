@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import UserInfo from 'components/UserInfo/UserInfo';
 import {
   Container,
@@ -13,9 +13,19 @@ import {
 } from './HeaderStyled';
 import icons from '../../images/sprite.svg';
 import { useTheme } from '../../shared/hooks/useTheme';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTheme } from 'redux/auth/authSelectors';
+import { updateTheme } from 'redux/auth/authOperations';
 
 const Header = ({ onToggleSidebar }) => {
-  const { theme, setTheme } = useTheme();
+  const initialTheme = useSelector(getTheme);
+  const dispatch = useDispatch();
+  const { theme, setTheme } = useTheme(initialTheme || 'dark');
+
+  useEffect(() => {
+    dispatch(updateTheme(theme));
+  }, [dispatch, theme]);
+
   const handleLightThemeClick = () => {
     setTheme('light');
     setSelectedTheme('light');
