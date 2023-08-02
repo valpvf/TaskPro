@@ -29,16 +29,15 @@ const RadioImages = ({ onChangeImage }) => {
   ];
 
   const [selectedValue, setSelectedValue] = useState(0);
+  // console.log('backgroundValue', backgroundValue);
 
   const handleRadioChange = index => {
     setSelectedValue(index);
     const paddedIndex = index.toString().padStart(2, '0');
     const backgroundValue = `${paddedIndex}`;
     onChangeImage(backgroundValue);
-    console.log(backgroundValue);
+    // console.log('backgroundValue in handleRadioChange', backgroundValue);
   };
-
-  // console.log(onChangeImage);
 
   return (
     <StyledRadioWrapper>

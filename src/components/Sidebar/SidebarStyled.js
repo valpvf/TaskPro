@@ -107,9 +107,11 @@ export const BoardItem = styled.li`
 
   padding: 20px 24px;
   /* background-color: var(--161616);
+  /* var(--121212) 
   color: var(--FFFFFF); */
-  background-color: var(--board-item-sidebar-background-color);
-  color: var(--board-item-sidebar-color);
+
+  /* background-color: var(--board-item-sidebar-background-color);
+  color: var(--board-item-sidebar-color); */
 
   cursor: pointer;
 
@@ -119,12 +121,20 @@ export const BoardItem = styled.li`
   letter-spacing: -0.02em;
   text-align: left;
 
+  background-color: ${props =>
+    props.isActive
+      ? 'var(--board-item-sidebar-background-color)'
+      : 'transparent'};
+  color: ${props =>
+    props.isActive ? 'var(--board-item-sidebar-color)' : 'grey'};
+
   /* &:hover {
     background-color: #1e90ff;
   } */
 `;
 
 export const BorderRight = styled.div`
+  display: ${props => (props.isActive ? 'block' : 'none')};
   content: '';
   position: absolute;
   top: 0;

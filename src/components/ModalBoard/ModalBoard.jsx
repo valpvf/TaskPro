@@ -22,19 +22,14 @@ const ModalBoard = ({
   title,
   btnName,
   boardName,
-  editingBoardId,
+  currentBoard,
 }) => {
-  const [backgroundName, setBackgroundName] = useState('');
-  const [iconName, setIconName] = useState('');
+  const [backgroundName, setBackgroundName] = useState('00');
+  const [iconName, setIconName] = useState('icon-project');
+  console.log('currentBoard', currentBoard);
 
-  // const dispatch = useDispatch();
-
-  // const [backgroundValue, setBackgroundValue] = useState('01d');
-
-  // const handleButtonClick = () => {
-  //   dispatch(changeBackground({ background: backgroundValue }));
-  //   persistor.flush();
-  // };
+  console.log('iconName', iconName);
+  console.log('backgroundName', backgroundName);
 
   return (
     <Modal onClose={onClose}>
@@ -43,22 +38,33 @@ const ModalBoard = ({
       <Formik
         initialValues={{
           boardTitle: boardName,
-          // image: 'img/01d.jpg',
-          // icon: iconName,
-          // background: `${helpbackgroundName}`,
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
-          const boardInfo = {
-            values,
-            background: backgroundName,
-            icon: iconName,
-          };
+          console.log(values);
+
           if (btnName === 'Create') {
+            const boardInfo = {
+              values,
+              background: backgroundName,
+              icon: iconName,
+            };
             onCreateBoard(boardInfo);
-            console.log(boardInfo);
           } else if (btnName === 'Edit') {
-            onEditBoard(boardInfo);
+            const updatedBackground =
+              backgroundName !== '00'
+                ? backgroundName
+                : currentBoard.background;
+
+            const updatedIcon =
+              iconName !== 'icon-project' ? iconName : currentBoard.icon;
+
+            const boardInfoEdit = {
+              values,
+              background: updatedBackground,
+              icon: updatedIcon,
+            };
+            onEditBoard(boardInfoEdit);
           }
 
           // handleButtonClick();

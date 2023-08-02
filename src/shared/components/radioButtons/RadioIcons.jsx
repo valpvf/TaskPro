@@ -20,16 +20,18 @@ const RadioIcons = ({ onChangeIcon }) => {
     'icon-hexagon',
   ];
 
-  const [selectedValue, setSelectedValue] = useState('icon-project');
+  const [selectedValue, setSelectedValue] = useState('');
+  // console.log('selectedValue in useState', selectedValue);
 
-  const handleRadioChange = (index) => {
-    setSelectedValue(index);
-    onChangeIcon(selectedValue);
+  const handleRadioChange = icon => {
+    setSelectedValue(icon);
+    onChangeIcon(icon);
+    // console.log('selectedValue in handleRadioChange', selectedValue);
   };
 
   return (
     <StyledRadioWrapper>
-      {icons.map((icon) => {
+      {icons.map(icon => {
         const id = nanoid();
         return (
           <StyledLabel key={id}>
