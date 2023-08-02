@@ -119,6 +119,9 @@ html[data-theme='dark'] {
   --column-icon-edit-stroke-color: #999999;
   --column-icon-plus-color: #fff;
   --column-icon-plus-stroke-color: rgba(18, 18, 18, 1);
+  
+  --scrollbar-background-color: #444;
+  --scrollbar-base-color: #222;
 }
 
 // light theme
@@ -204,6 +207,9 @@ html[data-theme='light'] {
   --column-icon-edit-stroke-color: #b7b7b7;
   --column-icon-plus-color: #161616;
   --column-icon-plus-stroke-color: rgba(255, 255, 255, 1);
+
+  --scrollbar-background-color: #b6b4b4;
+  --scrollbar-base-color: #dddbdb;
 }
 
 // purple theme
@@ -290,4 +296,7 @@ html[data-theme='violet'] {
   --column-icon-edit-stroke-color: #b7b7b7;
   --column-icon-plus-color: #5255bc;
   --column-icon-plus-stroke-color: rgba(255, 255, 255, 1);
+
+  --scrollbar-background-color: #B8BCFD;
+  --scrollbar-base-color: #FFFFFF;
 }

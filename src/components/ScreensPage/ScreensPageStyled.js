@@ -76,9 +76,20 @@ export const IconPlus = styled.svg`
 
 export const ColumnsContainer = styled.div`
   display: flex;
-  gap: 18px;
-  padding-top: 14px;
-  padding-left: 24px;
+  text-align: justify;
+  gap: 22px;
+  padding: 14px 0 20px 24px;
+  max-width: 1170px;
+  overflow-x: auto;
+  ::-webkit-scrollbar {
+    background-color: var(--scrollbar-base-color);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-background-color);
+    border-radius: 10px;
+  }
 `;
 
 export const ButtonAdd = styled.button`

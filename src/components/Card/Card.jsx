@@ -28,9 +28,17 @@ const Card = ({ task }) => {
   const onClose = () => {
     setShowModal(false);
   };
+  function formatDate(date) {
+  const year = date.getFullYear().toString().slice(-2);
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0'); 
 
+  return `${month}/${day}/${year}`;
+}
+  const today = new Date();
+const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July 28, 2023) 
   return (
-    <CardWrapper>
+    <CardWrapper priority={"High"}>
       <div>
         <Title>{title}</Title>
         <SubTitle>{description}</SubTitle>
@@ -39,7 +47,7 @@ const Card = ({ task }) => {
           <div>
             <PrioryTitle>Priority</PrioryTitle>
             <PriorySubTitle>
-              <Ball />
+              <Ball priority={"High"} />
               {priority}
             </PriorySubTitle>
           </div>
@@ -48,9 +56,9 @@ const Card = ({ task }) => {
             <DeadlineSubTitle>{deadline.split('T')[0]}</DeadlineSubTitle>
           </div>
           <IconWrapper>
-            <Icon width="16px" height="16px">
+            {deadline === formattedDate && <Icon width="16px" height="16px">
               <use xlinkHref={`${sprite}#icon-bell`} />
-            </Icon>
+            </Icon>}
             <Icon width="16px" height="16px">
               <use xlinkHref={`${sprite}#icon-goto`} />
             </Icon>
@@ -58,7 +66,15 @@ const Card = ({ task }) => {
               <use xlinkHref={`${sprite}#icon-pencil`} />
             </Icon>
             {showModal && (
-              <ModalCard onClose={onClose} title="Edit card" btnName="Edit" />
+              <ModalCard
+                onClose={onClose}
+                title="Edit card"
+                btnName="Edit"
+                cardTitle={title}
+                cardDescription={description}
+                currentPriority={priority}
+                deadline={deadline}
+              />
             )}
             <Icon width="16px" height="16px">
               <use xlinkHref={`${sprite}#icon-trash`} />

@@ -25,10 +25,21 @@ const TitleSchema = Yup.object().shape({
   cardDescr: Yup.string().required('Description is required'),
 });
 
-const ModalCard = ({ onClose, title: modalTitle, btnName }) => {
+const ModalCard = ({
+  onClose,
+  title: modalTitle,
+  btnName,
+  cardTitle = '',
+  cardDescription = '',
+  currentPriority = 'Without',
+  deadline = false,
+}) => {
   registerLocale('en', uk);
-  const [startDate, setStartDate] = useState(new Date());
-  const [priority, setPriority] = useState('Without');
+
+  const [startDate, setStartDate] = useState(
+    deadline ? new Date(deadline) : new Date()
+  );
+  const [priority, setPriority] = useState(currentPriority);
 
   const compareDate = () => {
     const curDate = startDate.toISOString().split('T')[0];
@@ -43,8 +54,8 @@ const ModalCard = ({ onClose, title: modalTitle, btnName }) => {
 
       <Formik
         initialValues={{
-          cardTitle: '',
-          cardDescr: '',
+          cardTitle: cardTitle,
+          cardDescr: cardDescription,
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
@@ -83,7 +94,10 @@ const ModalCard = ({ onClose, title: modalTitle, btnName }) => {
             />
             <InputErrorMessage name="cardDescr" component={'p'} />
             <SubtitleStyled>Label color</SubtitleStyled>
-            <RadioColored onRadioChange={setPriority} />
+            <RadioColored
+              onRadioChange={setPriority}
+              currentPriority={currentPriority}
+            />
             <LabelStyled htmlFor="date">Deadline</LabelStyled>
             <DatePickerWrapper>
               {compareDate() && <SpanStyled>Today,&nbsp;</SpanStyled>}

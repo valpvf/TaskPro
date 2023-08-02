@@ -8,8 +8,11 @@ export const CardWrapper = styled.div`
   width: 334px;
   border-radius: 8px;
   padding: 15px 15px 5px 15px;
-  /* border-left: 4px solid #8fa1d0; */
-  border-left: 4px solid var(--primary-priority-color);
+  border-left: 4px solid ${props => {
+      if (props.priority === 'Low') return '#8fa1d0';
+      if (props.priority === 'Medium') return '#E09CB5';
+      return '#BEDBB0';
+    }};
 `;
 export const PriorityWrapper = styled.div`
   display: flex;
@@ -81,6 +84,7 @@ export const Ball = styled.hr`
   background-color: var(--primary-priority-color);
   border: none;
   margin: 10px 0;
+   background-color: ${props => (props.priority === 'Low' ? '#8fa1d0' : '#E09CB5')};
 `;
 export const Line = styled.hr`
   border: 1px solid #232323;
@@ -104,7 +108,7 @@ export const Icon = styled.svg`
 `;
 
 export const IconWrapper = styled.div`
-  margin-left: 90px;
+  margin-left: 130px;
   display: flex;
   align-items: center;
   gap: 10px;
