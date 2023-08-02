@@ -14,7 +14,7 @@ const TitleSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
 });
 
-const ModalColumn = ({ onClose, title, btnName }) => {
+const ModalColumn = ({ onClose, title, btnName, columnTitle = '' }) => {
   const dispatch = useDispatch();
 
   const a = useSelector(getBoardId);
@@ -26,7 +26,7 @@ const ModalColumn = ({ onClose, title, btnName }) => {
 
       <Formik
         initialValues={{
-          title: 'Start',
+          title: columnTitle,
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
