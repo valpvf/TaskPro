@@ -56,6 +56,7 @@ const ModalCard = ({ onClose, title: modalTitle, btnName }) => {
             deadline: Date.now(startDate),
           });
           resetForm();
+          onClose();
         }}
       >
         {({ handleChange, values }) => (

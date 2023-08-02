@@ -25,6 +25,7 @@ const ModalNeedHelp = ({ onClose }) => {
         onSubmit={(values, { resetForm }) => {
           console.log(values);
           resetForm();
+          onClose();
         }}
       >
         {({ handleChange, values }) => (
