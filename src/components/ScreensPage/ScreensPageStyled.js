@@ -69,8 +69,8 @@ export const IconPlus = styled.svg`
   width: 32px;
   height: 32px;
   /* fill: white; */
-  fill: var(--primary-icon-stroke-color);
-  stroke: #121212;
+  fill: var(--column-icon-plus-color);
+  stroke: var(--column-icon-plus-stroke-color);
   margin-right: 8px;
 `;
 export const ButtonAdd = styled.button`

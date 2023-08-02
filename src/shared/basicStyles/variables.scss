@@ -89,6 +89,7 @@ html[data-theme='dark'] {
   --tertiary-priority-color: #999999;
   --primary-icon-stroke-color: #ffffff;
   --secondary-icon-stroke-color: #121212;
+  --sidebar-icon-fill-color: transparent;
   --sidebar-icon-stroke-color: #ffffff;
   --sidebar-icon-edit-stroke-color: #ffffff80;
 
@@ -112,6 +113,12 @@ html[data-theme='dark'] {
 
   --user-icon-fill-color: 1f1f1f;
   --user-icon-stroke-color: rgba(21, 21, 21, 1);
+
+  --column-background-color: #121212;
+  --column-text-color: #fff;
+  --column-icon-edit-stroke-color: #999999;
+  --column-icon-plus-color: #fff;
+  --column-icon-plus-stroke-color: rgba(18, 18, 18, 1);
 }
 
 // light theme
@@ -134,7 +141,7 @@ html[data-theme='light'] {
   --secondary-text-sidebar-color: #161616;
   --line-border-sidebar-color: #d6d2d2;
   --board-item-sidebar-background-color: #f6f6f7;
-  --board-item-sidebar-color: #161616;
+  --board-item-sidebar-color: #b7b7b7;
 
   --modal-backdrop-background-color: rgba(137, 137, 137, 0.2);
   --modal-window-color: #fdfdfd;
@@ -167,7 +174,8 @@ html[data-theme='light'] {
   --tertiary-priority-color: #999999;
   --primary-icon-stroke-color: #161616;
   --secondary-icon-stroke-color: #121212;
-  --sidebar-icon-stroke-color: #161616;
+  --sidebar-icon-fill-color: transparent;
+  --sidebar-icon-stroke-color: #b7b7b7;
   --sidebar-icon-edit-stroke-color: #b7b7b7;
 
   --shared-button-text-color: #161616;
@@ -190,6 +198,12 @@ html[data-theme='light'] {
 
   --user-icon-fill-color: #f6f6f7;
   --user-icon-stroke-color: rgba(246, 246, 247, 1);
+
+  --column-background-color: #fff;
+  --column-text-color: #161616;
+  --column-icon-edit-stroke-color: #b7b7b7;
+  --column-icon-plus-color: #161616;
+  --column-icon-plus-stroke-color: rgba(255, 255, 255, 1);
 }
 
 // purple theme
@@ -209,6 +223,7 @@ html[data-theme='violet'] {
   --primary-card-background-color: #fdfdfd;
   --primary-background-card-color: #ecedfd;
   --primary-background-sidebar-color: #5255bc;
+  --add-column-button-color: #ffffff;
   --secondary-text-sidebar-color: #ffffff;
   --line-border-sidebar-color: #ffffff1a;
   --board-item-sidebar-background-color: #979cea;
@@ -245,6 +260,7 @@ html[data-theme='violet'] {
   --tertiary-priority-color: #999999;
   --primary-icon-stroke-color: #161616;
   --secondary-icon-stroke-color: #ffffff;
+  --sidebar-icon-fill-color: transparent;
   --sidebar-icon-stroke-color: #ffffff;
   --sidebar-icon-edit-stroke-color: #ffffff80;
 
@@ -268,4 +284,10 @@ html[data-theme='violet'] {
 
   --user-icon-fill-color: #ecedfd;
   --user-icon-stroke-color: rgba(236, 237, 253, 1);
+
+  --column-background-color: #fff;
+  --column-text-color: #161616;
+  --column-icon-edit-stroke-color: #b7b7b7;
+  --column-icon-plus-color: #5255bc;
+  --column-icon-plus-stroke-color: rgba(255, 255, 255, 1);
 }

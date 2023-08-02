@@ -19,6 +19,7 @@ import ModalCard from 'components/ModalCard/ModalCard';
 import { useSelector } from 'react-redux';
 // import { getBoard, getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardBg, getBoardName, getColumn } from 'redux/task/taskSelectors';
+import Column from 'components/Column/Column';
 // import { addBoardApi } from 'services/backApi';
 
 const ScreensPage = () => {
@@ -100,7 +101,7 @@ const ScreensPage = () => {
           Add another card
         </ButtonMain>
       </div>
-      ;{/* })} */}
+      {/* })} */}
       {showModal && (
         <ModalColumn onClose={onClose} title="Add column" btnName="Add" />
       )}
