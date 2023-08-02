@@ -36,6 +36,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getBoardSelector } from 'redux/auth/authSelectors';
+import { getBoardId } from 'redux/task/taskOperations';
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -122,7 +123,7 @@ const Sidebar = () => {
   };
 
   const handleBoardInfo = boardId => {
-    console.log('Clicked board ID:', boardId);
+    dispatch(getBoardId(boardId));
   };
 
   return (

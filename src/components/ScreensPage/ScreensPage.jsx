@@ -17,7 +17,8 @@ import ButtonMain from 'shared/components/button/Button';
 import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import ModalCard from 'components/ModalCard/ModalCard';
 import { useSelector } from 'react-redux';
-import { getBoardSelector } from 'redux/auth/authSelectors';
+// import { getBoard, getBoardSelector } from 'redux/auth/authSelectors';
+import { getBoardBg, getBoardName, getColumn } from 'redux/task/taskSelectors';
 // import { addBoardApi } from 'services/backApi';
 
 const ScreensPage = () => {
@@ -30,7 +31,10 @@ const ScreensPage = () => {
   //   dispatch(addBoardApi());
   // }, [dispatch]);
 
-  const backgroundValue = useSelector(getBoardSelector);
+  // const backgroundValue = useSelector(getBoardSelector);
+  const boardName = useSelector(getBoardName);
+  const column = useSelector(getColumn);
+  console.log('column', column);
 
   // console.log(backgroundValue);
 
@@ -58,11 +62,13 @@ const ScreensPage = () => {
   return (
     <Container
       style={{
-        backgroundImage: `url('images/background/${backgroundValue}.jpg')`,
+        backgroundImage: `url('images/background/${useSelector(
+          getBoardBg
+        )}d.jpg')`,
       }}
     >
       <ScreensHeader>
-        <HeaderTxt>Project office</HeaderTxt>
+        <HeaderTxt>{boardName ?? ''}</HeaderTxt>
         <HeaderFiltres onClick={onOpenFilters}>
           <IconFiltre>
             <use href={`${icons}#icon-filter`}></use>
@@ -71,7 +77,6 @@ const ScreensPage = () => {
           {showFilters && <ModalFilters onClose={onCloseFilters} />}
         </HeaderFiltres>
       </ScreensHeader>
-
       <AddColumn>
         <ButtonAdd
           type="button"
@@ -85,15 +90,17 @@ const ScreensPage = () => {
         </ButtonAdd>
       </AddColumn>
       {/* Тут можуть бути ваші колонки з картками */}
+      {/* {column.map(el => { */}
       <div style={{ width: '334px' }}>
         <Card />
         <Card />
         <Card />
-        <ButtonMain type="submit" onClick={onOpenAddCard}>
+        <ButtonMain type="submit" onClick={() => onOpenAddCard}>
           <BlackPlusButton />
           Add another card
         </ButtonMain>
       </div>
+      ;{/* })} */}
       {showModal && (
         <ModalColumn onClose={onClose} title="Add column" btnName="Add" />
       )}
