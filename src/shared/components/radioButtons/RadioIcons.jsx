@@ -8,7 +8,7 @@ import {
 } from './RadioIcons.styled';
 import { useState } from 'react';
 
-const RadioIcons = ({ onChangeIcon }) => {
+const RadioIcons = ({ onChangeIcon, currentBoardIcon }) => {
   const icons = [
     'icon-project',
     'icon-star',
@@ -21,12 +21,10 @@ const RadioIcons = ({ onChangeIcon }) => {
   ];
 
   const [selectedValue, setSelectedValue] = useState('');
-  // console.log('selectedValue in useState', selectedValue);
 
   const handleRadioChange = icon => {
     setSelectedValue(icon);
     onChangeIcon(icon);
-    // console.log('selectedValue in handleRadioChange', selectedValue);
   };
 
   return (
