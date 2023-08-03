@@ -17,6 +17,31 @@ export const Container = styled.div`
   padding-right: 24px;
 `;
 
+export const TutorialContainer = styled(Container)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TutorialTitle = styled.p`
+  display: block;
+  width: 486px;
+  text-align: center;
+  font-family: Poppins;
+  line-height: calc(18 / 14);
+  letter-spacing: -0.28px;
+  color: var(--screens-page-tutorial-text-color);
+
+  @media screen and (max-width: 320px) {
+    font-size: 12px;
+    line-height: calc(16 / 12);
+  }
+`;
+
+export const TutorialSelected = styled.span`
+  color: var(--primary-button-color);
+`;
+
 export const ScreensHeader = styled.div`
   display: flex;
   align-items: center;
@@ -43,6 +68,11 @@ export const HeaderFiltres = styled.div`
   letter-spacing: -0.02em;
 `;
 
+export const HeaderAddColumn = styled(HeaderFiltres)`
+  margin-left: auto;
+  margin-right: 16px;
+`;
+
 export const IconFiltre = styled.svg`
   width: 16px;
   height: 16px;
@@ -51,6 +81,13 @@ export const IconFiltre = styled.svg`
   fill: none;
   /* stroke: white; */
   stroke: var(--primary-icon-stroke-color);
+`;
+
+export const IconPlusFilters = styled(IconFiltre)`
+  width: 24px;
+  height: 24px;
+
+  stroke-width: 2px;
 `;
 
 export const AddColumn = styled.div`
@@ -78,9 +115,9 @@ export const ColumnsContainer = styled.div`
   display: flex;
   text-align: justify;
   gap: 22px;
-  padding: 14px 0 20px 24px;
   max-width: 1170px;
   overflow-x: auto;
+
   ::-webkit-scrollbar {
     background-color: var(--scrollbar-base-color);
     border-radius: 10px;
