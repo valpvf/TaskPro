@@ -45,6 +45,7 @@ const Sidebar = () => {
   const [showEditBoard, setShowEditBoard] = useState(false);
   const [editingBoardId, setEditingBoardId] = useState(null);
   const [activeBoardId, setActiveBoardId] = useState(null);
+  const [isHelpBarHovered, setIsHelpBarHovered] = useState(false);
 
   const dispatch = useDispatch();
   const getBoard = useSelector(getBoardSelector);
@@ -168,7 +169,6 @@ const Sidebar = () => {
                     ? getBoard.find(board => board._id === editingBoardId).title
                     : ''
                 }
-                // editingBoardId={editingBoardId}
                 currentBoard={getBoard.find(
                   board => board._id === activeBoardId
                 )}
@@ -212,8 +212,14 @@ const Sidebar = () => {
       <div>
         <div>
           <div
-            onMouseEnter={onMouseEnterHelpBtn}
-            onMouseLeave={onMouseLeaveHelpBtn}
+            onMouseEnter={() => {
+              setIsHelpBarHovered(true);
+              onMouseEnterHelpBtn();
+            }}
+            onMouseLeave={() => {
+              setIsHelpBarHovered(false);
+              onMouseLeaveHelpBtn();
+            }}
           >
             <HelpBar>
               {showHelpText && (
@@ -229,7 +235,7 @@ const Sidebar = () => {
               )}
             </HelpBar>
 
-            <HelpBtn onClick={onOpen}>
+            <HelpBtn onClick={onOpen} isHovered={isHelpBarHovered}>
               <IconHelp>
                 <use href={`${icons}#icon-help`}></use>
               </IconHelp>

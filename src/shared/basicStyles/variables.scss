@@ -90,8 +90,9 @@ html[data-theme='dark'] {
   --primary-icon-stroke-color: #ffffff;
   --secondary-icon-stroke-color: #121212;
   --sidebar-icon-fill-color: transparent;
-  --sidebar-icon-stroke-color: #ffffff;
+  --sidebar-icon-stroke-color: #ffffff80;
   --sidebar-icon-edit-stroke-color: #ffffff80;
+  --sidebar-icon-active-stroke-color: #fff;
 
   --shared-button-text-color: #161616;
   --shared-input-border-color: rgba(190, 219, 176, 0.4);
@@ -119,7 +120,7 @@ html[data-theme='dark'] {
   --column-icon-edit-stroke-color: #999999;
   --column-icon-plus-color: #fff;
   --column-icon-plus-stroke-color: rgba(18, 18, 18, 1);
-  
+
   --scrollbar-background-color: #444;
   --scrollbar-base-color: #222;
 }
@@ -178,8 +179,9 @@ html[data-theme='light'] {
   --primary-icon-stroke-color: #161616;
   --secondary-icon-stroke-color: #121212;
   --sidebar-icon-fill-color: transparent;
-  --sidebar-icon-stroke-color: #b7b7b7;
+  --sidebar-icon-stroke-color: #ffffff80;
   --sidebar-icon-edit-stroke-color: #b7b7b7;
+  --sidebar-icon-active-stroke-color: #161616;
 
   --shared-button-text-color: #161616;
   --shared-input-border-color: rgba(190, 219, 176, 0.4);
@@ -267,8 +269,9 @@ html[data-theme='violet'] {
   --primary-icon-stroke-color: #161616;
   --secondary-icon-stroke-color: #ffffff;
   --sidebar-icon-fill-color: transparent;
-  --sidebar-icon-stroke-color: #ffffff;
+  --sidebar-icon-stroke-color: #ffffff80;
   --sidebar-icon-edit-stroke-color: #ffffff80;
+  --sidebar-icon-active-stroke-color: #fff;
 
   --shared-button-text-color: #ffffff;
   --shared-input-border-color: rgb(172, 192, 241);
@@ -297,6 +300,6 @@ html[data-theme='violet'] {
   --column-icon-plus-color: #5255bc;
   --column-icon-plus-stroke-color: rgba(255, 255, 255, 1);
 
-  --scrollbar-background-color: #B8BCFD;
-  --scrollbar-base-color: #FFFFFF;
+  --scrollbar-background-color: #b8bcfd;
+  --scrollbar-base-color: #ffffff;
 }

@@ -52,6 +52,9 @@ export const authSlice = createSlice({
         state.isRefreshing = false;
         state.error = null;
       })
+      .addCase(logout.pending, state => {
+        state.isRefreshing = true;
+      })
       .addCase(logout.fulfilled, state => {
         state.user.email = '';
         state.user.name = '';
