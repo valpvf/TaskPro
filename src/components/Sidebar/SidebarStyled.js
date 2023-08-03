@@ -172,7 +172,8 @@ export const HelpBar = styled.div`
 
 export const HelpTextContainer = styled.div`
   position: absolute;
-  top: -210px;
+  /* top: -210px; */
+  top: -120px;
   background-color: var(--sidebar-help-backgound-color);
   padding: 20px;
   padding-bottom: 0;
@@ -184,7 +185,10 @@ export const HelpTextContainer = styled.div`
 
 export const HelpBtn = styled.div`
   background-color: var(--sidebar-help-backgound-color);
-  padding: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 7px;
+  padding-bottom: 7px;
   border-radius: 8px;
   margin-left: 24px;
   margin-right: 24px;
@@ -202,9 +206,9 @@ export const HelpBtn = styled.div`
 `;
 
 export const HelpImg = styled.img`
-  width: 54px;
-  height: 78px;
-  margin-bottom: 14px;
+  width: 34px;
+  /* height: 78px; */
+  margin-left: 20px;
 `;
 
 export const HelpTxt = styled.p`
