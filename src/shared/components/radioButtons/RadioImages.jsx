@@ -27,6 +27,8 @@ const RadioImages = ({ onChangeImage, currentBoardBackground }) => {
 
   const [selectedValue, setSelectedValue] = useState(0);
 
+  console.log('currentBoardBackground', currentBoardBackground);
+
   const handleRadioChange = index => {
     setSelectedValue(index);
     const paddedIndex = index.toString().padStart(2, '0');

@@ -224,7 +224,6 @@ const Sidebar = () => {
             <HelpBar>
               {showHelpText && (
                 <HelpTextContainer>
-                  <HelpImg src={plant} alt="Help" />
                   <HelpTxt>
                     If you need help with{' '}
                     <span style={{ color: '#bedbb0' }}>TaskPro</span>, check out
@@ -240,6 +239,7 @@ const Sidebar = () => {
                 <use href={`${icons}#icon-help`}></use>
               </IconHelp>
               Need help?
+              <HelpImg src={plant} alt="Help" />
             </HelpBtn>
 
             {showModal && <ModalNeedHelp onClose={onClose} />}

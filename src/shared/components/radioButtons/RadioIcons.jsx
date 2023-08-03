@@ -21,6 +21,7 @@ const RadioIcons = ({ onChangeIcon, currentBoardIcon }) => {
   ];
 
   const [selectedValue, setSelectedValue] = useState('');
+  console.log('currentBoardIcon', currentBoardIcon);
 
   const handleRadioChange = icon => {
     setSelectedValue(icon);
