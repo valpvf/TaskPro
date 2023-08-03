@@ -1,14 +1,14 @@
 import styled from '@emotion/styled';
 
 const BackdropContainer = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: 1440px) {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-color: rgba(0, 0, 0, 0.7); */
-    background-color: var(--needhelp-backdrop-background-color);
+    background-color: rgba(0, 0, 0, 0.7);
+    /* background-color: var(--needhelp-backdrop-background-color); */
     z-index: 10;
   }
 `;

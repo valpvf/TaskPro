@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+
 import ModalBoard from 'components/ModalBoard/ModalBoard';
 import ModalNeedHelp from 'components/ModalNeedHelp/ModalNeedHelp';
 import {
@@ -46,6 +47,7 @@ const Sidebar = ({ setIsBoardActive }) => {
   const [editingBoardId, setEditingBoardId] = useState(null);
   const [activeBoardId, setActiveBoardId] = useState(null);
   const [isHelpBarHovered, setIsHelpBarHovered] = useState(false);
+  const boardListRef = useRef(null);
 
   const dispatch = useDispatch();
   const getBoard = useSelector(getBoardSelector);
@@ -96,8 +98,14 @@ const Sidebar = ({ setIsBoardActive }) => {
     };
 
     dispatch(createBoard(boardMainData))
-      .then(() => {
+      .then(response => {
         onCloseBoard();
+        // Прокручуємо дошку до нижнього краю після створення
+        if (boardListRef.current) {
+          boardListRef.current.scrollTop = boardListRef.current.scrollHeight;
+        }
+        // Встановлюємо ID новоствореної дошки як активний
+        setActiveBoardId(response.payload._id);
       })
       .catch(error => {
         console.error('Помилка при створенні борду:', error);
@@ -181,7 +189,7 @@ const Sidebar = ({ setIsBoardActive }) => {
           </div>
         </CreateBoard>
 
-        <BoardList>
+        <BoardList ref={boardListRef}>
           {getBoard
             .filter(board => board !== null)
             .map(board => (
@@ -214,40 +222,38 @@ const Sidebar = ({ setIsBoardActive }) => {
       </div>
 
       <div>
-        <div>
-          <div
-            onMouseEnter={() => {
-              setIsHelpBarHovered(true);
-              onMouseEnterHelpBtn();
-            }}
-            onMouseLeave={() => {
-              setIsHelpBarHovered(false);
-              onMouseLeaveHelpBtn();
-            }}
-          >
-            <HelpBar>
-              {showHelpText && (
-                <HelpTextContainer>
-                  <HelpTxt>
-                    If you need help with{' '}
-                    <span style={{ color: '#bedbb0' }}>TaskPro</span>, check out
-                    our support resources or reach out to our customer support
-                    team.
-                  </HelpTxt>
-                </HelpTextContainer>
-              )}
-            </HelpBar>
+        <div
+          onMouseEnter={() => {
+            setIsHelpBarHovered(true);
+            onMouseEnterHelpBtn();
+          }}
+          onMouseLeave={() => {
+            setIsHelpBarHovered(false);
+            onMouseLeaveHelpBtn();
+          }}
+        >
+          <HelpBar isHelpBarHovered={isHelpBarHovered}>
+            {showHelpText && (
+              <HelpTextContainer isHelpBarHovered={isHelpBarHovered}>
+                <HelpTxt>
+                  If you need help with{' '}
+                  <span style={{ color: '#bedbb0' }}>TaskPro</span>, check out
+                  our support resources or reach out to our customer support
+                  team.
+                </HelpTxt>
+              </HelpTextContainer>
+            )}
+          </HelpBar>
 
-            <HelpBtn onClick={onOpen} isHovered={isHelpBarHovered}>
-              <IconHelp>
-                <use href={`${icons}#icon-help`}></use>
-              </IconHelp>
-              Need help?
-              <HelpImg src={plant} alt="Help" />
-            </HelpBtn>
+          <HelpBtn onClick={onOpen} isHovered={isHelpBarHovered}>
+            <IconHelp>
+              <use href={`${icons}#icon-help`}></use>
+            </IconHelp>
+            Need help?
+            <HelpImg src={plant} alt="Help" />
+          </HelpBtn>
 
-            {showModal && <ModalNeedHelp onClose={onClose} />}
-          </div>
+          {showModal && <ModalNeedHelp onClose={onClose} />}
         </div>
 
         <LogOut onClick={handleLogout}>

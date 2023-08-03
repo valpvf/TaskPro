@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { css, keyframes } from '@emotion/react';
 
 export const SidebarContainer = styled.div`
   width: 260px;
@@ -11,7 +12,7 @@ export const SidebarContainer = styled.div`
   transition: transform 0.3s ease-in-out;
   z-index: 11;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1440px) {
     position: absolute;
     height: 100vh;
     width: 225px;
@@ -80,6 +81,8 @@ export const IconPlus = styled.svg`
   &:hover {
     fill: var(--plus-button-hover-color);
     cursor: pointer;
+    width: 34px;
+    height: 34px;
   }
 `;
 
@@ -88,9 +91,29 @@ export const BoardList = styled.ul`
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  max-height: calc(100vh - 420px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: scaleX(-1);
+
+  &::-webkit-scrollbar {
+    padding-left: 4px;
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-heading-color);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    /* background-color: blue;  */
+  }
 `;
 
 export const BoardItem = styled.li`
+  transform: scaleX(-1);
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -118,9 +141,10 @@ export const BoardItem = styled.li`
     props.isActive
       ? 'var(--sidebar-icon-active-stroke-color)'
       : 'var(--sidebar-icon-edit-stroke-color)'};
-  /* &:hover {
-    background-color: #1e90ff;
-  } */
+  &:hover {
+    color: var(--sidebar-icon-active-stroke-color);
+    stroke: var(--sidebar-icon-active-stroke-color);
+  }
 `;
 
 export const BorderRight = styled.div`
@@ -166,13 +190,30 @@ export const IconEdit = styled.svg`
   }
 `;
 
+const fadeInAnimation = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+
+  }
+   50% {
+    opacity: 0.5;
+    transform: translateY(10px);
+
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+
+  }
+`;
+
 export const HelpBar = styled.div`
   position: relative;
 `;
 
 export const HelpTextContainer = styled.div`
   position: absolute;
-  /* top: -210px; */
   top: -120px;
   background-color: var(--sidebar-help-backgound-color);
   padding: 20px;
@@ -181,6 +222,17 @@ export const HelpTextContainer = styled.div`
   border-top-right-radius: 8px;
   margin-left: 24px;
   margin-right: 24px;
+
+  ${({ isHelpBarHovered }) =>
+    isHelpBarHovered
+      ? css`
+          animation: ${fadeInAnimation} 0.2s ease-in-out;
+        `
+      : ''};
+
+  @media (max-width: 1440px) {
+    top: -140px;
+  }
 `;
 
 export const HelpBtn = styled.div`
