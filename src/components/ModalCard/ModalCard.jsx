@@ -20,7 +20,7 @@ import {
   SpanStyled,
 } from './ModalCard.styled';
 import { useDispatch } from 'react-redux';
-import { addCard } from 'redux/task/taskOperations';
+import { addCard, editCard } from 'redux/task/taskOperations';
 
 const TitleSchema = Yup.object().shape({
   cardTitle: Yup.string().required('Title is required'),
@@ -36,6 +36,7 @@ const ModalCard = ({
   currentPriority = 'Without',
   deadline = false,
   column,
+  taskId,
 }) => {
   registerLocale('en', uk);
 
@@ -69,17 +70,21 @@ const ModalCard = ({
             title,
             description,
             priority,
-            deadline: Date.now(startDate),
+            deadline: startDate,
             column,
           };
-          console.log({
-            title,
-            description,
-            priority,
-            deadline: Date.now(startDate),
-            column,
-          });
-          dispatch(addCard(form));
+
+          if (taskId) {
+            dispatch(
+              editCard({
+                id: taskId,
+                body: { title, description, priority, deadline: startDate },
+              })
+            );
+          } else {
+            dispatch(addCard(form));
+          }
+
           resetForm();
           onClose();
         }}

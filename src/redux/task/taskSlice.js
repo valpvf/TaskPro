@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 // import { changeUser, getUser } from './userOperations';
-import { getBoardId } from './taskOperations';
+import {
+  getBoardId,
+  addColumn,
+  editColumn,
+  deleteColumn,
+} from './taskOperations';
 
 const initialState = {
   _id: '64c772d4906c009cfba4f8a9',
@@ -78,6 +83,32 @@ const boardSlice = createSlice({
         return { ...payload, error: null };
       })
       .addCase(getBoardId.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(addColumn.pending, state => {
+        // state.error = null;
+      })
+      .addCase(addColumn.fulfilled, (state, { payload }) => {
+        state.columns.push(payload);
+      })
+      .addCase(addColumn.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(editColumn.pending, state => {
+        // state.error = null;
+      })
+      .addCase(editColumn.fulfilled, (state, { payload }) => {
+        const index = state.columns.findIndex(col => col._id === payload._id);
+        state.columns[index] = payload;
+      })
+      .addCase(editColumn.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(deleteColumn.pending, state => {})
+      .addCase(deleteColumn.fulfilled, (state, { payload }) => {
+        state.columns = state.columns.filter(col => col._id !== payload.id);
+      })
+      .addCase(deleteColumn.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },
