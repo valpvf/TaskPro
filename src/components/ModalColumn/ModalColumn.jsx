@@ -7,18 +7,17 @@ import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import InputField from 'shared/components/inputField/InputField';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 import { useDispatch, useSelector } from 'react-redux';
-import { addColumn } from 'redux/task/taskOperations';
+import { addColumn, editColumn } from 'redux/task/taskOperations';
 import { getBoardId, getColumn } from 'redux/task/taskSelectors';
 
 const TitleSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
 });
 
-const ModalColumn = ({ onClose, title, btnName, columnTitle = '' }) => {
+const ModalColumn = ({ onClose, title, btnName, columnTitle = '', column }) => {
   const dispatch = useDispatch();
 
   const currentBoard = useSelector(getBoardId);
-  console.log(currentBoard);
   const columns = useSelector(getColumn);
 
   return (
@@ -34,7 +33,14 @@ const ModalColumn = ({ onClose, title, btnName, columnTitle = '' }) => {
           if (columns.some(el => el.title === values.title)) {
             return console.log('Duplicate');
           }
-          dispatch(addColumn({ ...values, board: currentBoard }));
+
+          if (columnTitle) {
+            dispatch(
+              editColumn({ body: { ...values, currentBoard }, id: column })
+            );
+          } else {
+            dispatch(addColumn({ ...values, currentBoard }));
+          }
           resetForm();
           onClose();
         }}
