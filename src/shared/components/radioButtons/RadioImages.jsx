@@ -27,8 +27,6 @@ const RadioImages = ({ onChangeImage, currentBoardBackground }) => {
 
   const [selectedValue, setSelectedValue] = useState(0);
 
-  console.log('currentBoardBackground', currentBoardBackground);
-
   const handleRadioChange = index => {
     setSelectedValue(index);
     const paddedIndex = index.toString().padStart(2, '0');
@@ -46,7 +44,10 @@ const RadioImages = ({ onChangeImage, currentBoardBackground }) => {
               type="radio"
               value={index}
               name="image"
-              checked={selectedValue === index}
+              checked={
+                currentBoardBackground === images[index].substring(0, 2) ||
+                selectedValue === index
+              }
               onChange={() => handleRadioChange(index)}
             />
             <img
