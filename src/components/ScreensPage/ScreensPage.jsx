@@ -27,6 +27,7 @@ const ScreensPage = ({ title }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [colId, setColId] = useState('');
   // const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -36,8 +37,10 @@ const ScreensPage = ({ title }) => {
   // const backgroundValue = useSelector(getBoardSelector);
   const boardName = useSelector(getBoardName);
   const column = useSelector(getColumn)?.toSorted((a, b) =>
-    a.updatedAt.localeCompare(b.updatedAt)
+    b.updatedAt.localeCompare(a.updatedAt)
   );
+
+  const isView = false;
 
   const onOpen = () => {
     setShowModal(true);
@@ -46,7 +49,9 @@ const ScreensPage = ({ title }) => {
     setShowModal(false);
   };
 
-  const onOpenAddCard = () => {
+  const onOpenAddCard = e => {
+    console.log('e', e);
+    setColId(e);
     setShowModalAddCard(true);
   };
   const onCloseAddCard = () => {
@@ -96,12 +101,19 @@ const ScreensPage = ({ title }) => {
           {column.map(el => (
             <div key={el._id}>
               <Column title={el.title} columnId={el._id} />
-              {el.tasks
-                .toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
-                .map(task => (
-                  <Card key={task._id} task={task} columnID={el._id} />
-                ))}
-              <ButtonMain type="submit" onClick={onOpenAddCard}>
+              {el.tasks.length === 0
+                ? isView && <Card columnID={el._id} />
+                : el.tasks
+                    .toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
+                    .map(task => (
+                      <Card key={task._id} task={task} columnID={el._id} />
+                    ))}
+              <ButtonMain
+                type="button"
+                onClick={() => onOpenAddCard(el._id)}
+                value={el._id}
+                name="columnId"
+              >
                 <BlackPlusButton />
                 {el.tasks.length === 0 ? 'Add card' : 'Add another card'}
               </ButtonMain>
@@ -118,7 +130,12 @@ const ScreensPage = ({ title }) => {
         />
       )}
       {showModalAddCard && (
-        <ModalCard onClose={onCloseAddCard} title="Add card" btnName="Add" />
+        <ModalCard
+          onClose={onCloseAddCard}
+          title="Add card"
+          btnName="Add"
+          column={colId}
+        />
       )}
     </Container>
   );

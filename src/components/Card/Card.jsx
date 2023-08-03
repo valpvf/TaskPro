@@ -17,10 +17,17 @@ import {
   IconWrapper,
 } from './Card.styled';
 
-const Card = ({ task, columnID }) => {
-  const { title, description, priority, deadline } = task;
+const Card = ({ task = {}, columnID }) => {
+  const {
+    title = ' ',
+    description = ' ',
+    priority = 'Without',
+    deadline = '1/1/2023',
+  } = task;
+
+  // console.log('columnId', columnID);
+
   const [showModal, setShowModal] = useState(false);
-  console.log('task', task, columnID);
 
   const onOpen = () => {
     setShowModal(true);

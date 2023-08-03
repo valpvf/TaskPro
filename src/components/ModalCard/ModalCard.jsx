@@ -19,6 +19,8 @@ import {
   DatePickerWrapper,
   SpanStyled,
 } from './ModalCard.styled';
+import { useDispatch } from 'react-redux';
+import { addCard } from 'redux/task/taskOperations';
 
 const TitleSchema = Yup.object().shape({
   cardTitle: Yup.string().required('Title is required'),
@@ -33,9 +35,11 @@ const ModalCard = ({
   cardDescription = '',
   currentPriority = 'Without',
   deadline = false,
-  columnId,
+  column,
 }) => {
   registerLocale('en', uk);
+
+  const dispatch = useDispatch();
 
   const [startDate, setStartDate] = useState(
     deadline ? new Date(deadline) : new Date()
@@ -61,13 +65,21 @@ const ModalCard = ({
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
           const { cardTitle: title, cardDescr: description } = values;
+          const form = {
+            title,
+            description,
+            priority,
+            deadline: Date.now(startDate),
+            column,
+          };
           console.log({
             title,
             description,
             priority,
             deadline: Date.now(startDate),
-            columnId,
+            column,
           });
+          dispatch(addCard(form));
           resetForm();
           onClose();
         }}
