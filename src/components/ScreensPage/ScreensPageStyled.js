@@ -17,6 +17,31 @@ export const Container = styled.div`
   padding-right: 24px;
 `;
 
+export const TutorialContainer = styled(Container)`
+  display: flex;
+  justify-content: center;
+  align-items:center;
+`
+
+export const TutorialTitle = styled.p`
+  display: block;
+  width: 486px;
+  text-align: center;
+  font-family: Poppins;
+  line-height: calc(18 / 14);
+  letter-spacing: -0.28px;
+  color: var(--screens-page-tutorial-text-color);
+
+  @media screen and (max-width: 320px) {
+    font-size: 12px;
+    line-height: calc(16 / 12);
+  }
+`;
+
+export const TutorialSelected = styled.span`
+  color: var(--primary-button-color);
+`
+
 export const ScreensHeader = styled.div`
   display: flex;
   align-items: center;

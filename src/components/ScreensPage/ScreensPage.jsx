@@ -8,6 +8,9 @@ import {
   IconPlus,
   ButtonAdd,
   ColumnsContainer,
+  TutorialTitle,
+  TutorialContainer,
+  TutorialSelected,
 } from './ScreensPageStyled';
 import icons from '../../images/sprite.svg';
 import { useState } from 'react';
@@ -21,12 +24,16 @@ import { useSelector } from 'react-redux';
 // import { getBoard, getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardBg, getBoardName, getColumn } from 'redux/task/taskSelectors';
 import Column from 'components/Column/Column';
+import { getBoard } from 'redux/auth/authSelectors';
 // import { addBoardApi } from 'services/backApi';
 
 const ScreensPage = ({ title }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const boardBg = useSelector(getBoardBg);
+  const boards = useSelector(getBoard);
+  console.log(boards.length);
   // const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -62,12 +69,10 @@ const ScreensPage = ({ title }) => {
     setShowFilters(false);
   };
 
-  return (
+  return boards.length ? (
     <Container
       style={{
-        backgroundImage: `url('images/background/${useSelector(
-          getBoardBg
-        )}d.jpg')`,
+        backgroundImage: `url('images/background/${boardBg}d.jpg')`,
       }}
     >
       <ScreensHeader>
@@ -105,7 +110,7 @@ const ScreensPage = ({ title }) => {
                 ))}
               {/* <Card />
             <Card /> */}
-              <ButtonMain type="submit" onClick={onOpenAddCard}> 
+              <ButtonMain type="submit" onClick={onOpenAddCard}>
                 <BlackPlusButton />
                 {el.tasks.length === 0 ? 'Add card' : 'Add another card'}
               </ButtonMain>
@@ -125,6 +130,16 @@ const ScreensPage = ({ title }) => {
         <ModalCard onClose={onCloseAddCard} title="Add card" btnName="Add" />
       )}
     </Container>
+  ) : (
+    <TutorialContainer>
+      <TutorialTitle>
+        Before starting your project, it is essential{' '}
+        <TutorialSelected>to create a board</TutorialSelected> to visualize and
+        track all the necessary tasks and milestones. This board serves as a
+        powerful tool to organize the workflow and ensure effective
+        collaboration among team members.
+      </TutorialTitle>
+    </TutorialContainer>
   );
 };
 
