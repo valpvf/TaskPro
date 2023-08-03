@@ -11,6 +11,8 @@ import {
   TutorialTitle,
   TutorialContainer,
   TutorialSelected,
+  HeaderAddColumn,
+  IconPlusFilters,
 } from './ScreensPageStyled';
 import icons from '../../images/sprite.svg';
 import { useState } from 'react';
@@ -82,18 +84,12 @@ const ScreensPage = ({ title, isBoardActive }) => {
       <ScreensHeader>
         {isBoardActive && <HeaderTxt>{boardName ?? ''}</HeaderTxt>}
         {isBoardActive && (
-          <AddColumn>
-            <ButtonAdd
-              type="button"
-              // onClick={handleAddColumnClick}
-              onClick={onOpen}
-            >
-              <IconPlus>
-                <use href={`${icons}#icon-plus`}></use>
-              </IconPlus>
-              {column?.length === 0 ? 'Add column' : 'Add another column'}
-            </ButtonAdd>
-          </AddColumn>
+          <HeaderAddColumn onClick={() => setShowModal(true)}>
+            <IconPlusFilters>
+              <use href={`${icons}#icon-plus`}></use>
+            </IconPlusFilters>
+            <div>Add column</div>
+          </HeaderAddColumn>
         )}
         {isBoardActive && (
           <HeaderFiltres onClick={onOpenFilters}>
@@ -105,8 +101,22 @@ const ScreensPage = ({ title, isBoardActive }) => {
           </HeaderFiltres>
         )}
       </ScreensHeader>
+      {isBoardActive && columns.length === 0 && (
+        <AddColumn>
+          <ButtonAdd
+            type="button"
+            // onClick={handleAddColumnClick}
+            onClick={onOpen}
+          >
+            <IconPlus>
+              <use href={`${icons}#icon-plus`}></use>
+            </IconPlus>
+            {column?.length === 0 ? 'Add column' : 'Add another column'}
+          </ButtonAdd>
+        </AddColumn>
+      )}
       {/* Тут можуть бути ваші колонки з картками */}
-      {boardName && (
+      {isBoardActive && boardName && (
         <ColumnsContainer>
           {column.map(el => (
             <div key={el._id}>
@@ -116,8 +126,6 @@ const ScreensPage = ({ title, isBoardActive }) => {
                 .map(task => (
                   <Card key={task._id} task={task} />
                 ))}
-              {/* <Card />
-            <Card /> */}
               <ButtonMain type="submit" onClick={onOpenAddCard}>
                 <BlackPlusButton />
                 {el.tasks.length === 0 ? 'Add card' : 'Add another card'}

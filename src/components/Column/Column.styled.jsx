@@ -2,8 +2,6 @@ import styled from '@emotion/styled';
 
 export const BoardItem = styled.li`
   width: 335px;
-  margin-top: 39px;
-  margin-left: 20px;
   position: relative;
   display: flex;
   justify-content: space-between;

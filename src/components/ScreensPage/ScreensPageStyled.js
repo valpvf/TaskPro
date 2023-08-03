@@ -20,8 +20,8 @@ export const Container = styled.div`
 export const TutorialContainer = styled(Container)`
   display: flex;
   justify-content: center;
-  align-items:center;
-`
+  align-items: center;
+`;
 
 export const TutorialTitle = styled.p`
   display: block;
@@ -40,7 +40,7 @@ export const TutorialTitle = styled.p`
 
 export const TutorialSelected = styled.span`
   color: var(--primary-button-color);
-`
+`;
 
 export const ScreensHeader = styled.div`
   display: flex;
@@ -68,6 +68,11 @@ export const HeaderFiltres = styled.div`
   letter-spacing: -0.02em;
 `;
 
+export const HeaderAddColumn = styled(HeaderFiltres)`
+  margin-left: auto;
+  margin-right: 16px;
+`;
+
 export const IconFiltre = styled.svg`
   width: 16px;
   height: 16px;
@@ -76,6 +81,13 @@ export const IconFiltre = styled.svg`
   fill: none;
   /* stroke: white; */
   stroke: var(--primary-icon-stroke-color);
+`;
+
+export const IconPlusFilters = styled(IconFiltre)`
+  width: 24px;
+  height: 24px;
+
+  stroke-width: 2px;
 `;
 
 export const AddColumn = styled.div`
@@ -103,9 +115,9 @@ export const ColumnsContainer = styled.div`
   display: flex;
   text-align: justify;
   gap: 22px;
-  padding: 14px 0 20px 24px;
   max-width: 1170px;
   overflow-x: auto;
+
   ::-webkit-scrollbar {
     background-color: var(--scrollbar-base-color);
     border-radius: 10px;

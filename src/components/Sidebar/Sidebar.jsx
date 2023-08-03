@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModalBoard from 'components/ModalBoard/ModalBoard';
 import ModalNeedHelp from 'components/ModalNeedHelp/ModalNeedHelp';
 import {
@@ -58,7 +58,9 @@ const Sidebar = ({ setIsBoardActive }) => {
     navigate('/');
   };
 
-  setIsBoardActive(activeBoardId ? true : false)
+  useEffect(() => {
+    setIsBoardActive(activeBoardId ? true : false);
+  });
 
   const onMouseEnterHelpBtn = () => {
     setShowHelpText(true);
