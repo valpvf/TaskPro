@@ -108,7 +108,8 @@ export const Icon = styled.svg`
 `;
 
 export const IconWrapper = styled.div`
-  margin-left: 130px;
+  position: relative;
+  left: 70px;
   display: flex;
   align-items: center;
   gap: 10px;

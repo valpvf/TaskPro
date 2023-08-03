@@ -36,14 +36,15 @@ const Card = ({ task = {}, columnID }) => {
     setShowModal(false);
   };
   function formatDate(date) {
-    const year = date.getFullYear().toString().slice(-2);
+    const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
 
-    return `${month}/${day}/${year}`;
+    return `${day}/${month}/${year}`;
   }
   const today = new Date();
   const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July 28, 2023)
+  const deadlineDate = formatDate(new Date(deadline.split('T')[0]));
   return (
     <CardWrapper priority={'High'}>
       <div>
@@ -60,10 +61,10 @@ const Card = ({ task = {}, columnID }) => {
           </div>
           <div>
             <DeadlineTitle>Deadline</DeadlineTitle>
-            <DeadlineSubTitle>{deadline.split('T')[0]}</DeadlineSubTitle>
+            <DeadlineSubTitle>{deadlineDate}</DeadlineSubTitle>
           </div>
           <IconWrapper>
-            {deadline === formattedDate && (
+            {deadlineDate === formattedDate && (
               <Icon width="16px" height="16px">
                 <use xlinkHref={`${sprite}#icon-bell`} />
               </Icon>
