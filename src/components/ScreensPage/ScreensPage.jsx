@@ -8,6 +8,11 @@ import {
   IconPlus,
   ButtonAdd,
   ColumnsContainer,
+  TutorialTitle,
+  TutorialContainer,
+  TutorialSelected,
+  HeaderAddColumn,
+  IconPlusFilters,
 } from './ScreensPageStyled';
 import icons from '../../images/sprite.svg';
 import { useState } from 'react';
@@ -21,13 +26,22 @@ import { useSelector } from 'react-redux';
 // import { getBoard, getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardBg, getBoardName, getColumn } from 'redux/task/taskSelectors';
 import Column from 'components/Column/Column';
+import { getBoard } from 'redux/auth/authSelectors';
 // import { addBoardApi } from 'services/backApi';
 
-const ScreensPage = ({ title }) => {
+const ScreensPage = ({ title, isBoardActive }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+
   const [colId, setColId] = useState('');
+  const boardBg = useSelector(getBoardBg);
+  const boards = useSelector(getBoard);
+  const columns = useSelector(getColumn);
+  console.log(boards.length, ' - boards');
+  console.log(columns.length, ' - columns');
+  console.log(isBoardActive);
+
   // const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -65,16 +79,34 @@ const ScreensPage = ({ title }) => {
     setShowFilters(false);
   };
 
-  return (
+  return boards.length ? (
     <Container
       style={{
-        backgroundImage: `url('images/background/${useSelector(
-          getBoardBg
-        )}d.jpg')`,
+        backgroundImage:
+          isBoardActive && `url('images/background/${boardBg}d.jpg')`,
       }}
     >
       <ScreensHeader>
-        <HeaderTxt>{boardName ?? ''}</HeaderTxt>
+        {isBoardActive && <HeaderTxt>{boardName ?? ''}</HeaderTxt>}
+        {isBoardActive && (
+          <HeaderAddColumn onClick={() => setShowModal(true)}>
+            <IconPlusFilters>
+              <use href={`${icons}#icon-plus`}></use>
+            </IconPlusFilters>
+            <div>Add column</div>
+          </HeaderAddColumn>
+        )}
+        {isBoardActive && (
+          <HeaderFiltres onClick={onOpenFilters}>
+            <IconFiltre>
+              <use href={`${icons}#icon-filter`}></use>
+            </IconFiltre>
+            <div>Filtres</div>
+            {showFilters && <ModalFilters onClose={onCloseFilters} />}
+          </HeaderFiltres>
+        )}
+      </ScreensHeader>
+      {isBoardActive && columns.length === 0 && (
         <AddColumn>
           <ButtonAdd
             type="button"
@@ -87,16 +119,9 @@ const ScreensPage = ({ title }) => {
             {column?.length === 0 ? 'Add column' : 'Add another column'}
           </ButtonAdd>
         </AddColumn>
-        <HeaderFiltres onClick={onOpenFilters}>
-          <IconFiltre>
-            <use href={`${icons}#icon-filter`}></use>
-          </IconFiltre>
-          <div>Filtres</div>
-          {showFilters && <ModalFilters onClose={onCloseFilters} />}
-        </HeaderFiltres>
-      </ScreensHeader>
+      )}
       {/* Тут можуть бути ваші колонки з картками */}
-      {boardName && (
+      {isBoardActive && boardName && (
         <ColumnsContainer>
           {column.map(el => (
             <div key={el._id}>
@@ -138,6 +163,16 @@ const ScreensPage = ({ title }) => {
         />
       )}
     </Container>
+  ) : (
+    <TutorialContainer>
+      <TutorialTitle>
+        Before starting your project, it is essential{' '}
+        <TutorialSelected>to create a board</TutorialSelected> to visualize and
+        track all the necessary tasks and milestones. This board serves as a
+        powerful tool to organize the workflow and ensure effective
+        collaboration among team members.
+      </TutorialTitle>
+    </TutorialContainer>
   );
 };
 
