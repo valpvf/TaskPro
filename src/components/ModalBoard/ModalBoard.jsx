@@ -26,10 +26,15 @@ const ModalBoard = ({
 }) => {
   const [backgroundName, setBackgroundName] = useState('00');
   const [iconName, setIconName] = useState('icon-project');
-  console.log('currentBoard', currentBoard);
 
-  console.log('iconName', iconName);
-  console.log('backgroundName', backgroundName);
+  let updatedBackground;
+  let updatedIcon;
+  if (btnName === 'Edit') {
+    updatedBackground =
+      backgroundName !== '00' ? backgroundName : currentBoard.background;
+
+    updatedIcon = iconName !== 'icon-project' ? iconName : currentBoard.icon;
+  }
 
   return (
     <Modal onClose={onClose}>
@@ -49,14 +54,6 @@ const ModalBoard = ({
             };
             onCreateBoard(boardInfo);
           } else if (btnName === 'Edit') {
-            const updatedBackground =
-              backgroundName !== '00'
-                ? backgroundName
-                : currentBoard.background;
-
-            const updatedIcon =
-              iconName !== 'icon-project' ? iconName : currentBoard.icon;
-
             const boardInfoEdit = {
               values,
               background: updatedBackground,
@@ -84,13 +81,13 @@ const ModalBoard = ({
             <SubtitleStyled>Icons</SubtitleStyled>
             <RadioIcons
               onChangeIcon={setIconName}
-              currentBoardIcon={currentBoard.icon}
+              currentBoardIcon={updatedIcon}
             />
             <SubtitleStyled>Background</SubtitleStyled>
 
             <RadioImages
               onChangeImage={setBackgroundName}
-              currentBoardBackground={currentBoard.background}
+              currentBoardBackground={updatedBackground}
             />
 
             <ButtonMain type="submit">
