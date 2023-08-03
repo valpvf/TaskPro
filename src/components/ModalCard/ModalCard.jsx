@@ -33,6 +33,7 @@ const ModalCard = ({
   cardDescription = '',
   currentPriority = 'Without',
   deadline = false,
+  columnId,
 }) => {
   registerLocale('en', uk);
 
@@ -65,6 +66,7 @@ const ModalCard = ({
             description,
             priority,
             deadline: Date.now(startDate),
+            columnId,
           });
           resetForm();
           onClose();

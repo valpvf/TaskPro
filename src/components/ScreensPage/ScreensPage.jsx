@@ -38,8 +38,6 @@ const ScreensPage = ({ title }) => {
   const column = useSelector(getColumn)?.toSorted((a, b) =>
     a.updatedAt.localeCompare(b.updatedAt)
   );
-  console.log((boardName, column));
-  // console.log(backgroundValue);
 
   const onOpen = () => {
     setShowModal(true);
@@ -101,11 +99,9 @@ const ScreensPage = ({ title }) => {
               {el.tasks
                 .toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
                 .map(task => (
-                  <Card key={task._id} task={task} />
+                  <Card key={task._id} task={task} columnID={el._id} />
                 ))}
-              {/* <Card />
-            <Card /> */}
-              <ButtonMain type="submit" onClick={onOpenAddCard}> 
+              <ButtonMain type="submit" onClick={onOpenAddCard}>
                 <BlackPlusButton />
                 {el.tasks.length === 0 ? 'Add card' : 'Add another card'}
               </ButtonMain>

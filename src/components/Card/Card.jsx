@@ -17,10 +17,10 @@ import {
   IconWrapper,
 } from './Card.styled';
 
-const Card = ({ task }) => {
+const Card = ({ task, columnID }) => {
   const { title, description, priority, deadline } = task;
   const [showModal, setShowModal] = useState(false);
-  console.log('task', task);
+  console.log('task', task, columnID);
 
   const onOpen = () => {
     setShowModal(true);
@@ -29,16 +29,16 @@ const Card = ({ task }) => {
     setShowModal(false);
   };
   function formatDate(date) {
-  const year = date.getFullYear().toString().slice(-2);
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0'); 
+    const year = date.getFullYear().toString().slice(-2);
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
 
-  return `${month}/${day}/${year}`;
-}
+    return `${month}/${day}/${year}`;
+  }
   const today = new Date();
-const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July 28, 2023) 
+  const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July 28, 2023)
   return (
-    <CardWrapper priority={"High"}>
+    <CardWrapper priority={'High'}>
       <div>
         <Title>{title}</Title>
         <SubTitle>{description}</SubTitle>
@@ -47,7 +47,7 @@ const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July
           <div>
             <PrioryTitle>Priority</PrioryTitle>
             <PriorySubTitle>
-              <Ball priority={"High"} />
+              <Ball priority={'High'} />
               {priority}
             </PriorySubTitle>
           </div>
@@ -56,9 +56,11 @@ const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July
             <DeadlineSubTitle>{deadline.split('T')[0]}</DeadlineSubTitle>
           </div>
           <IconWrapper>
-            {deadline === formattedDate && <Icon width="16px" height="16px">
-              <use xlinkHref={`${sprite}#icon-bell`} />
-            </Icon>}
+            {deadline === formattedDate && (
+              <Icon width="16px" height="16px">
+                <use xlinkHref={`${sprite}#icon-bell`} />
+              </Icon>
+            )}
             <Icon width="16px" height="16px">
               <use xlinkHref={`${sprite}#icon-goto`} />
             </Icon>
@@ -74,6 +76,7 @@ const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July
                 cardDescription={description}
                 currentPriority={priority}
                 deadline={deadline}
+                cardId={columnID}
               />
             )}
             <Icon width="16px" height="16px">
