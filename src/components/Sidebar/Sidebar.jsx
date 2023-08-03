@@ -38,7 +38,7 @@ import { useSelector } from 'react-redux';
 import { getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardId } from 'redux/task/taskOperations';
 
-const Sidebar = () => {
+const Sidebar = ({ setIsBoardActive }) => {
   const [showModal, setShowModal] = useState(false);
   const [showHelpText, setShowHelpText] = useState(false);
   const [showModalBoard, setShowModalBoard] = useState(false);
@@ -57,6 +57,8 @@ const Sidebar = () => {
     dispatch(logout());
     navigate('/');
   };
+
+  setIsBoardActive(activeBoardId ? true : false)
 
   const onMouseEnterHelpBtn = () => {
     setShowHelpText(true);

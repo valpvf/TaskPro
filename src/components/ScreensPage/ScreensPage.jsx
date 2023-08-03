@@ -27,13 +27,16 @@ import Column from 'components/Column/Column';
 import { getBoard } from 'redux/auth/authSelectors';
 // import { addBoardApi } from 'services/backApi';
 
-const ScreensPage = ({ title }) => {
+const ScreensPage = ({ title, isBoardActive }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const boardBg = useSelector(getBoardBg);
   const boards = useSelector(getBoard);
-  console.log(boards.length);
+  const columns = useSelector(getColumn);
+  console.log(boards.length, ' - boards');
+  console.log(columns.length, ' - columns');
+  console.log(isBoardActive);
   // const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -72,30 +75,35 @@ const ScreensPage = ({ title }) => {
   return boards.length ? (
     <Container
       style={{
-        backgroundImage: `url('images/background/${boardBg}d.jpg')`,
+        backgroundImage:
+          isBoardActive && `url('images/background/${boardBg}d.jpg')`,
       }}
     >
       <ScreensHeader>
-        <HeaderTxt>{boardName ?? ''}</HeaderTxt>
-        <AddColumn>
-          <ButtonAdd
-            type="button"
-            // onClick={handleAddColumnClick}
-            onClick={onOpen}
-          >
-            <IconPlus>
-              <use href={`${icons}#icon-plus`}></use>
-            </IconPlus>
-            {column?.length === 0 ? 'Add column' : 'Add another column'}
-          </ButtonAdd>
-        </AddColumn>
-        <HeaderFiltres onClick={onOpenFilters}>
-          <IconFiltre>
-            <use href={`${icons}#icon-filter`}></use>
-          </IconFiltre>
-          <div>Filtres</div>
-          {showFilters && <ModalFilters onClose={onCloseFilters} />}
-        </HeaderFiltres>
+        {isBoardActive && <HeaderTxt>{boardName ?? ''}</HeaderTxt>}
+        {isBoardActive && (
+          <AddColumn>
+            <ButtonAdd
+              type="button"
+              // onClick={handleAddColumnClick}
+              onClick={onOpen}
+            >
+              <IconPlus>
+                <use href={`${icons}#icon-plus`}></use>
+              </IconPlus>
+              {column?.length === 0 ? 'Add column' : 'Add another column'}
+            </ButtonAdd>
+          </AddColumn>
+        )}
+        {isBoardActive && (
+          <HeaderFiltres onClick={onOpenFilters}>
+            <IconFiltre>
+              <use href={`${icons}#icon-filter`}></use>
+            </IconFiltre>
+            <div>Filtres</div>
+            {showFilters && <ModalFilters onClose={onCloseFilters} />}
+          </HeaderFiltres>
+        )}
       </ScreensHeader>
       {/* Тут можуть бути ваші колонки з картками */}
       {boardName && (
