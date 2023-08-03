@@ -23,5 +23,6 @@ export const StyledInput = styled.input`
 
   &:checked + img {
     transform: scale(1.2);
+    outline: 1px solid var(--primary-heading-color);
   }
 `;

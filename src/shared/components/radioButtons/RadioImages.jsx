@@ -5,6 +5,7 @@ import {
   StyledRadioWrapper,
 } from './RadioImages.styled';
 import { useState } from 'react';
+import { useEffect } from 'react';
 const RadioImages = ({ onChangeImage, currentBoardBackground }) => {
   const images = [
     '00.png',
@@ -27,8 +28,15 @@ const RadioImages = ({ onChangeImage, currentBoardBackground }) => {
 
   const [selectedValue, setSelectedValue] = useState(0);
 
+  useEffect(() => {
+    console.log(currentBoardBackground);
+    if (!selectedValue) {
+      setSelectedValue(currentBoardBackground || '00');
+    }
+  }, [currentBoardBackground, selectedValue]);
+
   const handleRadioChange = index => {
-    setSelectedValue(index);
+    setSelectedValue(index <= 9 ? `0${index}` : `${index}`);
     const paddedIndex = index.toString().padStart(2, '0');
     const backgroundValue = `${paddedIndex}`;
     onChangeImage(backgroundValue);
@@ -44,10 +52,7 @@ const RadioImages = ({ onChangeImage, currentBoardBackground }) => {
               type="radio"
               value={index}
               name="image"
-              checked={
-                currentBoardBackground === images[index].substring(0, 2) ||
-                selectedValue === index
-              }
+              checked={selectedValue === image.substring(0, 2)}
               onChange={() => handleRadioChange(index)}
             />
             <img

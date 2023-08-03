@@ -7,6 +7,7 @@ import {
   StyledSVG,
 } from './RadioIcons.styled';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const RadioIcons = ({ onChangeIcon, currentBoardIcon }) => {
   const icons = [
@@ -20,7 +21,13 @@ const RadioIcons = ({ onChangeIcon, currentBoardIcon }) => {
     'icon-hexagon',
   ];
 
-  const [selectedValue, setSelectedValue] = useState('icon-project');
+  const [selectedValue, setSelectedValue] = useState('');
+
+  useEffect(() => {
+    if (!selectedValue) {
+      setSelectedValue(currentBoardIcon || 'icon-project');
+    }
+  }, [currentBoardIcon, selectedValue]);
 
   const handleRadioChange = icon => {
     setSelectedValue(icon);
@@ -37,7 +44,7 @@ const RadioIcons = ({ onChangeIcon, currentBoardIcon }) => {
               type="radio"
               value={icon}
               name="icon"
-              checked={currentBoardIcon === icon || selectedValue === icon}
+              checked={selectedValue === icon}
               onChange={() => handleRadioChange(icon)}
             />
             <StyledSVG>
