@@ -28,3 +28,7 @@ export const getColumnApi = async ({ id }) => {
 export const deleteColumnApi = async columnId => {
   return await axios.delete(`/columns/${columnId}`).then(res => res);
 };
+
+export const addCardApi = async form => {
+  return await axios.post('/api/tasks', { ...form }).then(res => res);
+};

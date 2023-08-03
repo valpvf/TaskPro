@@ -33,12 +33,15 @@ const ScreensPage = ({ title, isBoardActive }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+
+  const [colId, setColId] = useState('');
   const boardBg = useSelector(getBoardBg);
   const boards = useSelector(getBoard);
   const columns = useSelector(getColumn);
   console.log(boards.length, ' - boards');
   console.log(columns.length, ' - columns');
   console.log(isBoardActive);
+
   // const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -48,10 +51,10 @@ const ScreensPage = ({ title, isBoardActive }) => {
   // const backgroundValue = useSelector(getBoardSelector);
   const boardName = useSelector(getBoardName);
   const column = useSelector(getColumn)?.toSorted((a, b) =>
-    a.updatedAt.localeCompare(b.updatedAt)
+    b.updatedAt.localeCompare(a.updatedAt)
   );
-  console.log((boardName, column));
-  // console.log(backgroundValue);
+
+  const isView = false;
 
   const onOpen = () => {
     setShowModal(true);
@@ -60,7 +63,9 @@ const ScreensPage = ({ title, isBoardActive }) => {
     setShowModal(false);
   };
 
-  const onOpenAddCard = () => {
+  const onOpenAddCard = e => {
+    console.log('e', e);
+    setColId(e);
     setShowModalAddCard(true);
   };
   const onCloseAddCard = () => {
@@ -121,12 +126,19 @@ const ScreensPage = ({ title, isBoardActive }) => {
           {column.map(el => (
             <div key={el._id}>
               <Column title={el.title} columnId={el._id} />
-              {el.tasks
-                .toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
-                .map(task => (
-                  <Card key={task._id} task={task} />
-                ))}
-              <ButtonMain type="submit" onClick={onOpenAddCard}>
+              {el.tasks.length === 0
+                ? isView && <Card columnID={el._id} />
+                : el.tasks
+                    .toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
+                    .map(task => (
+                      <Card key={task._id} task={task} columnID={el._id} />
+                    ))}
+              <ButtonMain
+                type="button"
+                onClick={() => onOpenAddCard(el._id)}
+                value={el._id}
+                name="columnId"
+              >
                 <BlackPlusButton />
                 {el.tasks.length === 0 ? 'Add card' : 'Add another card'}
               </ButtonMain>
@@ -143,7 +155,12 @@ const ScreensPage = ({ title, isBoardActive }) => {
         />
       )}
       {showModalAddCard && (
-        <ModalCard onClose={onCloseAddCard} title="Add card" btnName="Add" />
+        <ModalCard
+          onClose={onCloseAddCard}
+          title="Add card"
+          btnName="Add"
+          column={colId}
+        />
       )}
     </Container>
   ) : (
