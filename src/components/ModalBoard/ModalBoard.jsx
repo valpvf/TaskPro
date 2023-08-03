@@ -41,8 +41,6 @@ const ModalBoard = ({
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
-
           if (btnName === 'Create') {
             const boardInfo = {
               values,
@@ -67,7 +65,6 @@ const ModalBoard = ({
             onEditBoard(boardInfoEdit);
           }
 
-          // handleButtonClick();
           resetForm();
           onClose();
         }}
@@ -85,10 +82,16 @@ const ModalBoard = ({
             />
             <InputErrorMessage name="boardTitle" component={'p'} />
             <SubtitleStyled>Icons</SubtitleStyled>
-            <RadioIcons onChangeIcon={setIconName} />
+            <RadioIcons
+              onChangeIcon={setIconName}
+              currentBoardIcon={currentBoard.icon}
+            />
             <SubtitleStyled>Background</SubtitleStyled>
 
-            <RadioImages onChangeImage={setBackgroundName} />
+            <RadioImages
+              onChangeImage={setBackgroundName}
+              currentBoardBackground={currentBoard.background}
+            />
 
             <ButtonMain type="submit">
               <BlackPlusButton />
