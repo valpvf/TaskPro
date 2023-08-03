@@ -5,10 +5,7 @@ import {
   StyledRadioWrapper,
 } from './RadioImages.styled';
 import { useState } from 'react';
-
-// import { useState } from 'react';
-
-const RadioImages = ({ onChangeImage }) => {
+const RadioImages = ({ onChangeImage, currentBoardBackground }) => {
   const images = [
     '00.png',
     '01.png',
@@ -29,14 +26,12 @@ const RadioImages = ({ onChangeImage }) => {
   ];
 
   const [selectedValue, setSelectedValue] = useState(0);
-  // console.log('backgroundValue', backgroundValue);
 
   const handleRadioChange = index => {
     setSelectedValue(index);
     const paddedIndex = index.toString().padStart(2, '0');
     const backgroundValue = `${paddedIndex}`;
     onChangeImage(backgroundValue);
-    // console.log('backgroundValue in handleRadioChange', backgroundValue);
   };
 
   return (
