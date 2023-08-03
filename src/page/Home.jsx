@@ -14,7 +14,7 @@ const Home = () => {
   };
 
   const handleWindowResize = () => {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 1440) {
       setShowSidebar(false);
     } else {
       setShowSidebar(true);

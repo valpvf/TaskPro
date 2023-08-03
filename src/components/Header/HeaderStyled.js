@@ -21,7 +21,7 @@ export const IconBM = styled.svg`
   /* stroke: #ffffff; */
   stroke: var(--primary-icon-stroke-color);
 
-  @media (min-width: 768px) {
+  @media (min-width: 1440px) {
     display: none;
   }
 `;
