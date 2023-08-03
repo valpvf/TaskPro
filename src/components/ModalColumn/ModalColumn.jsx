@@ -8,7 +8,7 @@ import InputField from 'shared/components/inputField/InputField';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 import { useDispatch, useSelector } from 'react-redux';
 import { addColumn, editColumn } from 'redux/task/taskOperations';
-import { getBoardId } from 'redux/task/taskSelectors';
+import { getBoardId, getColumn } from 'redux/task/taskSelectors';
 
 const TitleSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
@@ -16,7 +16,9 @@ const TitleSchema = Yup.object().shape({
 
 const ModalColumn = ({ onClose, title, btnName, columnTitle = '', column }) => {
   const dispatch = useDispatch();
-  const board = useSelector(getBoardId);
+
+  const currentBoard = useSelector(getBoardId);
+  const columns = useSelector(getColumn);
 
   return (
     <Modal onClose={onClose}>
@@ -28,10 +30,16 @@ const ModalColumn = ({ onClose, title, btnName, columnTitle = '', column }) => {
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
+          if (columns.some(el => el.title === values.title)) {
+            return console.log('Duplicate');
+          }
+
           if (columnTitle) {
-            dispatch(editColumn({ body: { ...values, board }, id: column }));
+            dispatch(
+              editColumn({ body: { ...values, currentBoard }, id: column })
+            );
           } else {
-            dispatch(addColumn({ ...values, board }));
+            dispatch(addColumn({ ...values, currentBoard }));
           }
           resetForm();
           onClose();
