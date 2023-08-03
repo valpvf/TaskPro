@@ -110,7 +110,17 @@ export const BoardItem = styled.li`
       ? 'var(--board-item-sidebar-background-color)'
       : 'transparent'};
   color: ${props =>
-    props.isActive ? 'var(--board-item-sidebar-color)' : 'grey'};
+    props.isActive
+      ? 'var(--sidebar-icon-active-stroke-color)'
+      : 'var(--sidebar-icon-edit-stroke-color)'};
+
+  stroke: ${props =>
+    props.isActive
+      ? 'var(--sidebar-icon-active-stroke-color)'
+      : 'var(--sidebar-icon-edit-stroke-color)'};
+  /* &:hover {
+    background-color: #1e90ff;
+  } */
 `;
 
 export const BorderRight = styled.div`
@@ -135,7 +145,7 @@ export const IconProgect = styled.svg`
   width: 18px;
   height: 18px;
   fill: var(--sidebar-icon-fill-color);
-  stroke: var(--sidebar-icon-stroke-color);
+  stroke: inherit;
 `;
 export const IconEditCustom = styled.div`
   display: flex;
