@@ -83,8 +83,8 @@ const ModalCard = ({
                   description,
                   priority,
                   deadline: startDate,
-                  column,
                 },
+                column: column,
               })
             );
           } else {

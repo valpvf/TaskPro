@@ -21,7 +21,10 @@ export const StyledInput = styled.input`
   width: 0;
   height: 0;
 
+
   &:checked + img {
-    transform: scale(1.2);
+    transform: scale(1.3);
+    border: solid var(--primary-button-color);
+    border-radius: 10px;
   }
 `;

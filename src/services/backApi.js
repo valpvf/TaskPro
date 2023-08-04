@@ -41,10 +41,17 @@ export const addCardApi = async form => {
   return await axios.post('/api/tasks', { ...form }).then(res => res);
 };
 
-export const editCardApi = async (id, body) => {
-  return await axios.patch(`/api/tasks/${id}`, { ...body }).then(res => res);
+export const editCardApi = async (id, body, column) => {
+  const { data } = await axios
+    .patch(`/api/tasks/${id}`, { ...body })
+    .then(res => res);
+  data.column = column;
+  return { data };
 };
 
-export const deleteCardApi = async id => {
-  return await axios.delete(`/api/tasks/${id}`).then(res => res);
+export const deleteCardApi = async (id, column) => {
+  console.log('id2', id);
+  const { data } = await axios.delete(`/api/tasks/${id}`).then(res => res);
+  data.column = column;
+  return { data };
 };

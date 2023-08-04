@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 // import { changeUser, getUser } from './userOperations';
 import {
   getBoardId,
@@ -7,6 +8,7 @@ import {
   deleteColumn,
   addCard,
   editCard,
+  deleteCard,
 } from './taskOperations';
 
 const initialState = {
@@ -88,6 +90,8 @@ const boardSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addColumn.pending, state => {
+        //state.set('isRefreshing', true);
+        // console.log('state-auth');
         // state.error = null;
       })
       .addCase(addColumn.fulfilled, (state, { payload }) => {
@@ -126,6 +130,28 @@ const boardSlice = createSlice({
       })
       .addCase(editCard.pending, state => {
         // state.error = null;
+      })
+      .addCase(editCard.fulfilled, (state, { payload }) => {
+        const { column, ...task } = payload;
+        const index = state.columns.findIndex(col => col._id === column);
+        const indexTask = state.columns[index].tasks.findIndex(
+          el => el._id === task._id
+        );
+        state.columns[index].tasks[indexTask] = task;
+      })
+      .addCase(editCard.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(deleteCard.pending, state => {})
+      .addCase(deleteCard.fulfilled, (state, { payload }) => {
+        const { column, _id: id } = payload;
+        const index = state.columns.findIndex(col => col._id === column);
+        state.columns[index].tasks = state.columns[index].tasks.filter(
+          el => el._id !== id
+        );
+      })
+      .addCase(deleteCard.rejected, (state, action) => {
+        state.error = action.error.message;
       });
   },
 });
