@@ -1,3 +1,5 @@
+export const getUserData = state => state.auth.user;
+
 export const setName = state => state.auth.user.name;
 
 export const avatarURL = state => state.auth.user.avatarURL;
