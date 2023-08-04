@@ -30,6 +30,8 @@ const ModalColumn = ({ onClose, title, btnName, columnTitle = '', column }) => {
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
+          // const columnForEdit = columns.filter(el => el.title !== values.title);
+          // console.log('object', values.title, columnForEdit);
           if (columns.some(el => el.title === values.title)) {
             return console.log('Duplicate');
           }
