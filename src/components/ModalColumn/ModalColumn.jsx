@@ -7,18 +7,18 @@ import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import InputField from 'shared/components/inputField/InputField';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 import { useDispatch, useSelector } from 'react-redux';
-import { addColumn } from 'redux/task/taskOperations';
-import { getBoardId } from 'redux/task/taskSelectors';
+import { addColumn, editColumn } from 'redux/task/taskOperations';
+import { getBoardId, getColumn } from 'redux/task/taskSelectors';
 
 const TitleSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
 });
 
-const ModalColumn = ({ onClose, title, btnName, columnTitle = '' }) => {
+const ModalColumn = ({ onClose, title, btnName, columnTitle = '', column }) => {
   const dispatch = useDispatch();
 
-  const a = useSelector(getBoardId);
-  console.log(a);
+  const board = useSelector(getBoardId);
+  const columns = useSelector(getColumn);
 
   return (
     <Modal onClose={onClose}>
@@ -30,8 +30,15 @@ const ModalColumn = ({ onClose, title, btnName, columnTitle = '' }) => {
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log('col', values);
-          dispatch(addColumn({ ...values, board: a }));
+          if (columns.some(el => el.title === values.title)) {
+            return console.log('Duplicate');
+          }
+
+          if (columnTitle) {
+            dispatch(editColumn({ body: { ...values, board }, id: column }));
+          } else {
+            dispatch(addColumn({ ...values, board }));
+          }
           resetForm();
           onClose();
         }}

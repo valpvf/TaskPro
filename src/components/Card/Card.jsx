@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import sprite from '../../images/sprite.svg';
 import ModalCard from 'components/ModalCard/ModalCard';
 import {
@@ -16,6 +17,7 @@ import {
   Icon,
   IconWrapper,
 } from './Card.styled';
+import { deleteCard } from 'redux/task/taskOperations';
 
 const Card = ({ task = {}, columnID }) => {
   const {
@@ -23,7 +25,13 @@ const Card = ({ task = {}, columnID }) => {
     description = ' ',
     priority = 'Without',
     deadline = '1/1/2023',
+    _id = '',
   } = task;
+
+  const dispatch = useDispatch();
+  const handleDelete = () => {
+    dispatch(deleteCard(_id));
+  };
 
   // console.log('columnId', columnID);
 
@@ -85,9 +93,10 @@ const Card = ({ task = {}, columnID }) => {
                 currentPriority={priority}
                 deadline={deadline}
                 cardId={columnID}
+                taskId={_id}
               />
             )}
-            <Icon width="16px" height="16px">
+            <Icon width="16px" height="16px" onClick={handleDelete}>
               <use xlinkHref={`${sprite}#icon-trash`} />
             </Icon>
           </IconWrapper>
