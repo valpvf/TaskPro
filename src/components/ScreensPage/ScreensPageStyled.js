@@ -66,11 +66,15 @@ export const HeaderFiltres = styled.div`
   font-weight: 500;
   line-height: 21px;
   letter-spacing: -0.02em;
+
+  cursor: pointer;
 `;
 
 export const HeaderAddColumn = styled(HeaderFiltres)`
   margin-left: auto;
-  margin-right: 16px;
+  margin-right: 58px;
+
+  cursor: pointer;
 `;
 
 export const IconFiltre = styled.svg`
@@ -85,7 +89,7 @@ export const IconFiltre = styled.svg`
 
 export const IconPlusFilters = styled(IconFiltre)`
   width: 24px;
-  height: 24px;
+  height: 18px;
 
   stroke-width: 2px;
 `;
