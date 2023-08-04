@@ -5,6 +5,8 @@ import {
   addColumn,
   editColumn,
   deleteColumn,
+  addCard,
+  editCard,
 } from './taskOperations';
 
 const initialState = {
@@ -110,6 +112,20 @@ const boardSlice = createSlice({
       })
       .addCase(deleteColumn.rejected, (state, action) => {
         state.error = action.error.message;
+      })
+      .addCase(addCard.pending, state => {
+        // state.error = null;
+      })
+      .addCase(addCard.fulfilled, (state, { payload }) => {
+        const { column, ...task } = payload;
+        const index = state.columns.findIndex(col => col._id === column);
+        state.columns[index].tasks.push(task.data);
+      })
+      .addCase(addCard.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(editCard.pending, state => {
+        // state.error = null;
       });
   },
 });

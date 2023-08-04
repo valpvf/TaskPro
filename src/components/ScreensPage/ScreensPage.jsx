@@ -126,10 +126,10 @@ const ScreensPage = ({ title, isBoardActive }) => {
           {column.map(el => (
             <div key={el._id}>
               <Column title={el.title} columnId={el._id} />
-              {el.tasks.length === 0
+              {el.tasks?.length === 0
                 ? isView && <Card columnID={el._id} />
                 : el.tasks
-                    .toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
+                    ?.toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
                     .map(task => (
                       <Card key={task._id} task={task} columnID={el._id} />
                     ))}
@@ -140,7 +140,7 @@ const ScreensPage = ({ title, isBoardActive }) => {
                 name="columnId"
               >
                 <BlackPlusButton />
-                {el.tasks.length === 0 ? 'Add card' : 'Add another card'}
+                {el.tasks?.length === 0 ? 'Add card' : 'Add another card'}
               </ButtonMain>
             </div>
           ))}
