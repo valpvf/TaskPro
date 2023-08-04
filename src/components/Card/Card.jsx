@@ -30,7 +30,8 @@ const Card = ({ task = {}, columnID }) => {
 
   const dispatch = useDispatch();
   const handleDelete = () => {
-    dispatch(deleteCard(_id));
+    console.log('id', _id, columnID, task);
+    dispatch(deleteCard({ _id, columnID }));
   };
 
   // console.log('columnId', columnID);
@@ -91,7 +92,7 @@ const Card = ({ task = {}, columnID }) => {
                 cardDescription={description}
                 currentPriority={priority}
                 deadline={deadline}
-                cardId={columnID}
+                column={columnID}
                 taskId={_id}
               />
             )}
