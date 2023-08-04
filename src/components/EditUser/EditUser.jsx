@@ -6,30 +6,30 @@ import { updateUser } from '../../redux/auth/authOperations';
 import { RegisterSchema } from '../../Schemas/authSchemas';
 import {
   Wrapper,
-  ErrorText,
-  PasswordView,
+  AvatarWrapper,
+  FileInputWrapper,
+  IconUser,
+  AvatarImg,
   Inputs,
+  FileInput,
+  PasswordView,
   PasswordInput,
   PasswordIcon,
   Svg,
   SendBtn,
-  AvatarWrapper,
-  AvatarImg,
-  FileInputWrapper,
-  FileInput,
+  ErrorText,
 } from './EditUser.styled';
 import sprite from '../../images/sprite.svg';
 import eyeHide from '../../images/eye-hide.svg';
 
 function EditUser({ onClose }) {
   const userData = useSelector(getUserData);
+  const dispatch = useDispatch();
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
   const [profileName, setProfileName] = useState(userData.name);
   const [profileEmail, setProfileEmail] = useState(userData.email);
-  const dispatch = useDispatch();
-
   const [showPassword, setShowPassword] = useState(false);
 
   const onPasswordVisible = () => {
@@ -89,12 +89,19 @@ function EditUser({ onClose }) {
         >
           <Wrapper>
             <AvatarWrapper>
-              <AvatarImg
-                src={imageUrl || userData.avatarURL}
-                alt="avatar"
-                width={68}
-                height={68}
-              />
+              {(!imageUrl) && (!userData.avatarURL) ? (
+                <IconUser>
+            <use href={`${sprite}#icon-user`}></use>
+          </IconUser>
+              ) : (
+                <AvatarImg
+                  src={imageUrl || userData.avatarURL}
+                  alt="avatar"
+                  width={68}
+                  height={68}
+                />
+              )}
+
               <FileInputWrapper>
                 <FileInput
                   type="file"

@@ -14,6 +14,15 @@ export const AvatarWrapper = styled.div`
   position: relative;
 `;
 
+export const IconUser = styled.svg`
+  width: 68px;
+  height: 68px;
+  border-radius: 10px;
+
+  fill: var(--user-icon-fill-color);
+  stroke: var(--user-icon-stroke-color);
+`;
+
 export const AvatarImg = styled.img`
   width: 68px;
   height: 68px;
