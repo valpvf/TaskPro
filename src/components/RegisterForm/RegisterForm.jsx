@@ -28,7 +28,7 @@ function RegisterForm() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
+  const onPasswordVisible = () => {
     setShowPassword(!showPassword);
   };
 
@@ -79,7 +79,7 @@ function RegisterForm() {
                 <ErrorText name="password" component="div" />
                 <PasswordView
                   className={`${PasswordView} ${PasswordIcon}`}
-                  onClick={togglePasswordVisibility}
+                  onClick={onPasswordVisible}
                 >
                   {showPassword ? (
                     <PasswordIcon src={eyeHide} />
