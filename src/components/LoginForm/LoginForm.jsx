@@ -27,7 +27,7 @@ function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
-  const togglePasswordVisibility = () => {
+  const onPasswordVisible = () => {
     setShowPassword(!showPassword);
   };
 
@@ -76,7 +76,7 @@ function LoginForm() {
 
                 <PasswordView
                   className={`${PasswordView} ${PasswordIcon}`}
-                  onClick={togglePasswordVisibility}
+                  onClick={onPasswordVisible}
                 >
                   {showPassword ? (
                     <PasswordIcon src={eyeHide} />
