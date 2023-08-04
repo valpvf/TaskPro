@@ -42,7 +42,7 @@ export const addCardApi = async form => {
 };
 
 export const editCardApi = async (id, body) => {
-  return await axios.patch(`/api/tasks/${id}`, body).then(res => res);
+  return await axios.patch(`/api/tasks/${id}`, { ...body }).then(res => res);
 };
 
 export const deleteCardApi = async id => {

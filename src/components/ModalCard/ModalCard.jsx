@@ -78,7 +78,13 @@ const ModalCard = ({
             dispatch(
               editCard({
                 id: taskId,
-                body: { title, description, priority, deadline: startDate },
+                body: {
+                  title,
+                  description,
+                  priority,
+                  deadline: startDate,
+                  column,
+                },
               })
             );
           } else {

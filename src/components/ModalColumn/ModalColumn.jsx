@@ -17,7 +17,7 @@ const TitleSchema = Yup.object().shape({
 const ModalColumn = ({ onClose, title, btnName, columnTitle = '', column }) => {
   const dispatch = useDispatch();
 
-  const currentBoard = useSelector(getBoardId);
+  const board = useSelector(getBoardId);
   const columns = useSelector(getColumn);
 
   return (
@@ -35,11 +35,9 @@ const ModalColumn = ({ onClose, title, btnName, columnTitle = '', column }) => {
           }
 
           if (columnTitle) {
-            dispatch(
-              editColumn({ body: { ...values, currentBoard }, id: column })
-            );
+            dispatch(editColumn({ body: { ...values, board }, id: column }));
           } else {
-            dispatch(addColumn({ ...values, currentBoard }));
+            dispatch(addColumn({ ...values, board }));
           }
           resetForm();
           onClose();
