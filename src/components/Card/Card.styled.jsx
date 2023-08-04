@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 export const CardWrapper = styled.div`
-  margin-left: 20px;
   margin-top: 10px;
   /* background-color: #121212; */
   background-color: var(--primary-card-background-color);

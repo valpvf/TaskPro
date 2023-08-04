@@ -18,6 +18,7 @@ import {
   IconWrapper,
 } from './Card.styled';
 import { deleteCard } from 'redux/task/taskOperations';
+import ModalProgress from 'components/ModalProgress/ModalProgress';
 
 const Card = ({ task = {}, columnID }) => {
   const {
@@ -36,6 +37,7 @@ const Card = ({ task = {}, columnID }) => {
   // console.log('columnId', columnID);
 
   const [showModal, setShowModal] = useState(false);
+  const [showProgressModal, setShowProgressModal] = useState(false);
 
   const onOpen = () => {
     setShowModal(true);
@@ -43,6 +45,14 @@ const Card = ({ task = {}, columnID }) => {
   const onClose = () => {
     setShowModal(false);
   };
+
+   const onOpenProgress = () => {
+    setShowProgressModal(true);
+  };
+  const onCloseProgress = () => {
+    setShowProgressModal(false);
+  };
+
   function formatDate(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -77,9 +87,12 @@ const Card = ({ task = {}, columnID }) => {
                 <use xlinkHref={`${sprite}#icon-bell`} />
               </Icon>
             )}
-            <Icon width="16px" height="16px">
+            <Icon width="16px" height="16px" onClick={onOpenProgress}>
               <use xlinkHref={`${sprite}#icon-goto`} />
             </Icon>
+            {showProgressModal && (
+              <ModalProgress onCloseProgress={onCloseProgress} />
+            )}
             <Icon width="16px" height="16px" onClick={onOpen}>
               <use xlinkHref={`${sprite}#icon-pencil`} />
             </Icon>
