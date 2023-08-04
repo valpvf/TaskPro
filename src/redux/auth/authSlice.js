@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 
 import {
   register,
@@ -90,12 +89,10 @@ export const authSlice = createSlice({
         state.user.avatarURL = payload.avatarURL;
         state.isRefreshing = false;
         state.error = null;
-        toast.success('Changes accepted!');
       })
       .addCase(updateUser.rejected, (state, { payload }) => {
         state.isRefreshing = false;
         state.error = payload;
-        toast.error(payload);
       })
       .addCase(createBoard.fulfilled, (state, { payload }) => {
         state.user.boards.push(payload);
