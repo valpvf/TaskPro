@@ -1,7 +1,7 @@
 import { Box, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import { LabelStyled } from './RadioFilters.styled';
 
-const RadioFilters = ({ onFilterChange, onModalClose }) => {
+const RadioFilters = ({ onFilterChange, onModalClose, onClick }) => {
   const radioButtons = [
     {
       value: 'Without',
@@ -65,6 +65,7 @@ const RadioFilters = ({ onFilterChange, onModalClose }) => {
           value=""
           control={<Radio sx={{ display: 'none' }} />}
           label={<LabelStyled>Show all</LabelStyled>}
+          onClick={onClick}
         />
         {radioButtons.map(button => {
           const { value, label, labelColor, radioColor } = button;
@@ -86,6 +87,7 @@ const RadioFilters = ({ onFilterChange, onModalClose }) => {
               }}
               control={
                 <Radio
+                  onClick={onClick}
                   sx={{
                     width: '14px',
                     height: '14px',

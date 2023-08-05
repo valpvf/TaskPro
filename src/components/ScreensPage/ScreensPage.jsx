@@ -58,6 +58,10 @@ const ScreensPage = ({ title }) => {
 
   const isView = false;
 
+  const onFilter = e => {
+    setPriorityFilter(e.target.value);
+  };
+
   const onOpen = () => {
     setShowModal(true);
   };
@@ -66,7 +70,6 @@ const ScreensPage = ({ title }) => {
   };
 
   const onOpenAddCard = e => {
-    console.log('e', e);
     setColId(e);
     setShowModalAddCard(true);
   };
@@ -110,7 +113,9 @@ const ScreensPage = ({ title }) => {
               <use href={`${icons}#icon-filter`}></use>
             </IconFiltre>
             <div>Filtres</div>
-            {showFilters && <ModalFilters onClose={onCloseFilters} />}
+            {showFilters && (
+              <ModalFilters onClose={onCloseFilters} onClick={onFilter} />
+            )}
           </HeaderFiltres>
         )}
       </ScreensHeader>
