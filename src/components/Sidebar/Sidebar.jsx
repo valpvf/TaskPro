@@ -40,6 +40,8 @@ import { useSelector } from 'react-redux';
 import { getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardId } from 'redux/task/taskOperations';
 import { setBoardActive } from 'redux/task/taskSlice';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Sidebar = ({ setIsBoardActive }) => {
   const [showModal, setShowModal] = useState(false);
@@ -291,6 +293,18 @@ const Sidebar = ({ setIsBoardActive }) => {
           Log out
         </LogOut>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </SidebarContainer>
   );
 };

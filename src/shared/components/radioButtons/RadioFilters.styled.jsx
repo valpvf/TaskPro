@@ -6,7 +6,7 @@ export const LabelStyled = styled.p`
   right: 24px;
   background-color: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--radio-button-text-color);
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   font-weight: 400;

@@ -18,6 +18,7 @@ export const IconUser = styled.svg`
   width: 68px;
   height: 68px;
   border-radius: 10px;
+  border: 1px solid var(--avatar-border-color);
 
   fill: var(--user-icon-fill-color);
   stroke: var(--user-icon-stroke-color);

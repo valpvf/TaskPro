@@ -2,10 +2,14 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
-import { TextareaStyled } from './ModalNeedHelp.styled';
+import { TextareaStyled, InputField } from './ModalNeedHelp.styled';
 import ButtonMain from 'shared/components/button/Button';
-import InputField from 'shared/components/inputField/InputField';
+// import InputField from 'shared/components/inputField/InputField';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
+
+import fetchHelpApi from 'shared/utilities/fetchHelp';
+import { useSelector } from 'react-redux';
+import { getUserEmail } from 'redux/auth/authSelectors';
 
 const NeedHelpSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -13,17 +17,18 @@ const NeedHelpSchema = Yup.object().shape({
 });
 
 const ModalNeedHelp = ({ onClose }) => {
+  const userEmail = useSelector(getUserEmail).toLowerCase();
   return (
     <Modal onClose={onClose} custom={true}>
       <ModalTitle>Need help</ModalTitle>
       <Formik
         initialValues={{
-          email: '',
+          email: `${userEmail}`,
           comment: '',
         }}
         validationSchema={NeedHelpSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
+          fetchHelpApi(values);
           resetForm();
           onClose();
         }}

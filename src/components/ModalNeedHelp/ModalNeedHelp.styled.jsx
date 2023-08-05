@@ -39,3 +39,31 @@ export const TextareaStyled = styled(Field)`
     border: 1px solid var(--primary-modal-card-color);
   }
 `;
+
+export const InputField = styled(Field)`
+  width: 100%;
+  height: 49px;
+  padding: 0 18px;
+  background-color: transparent !important;
+  border: 1px solid var(--shared-input-border-color);
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--shared-input-text-color);
+  text-transform: lowercase;
+  outline: none;
+  transition: border 250ms ease-in;
+
+  &::placeholder {
+    color: var(--shared-input-placeholder-color);
+    text-transform: capitalize;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    border: 1px solid var(--shared-input-border-hover-color) !important;
+    background-color: var(--input-need-help-background-focus) !important;
+  }
+`;
