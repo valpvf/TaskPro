@@ -17,3 +17,5 @@ export const isRefreshing = state => state.auth.isRefreshing;
 export const getError = state => state.auth.error;
 
 export const getBoardSelector = state => state.auth.user.boards;
+
+export const getUserEmail = state => state.auth.user.email;

@@ -7,12 +7,17 @@ import ButtonMain from 'shared/components/button/Button';
 import InputField from 'shared/components/inputField/InputField';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 
+import fetchHelpApi from 'shared/utilities/fetchHelp';
+import { useSelector } from 'react-redux';
+import { getUserEmail } from 'redux/auth/authSelectors';
+
 const NeedHelpSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
   comment: Yup.string().required('Comment is required'),
 });
 
 const ModalNeedHelp = ({ onClose }) => {
+  const userEmail = useSelector(getUserEmail);
   return (
     <Modal onClose={onClose}>
       <ModalTitle>Need help</ModalTitle>
@@ -23,7 +28,7 @@ const ModalNeedHelp = ({ onClose }) => {
         }}
         validationSchema={NeedHelpSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log(values);
+          fetchHelpApi(values);
           resetForm();
           onClose();
         }}
@@ -32,12 +37,13 @@ const ModalNeedHelp = ({ onClose }) => {
           <Form>
             <label htmlFor="email"></label>
             <InputField
+              styles={{ textTransform: 'none' }}
               text="Email address"
               id="email"
               name="email"
               type="email"
               onChange={handleChange}
-              value={values.email}
+              value={userEmail}
             />
             <InputErrorMessage name="email" component={'p'} />
 
