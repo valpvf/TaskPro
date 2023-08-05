@@ -5,7 +5,6 @@ import {
   FormStyled,
   BoxStyled,
   SubtitleStyled,
-  ButtonStyled,
 } from './ModalFilters.styled';
 import { useState } from 'react';
 
@@ -19,7 +18,6 @@ const ModalFilters = ({ onClose }) => {
       <FormStyled>
         <BoxStyled>
           <SubtitleStyled>Label color</SubtitleStyled>
-          <ButtonStyled type="button">Show all</ButtonStyled>
         </BoxStyled>
         <RadioFilters onFilterChange={setPriority}/>
       </FormStyled>

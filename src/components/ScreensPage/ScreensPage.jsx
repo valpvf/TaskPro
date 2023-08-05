@@ -88,7 +88,7 @@ const ScreensPage = ({ title, isBoardActive }) => {
     >
       <ScreensHeader>
         {isBoardActive && <HeaderTxt>{boardName ?? ''}</HeaderTxt>}
-        {isBoardActive && columns.length && (
+        {isBoardActive && columns.length !== 0 && (
           <HeaderAddColumn onClick={() => setShowModal(true)}>
             <IconPlusFilters>
               <use href={`${icons}#icon-plus`}></use>
