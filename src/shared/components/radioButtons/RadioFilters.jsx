@@ -1,6 +1,45 @@
 import { Box, FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import { LabelStyled } from './RadioFilters.styled';
 
 const RadioFilters = ({ onFilterChange }) => {
+  const radioButtons = [
+    {
+      value: 'none',
+      label: 'Without priority',
+      labelColor: 'var(--datepicker-dayname-color)',
+      radioColor: {
+        static: 'var(--radio-label-grey-color)',
+        onChecked: 'var(--radio-label-checked-background-color)',
+      },
+    },
+    {
+      value: 'low',
+      label: 'Low',
+      labelColor: 'var(--radio-label-background-color)',
+      radioColor: {
+        static: 'var(--radio-label-background-color)',
+        onChecked: 'var(--radio-label-checked-background-color)',
+      },
+    },
+    {
+      value: 'medium',
+      label: 'Medium',
+      labelColor: 'var(--radio-label-pink-color)',
+      radioColor: {
+        static: 'var(--radio-label-pink-color)',
+        onChecked: 'var(--radio-label-checked-background-color)',
+      },
+    },
+    {
+      value: 'high',
+      label: 'High',
+      labelColor: 'var(--radio-label-green-color)',
+      radioColor: {
+        static: 'var(--radio-label-green-color)',
+        onChecked: 'var(--radio-label-checked-background-color)',
+      },
+    },
+  ];
   return (
     <Box
       sx={{
@@ -12,139 +51,53 @@ const RadioFilters = ({ onFilterChange }) => {
     >
       <RadioGroup
         aria-labelledby="label-changer"
-        defaultValue="none"
+        defaultValue="all"
         name="radio-buttons-group"
         onChange={ev => onFilterChange(ev.target.value)}
         sx={{ display: 'flex', flexDirection: 'row', gap: '8px' }}
       >
         <FormControlLabel
-          value="none"
-          sx={{
-            display: 'flex',
-            gap: '8px',
-            margin: '0',
-            height: '24px',
-            '& .MuiTypography-root': {
-              fontFamily: 'Poppins',
-              fontSize: '12px',
-              letterSpacing: '-0.24px',
-              color: 'var(--datepicker-dayname-color)',
-            },
-          }}
-          control={
-            <Radio
+          value="all"
+          control={<Radio sx={{ display: 'none' }} />}
+          label={<LabelStyled>Show all</LabelStyled>}
+        />
+        {radioButtons.map(button => {
+          const { value, label, labelColor, radioColor } = button;
+          return (
+            <FormControlLabel
+              key={value}
+              value={value}
               sx={{
-                width: '14px',
-                height: '14px',
-                color: 'transparent',
-                backgroundColor: 'var(--radio-label-grey-color)',
-                '&.Mui-checked': {
-                  color: 'var(--radio-label-grey-color)',
-                  backgroundColor:
-                    'var(--radio-label-checked-background-color)',
+                display: 'flex',
+                gap: '8px',
+                margin: '0',
+                height: '24px',
+                '& .MuiTypography-root': {
+                  fontFamily: 'Poppins',
+                  fontSize: '12px',
+                  letterSpacing: '-0.24px',
+                  color: labelColor,
                 },
               }}
-              disableRipple
+              control={
+                <Radio
+                  sx={{
+                    width: '14px',
+                    height: '14px',
+                    color: 'transparent',
+                    backgroundColor: radioColor.static,
+                    '&.Mui-checked': {
+                      color: radioColor.static,
+                      backgroundColor: radioColor.onChecked,
+                    },
+                  }}
+                  disableRipple
+                />
+              }
+              label={label}
             />
-          }
-          label="Without priority"
-        />
-        <FormControlLabel
-          value="low"
-          sx={{
-            display: 'flex',
-            gap: '8px',
-            margin: '0',
-            height: '24px',
-            '& .MuiTypography-root': {
-              fontFamily: 'Poppins',
-              fontSize: '12px',
-              letterSpacing: '-0.24px',
-              color: 'var(--datepicker-dayname-color)',
-            },
-          }}
-          control={
-            <Radio
-              sx={{
-                width: '14px',
-                height: '14px',
-                color: 'transparent',
-                backgroundColor: 'var(--radio-label-background-color)',
-                '&.Mui-checked': {
-                  color: 'var(--radio-label-background-color)',
-                  backgroundColor:
-                    'var(--radio-label-checked-background-color)',
-                },
-              }}
-              disableRipple
-            />
-          }
-          label="Low"
-        />
-        <FormControlLabel
-          value="medium"
-          sx={{
-            display: 'flex',
-            gap: '8px',
-            margin: '0',
-            height: '24px',
-            '& .MuiTypography-root': {
-              fontFamily: 'Poppins',
-              fontSize: '12px',
-              letterSpacing: '-0.24px',
-              color: 'var(--datepicker-dayname-color)',
-            },
-          }}
-          control={
-            <Radio
-              sx={{
-                width: '14px',
-                height: '14px',
-                color: 'transparent',
-                backgroundColor: 'var(--radio-label-pink-color)',
-                '&.Mui-checked': {
-                  color: 'var(--radio-label-pink-color)',
-                  backgroundColor:
-                    'var(--radio-label-checked-background-color)',
-                },
-              }}
-              disableRipple
-            />
-          }
-          label="Medium"
-        />
-        <FormControlLabel
-          value="high"
-          sx={{
-            display: 'flex',
-            gap: '8px',
-            margin: '0',
-            height: '24px',
-            '& .MuiTypography-root': {
-              fontFamily: 'Poppins',
-              fontSize: '12px',
-              letterSpacing: '-0.24px',
-              color: 'var(--datepicker-dayname-color)',
-            },
-          }}
-          control={
-            <Radio
-              sx={{
-                width: '14px',
-                height: '14px',
-                color: 'transparent',
-                backgroundColor: 'var(--radio-label-green-color)',
-                '&.Mui-checked': {
-                  color: 'var(--radio-label-green-color)',
-                  backgroundColor:
-                    'var(--radio-label-checked-background-color)',
-                },
-              }}
-              disableRipple
-            />
-          }
-          label="High"
-        />
+          );
+        })}
       </RadioGroup>
     </Box>
   );
