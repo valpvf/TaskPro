@@ -10,6 +10,8 @@ import RadioIcons from 'shared/components/radioButtons/RadioIcons';
 import { SubtitleStyled } from './ModalBoard.styled';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getBoardSelector } from 'redux/auth/authSelectors';
 
 const TitleSchema = Yup.object().shape({
   boardTitle: Yup.string().required('Title is required'),
@@ -26,6 +28,7 @@ const ModalBoard = ({
 }) => {
   const [backgroundName, setBackgroundName] = useState('00');
   const [iconName, setIconName] = useState('icon-project');
+  const boards = useSelector(getBoardSelector);
 
   let updatedBackground;
   let updatedIcon;
@@ -47,6 +50,9 @@ const ModalBoard = ({
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
           if (btnName === 'Create') {
+            if (boards.some(el => el.title === values.boardTitle)) {
+              return console.log('Duplicate');
+            }
             const boardInfo = {
               values,
               background: backgroundName,
@@ -54,12 +60,21 @@ const ModalBoard = ({
             };
             onCreateBoard(boardInfo);
           } else if (btnName === 'Edit') {
+            if (
+              boards.some(
+                el => el.title === values.boardTitle && el !== currentBoard
+              )
+            ) {
+              return console.log('Duplicate');
+            }
             const boardInfoEdit = {
               values,
               background: updatedBackground,
               icon: updatedIcon,
             };
+
             onEditBoard(boardInfoEdit);
+            console.log(boardInfoEdit);
           }
 
           resetForm();

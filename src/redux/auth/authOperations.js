@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { addBoardApi, deleteBoardApi } from 'services/backApi';
 
@@ -114,8 +114,10 @@ export const createBoard = createAsyncThunk(
   'boards/createBoard',
   async (boardData, thunkAPI) => {
     try {
+      // const isActive = true;
       const response = await addBoardApi(boardData);
-      return response.data;
+      const payload = { isActive: true, ...response.data };
+      return payload;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -145,3 +147,5 @@ export const editBoard = createAsyncThunk(
     }
   }
 );
+
+export const updateBoardActive = createAction('auth/updateBoardActive');

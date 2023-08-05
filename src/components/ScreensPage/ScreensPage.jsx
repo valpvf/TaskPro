@@ -29,7 +29,7 @@ import Column from 'components/Column/Column';
 import { getBoard } from 'redux/auth/authSelectors';
 // import { addBoardApi } from 'services/backApi';
 
-const ScreensPage = ({ title, isBoardActive }) => {
+const ScreensPage = ({ title }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
@@ -38,10 +38,11 @@ const ScreensPage = ({ title, isBoardActive }) => {
   const boardBg = useSelector(getBoardBg);
   const boards = useSelector(getBoard);
   const columns = useSelector(getColumn);
-  console.log(boards.length, ' - boards');
-  console.log(columns.length, ' - columns');
-  console.log(isBoardActive);
+  // console.log(boards.length, ' - boards');
+  // console.log(columns.length, ' - columns');
 
+  const isBoardActive = boards.find(board => board.isActive);
+  // console.log(isBoardActive);
   // const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -80,6 +81,12 @@ const ScreensPage = ({ title, isBoardActive }) => {
   };
 
   return boards.length ? (
+    // <Container
+    //   style={{
+    //     backgroundImage:
+    //       isBoardActive && `url('images/background/${boardBg}d.jpg')`,
+    //   }}
+    // >
     <Container
       style={{
         backgroundImage:
