@@ -56,7 +56,7 @@ html[data-theme='dark'] {
   --line-border-sidebar-color: #ffffff1a;
   --board-item-sidebar-background-color: #161616;
   --board-item-sidebar-color: #ffffff;
-  --screens-page-tutorial-text-color: rgba(255, 255, 255, 0.50);
+  --screens-page-tutorial-text-color: rgba(255, 255, 255, 0.5);
 
   --modal-backdrop-background-color: rgba(137, 137, 137, 0.2);
   --modal-window-color: #161616;
@@ -124,6 +124,10 @@ html[data-theme='dark'] {
 
   --scrollbar-background-color: #444;
   --scrollbar-base-color: #222;
+
+  --input-need-help-background-focus: #1f1f1f;
+  --radio-button-text-color: rgba(255, 255, 255, 0.5);
+  --avatar-border-color: #bedbb0;
 }
 
 // light theme
@@ -147,7 +151,7 @@ html[data-theme='light'] {
   --line-border-sidebar-color: #d6d2d2;
   --board-item-sidebar-background-color: #f6f6f7;
   --board-item-sidebar-color: #b7b7b7;
-  --screens-page-tutorial-text-color: rgba(22, 22, 22, 0.70);
+  --screens-page-tutorial-text-color: rgba(22, 22, 22, 0.7);
 
   --modal-backdrop-background-color: rgba(137, 137, 137, 0.2);
   --modal-window-color: #fdfdfd;
@@ -214,6 +218,10 @@ html[data-theme='light'] {
 
   --scrollbar-background-color: #b6b4b4;
   --scrollbar-base-color: #dddbdb;
+
+  --input-need-help-background-focus: #fff;
+  --radio-button-text-color: rgba(22, 22, 22, 0.5);
+  --avatar-border-color: #bedbb0;
 }
 
 // purple theme
@@ -238,7 +246,7 @@ html[data-theme='violet'] {
   --line-border-sidebar-color: #ffffff1a;
   --board-item-sidebar-background-color: #979cea;
   --board-item-sidebar-color: #ffffff;
-  --screens-page-tutorial-text-color: rgba(22, 22, 22, 0.70);
+  --screens-page-tutorial-text-color: rgba(22, 22, 22, 0.7);
 
   --modal-backdrop-background-color: rgba(137, 137, 137, 0.2);
   --modal-window-color: #fdfdfd;
@@ -305,4 +313,8 @@ html[data-theme='violet'] {
 
   --scrollbar-background-color: #b8bcfd;
   --scrollbar-base-color: #ffffff;
+
+  --input-need-help-background-focus: #fff;
+  --radio-button-text-color: rgba(22, 22, 22, 0.5);
+  --avatar-border-color: #7b7ede;
 }

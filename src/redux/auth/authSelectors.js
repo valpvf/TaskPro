@@ -19,3 +19,5 @@ export const getError = state => state.auth.error;
 export const getBoardSelector = state => state.auth.user.boards;
 
 export const isActiveSelector = state => state.auth.user.boards.isActive;
+
+export const getUserEmail = state => state.auth.user.email;

@@ -14,7 +14,8 @@ export const AvasarSetin = styled.div`
 export const IconAvatar = styled.svg`
   width: 32px;
   height: 32px;
-  /* fill: #1f1f1f; */
+  border: 1px solid var(--avatar-border-color);
+  border-radius: 5px;
   fill: var(--user-icon-fill-color);
   /* stroke: white; */
   stroke: var(--user-icon-stroke-color);
