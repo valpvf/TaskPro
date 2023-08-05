@@ -19,8 +19,9 @@ import {
   DatePickerWrapper,
   SpanStyled,
 } from './ModalCard.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addCard, editCard } from 'redux/task/taskOperations';
+import { getTheme } from 'redux/auth/authSelectors';
 
 const TitleSchema = Yup.object().shape({
   cardTitle: Yup.string().required('Title is required'),
@@ -41,6 +42,7 @@ const ModalCard = ({
   registerLocale('en', uk);
 
   const dispatch = useDispatch();
+  const theme = useSelector(getTheme);
 
   const [startDate, setStartDate] = useState(
     deadline ? new Date(deadline) : new Date()
@@ -124,7 +126,7 @@ const ModalCard = ({
               currentPriority={currentPriority}
             />
             <LabelStyled htmlFor="date">Deadline</LabelStyled>
-            <DatePickerWrapper>
+            <DatePickerWrapper violet={theme === 'violet' ? true : false}>
               {compareDate() && <SpanStyled>Today,&nbsp;</SpanStyled>}
               <DatePicker
                 locale="en"
