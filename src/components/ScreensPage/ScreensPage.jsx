@@ -33,6 +33,7 @@ const ScreensPage = ({ title, isBoardActive }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const filt = 'Medium';
 
   const [colId, setColId] = useState('');
   const boardBg = useSelector(getBoardBg);
@@ -129,7 +130,8 @@ const ScreensPage = ({ title, isBoardActive }) => {
               {el.tasks?.length === 0
                 ? isView && <Card columnID={el._id} />
                 : el.tasks
-                    ?.toSorted((a, b) => b.updatedAt.localeCompare(a.updatedAt))
+                    ?.filter(card => card.priority === filt)
+                    .toSorted((a, b) => b.updatedAt.localeCompare(a.updatedAt))
                     .map(task => (
                       <Card key={task._id} task={task} columnID={el._id} />
                     ))}
