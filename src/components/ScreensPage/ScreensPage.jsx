@@ -33,6 +33,7 @@ const ScreensPage = ({ title, isBoardActive }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [dataFilter, setDataFilter] = useState('all');
   const filt = 'Medium';
 
   const [colId, setColId] = useState('');
@@ -76,7 +77,8 @@ const ScreensPage = ({ title, isBoardActive }) => {
   const onOpenFilters = () => {
     setShowFilters(true);
   };
-  const onCloseFilters = () => {
+  const onCloseFilters = e => {
+    console.log('priority', e);
     setShowFilters(false);
   };
 

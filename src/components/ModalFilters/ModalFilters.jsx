@@ -10,18 +10,19 @@ import {
 import { useState } from 'react';
 
 const ModalFilters = ({ onClose }) => {
-  const [priority, setPriority] = useState('none')
+  const [priority, setPriority] = useState('all');
 
   console.log(priority);
+
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={() => onClose(priority)}>
       <ModalTitle>Filters</ModalTitle>
       <FormStyled>
         <BoxStyled>
           <SubtitleStyled>Label color</SubtitleStyled>
           <ButtonStyled type="button">Show all</ButtonStyled>
         </BoxStyled>
-        <RadioFilters onFilterChange={setPriority}/>
+        <RadioFilters onFilterChange={setPriority} />
       </FormStyled>
     </Modal>
   );
