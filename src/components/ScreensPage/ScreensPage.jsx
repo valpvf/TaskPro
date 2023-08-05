@@ -29,19 +29,21 @@ import Column from 'components/Column/Column';
 import { getBoard } from 'redux/auth/authSelectors';
 // import { addBoardApi } from 'services/backApi';
 
-const ScreensPage = ({ title, isBoardActive }) => {
+const ScreensPage = ({ title }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [priorityFilter, setPriorityFilter] = useState('');
 
   const [colId, setColId] = useState('');
   const boardBg = useSelector(getBoardBg);
   const boards = useSelector(getBoard);
   const columns = useSelector(getColumn);
-  console.log(boards.length, ' - boards');
-  console.log(columns.length, ' - columns');
-  console.log(isBoardActive);
+  // console.log(boards.length, ' - boards');
+  // console.log(columns.length, ' - columns');
 
+  const isBoardActive = boards.find(board => board.isActive);
+  // console.log(isBoardActive);
   // const dispatch = useDispatch();
 
   // useEffect(() => {
@@ -56,6 +58,10 @@ const ScreensPage = ({ title, isBoardActive }) => {
 
   const isView = false;
 
+  const onFilter = e => {
+    setPriorityFilter(e.target.value);
+  };
+
   const onOpen = () => {
     setShowModal(true);
   };
@@ -64,7 +70,6 @@ const ScreensPage = ({ title, isBoardActive }) => {
   };
 
   const onOpenAddCard = e => {
-    console.log('e', e);
     setColId(e);
     setShowModalAddCard(true);
   };
@@ -80,6 +85,12 @@ const ScreensPage = ({ title, isBoardActive }) => {
   };
 
   return boards.length ? (
+    // <Container
+    //   style={{
+    //     backgroundImage:
+    //       isBoardActive && `url('images/background/${boardBg}d.jpg')`,
+    //   }}
+    // >
     <Container
       style={{
         backgroundImage:
@@ -102,7 +113,9 @@ const ScreensPage = ({ title, isBoardActive }) => {
               <use href={`${icons}#icon-filter`}></use>
             </IconFiltre>
             <div>Filtres</div>
-            {showFilters && <ModalFilters onClose={onCloseFilters} />}
+            {showFilters && (
+              <ModalFilters onClose={onCloseFilters} onClick={onFilter} />
+            )}
           </HeaderFiltres>
         )}
       </ScreensHeader>
@@ -129,7 +142,8 @@ const ScreensPage = ({ title, isBoardActive }) => {
               {el.tasks?.length === 0
                 ? isView && <Card columnID={el._id} />
                 : el.tasks
-                    ?.toSorted((a, b) => b.updatedAt.localeCompare(a.updatedAt))
+                    ?.filter(card => card.priority.includes(priorityFilter))
+                    .toSorted((a, b) => b.updatedAt.localeCompare(a.updatedAt))
                     .map(task => (
                       <Card key={task._id} task={task} columnID={el._id} />
                     ))}

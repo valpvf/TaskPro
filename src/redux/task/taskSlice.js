@@ -16,6 +16,7 @@ const initialState = {
   title: '',
   icon: 'icon-project',
   background: '00',
+  isActive: false,
   columns: [
     {
       _id: '64c7a72cef9d0ebaa3b7b7b9',
@@ -57,33 +58,15 @@ const boardSlice = createSlice({
     changePart: (state, { payload }) => {
       state.part += payload;
     },
-    changeBackground: (state, { payload }) => {
-      // const boardIndex = state.auth.user.boards.findIndex(
-      //   board => board._id === payload._id
-      // );
-      console.log('state,payload', state, payload);
-      // if (boardIndex !== -1) {
-      //   state.board[boardIndex].background = payload.background;
-      // }
-    },
   },
   extraReducers: builder => {
     builder
-      // .addCase(getBoard.pending, state => {
-      //   state.error = null;
-      // })
-      // .addCase(getBoard.fulfilled, (state, { payload }) => {
-      //   state.error = null;
-      //   state.board = payload;
-      // })
-      // .addCase(getBoard.rejected, (state, action) => {
-      //   state.error = action.error.message;
-      // })
       .addCase(getBoardId.pending, state => {
         // state.error = null;
       })
       .addCase(getBoardId.fulfilled, (state, { payload }) => {
         // state.error = null;
+        console.log(payload);
         return { ...payload, error: null };
       })
       .addCase(getBoardId.rejected, (state, action) => {
@@ -156,5 +139,6 @@ const boardSlice = createSlice({
   },
 });
 
-export const { changePart, changeBackground } = boardSlice.actions;
+export const { changePart, changeBackground, setBoardActive } =
+  boardSlice.actions;
 export default boardSlice.reducer;

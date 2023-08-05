@@ -4,7 +4,7 @@ import { Field } from 'formik';
 export const TextareaStyled = styled(Field)`
   width: 100%;
   height: 120px;
-  margin-top: 14px;
+  margin-top: 18px;
   padding: 14px 18px;
   resize: none;
   border-radius: 8px;

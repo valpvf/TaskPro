@@ -1,10 +1,10 @@
 import { Box, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import { LabelStyled } from './RadioFilters.styled';
 
-const RadioFilters = ({ onFilterChange }) => {
+const RadioFilters = ({ onFilterChange, onModalClose, onClick }) => {
   const radioButtons = [
     {
-      value: 'none',
+      value: 'Without',
       label: 'Without priority',
       labelColor: 'var(--datepicker-dayname-color)',
       radioColor: {
@@ -13,7 +13,7 @@ const RadioFilters = ({ onFilterChange }) => {
       },
     },
     {
-      value: 'low',
+      value: 'Low',
       label: 'Low',
       labelColor: 'var(--radio-label-background-color)',
       radioColor: {
@@ -22,7 +22,7 @@ const RadioFilters = ({ onFilterChange }) => {
       },
     },
     {
-      value: 'medium',
+      value: 'Medium',
       label: 'Medium',
       labelColor: 'var(--radio-label-pink-color)',
       radioColor: {
@@ -31,7 +31,7 @@ const RadioFilters = ({ onFilterChange }) => {
       },
     },
     {
-      value: 'high',
+      value: 'High',
       label: 'High',
       labelColor: 'var(--radio-label-green-color)',
       radioColor: {
@@ -53,13 +53,19 @@ const RadioFilters = ({ onFilterChange }) => {
         aria-labelledby="label-changer"
         defaultValue="all"
         name="radio-buttons-group"
-        onChange={ev => onFilterChange(ev.target.value)}
+        onChange={ev => {
+          onFilterChange(ev.target.value);
+          setTimeout(() => {
+            onModalClose();
+          }, 150);
+        }}
         sx={{ display: 'flex', flexDirection: 'row', gap: '8px' }}
       >
         <FormControlLabel
-          value="all"
+          value=""
           control={<Radio sx={{ display: 'none' }} />}
           label={<LabelStyled>Show all</LabelStyled>}
+          onClick={onClick}
         />
         {radioButtons.map(button => {
           const { value, label, labelColor, radioColor } = button;
@@ -81,6 +87,7 @@ const RadioFilters = ({ onFilterChange }) => {
               }}
               control={
                 <Radio
+                  onClick={onClick}
                   sx={{
                     width: '14px',
                     height: '14px',

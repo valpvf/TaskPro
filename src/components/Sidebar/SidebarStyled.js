@@ -129,16 +129,16 @@ export const BoardItem = styled.li`
   text-align: left;
 
   background-color: ${props =>
-    props.isActive
+    props.isActiveProps
       ? 'var(--board-item-sidebar-background-color)'
       : 'transparent'};
   color: ${props =>
-    props.isActive
+    props.isActiveProps
       ? 'var(--sidebar-icon-active-stroke-color)'
       : 'var(--sidebar-icon-edit-stroke-color)'};
 
   stroke: ${props =>
-    props.isActive
+    props.isActiveProps
       ? 'var(--sidebar-icon-active-stroke-color)'
       : 'var(--sidebar-icon-edit-stroke-color)'};
   &:hover {

@@ -31,7 +31,7 @@ export const ModalWindowStyled = styled.div`
     width: 335px;
   }
   @media screen and (min-width: 768px) {
-    width: 350px;
+    width: ${props => (props.custom ? '400px' : '350px')};
   }
 `;
 
