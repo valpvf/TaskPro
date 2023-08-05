@@ -49,6 +49,7 @@ export const CustomOptionList = styled.ul`
   border: solid 1px var(--theme-switcher-dropdown-border-color);
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
+  z-index: 1;
 `;
 
 export const CustomOption = styled.li`

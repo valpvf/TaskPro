@@ -5,12 +5,12 @@ import { FormStyled, BoxStyled, SubtitleStyled } from './ModalFilters.styled';
 import { useState } from 'react';
 
 const ModalFilters = ({ onClose }) => {
-  const [priority, setPriority] = useState('all');
+  const [priority, setPriority] = useState('');
 
   console.log(priority);
 
   return (
-    <Modal onClose={() => onClose(priority)}>
+    <Modal onClose={onClose}>
       <ModalTitle>Filters</ModalTitle>
       <FormStyled>
         <BoxStyled>

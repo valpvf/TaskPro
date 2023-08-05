@@ -4,7 +4,7 @@ import { LabelStyled } from './RadioFilters.styled';
 const RadioFilters = ({ onFilterChange, onModalClose }) => {
   const radioButtons = [
     {
-      value: 'none',
+      value: 'Without',
       label: 'Without priority',
       labelColor: 'var(--datepicker-dayname-color)',
       radioColor: {
@@ -13,7 +13,7 @@ const RadioFilters = ({ onFilterChange, onModalClose }) => {
       },
     },
     {
-      value: 'low',
+      value: 'Low',
       label: 'Low',
       labelColor: 'var(--radio-label-background-color)',
       radioColor: {
@@ -22,7 +22,7 @@ const RadioFilters = ({ onFilterChange, onModalClose }) => {
       },
     },
     {
-      value: 'medium',
+      value: 'Medium',
       label: 'Medium',
       labelColor: 'var(--radio-label-pink-color)',
       radioColor: {
@@ -31,7 +31,7 @@ const RadioFilters = ({ onFilterChange, onModalClose }) => {
       },
     },
     {
-      value: 'high',
+      value: 'High',
       label: 'High',
       labelColor: 'var(--radio-label-green-color)',
       radioColor: {
@@ -58,12 +58,11 @@ const RadioFilters = ({ onFilterChange, onModalClose }) => {
           setTimeout(() => {
             onModalClose();
           }, 150);
-          
         }}
         sx={{ display: 'flex', flexDirection: 'row', gap: '8px' }}
       >
         <FormControlLabel
-          value="all"
+          value=""
           control={<Radio sx={{ display: 'none' }} />}
           label={<LabelStyled>Show all</LabelStyled>}
         />
