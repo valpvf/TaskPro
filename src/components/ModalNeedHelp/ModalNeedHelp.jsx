@@ -14,7 +14,7 @@ const NeedHelpSchema = Yup.object().shape({
 
 const ModalNeedHelp = ({ onClose }) => {
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={onClose} custom={true}>
       <ModalTitle>Need help</ModalTitle>
       <Formik
         initialValues={{

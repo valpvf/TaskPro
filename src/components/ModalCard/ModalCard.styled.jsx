@@ -3,11 +3,12 @@ import { Field } from 'formik';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../shared/basicStyles/variables.scss';
 import Svg from '../../images/chevron-down.svg';
+import SvgBlue from '../../images/chevron-down-blue.svg';
 
 export const TextareaStyled = styled(Field)`
   width: 100%;
   height: 154px;
-  margin-top: 14px;
+  margin-top: 18px;
   padding: 14px 18px;
   resize: none;
   border-radius: 8px;
@@ -65,9 +66,6 @@ export const LabelStyled = styled.label`
 `;
 
 export const DatePickerWrapper = styled.div`
-  /* & .react-datepicker-wrapper {
-    width: 100%;
-  } */
   & .react-datepicker__input-container {
     width: 100%;
   }
@@ -75,7 +73,8 @@ export const DatePickerWrapper = styled.div`
     position: relative;
     width: 100%;
     padding: 0;
-    background-image: url(${Svg});
+    background-image: ${props =>
+      props.violet ? `url(${SvgBlue})` : `url(${Svg})`};
     background-repeat: no-repeat;
     background-position: top 6px right 65px;
 

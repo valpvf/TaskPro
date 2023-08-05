@@ -4,9 +4,9 @@ import ModalTitle from 'components/ModalTitle/ModalTitle';
 
 const ModalEditProfile = ({ onClose }) => {
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={onClose} custom={true}>
       <ModalTitle>Edit profile</ModalTitle>
-      <EditUser onClose={onClose}/>
+      <EditUser onClose={onClose} />
     </Modal>
   );
 };
