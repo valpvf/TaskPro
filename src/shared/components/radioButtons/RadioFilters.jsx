@@ -1,7 +1,7 @@
 import { Box, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import { LabelStyled } from './RadioFilters.styled';
 
-const RadioFilters = ({ onFilterChange }) => {
+const RadioFilters = ({ onFilterChange, onModalClose }) => {
   const radioButtons = [
     {
       value: 'none',
@@ -53,7 +53,13 @@ const RadioFilters = ({ onFilterChange }) => {
         aria-labelledby="label-changer"
         defaultValue="all"
         name="radio-buttons-group"
-        onChange={ev => onFilterChange(ev.target.value)}
+        onChange={ev => {
+          onFilterChange(ev.target.value);
+          setTimeout(() => {
+            onModalClose();
+          }, 150);
+          
+        }}
         sx={{ display: 'flex', flexDirection: 'row', gap: '8px' }}
       >
         <FormControlLabel
