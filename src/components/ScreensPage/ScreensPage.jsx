@@ -33,6 +33,7 @@ const ScreensPage = ({ title }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalAddCard, setShowModalAddCard] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [priorityFilter, setPriorityFilter] = useState('');
 
   const [colId, setColId] = useState('');
   const boardBg = useSelector(getBoardBg);
@@ -57,6 +58,10 @@ const ScreensPage = ({ title }) => {
 
   const isView = false;
 
+  const onFilter = e => {
+    setPriorityFilter(e.target.value);
+  };
+
   const onOpen = () => {
     setShowModal(true);
   };
@@ -65,7 +70,6 @@ const ScreensPage = ({ title }) => {
   };
 
   const onOpenAddCard = e => {
-    console.log('e', e);
     setColId(e);
     setShowModalAddCard(true);
   };
@@ -109,7 +113,9 @@ const ScreensPage = ({ title }) => {
               <use href={`${icons}#icon-filter`}></use>
             </IconFiltre>
             <div>Filtres</div>
-            {showFilters && <ModalFilters onClose={onCloseFilters} />}
+            {showFilters && (
+              <ModalFilters onClose={onCloseFilters} onClick={onFilter} />
+            )}
           </HeaderFiltres>
         )}
       </ScreensHeader>
@@ -136,7 +142,8 @@ const ScreensPage = ({ title }) => {
               {el.tasks?.length === 0
                 ? isView && <Card columnID={el._id} />
                 : el.tasks
-                    ?.toSorted((a, b) => b.updatedAt.localeCompare(a.updatedAt))
+                    ?.filter(card => card.priority.includes(priorityFilter))
+                    .toSorted((a, b) => b.updatedAt.localeCompare(a.updatedAt))
                     .map(task => (
                       <Card key={task._id} task={task} columnID={el._id} />
                     ))}
