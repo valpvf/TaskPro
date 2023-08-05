@@ -18,6 +18,7 @@ import {
   IconWrapper,
 } from './Card.styled';
 import { deleteCard } from 'redux/task/taskOperations';
+import ModalProgress from 'components/ModalProgress/ModalProgress';
 
 const Card = ({ task = {}, columnID }) => {
   const {
@@ -30,12 +31,14 @@ const Card = ({ task = {}, columnID }) => {
 
   const dispatch = useDispatch();
   const handleDelete = () => {
-    dispatch(deleteCard(_id));
+    console.log('id', _id, columnID, task);
+    dispatch(deleteCard({ _id, columnID }));
   };
 
   // console.log('columnId', columnID);
 
   const [showModal, setShowModal] = useState(false);
+  const [showProgressModal, setShowProgressModal] = useState(false);
 
   const onOpen = () => {
     setShowModal(true);
@@ -43,15 +46,24 @@ const Card = ({ task = {}, columnID }) => {
   const onClose = () => {
     setShowModal(false);
   };
+
+   const onOpenProgress = () => {
+    setShowProgressModal(true);
+  };
+  const onCloseProgress = () => {
+    setShowProgressModal(false);
+  };
+
   function formatDate(date) {
-    const year = date.getFullYear().toString().slice(-2);
+    const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
 
-    return `${month}/${day}/${year}`;
+    return `${day}/${month}/${year}`;
   }
   const today = new Date();
   const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July 28, 2023)
+  const deadlineDate = formatDate(new Date(deadline.split('T')[0]));
   return (
     <CardWrapper priority={'High'}>
       <div>
@@ -68,17 +80,20 @@ const Card = ({ task = {}, columnID }) => {
           </div>
           <div>
             <DeadlineTitle>Deadline</DeadlineTitle>
-            <DeadlineSubTitle>{deadline.split('T')[0]}</DeadlineSubTitle>
+            <DeadlineSubTitle>{deadlineDate}</DeadlineSubTitle>
           </div>
           <IconWrapper>
-            {deadline === formattedDate && (
+            {deadlineDate === formattedDate && (
               <Icon width="16px" height="16px">
                 <use xlinkHref={`${sprite}#icon-bell`} />
               </Icon>
             )}
-            <Icon width="16px" height="16px">
+            <Icon width="16px" height="16px" onClick={onOpenProgress}>
               <use xlinkHref={`${sprite}#icon-goto`} />
             </Icon>
+            {showProgressModal && (
+              <ModalProgress onCloseProgress={onCloseProgress} />
+            )}
             <Icon width="16px" height="16px" onClick={onOpen}>
               <use xlinkHref={`${sprite}#icon-pencil`} />
             </Icon>
@@ -91,7 +106,7 @@ const Card = ({ task = {}, columnID }) => {
                 cardDescription={description}
                 currentPriority={priority}
                 deadline={deadline}
-                cardId={columnID}
+                column={columnID}
                 taskId={_id}
               />
             )}

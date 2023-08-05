@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 export const CardWrapper = styled.div`
-  margin-left: 20px;
   margin-top: 10px;
   /* background-color: #121212; */
   background-color: var(--primary-card-background-color);
@@ -108,7 +107,8 @@ export const Icon = styled.svg`
 `;
 
 export const IconWrapper = styled.div`
-  margin-left: 130px;
+  position: relative;
+  left: 70px;
   display: flex;
   align-items: center;
   gap: 10px;

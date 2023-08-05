@@ -26,10 +26,10 @@ function EditUser({ onClose }) {
   const userData = useSelector(getUserData);
   const dispatch = useDispatch();
 
-  const [selectedFile, setSelectedFile] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
-  const [profileName, setProfileName] = useState(userData.name);
-  const [profileEmail, setProfileEmail] = useState(userData.email);
+  const [imageFile, setImageFile] = useState(null);
+  const [userName, setUserName] = useState(userData.name);
+  const [userEmail, setUserEmail] = useState(userData.email);
   const [showPassword, setShowPassword] = useState(false);
 
   const onPasswordVisible = () => {
@@ -37,42 +37,43 @@ function EditUser({ onClose }) {
   };
 
   useEffect(() => {
-    if (selectedFile) {
+    if (imageFile) {
       const reader = new FileReader();
 
       reader.onload = event => {
         setImageUrl(event.target.result);
       };
 
-      reader.readAsDataURL(selectedFile);
+      reader.readAsDataURL(imageFile);
     }
-  }, [selectedFile]);
+  }, [imageFile]);
 
   const handleFileChange = event => {
-    setSelectedFile(event.target.files[0]);
+    setImageFile(event.target.files[0]);
   };
 
   const formSubmit = e => {
     e.preventDefault();
-    const formData = new FormData();
-    const { name, email, password } = e.currentTarget.elements;
+    const newUserData = new FormData();
+    const { name, email, password } = e.target.elements;
+
     if (name.value) {
-      formData.append('name', name.value);
+      newUserData.append('name', name.value);
     } else {
-      formData.append('name', userData.name);
+      newUserData.append('name', userData.name);
     }
     if (email.value) {
-      formData.append('email', email.value);
+      newUserData.append('email', email.value);
     }
 
     if (password.value) {
-      formData.append('password', password.value);
+      newUserData.append('password', password.value);
     }
-    if (selectedFile) {
-      formData.append('avatar', selectedFile);
+    if (imageFile) {
+      newUserData.append('avatar', imageFile);
     }
 
-    dispatch(updateUser(formData));
+    dispatch(updateUser(newUserData));
     onClose();
   };
 
@@ -81,18 +82,18 @@ function EditUser({ onClose }) {
       <form onSubmit={formSubmit}>
         <Formik
           initialValues={{
-            name: profileName,
-            email: profileEmail,
+            name: userName,
+            email: userEmail,
             password: '',
           }}
           validationSchema={RegisterSchema}
         >
           <Wrapper>
             <AvatarWrapper>
-              {(!imageUrl) && (!userData.avatarURL) ? (
+              {!imageUrl && !userData.avatarURL ? (
                 <IconUser>
-            <use href={`${sprite}#icon-user`}></use>
-          </IconUser>
+                  <use href={`${sprite}#icon-user`}></use>
+                </IconUser>
               ) : (
                 <AvatarImg
                   src={imageUrl || userData.avatarURL}
@@ -117,14 +118,14 @@ function EditUser({ onClose }) {
                 autoFocus
                 name="name"
                 type="text"
-                value={profileName}
-                onChange={e => setProfileName(e.target.value)}
+                value={userName}
+                onChange={e => setUserName(e.target.value)}
               />
               <Field
                 name="email"
                 type="email"
-                value={profileEmail}
-                onChange={e => setProfileEmail(e.target.value)}
+                value={userEmail}
+                onChange={e => setUserEmail(e.target.value)}
               />
               <PasswordInput>
                 <Field

@@ -88,7 +88,7 @@ const ScreensPage = ({ title, isBoardActive }) => {
     >
       <ScreensHeader>
         {isBoardActive && <HeaderTxt>{boardName ?? ''}</HeaderTxt>}
-        {isBoardActive && columns.length && (
+        {isBoardActive && columns.length !== 0 && (
           <HeaderAddColumn onClick={() => setShowModal(true)}>
             <IconPlusFilters>
               <use href={`${icons}#icon-plus`}></use>
@@ -129,7 +129,7 @@ const ScreensPage = ({ title, isBoardActive }) => {
               {el.tasks?.length === 0
                 ? isView && <Card columnID={el._id} />
                 : el.tasks
-                    ?.toSorted((a, b) => a.updatedAt.localeCompare(b.updatedAt))
+                    ?.toSorted((a, b) => b.updatedAt.localeCompare(a.updatedAt))
                     .map(task => (
                       <Card key={task._id} task={task} columnID={el._id} />
                     ))}
