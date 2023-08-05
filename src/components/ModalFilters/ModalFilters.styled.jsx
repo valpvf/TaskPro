@@ -8,6 +8,7 @@ export const FormStyled = styled.form`
 `;
 
 export const BoxStyled = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,16 +23,4 @@ export const SubtitleStyled = styled.p`
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: -0.28px;
-`;
-
-export const ButtonStyled = styled.button`
-  background-color: transparent;
-  border: none;
-  color: rgba(255, 255, 255, 0.5);
-  font-family: 'Poppins', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.5;
-  letter-spacing: -0.24px;
-  text-decoration-line: underline;
 `;

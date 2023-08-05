@@ -118,6 +118,7 @@ export const IconPlus = styled.svg`
 export const ColumnsContainer = styled.div`
   display: flex;
   text-align: justify;
+  justify-items: center;
   gap: 22px;
   max-width: 1170px;
   overflow-x: auto;

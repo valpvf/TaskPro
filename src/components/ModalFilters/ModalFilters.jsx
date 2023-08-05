@@ -1,12 +1,7 @@
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
 import RadioFilters from 'shared/components/radioButtons/RadioFilters';
-import {
-  FormStyled,
-  BoxStyled,
-  SubtitleStyled,
-  ButtonStyled,
-} from './ModalFilters.styled';
+import { FormStyled, BoxStyled, SubtitleStyled } from './ModalFilters.styled';
 import { useState } from 'react';
 
 const ModalFilters = ({ onClose }) => {
@@ -20,9 +15,8 @@ const ModalFilters = ({ onClose }) => {
       <FormStyled>
         <BoxStyled>
           <SubtitleStyled>Label color</SubtitleStyled>
-          <ButtonStyled type="button">Show all</ButtonStyled>
         </BoxStyled>
-        <RadioFilters onFilterChange={setPriority} />
+        <RadioFilters onFilterChange={setPriority} onModalClose={onClose} />
       </FormStyled>
     </Modal>
   );
