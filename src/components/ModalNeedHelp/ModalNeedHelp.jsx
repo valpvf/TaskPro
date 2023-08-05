@@ -8,8 +8,8 @@ import InputField from 'shared/components/inputField/InputField';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 
 import fetchHelpApi from 'shared/utilities/fetchHelp';
-import { useSelector } from 'react-redux';
-import { getUserEmail } from 'redux/auth/authSelectors';
+// import { useSelector } from 'react-redux';
+// import { getUserEmail } from 'redux/auth/authSelectors';
 
 const NeedHelpSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -17,7 +17,7 @@ const NeedHelpSchema = Yup.object().shape({
 });
 
 const ModalNeedHelp = ({ onClose }) => {
-  const userEmail = useSelector(getUserEmail);
+  // const userEmail = useSelector(getUserEmail);
   return (
     <Modal onClose={onClose}>
       <ModalTitle>Need help</ModalTitle>
@@ -43,7 +43,8 @@ const ModalNeedHelp = ({ onClose }) => {
               name="email"
               type="email"
               onChange={handleChange}
-              value={userEmail}
+              value={values.email}
+              // value={userEmail}
             />
             <InputErrorMessage name="email" component={'p'} />
 
