@@ -33,11 +33,13 @@ import {
   deleteBoard,
   editBoard,
   logout,
+  updateBoardActive,
 } from 'redux/auth/authOperations';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardId } from 'redux/task/taskOperations';
+import { setBoardActive } from 'redux/task/taskSlice';
 
 const Sidebar = ({ setIsBoardActive }) => {
   const [showModal, setShowModal] = useState(false);
@@ -48,6 +50,7 @@ const Sidebar = ({ setIsBoardActive }) => {
   const [activeBoardId, setActiveBoardId] = useState(null);
   const [isHelpBarHovered, setIsHelpBarHovered] = useState(false);
   const boardListRef = useRef(null);
+  const [boardEventOccurred, setBoardEventOccurred] = useState(false);
 
   const dispatch = useDispatch();
   const getBoard = useSelector(getBoardSelector);
@@ -60,9 +63,21 @@ const Sidebar = ({ setIsBoardActive }) => {
     navigate('/');
   };
 
+  const handleSetActiveBoard = boardId => {
+    // if (activeBoardId) {
+    //   dispatch(updateBoardActive({ boardId, isActive: false }));
+    // }
+    dispatch(updateBoardActive({ boardId, isActive: true }));
+    setActiveBoardId(boardId);
+    // setBoardEventOccurred(true);
+    setIsBoardActive(true);
+  };
+
   useEffect(() => {
-    setIsBoardActive(activeBoardId ? true : false);
-  });
+    if (boardEventOccurred) {
+      setIsBoardActive(activeBoardId ? true : false);
+    }
+  }, [activeBoardId, boardEventOccurred, setIsBoardActive]);
 
   const onMouseEnterHelpBtn = () => {
     setShowHelpText(true);
@@ -95,21 +110,25 @@ const Sidebar = ({ setIsBoardActive }) => {
       title: boardData.values.boardTitle,
       background: boardData.background,
       icon: boardData.icon,
+      // isActive: true,
     };
 
     dispatch(createBoard(boardMainData))
       .then(response => {
-        onCloseBoard();
-        // Прокручуємо дошку до нижнього краю після створення
         if (boardListRef.current) {
           boardListRef.current.scrollTop = boardListRef.current.scrollHeight;
         }
-        // Встановлюємо ID новоствореної дошки як активний
         setActiveBoardId(response.payload._id);
+        dispatch(
+          setBoardActive({ boardId: response.payload._id, isActive: true })
+        );
+        setBoardEventOccurred(true);
+        onCloseBoard();
       })
       .catch(error => {
         console.error('Помилка при створенні борду:', error);
       });
+    handleSetActiveBoard(activeBoardId);
   };
 
   const handleDeleteBoard = boardId => {
@@ -123,7 +142,6 @@ const Sidebar = ({ setIsBoardActive }) => {
       editBoard({
         id: editingBoardId,
         data: {
-          // title: boardData.title,
           title: boardData.values.boardTitle,
           background: boardData.background,
           icon: boardData.icon,
@@ -136,6 +154,7 @@ const Sidebar = ({ setIsBoardActive }) => {
       .catch(error => {
         console.error('Помилка при редагуванні борду:', error);
       });
+    // console.log(editingBoardId);
     // console.log(boardData);
     setEditingBoardId(null);
   };
@@ -165,7 +184,11 @@ const Sidebar = ({ setIsBoardActive }) => {
             {showModalBoard && (
               <ModalBoard
                 onClose={onCloseBoard}
-                onCreateBoard={handleCreateBoard}
+                // onCreateBoard={handleCreateBoard}
+                onCreateBoard={boardData => {
+                  handleCreateBoard(boardData);
+                  handleSetActiveBoard(boardData.createdBoardId);
+                }}
                 title="New board"
                 btnName="Create"
               />
@@ -173,7 +196,11 @@ const Sidebar = ({ setIsBoardActive }) => {
             {showEditBoard && (
               <ModalBoard
                 onClose={onCloseEditBoard}
-                onEditBoard={handleEditBoardName}
+                // onEditBoard={handleEditBoardName}
+                onEditBoard={boardData => {
+                  handleEditBoardName(boardData);
+                  handleSetActiveBoard(boardData.createdBoardId);
+                }}
                 title={editingBoardId ? 'Edit board' : 'New board'}
                 btnName={editingBoardId ? 'Edit' : 'Create'}
                 boardName={
@@ -196,10 +223,11 @@ const Sidebar = ({ setIsBoardActive }) => {
               <BoardItem
                 key={board._id}
                 onClick={() => {
-                  setActiveBoardId(board._id);
                   handleBoardInfo(board._id);
+                  handleSetActiveBoard(board._id);
                 }}
-                isActive={activeBoardId === board._id}
+                // isActiveProps={activeBoardId === board._id}
+                isActiveProps={board.isActive === true}
               >
                 <ProgName>
                   <IconProgect>

@@ -7,7 +7,7 @@ import {
   IconStyled,
 } from './Modal.styled';
 
-const Modal = ({ children, onClose }) => {
+const Modal = ({ children, onClose, custom }) => {
   const handleClose = e => {
     e.stopPropagation();
     onClose();
@@ -36,7 +36,7 @@ const Modal = ({ children, onClose }) => {
 
   return (
     <BackdropStyled onClick={onCloseBackdrop}>
-      <ModalWindowStyled>
+      <ModalWindowStyled custom={custom ? true : false}>
         <CloseBtnStyled onClick={handleClose}>
           <IconStyled width={18} height={18}>
             <use href={`${sprite}#icon-close`}></use>
