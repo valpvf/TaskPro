@@ -82,7 +82,7 @@ const Card = ({ task = {}, columnID }) => {
             <DeadlineTitle>Deadline</DeadlineTitle>
             <DeadlineSubTitle>{deadlineDate}</DeadlineSubTitle>
           </div>
-          <IconWrapper>
+          <IconWrapper isEqualDate={deadlineDate === formattedDate}>
             {deadlineDate === formattedDate && (
               <Icon width="16px" height="16px">
                 <use xlinkHref={`${sprite}#icon-bell`} />

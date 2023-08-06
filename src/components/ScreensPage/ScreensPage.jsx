@@ -13,6 +13,7 @@ import {
   TutorialSelected,
   HeaderAddColumn,
   IconPlusFilters,
+  ColumnWrapper,
 } from './ScreensPageStyled';
 import icons from '../../images/sprite.svg';
 import { useState } from 'react';
@@ -147,16 +148,20 @@ const ScreensPage = ({ title }) => {
       {isBoardActive && boardName && (
         <ColumnsContainer>
           {column.map(el => (
-            <div key={el._id}>
+            <div>
               <Column title={el.title} columnId={el._id} />
-              {el.tasks?.length === 0
-                ? isView && <Card columnID={el._id} />
-                : el.tasks
-                    ?.filter(card => card.priority.includes(priorityFilter))
-                    .toSorted((a, b) => b.updatedAt.localeCompare(a.updatedAt))
-                    .map(task => (
-                      <Card key={task._id} task={task} columnID={el._id} />
-                    ))}
+              <ColumnWrapper key={el._id}>
+                {el.tasks?.length === 0
+                  ? isView && <Card columnID={el._id} />
+                  : el.tasks
+                      ?.filter(card => card.priority.includes(priorityFilter))
+                      .toSorted((a, b) =>
+                        b.updatedAt.localeCompare(a.updatedAt)
+                      )
+                      .map(task => (
+                        <Card key={task._id} task={task} columnID={el._id} />
+                      ))}
+              </ColumnWrapper>
               <ButtonMain
                 type="button"
                 onClick={() => onOpenAddCard(el._id)}

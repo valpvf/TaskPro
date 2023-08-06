@@ -1,17 +1,18 @@
 import styled from '@emotion/styled';
 
 export const BoardItem = styled.li`
+margin-bottom: 10px;
   width: 335px;
   position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 18px 20px 17px;
   background-color: var(--column-background-color);
   color: var(--column-text-color);
   border-radius: 8px;
-
+  max-height: 500px;
+  overflow-y: auto;
   cursor: pointer;
 
   font-size: 14px;

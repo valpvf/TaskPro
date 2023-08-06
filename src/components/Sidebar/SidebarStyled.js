@@ -4,7 +4,6 @@ import { css, keyframes } from '@emotion/react';
 export const SidebarContainer = styled.div`
   width: 260px;
   background-color: var(--primary-background-sidebar-color);
-
   color: var(--secondary-heading-color);
   display: flex;
   flex-direction: column;

@@ -12,6 +12,7 @@ export const Container = styled.div`
   flex-grow: 1;
   padding-left: 24px;
   padding-right: 24px;
+  padding-bottom: 5px;
 
   @media screen and (min-width: 320px) {
     background-image: ${props =>
@@ -127,6 +128,8 @@ export const IconPlusFilters = styled(IconFiltre)`
 export const AddColumn = styled.div`
   display: flex;
   align-items: center;
+  max-height: 500px; /* Adjust the height as needed */
+  overflow-y: auto;
 
   width: 334px;
   height: 56px;
@@ -156,6 +159,7 @@ export const ColumnsContainer = styled.div`
   ::-webkit-scrollbar {
     background-color: var(--scrollbar-base-color);
     border-radius: 10px;
+    width: 10px;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -171,9 +175,24 @@ export const ButtonAdd = styled.button`
   display: flex;
   align-items: center;
   border: none;
-
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
   letter-spacing: -0.02em;
+`;
+
+export const ColumnWrapper = styled.div`
+  flex-shrink: 0;
+  max-height: 475px;
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    background-color: var(--scrollbar-base-color);
+    border-radius: 10px;
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-background-color);
+    border-radius: 10px;
+  }
 `;

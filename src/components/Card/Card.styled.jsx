@@ -1,7 +1,10 @@
 import styled from '@emotion/styled';
 
 export const CardWrapper = styled.div`
-  margin-top: 10px;
+   &:not(:first-child) {
+    margin-top: 10px;
+  }
+  margin-right: 5px;
   /* background-color: #121212; */
   background-color: var(--primary-card-background-color);
   width: 334px;
@@ -16,6 +19,7 @@ export const CardWrapper = styled.div`
 `;
 export const PriorityWrapper = styled.div`
   display: flex;
+  position: relative;
   gap: 12px;
 `;
 export const CardFooter = styled.div`
@@ -113,8 +117,9 @@ export const Icon = styled.svg`
 `;
 
 export const IconWrapper = styled.div`
-  position: relative;
-  left: 70px;
+  position: absolute;
+   left: ${props => (props.isEqualDate ? '202px' : '230px')};
+  top: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
