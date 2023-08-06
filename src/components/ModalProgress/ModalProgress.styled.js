@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const ModalWrapper = styled.div`
   position: absolute;
+  right: 2px;
   background-color: white;
   width: 136px;
   padding: 20px 15px 15px 20px;
