@@ -9,8 +9,9 @@ export const CardWrapper = styled.div`
   padding: 15px 15px 5px 15px;
   border-left: 4px solid ${props => {
       if (props.priority === 'Low') return '#8fa1d0';
-      if (props.priority === 'Medium') return '#E09CB5';
-      return '#BEDBB0';
+  if (props.priority === 'Medium') return '#E09CB5';
+  if (props.priority === 'High') return '#BEDBB0';
+      return '#2d2d2d';
     }};
 `;
 export const PriorityWrapper = styled.div`
@@ -83,7 +84,12 @@ export const Ball = styled.hr`
   background-color: var(--primary-priority-color);
   border: none;
   margin: 10px 0;
-   background-color: ${props => (props.priority === 'Low' ? '#8fa1d0' : '#E09CB5')};
+  background-color: ${props => {
+      if (props.priority === 'Low') return '#8fa1d0';
+  if (props.priority === 'Medium') return '#E09CB5';
+  if (props.priority === 'High') return '#BEDBB0';
+      return '#353535';
+    }};
 `;
 export const Line = styled.hr`
   border: 1px solid #232323;

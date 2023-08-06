@@ -64,8 +64,9 @@ const Card = ({ task = {}, columnID }) => {
   const today = new Date();
   const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July 28, 2023)
   const deadlineDate = formatDate(new Date(deadline.split('T')[0]));
+  console.log(priority)
   return (
-    <CardWrapper priority={'High'}>
+    <CardWrapper priority={priority}>
       <div>
         <Title>{title}</Title>
         <SubTitle>{description}</SubTitle>
@@ -74,7 +75,7 @@ const Card = ({ task = {}, columnID }) => {
           <div>
             <PrioryTitle>Priority</PrioryTitle>
             <PriorySubTitle>
-              <Ball priority={'High'} />
+              <Ball priority={priority} />
               {priority}
             </PriorySubTitle>
           </div>
