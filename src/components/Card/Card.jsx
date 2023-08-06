@@ -1,8 +1,9 @@
-import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import sprite from '../../images/sprite.svg';
 import ModalCard from 'components/ModalCard/ModalCard';
+import ModalProgress from 'components/ModalProgress/ModalProgress';
+import { deleteCard } from 'redux/task/taskOperations';
+import sprite from '../../images/sprite.svg';
 import {
   Title,
   CardWrapper,
@@ -17,8 +18,6 @@ import {
   Icon,
   IconWrapper,
 } from './Card.styled';
-import { deleteCard } from 'redux/task/taskOperations';
-import ModalProgress from 'components/ModalProgress/ModalProgress';
 
 const Card = ({ task = {}, columnID }) => {
   const {
@@ -47,7 +46,7 @@ const Card = ({ task = {}, columnID }) => {
     setShowModal(false);
   };
 
-   const onOpenProgress = () => {
+  const onOpenProgress = () => {
     setShowProgressModal(true);
   };
   const onCloseProgress = () => {
@@ -58,13 +57,13 @@ const Card = ({ task = {}, columnID }) => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
-
     return `${day}/${month}/${year}`;
   }
+
   const today = new Date();
   const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July 28, 2023)
   const deadlineDate = formatDate(new Date(deadline.split('T')[0]));
-  console.log(priority)
+
   return (
     <CardWrapper priority={priority}>
       <div>
