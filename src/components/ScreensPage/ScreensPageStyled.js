@@ -1,20 +1,50 @@
 import styled from '@emotion/styled';
+
 // Імпортуйте ваш Redux slice
 
 export const Container = styled.div`
   /* background-color: #1f1f1f; */
   background-color: var(--secondary-background-color);
-
   background-position-y: bottom;
-
-  background-position-y: bottom;
-
   background-position-x: center;
   background-repeat: no-repeat;
   background-size: cover;
   flex-grow: 1;
   padding-left: 24px;
   padding-right: 24px;
+
+  @media screen and (min-width: 320px) {
+    background-image: ${props =>
+      `url('images/background/${props.picture}m.jpg')`};
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: ${props =>
+        `url('images/background/${props.picture}m2.jpg')`};
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: ${props =>
+      `url('images/background/${props.picture}t.jpg')`};
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: ${props =>
+        `url('images/background/${props.picture}t2.jpg')`};
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
+    background-image: ${props =>
+      `url('images/background/${props.picture}d.jpg')`};
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: ${props =>
+        `url('images/background/${props.picture}d2.jpg')`};
+    }
+  }
 `;
 
 export const TutorialContainer = styled(Container)`

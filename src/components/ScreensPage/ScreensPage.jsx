@@ -92,10 +92,20 @@ const ScreensPage = ({ title }) => {
     //   }}
     // >
     <Container
-      style={{
-        backgroundImage:
-          isBoardActive && `url('images/background/${boardBg}d.jpg')`,
-      }}
+      picture={boardBg}
+      isBoardActive
+      // css={mq({
+      //   backgroundImage: [
+      //     `url('images/background/${boardBg}m.jpg')`,
+      //     `url('images/background/${boardBg}m.jpg')`,
+      //     `url('images/background/${boardBg}t.jpg')`,
+      //     `url('images/background/${boardBg}d.jpg')`,
+      //   ],
+      // })}
+      // style={{
+      //   backgroundImage:
+      //      && `url('images/background/${boardBg}d.jpg')`,
+      // }}
     >
       <ScreensHeader>
         {isBoardActive && <HeaderTxt>{boardName ?? ''}</HeaderTxt>}
