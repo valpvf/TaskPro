@@ -9,6 +9,7 @@ import {
   addCard,
   editCard,
   deleteCard,
+  replaceCard,
 } from './taskOperations';
 
 const initialState = {
@@ -65,7 +66,6 @@ const boardSlice = createSlice({
       })
       .addCase(getBoardId.fulfilled, (state, { payload }) => {
         // state.error = null;
-        console.log(payload);
         return { ...payload, error: null };
       })
       .addCase(getBoardId.rejected, (state, action) => {
@@ -134,6 +134,24 @@ const boardSlice = createSlice({
         );
       })
       .addCase(deleteCard.rejected, (state, action) => {
+        state.error = action.error.message;
+      })
+      .addCase(replaceCard.pending, state => {})
+      .addCase(replaceCard.fulfilled, (state, { payload }) => {
+        console.log('payload', payload);
+        const { columnNew, idCard, columnOld } = payload;
+        const indexOld = state.columns.findIndex(col => col._id === columnOld);
+        const indexNew = state.columns.findIndex(col => col._id === columnNew);
+        const task = state.columns[indexOld].tasks.filter(
+          el => el._id === idCard
+        );
+        console.log('card', task);
+        state.columns[indexOld].tasks = state.columns[indexOld].tasks.filter(
+          el => el._id !== idCard
+        );
+        state.columns[indexNew].tasks.push(task[0]);
+      })
+      .addCase(replaceCard.rejected, (state, action) => {
         state.error = action.error.message;
       });
   },

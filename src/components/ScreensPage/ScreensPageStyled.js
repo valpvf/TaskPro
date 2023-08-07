@@ -17,33 +17,36 @@ export const Container = styled.div`
   @media screen and (min-width: 320px) {
     padding-left: 10px;
     background-image: ${props =>
-      `url('images/background/${props.picture}m.jpg')`};
+      props.isBoardActive && `url('images/background/${props.picture}m.jpg')`};
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: ${props =>
+        props.isBoardActive &&
         `url('images/background/${props.picture}m2.jpg')`};
     }
   }
 
   @media screen and (min-width: 768px) {
     background-image: ${props =>
-      `url('images/background/${props.picture}t.jpg')`};
+      props.isBoardActive && `url('images/background/${props.picture}t.jpg')`};
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: ${props =>
+        props.isBoardActive &&
         `url('images/background/${props.picture}t2.jpg')`};
     }
   }
 
   @media screen and (min-width: 1440px) {
     background-image: ${props =>
-      `url('images/background/${props.picture}d.jpg')`};
+      props.isBoardActive && `url('images/background/${props.picture}d.jpg')`};
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: ${props =>
+        props.isBoardActive &&
         `url('images/background/${props.picture}d2.jpg')`};
     }
   }
@@ -91,7 +94,7 @@ export const ScreensHeader = styled.div`
 export const HeadersWrapper = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 export const HeaderTxt = styled.div`
   font-size: 18px;
@@ -119,7 +122,7 @@ export const HeaderAddColumn = styled(HeaderFiltres)`
 
   cursor: pointer;
 
-  @media screen and (max-width: 767.8px){
+  @media screen and (max-width: 767.8px) {
     margin: 0;
   }
 `;

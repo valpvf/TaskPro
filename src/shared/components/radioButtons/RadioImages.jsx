@@ -29,7 +29,6 @@ const RadioImages = ({ onChangeImage, currentBoardBackground }) => {
   const [selectedValue, setSelectedValue] = useState(0);
 
   useEffect(() => {
-    console.log(currentBoardBackground);
     if (!selectedValue) {
       setSelectedValue(currentBoardBackground || '00');
     }
