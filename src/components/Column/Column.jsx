@@ -4,10 +4,20 @@ import icons from '../../images/sprite.svg';
 import { BoardItem, IconEdit, IconEditCustom, ProgName } from './Column.styled';
 import ModalColumn from 'components/ModalColumn/ModalColumn';
 import { deleteColumn } from 'redux/task/taskOperations';
+import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
 
 const Column = ({ title, columnId }) => {
   const [showModal, setShowModal] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const dispatch = useDispatch();
+
+  const handleOpen = () => {
+    setShowConfirm(true);
+  };
+
+  const handleClose = () => {
+    setShowConfirm(false);
+  };
 
   const onOpen = () => {
     setShowModal(true);
@@ -18,6 +28,7 @@ const Column = ({ title, columnId }) => {
 
   const handleDelete = () => {
     dispatch(deleteColumn(columnId));
+    setShowConfirm(false);
   };
 
   return (
@@ -38,10 +49,13 @@ const Column = ({ title, columnId }) => {
             column={columnId}
           />
         )}
-        <IconEdit onClick={handleDelete}>
+        <IconEdit onClick={handleOpen}>
           <use href={`${icons}#icon-trash`}></use>
         </IconEdit>
       </IconEditCustom>
+      {showConfirm && (
+        <ModalConfirm onClose={handleClose} onConfirm={handleDelete} />
+      )}
     </BoardItem>
   );
 };
