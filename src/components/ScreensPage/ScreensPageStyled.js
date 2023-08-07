@@ -106,6 +106,10 @@ export const HeaderAddColumn = styled(HeaderFiltres)`
   margin-right: 58px;
 
   cursor: pointer;
+
+  @media screen and (max-width: 767.8px){
+    margin: 0;
+  }
 `;
 
 export const IconFiltre = styled.svg`
