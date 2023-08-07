@@ -1,10 +1,11 @@
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
 import { TextareaStyled, InputField } from './ModalNeedHelp.styled';
 import ButtonMain from 'shared/components/button/Button';
-// import InputField from 'shared/components/inputField/InputField';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 
 import fetchHelpApi from 'shared/utilities/fetchHelp';
@@ -20,6 +21,18 @@ const ModalNeedHelp = ({ onClose }) => {
   const userEmail = useSelector(getUserEmail).toLowerCase();
   return (
     <Modal onClose={onClose} custom={true}>
+      <ToastContainer
+        position="top-center"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <ModalTitle>Need help</ModalTitle>
       <Formik
         initialValues={{
@@ -30,7 +43,9 @@ const ModalNeedHelp = ({ onClose }) => {
         onSubmit={(values, { resetForm }) => {
           fetchHelpApi(values);
           resetForm();
-          onClose();
+          setTimeout(() => {
+            onClose();
+          }, 3000);
         }}
       >
         {({ handleChange, values }) => (
