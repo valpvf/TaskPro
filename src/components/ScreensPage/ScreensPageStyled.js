@@ -185,7 +185,7 @@ export const ColumnsContainer = styled.div`
     background-color: var(--scrollbar-background-color);
     border-radius: 10px;
   }
-  @media (min-width: 1600px) {
+  @media (min-width: 1440px) {
     max-width: 95vw;
     ::-webkit-scrollbar {
       background-color: var(--scrollbar-base-color);
@@ -258,7 +258,7 @@ export const ColumnWrapper = styled.div`
     background-color: var(--scrollbar-background-color);
     border-radius: 10px;
   }
-  @media (min-width: 1600px) {
+  @media (min-width: 1440px) {
     flex-shrink: 0;
     max-height: 75vh;
     overflow-y: auto;
