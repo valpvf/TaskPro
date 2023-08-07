@@ -166,6 +166,19 @@ export const ColumnsContainer = styled.div`
     background-color: var(--scrollbar-background-color);
     border-radius: 10px;
   }
+  @media (min-width: 1600px) {
+    max-width: 85vw;
+    ::-webkit-scrollbar {
+      background-color: var(--scrollbar-base-color);
+      border-radius: 10px;
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-background-color);
+      border-radius: 10px;
+    }
+  }
 `;
 
 export const ButtonAdd = styled.button`
@@ -194,5 +207,20 @@ export const ColumnWrapper = styled.div`
   ::-webkit-scrollbar-thumb {
     background-color: var(--scrollbar-background-color);
     border-radius: 10px;
+  }
+  @media (min-width: 1600px) {
+    flex-shrink: 0;
+    max-height: 75vh;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+      background-color: var(--scrollbar-base-color);
+      border-radius: 10px;
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-background-color);
+      border-radius: 10px;
+    }
   }
 `;

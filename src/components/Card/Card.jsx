@@ -18,6 +18,7 @@ import {
   Line,
   Icon,
   IconWrapper,
+  Bell,
 } from './Card.styled';
 
 const Card = ({ task = {}, columnID }) => {
@@ -95,9 +96,9 @@ const Card = ({ task = {}, columnID }) => {
           </div>
           <IconWrapper isEqualDate={deadlineDate === formattedDate}>
             {deadlineDate === formattedDate && (
-              <Icon width="16px" height="16px">
+              <Bell width="16px" height="16px">
                 <use xlinkHref={`${sprite}#icon-bell`} />
-              </Icon>
+              </Bell>
             )}
             <Icon width="16px" height="16px" onClick={onOpenProgress}>
               <use xlinkHref={`${sprite}#icon-goto`} />
