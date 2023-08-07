@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import UserInfo from 'components/UserInfo/UserInfo';
 
@@ -22,23 +22,22 @@ const Header = ({ onToggleSidebar }) => {
   const dispatch = useDispatch();
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => {
-    dispatch(updateTheme(theme));
-  }, [dispatch, theme]);
-
   const handleLightThemeClick = () => {
     setTheme('light');
     setSelectedTheme('light');
+    dispatch(updateTheme('light'));
     toggleCustomOptionList();
   };
   const handleDarkThemeClick = () => {
     setTheme('dark');
     setSelectedTheme('dark');
+    dispatch(updateTheme('dark'));
     toggleCustomOptionList();
   };
   const handleVioletThemeClick = () => {
     setTheme('violet');
     setSelectedTheme('violet');
+    dispatch(updateTheme('violet'));
     toggleCustomOptionList();
   };
 
