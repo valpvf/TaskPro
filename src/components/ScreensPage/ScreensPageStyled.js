@@ -153,7 +153,7 @@ export const ColumnsContainer = styled.div`
   text-align: justify;
   justify-items: center;
   gap: 22px;
-  max-width: 1170px;
+  max-width: 75vw;
   overflow-x: auto;
 
   ::-webkit-scrollbar {
@@ -183,7 +183,7 @@ export const ButtonAdd = styled.button`
 
 export const ColumnWrapper = styled.div`
   flex-shrink: 0;
-  max-height: 475px;
+  max-height: 60vh;
   overflow-y: auto;
   ::-webkit-scrollbar {
     background-color: var(--scrollbar-base-color);
