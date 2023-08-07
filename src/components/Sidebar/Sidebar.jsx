@@ -42,7 +42,7 @@ import { getBoardId } from 'redux/task/taskOperations';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
-import ScrollingWord from './ScrollingWord/ScrollingWord';
+// import ScrollingWord from './ScrollingWord/ScrollingWord';
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
