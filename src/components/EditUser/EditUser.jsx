@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field } from 'formik';
 import { getUserData } from 'redux/auth/authSelectors';
 import { updateUser } from '../../redux/auth/authOperations';
-import { RegisterSchema } from '../../Schemas/authSchemas';
+import { UpdateUserSchema } from '../../Schemas/authSchemas';
 import {
   Wrapper,
   AvatarWrapper,
@@ -54,23 +54,20 @@ function EditUser({ onClose }) {
 
   const formSubmit = e => {
     e.preventDefault();
-    const newUserData = new FormData();
+
     const { name, email, password } = e.target.elements;
 
-    if (name.value) {
-      newUserData.append('name', name.value);
-    } else {
-      newUserData.append('name', userData.name);
-    }
-    if (email.value) {
-      newUserData.append('email', email.value);
-    }
+    const newUserData = {
+      name: name.value || userData.name,
+      email: email.value || userData.email,
+    };
 
     if (password.value) {
-      newUserData.append('password', password.value);
+      newUserData.password = password.value;
     }
+
     if (imageFile) {
-      newUserData.append('avatar', imageFile);
+      newUserData.avatar = imageFile;
     }
 
     dispatch(updateUser(newUserData));
@@ -86,7 +83,7 @@ function EditUser({ onClose }) {
             email: userEmail,
             password: '',
           }}
-          validationSchema={RegisterSchema}
+          validationSchema={UpdateUserSchema}
         >
           <Wrapper>
             <AvatarWrapper>
