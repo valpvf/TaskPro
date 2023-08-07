@@ -12,6 +12,8 @@ import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMes
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getBoardSelector } from 'redux/auth/authSelectors';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const TitleSchema = Yup.object().shape({
   boardTitle: Yup.string().required('Title is required'),
@@ -42,6 +44,18 @@ const ModalBoard = ({
 
   return (
     <Modal onClose={onClose}>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <ModalTitle>{title}</ModalTitle>
 
       <Formik
@@ -53,7 +67,8 @@ const ModalBoard = ({
           if (btnName === 'Create') {
             if (boards.some(el => el.title === values.boardTitle)) {
               setIsDuplicate(true);
-              return console.log('Duplicate');
+              //return console.log('Duplicate');
+              return toast.warn('This title already exists!');
             }
             const boardInfo = {
               values,

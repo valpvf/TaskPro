@@ -40,19 +40,19 @@ const Column = ({ title, columnId }) => {
         <IconEdit onClick={onOpen}>
           <use href={`${icons}#icon-pencil`}></use>
         </IconEdit>
-        {showModal && (
-          <ModalColumn
-            onClose={onClose}
-            title="Edit column"
-            btnName="Edit"
-            columnTitle={title}
-            column={columnId}
-          />
-        )}
         <IconEdit onClick={handleOpen}>
           <use href={`${icons}#icon-trash`}></use>
         </IconEdit>
       </IconEditCustom>
+      {showModal && (
+        <ModalColumn
+          onClose={onClose}
+          title="Edit column"
+          btnName="Edit"
+          columnTitle={title}
+          column={columnId}
+        />
+      )}
       {showConfirm && (
         <ModalConfirm onClose={handleClose} onConfirm={handleDelete} />
       )}
