@@ -94,7 +94,14 @@ const Sidebar = () => {
         if (boardListRef.current && isEdit === false) {
           boardListRef.current.scrollTop = boardListRef.current.scrollHeight;
         }
-        handleSetActiveBoard(response.payload._id);
+        if (isEdit === false) {
+          handleSetActiveBoard(response.payload._id);
+        }
+        if (isEdit === false) {
+          handleBoardInfo(response.payload._id);
+        } else {
+          handleBoardInfo(editingBoardId);
+        }
         closeModal(setShowEditBoard)();
       })
       .catch(error => {
@@ -156,12 +163,6 @@ const Sidebar = () => {
             {showEditBoard && (
               <ModalBoard
                 onClose={() => closeModal(setShowEditBoard)()}
-                // onClose={() => {
-                //   closeModal(setShowEditBoard)();
-                //   handleSetActiveBoard(
-                //     getBoard.find(board => board.isActive === true)._id
-                //   );
-                // }}
                 onEditBoard={boardData => {
                   handleCreateBoard(boardData, true);
                 }}
