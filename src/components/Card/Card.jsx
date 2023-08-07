@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import ModalCard from 'components/ModalCard/ModalCard';
 import ModalProgress from 'components/ModalProgress/ModalProgress';
+import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
 import { deleteCard } from 'redux/task/taskOperations';
 import sprite from '../../images/sprite.svg';
 import {
@@ -32,12 +33,22 @@ const Card = ({ task = {}, columnID }) => {
   const handleDelete = () => {
     console.log('id', _id, columnID, task);
     dispatch(deleteCard({ _id, columnID }));
+    setShowConfirm(false);
   };
 
   // console.log('columnId', columnID);
 
   const [showModal, setShowModal] = useState(false);
   const [showProgressModal, setShowProgressModal] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  const handleOpen = () => {
+    setShowConfirm(true);
+  };
+
+  const handleClose = () => {
+    setShowConfirm(false);
+  };
 
   const onOpen = () => {
     setShowModal(true);
@@ -110,11 +121,14 @@ const Card = ({ task = {}, columnID }) => {
                 taskId={_id}
               />
             )}
-            <Icon width="16px" height="16px" onClick={handleDelete}>
+            <Icon width="16px" height="16px" onClick={handleOpen}>
               <use xlinkHref={`${sprite}#icon-trash`} />
             </Icon>
           </IconWrapper>
         </PriorityWrapper>
+        {showConfirm && (
+          <ModalConfirm onClose={handleClose} onConfirm={handleDelete} />
+        )}
       </div>
     </CardWrapper>
   );
