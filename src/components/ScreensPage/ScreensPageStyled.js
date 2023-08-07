@@ -15,6 +15,7 @@ export const Container = styled.div`
   padding-bottom: 5px;
 
   @media screen and (min-width: 320px) {
+    padding-left: 10px;
     background-image: ${props =>
       `url('images/background/${props.picture}m.jpg')`};
     @media (min-device-pixel-ratio: 2),
@@ -182,7 +183,38 @@ export const ColumnsContainer = styled.div`
     border-radius: 10px;
   }
   @media (min-width: 1600px) {
-    max-width: 85vw;
+    max-width: 95vw;
+    ::-webkit-scrollbar {
+      background-color: var(--scrollbar-base-color);
+      border-radius: 10px;
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-background-color);
+      border-radius: 10px;
+    }
+  }
+  @media (min-width: 720px) and (max-width: 1440px) {
+    flex-shrink: 0;
+    max-height: 95vh;
+    max-width: 95vw;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+      background-color: var(--scrollbar-base-color);
+      border-radius: 10px;
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-background-color);
+      border-radius: 10px;
+    }
+  }
+  @media (min-width: 320px) and (max-width: 720px) {
+    flex-shrink: 0;
+    max-width: 92vw;
+    overflow-y: auto;
     ::-webkit-scrollbar {
       background-color: var(--scrollbar-base-color);
       border-radius: 10px;
@@ -226,6 +258,36 @@ export const ColumnWrapper = styled.div`
   @media (min-width: 1600px) {
     flex-shrink: 0;
     max-height: 75vh;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+      background-color: var(--scrollbar-base-color);
+      border-radius: 10px;
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-background-color);
+      border-radius: 10px;
+    }
+  }
+  @media (min-width: 720px) and (max-width: 1440px) {
+    flex-shrink: 0;
+    max-height: 62vh;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+      background-color: var(--scrollbar-base-color);
+      border-radius: 10px;
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-background-color);
+      border-radius: 10px;
+    }
+  }
+  @media (min-width: 320px) and (max-width: 720px) {
+    flex-shrink: 0;
+    max-height: 62vh;
     overflow-y: auto;
     ::-webkit-scrollbar {
       background-color: var(--scrollbar-base-color);
