@@ -144,8 +144,7 @@ const ScreensPage = ({ title }) => {
           </ButtonAdd>
         </AddColumn>
       )}
-      {/* Тут можуть бути ваші колонки з картками */}
-      {isBoardActive && boardName && (
+        {isBoardActive && boardName && (
         <ColumnsContainer>
           {column.map(el => (
             <div key={el._id}>
