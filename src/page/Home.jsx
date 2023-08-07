@@ -7,7 +7,6 @@ import { useState } from 'react';
 
 const Home = () => {
   const [showSidebar, setShowSidebar] = useState(true);
-  const [isBoardActive, setIsBoardActive] = useState(false);
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -30,7 +29,7 @@ const Home = () => {
   return (
     <>
       <div style={{ display: 'flex' }}>
-        {showSidebar && <Sidebar setIsBoardActive={setIsBoardActive} />}
+        {showSidebar && <Sidebar />}
         {showSidebar && <Backdrop onClick={toggleSidebar} />}
         <div
           style={{
@@ -41,7 +40,7 @@ const Home = () => {
           }}
         >
           <Header onToggleSidebar={toggleSidebar} />
-          <ScreensPage isBoardActive={isBoardActive} />
+          <ScreensPage />
         </div>
       </div>
     </>
