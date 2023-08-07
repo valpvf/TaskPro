@@ -14,6 +14,7 @@ import {
   HeaderAddColumn,
   IconPlusFilters,
   ColumnWrapper,
+  HeadersWrapper,
 } from './ScreensPageStyled';
 import icons from '../../images/sprite.svg';
 import { useState } from 'react';
@@ -110,6 +111,7 @@ const ScreensPage = ({ title }) => {
     >
       <ScreensHeader>
         {isBoardActive && <HeaderTxt>{boardName ?? ''}</HeaderTxt>}
+        <HeadersWrapper>
         {isBoardActive && columns.length !== 0 && (
           <HeaderAddColumn onClick={() => setShowModal(true)}>
             <IconPlusFilters>
@@ -129,6 +131,7 @@ const ScreensPage = ({ title }) => {
             )}
           </HeaderFiltres>
         )}
+        </HeadersWrapper>
       </ScreensHeader>
       {isBoardActive && columns.length === 0 && (
         <AddColumn>
