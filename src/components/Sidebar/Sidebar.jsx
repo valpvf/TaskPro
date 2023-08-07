@@ -264,19 +264,6 @@ const Sidebar = () => {
           </HelpBtn>
 
           {showModal && <ModalNeedHelp onClose={closeModal(setShowModal)} />}
-
-          <ToastContainer
-            position="top-center"
-            autoClose={2500}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-          />
         </div>
 
         <LogOut onClick={handleLogout}>
