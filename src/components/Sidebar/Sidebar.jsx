@@ -30,7 +30,7 @@ import plant from '../../images/plant_min.png';
 import { useDispatch } from 'react-redux';
 import {
   createBoard,
-  deleteBoard,
+  //deleteBoard,
   editBoard,
   logout,
   updateBoardActive,
@@ -41,6 +41,7 @@ import { getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardId } from 'redux/task/taskOperations';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -49,6 +50,7 @@ const Sidebar = () => {
   const [showEditBoard, setShowEditBoard] = useState(false);
   const [editingBoardId, setEditingBoardId] = useState(null);
   const [isHelpBarHovered, setIsHelpBarHovered] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const boardListRef = useRef(null);
 
   const dispatch = useDispatch();
@@ -114,11 +116,12 @@ const Sidebar = () => {
       });
   };
 
-  const handleDeleteBoard = boardId => {
-    dispatch(deleteBoard(boardId)).catch(error => {
-      console.error('Помилка при видаленні борду:', error);
-    });
-  };
+  // const handleDeleteBoard = () => {
+  //   dispatch(deleteBoard(editingBoardId)).catch(error => {
+  //     console.error('Помилка при видаленні борду:', error);
+  //   });
+  //   setShowConfirm(false);
+  // };
 
   const handleBoardInfo = boardId => {
     dispatch(getBoardId(boardId));
@@ -130,6 +133,14 @@ const Sidebar = () => {
 
   const onMouseLeaveHelpBtn = () => {
     setShowHelpText(false);
+  };
+
+  const handleOpen = () => {
+    setShowConfirm(true);
+  };
+
+  const handleClose = () => {
+    setShowConfirm(false);
   };
 
   return (
@@ -201,7 +212,7 @@ const Sidebar = () => {
                   <IconEdit onClick={openModal(setShowEditBoard, board)}>
                     <use href={`${icons}#icon-pencil`}></use>
                   </IconEdit>
-                  <IconEdit onClick={() => handleDeleteBoard(board._id)}>
+                  <IconEdit onClick={() => handleOpen()}>
                     <use href={`${icons}#icon-trash`}></use>
                   </IconEdit>
                 </IconEditCustom>
@@ -247,6 +258,12 @@ const Sidebar = () => {
           </HelpBtn>
 
           {showModal && <ModalNeedHelp onClose={closeModal(setShowModal)} />}
+          {showConfirm && (
+            <ModalConfirm
+              onClose={handleClose}
+              //onConfirm={handleDeleteBoard()}
+            />
+          )}
         </div>
 
         <LogOut onClick={handleLogout}>
