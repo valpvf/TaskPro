@@ -148,9 +148,9 @@ const ScreensPage = ({ title }) => {
       {isBoardActive && boardName && (
         <ColumnsContainer>
           {column.map(el => (
-            <div>
+            <div key={el._id}>
               <Column title={el.title} columnId={el._id} />
-              <ColumnWrapper key={el._id}>
+              <ColumnWrapper>
                 {el.tasks?.length === 0
                   ? isView && <Card columnID={el._id} />
                   : el.tasks

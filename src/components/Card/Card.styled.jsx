@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const CardWrapper = styled.div`
-   &:not(:first-child) {
+  &:not(:first-of-type) {
     margin-top: 10px;
   }
   margin-right: 5px;
@@ -10,10 +10,11 @@ export const CardWrapper = styled.div`
   width: 334px;
   border-radius: 8px;
   padding: 15px 15px 5px 15px;
-  border-left: 4px solid ${props => {
+  border-left: 4px solid
+    ${props => {
       if (props.priority === 'Low') return '#8fa1d0';
-  if (props.priority === 'Medium') return '#E09CB5';
-  if (props.priority === 'High') return '#BEDBB0';
+      if (props.priority === 'Medium') return '#E09CB5';
+      if (props.priority === 'High') return '#BEDBB0';
       return '#5b5b5b';
     }};
 `;
@@ -89,11 +90,11 @@ export const Ball = styled.hr`
   border: none;
   margin: 10px 0;
   background-color: ${props => {
-      if (props.priority === 'Low') return '#8fa1d0';
-  if (props.priority === 'Medium') return '#E09CB5';
-  if (props.priority === 'High') return '#BEDBB0';
-      return '#535353';
-    }};
+    if (props.priority === 'Low') return '#8fa1d0';
+    if (props.priority === 'Medium') return '#E09CB5';
+    if (props.priority === 'High') return '#BEDBB0';
+    return '#535353';
+  }};
 `;
 export const Line = styled.hr`
   border: 1px solid #232323;
@@ -118,7 +119,7 @@ export const Icon = styled.svg`
 
 export const IconWrapper = styled.div`
   position: absolute;
-   left: ${props => (props.isEqualDate ? '202px' : '230px')};
+  left: ${props => (props.isEqualDate ? '202px' : '230px')};
   top: 10px;
   display: flex;
   align-items: center;

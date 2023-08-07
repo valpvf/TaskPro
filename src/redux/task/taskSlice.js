@@ -16,7 +16,6 @@ const initialState = {
   title: '',
   icon: 'icon-project',
   background: '00',
-  isActive: false,
   columns: [
     {
       _id: '64c7a72cef9d0ebaa3b7b7b9',
@@ -88,7 +87,8 @@ const boardSlice = createSlice({
       })
       .addCase(editColumn.fulfilled, (state, { payload }) => {
         const index = state.columns.findIndex(col => col._id === payload._id);
-        state.columns[index] = payload;
+        console.log('payloadColumn', payload);
+        state.columns[index].title = payload.title;
       })
       .addCase(editColumn.rejected, (state, action) => {
         state.error = action.error.message;
@@ -120,7 +120,7 @@ const boardSlice = createSlice({
         const indexTask = state.columns[index].tasks.findIndex(
           el => el._id === task._id
         );
-        state.columns[index].tasks[indexTask] = task;
+        state.columns[index].tasks[indexTask] = { ...task };
       })
       .addCase(editCard.rejected, (state, action) => {
         state.error = action.error.message;
