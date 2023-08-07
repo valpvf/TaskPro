@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 import {
   register,
@@ -41,6 +42,7 @@ export const authSlice = createSlice({
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.error = payload;
+        state.isRefreshing = false;
       })
       .addCase(login.pending, state => {
         state.isRefreshing = true;
@@ -51,6 +53,10 @@ export const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.error = null;
+      })
+      .addCase(login.rejected, (state, { payload }) => {
+        state.error = payload;
+        state.isRefreshing = false;
       })
       .addCase(logout.pending, state => {
         state.isRefreshing = true;
@@ -90,10 +96,12 @@ export const authSlice = createSlice({
         state.user.avatarURL = payload.avatarURL;
         state.isRefreshing = false;
         state.error = null;
+        toast.success('Сhanges are successful!');
       })
       .addCase(updateUser.rejected, (state, { payload }) => {
         state.isRefreshing = false;
         state.error = payload;
+        toast.error('Invalid password');
       })
       .addCase(createBoard.fulfilled, (state, { payload }) => {
         state.user.boards.push(payload);
