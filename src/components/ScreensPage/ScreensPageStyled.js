@@ -80,7 +80,18 @@ export const ScreensHeader = styled.div`
 
   padding-top: 10px;
   padding-bottom: 10px;
+
+  @media screen and (max-width: 767.8px) {
+    flex-wrap: wrap;
+    max-width: 168px;
+  }
 `;
+
+export const HeadersWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`
+
 export const HeaderTxt = styled.div`
   font-size: 18px;
   font-weight: 500;
