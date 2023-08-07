@@ -9,6 +9,8 @@ import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMes
 import { useDispatch, useSelector } from 'react-redux';
 import { addColumn, editColumn } from 'redux/task/taskOperations';
 import { getBoardId, getColumn } from 'redux/task/taskSelectors';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const TitleSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
@@ -22,6 +24,19 @@ const ModalColumn = ({ onClose, title, btnName, columnTitle = '', column }) => {
 
   return (
     <Modal onClose={onClose}>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+
       <ModalTitle>{title}</ModalTitle>
 
       <Formik
@@ -30,17 +45,24 @@ const ModalColumn = ({ onClose, title, btnName, columnTitle = '', column }) => {
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
-          // const columnEditing = columns?.find(el => el._id === column);
+          //const columnEditing = columns?.find(el => el._id === column);
           const columnForEdit = columns.filter(el => el._id !== column);
           // console.log(
           //   'object',
           //   values.title,
           //   columnForEdit,
+          //   columnEditing,
           //   columnEditing.title
           // );
-          // if (columnEditing.title === values.title) {
-          if (columnForEdit.some(el => el.title === values.title)) {
-            return console.log('Duplicate');
+
+          //if (columnEditing.title.toLowerCase() === values.title.toLowerCase())
+          if (
+            columnForEdit.some(
+              el => el.title.toLowerCase() === values.title.toLowerCase()
+            )
+          ) {
+            //console.log('Duplicate');
+            return toast.warn('This title already exists!');
           }
 
           if (columnTitle) {

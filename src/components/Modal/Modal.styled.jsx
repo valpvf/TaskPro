@@ -33,6 +33,12 @@ export const ModalWindowStyled = styled.div`
   @media screen and (min-width: 768px) {
     width: ${props => (props.custom ? '400px' : '350px')};
   }
+  @media screen and (max-height: 500px) and (orientation: landscape) {
+    position: sticky;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
 `;
 
 export const CloseBtnStyled = styled.div`
