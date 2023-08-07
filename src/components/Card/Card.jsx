@@ -104,7 +104,10 @@ const Card = ({ task = {}, columnID }) => {
               <use xlinkHref={`${sprite}#icon-goto`} />
             </Icon>
             {showProgressModal && (
-              <ModalProgress onCloseProgress={onCloseProgress} />
+              <ModalProgress
+                onCloseProgress={onCloseProgress}
+                id={[_id, columnID]}
+              />
             )}
             <Icon width="16px" height="16px" onClick={onOpen}>
               <use xlinkHref={`${sprite}#icon-pencil`} />

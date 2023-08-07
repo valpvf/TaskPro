@@ -112,25 +112,25 @@ const ScreensPage = ({ title }) => {
       <ScreensHeader>
         {isBoardActive && <HeaderTxt>{boardName ?? ''}</HeaderTxt>}
         <HeadersWrapper>
-        {isBoardActive && columns.length !== 0 && (
-          <HeaderAddColumn onClick={() => setShowModal(true)}>
-            <IconPlusFilters>
-              <use href={`${icons}#icon-plus`}></use>
-            </IconPlusFilters>
-            <div>Add column</div>
-          </HeaderAddColumn>
-        )}
-        {isBoardActive && (
-          <HeaderFiltres onClick={onOpenFilters}>
-            <IconFiltre>
-              <use href={`${icons}#icon-filter`}></use>
-            </IconFiltre>
-            <div>Filtres</div>
-            {showFilters && (
-              <ModalFilters onClose={onCloseFilters} onClick={onFilter} />
-            )}
-          </HeaderFiltres>
-        )}
+          {isBoardActive && columns.length !== 0 && (
+            <HeaderAddColumn onClick={() => setShowModal(true)}>
+              <IconPlusFilters>
+                <use href={`${icons}#icon-plus`}></use>
+              </IconPlusFilters>
+              <div>Add column</div>
+            </HeaderAddColumn>
+          )}
+          {isBoardActive && (
+            <HeaderFiltres onClick={onOpenFilters}>
+              <IconFiltre>
+                <use href={`${icons}#icon-filter`}></use>
+              </IconFiltre>
+              <div>Filtres</div>
+              {showFilters && (
+                <ModalFilters onClose={onCloseFilters} onClick={onFilter} />
+              )}
+            </HeaderFiltres>
+          )}
         </HeadersWrapper>
       </ScreensHeader>
       {isBoardActive && columns.length === 0 && (
@@ -147,16 +147,16 @@ const ScreensPage = ({ title }) => {
           </ButtonAdd>
         </AddColumn>
       )}
-        {isBoardActive && boardName && (
+      {isBoardActive && boardName && (
         <ColumnsContainer>
-          {column.map(el => (
+          {column?.map(el => (
             <div key={el._id}>
               <Column title={el.title} columnId={el._id} />
               <ColumnWrapper>
                 {el.tasks?.length === 0
                   ? isView && <Card columnID={el._id} />
                   : el.tasks
-                      ?.filter(card => card.priority.includes(priorityFilter))
+                      ?.filter(card => card?.priority.includes(priorityFilter))
                       .toSorted((a, b) =>
                         b.updatedAt.localeCompare(a.updatedAt)
                       )

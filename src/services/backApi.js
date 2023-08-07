@@ -55,3 +55,14 @@ export const deleteCardApi = async (id, column) => {
   data.column = column;
   return { data };
 };
+
+export const replaceCardApi = async (id, columns) => {
+  const { column, columnID } = columns;
+  const { data } = await axios
+    .patch(`/api/tasks/${id}/replace`, { column })
+    .then(res => res);
+  data.columnNew = column;
+  data.idCard = id;
+  data.columnOld = columnID;
+  return { data };
+};
