@@ -115,6 +115,19 @@ export const Icon = styled.svg`
     filter: drop-shadow(0 0 5px var(--primary-button-color));
   }
 `;
+export const Bell = styled.svg`
+  /* stroke: #949393; */
+  stroke: var(--primary-button-color);
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+  fill: none;
+  filter: drop-shadow(0 0 5px var(--primary-button-color));
+  &:hover,
+  &:focus {
+    stroke: #b2fc8d;
+    filter: drop-shadow(0 0 5px var #b2fc8d);
+  }
+`;
 
 export const IconWrapper = styled.div`
   position: absolute;
