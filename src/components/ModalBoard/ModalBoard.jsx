@@ -7,7 +7,7 @@ import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import InputField from 'shared/components/inputField/InputField';
 import RadioImages from 'shared/components/radioButtons/RadioImages';
 import RadioIcons from 'shared/components/radioButtons/RadioIcons';
-import { SubtitleStyled } from './ModalBoard.styled';
+import { SubtitleStyled, Duplicate } from './ModalBoard.styled';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -28,6 +28,7 @@ const ModalBoard = ({
 }) => {
   const [backgroundName, setBackgroundName] = useState('00');
   const [iconName, setIconName] = useState('icon-project');
+  const [isDuplicate, setIsDuplicate] = useState(false);
   const boards = useSelector(getBoardSelector);
 
   let updatedBackground;
@@ -51,6 +52,7 @@ const ModalBoard = ({
         onSubmit={(values, { resetForm }) => {
           if (btnName === 'Create') {
             if (boards.some(el => el.title === values.boardTitle)) {
+              setIsDuplicate(true);
               return console.log('Duplicate');
             }
             const boardInfo = {
@@ -59,12 +61,14 @@ const ModalBoard = ({
               icon: iconName,
             };
             onCreateBoard(boardInfo);
+            setIsDuplicate(false);
           } else if (btnName === 'Edit') {
             if (
               boards.some(
                 el => el.title === values.boardTitle && el !== currentBoard
               )
             ) {
+              setIsDuplicate(true);
               return console.log('Duplicate');
             }
             const boardInfoEdit = {
@@ -74,7 +78,7 @@ const ModalBoard = ({
             };
 
             onEditBoard(boardInfoEdit);
-            console.log(boardInfoEdit);
+            setIsDuplicate(false);
           }
 
           resetForm();
@@ -93,6 +97,8 @@ const ModalBoard = ({
               value={values.boardTitle || ''}
             />
             <InputErrorMessage name="boardTitle" component={'p'} />
+            {isDuplicate && <Duplicate>Title is duplicate!</Duplicate>}
+
             <SubtitleStyled>Icons</SubtitleStyled>
             <RadioIcons
               onChangeIcon={setIconName}

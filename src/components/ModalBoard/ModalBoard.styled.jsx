@@ -11,3 +11,10 @@ export const SubtitleStyled = styled.p`
   line-height: 1.5;
   letter-spacing: -0.28px;
 `;
+
+export const Duplicate = styled.p`
+  position: absolute;
+  color: red;
+  margin-left: 5px;
+  margin-top: 2px;
+`;

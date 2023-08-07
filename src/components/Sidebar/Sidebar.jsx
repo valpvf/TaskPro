@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 import ModalBoard from 'components/ModalBoard/ModalBoard';
 import ModalNeedHelp from 'components/ModalNeedHelp/ModalNeedHelp';
@@ -39,25 +39,20 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardId } from 'redux/task/taskOperations';
-import { setBoardActive } from 'redux/task/taskSlice';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Sidebar = ({ setIsBoardActive }) => {
+const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
   const [showHelpText, setShowHelpText] = useState(false);
   const [showModalBoard, setShowModalBoard] = useState(false);
   const [showEditBoard, setShowEditBoard] = useState(false);
   const [editingBoardId, setEditingBoardId] = useState(null);
-  const [activeBoardId, setActiveBoardId] = useState(null);
   const [isHelpBarHovered, setIsHelpBarHovered] = useState(false);
   const boardListRef = useRef(null);
-  const [boardEventOccurred, setBoardEventOccurred] = useState(false);
 
   const dispatch = useDispatch();
   const getBoard = useSelector(getBoardSelector);
-
-  // console.log(getBoard);
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -66,71 +61,50 @@ const Sidebar = ({ setIsBoardActive }) => {
   };
 
   const handleSetActiveBoard = boardId => {
-    // if (activeBoardId) {
-    //   dispatch(updateBoardActive({ boardId, isActive: false }));
-    // }
     dispatch(updateBoardActive({ boardId, isActive: true }));
-    setActiveBoardId(boardId);
-    // setBoardEventOccurred(true);
-    setIsBoardActive(true);
   };
 
-  useEffect(() => {
-    if (boardEventOccurred) {
-      setIsBoardActive(activeBoardId ? true : false);
+  const openModal = (setter, data) => () => {
+    setter(true);
+    if (data) {
+      setEditingBoardId(data._id);
     }
-  }, [activeBoardId, boardEventOccurred, setIsBoardActive]);
-
-  const onMouseEnterHelpBtn = () => {
-    setShowHelpText(true);
-  };
-  const onMouseLeaveHelpBtn = () => {
-    setShowHelpText(false);
-  };
-  const onOpen = () => {
-    setShowModal(true);
-  };
-  const onClose = () => {
-    setShowModal(false);
-  };
-  const onOpenBoard = () => {
-    setShowModalBoard(true);
-  };
-  const onCloseBoard = () => {
-    setShowModalBoard(false);
-  };
-  const onOpenEditBoard = board => {
-    setEditingBoardId(board._id);
-    setShowEditBoard(true);
-  };
-  const onCloseEditBoard = () => {
-    setShowEditBoard(false);
   };
 
-  const handleCreateBoard = boardData => {
+  const closeModal = setter => () => {
+    setter(false);
+    setEditingBoardId(null);
+  };
+
+  const handleCreateBoard = (boardData, isEdit) => {
     const boardMainData = {
       title: boardData.values.boardTitle,
       background: boardData.background,
       icon: boardData.icon,
-      // isActive: true,
     };
 
-    dispatch(createBoard(boardMainData))
+    const operation = isEdit ? editBoard : createBoard;
+
+    dispatch(
+      operation(
+        isEdit ? { id: editingBoardId, data: boardMainData } : boardMainData
+      )
+    )
       .then(response => {
-        if (boardListRef.current) {
+        if (boardListRef.current && isEdit === false) {
           boardListRef.current.scrollTop = boardListRef.current.scrollHeight;
         }
-        setActiveBoardId(response.payload._id);
-        dispatch(
-          setBoardActive({ boardId: response.payload._id, isActive: true })
-        );
-        setBoardEventOccurred(true);
-        onCloseBoard();
+        handleSetActiveBoard(response.payload._id);
+        closeModal(setShowEditBoard)();
       })
       .catch(error => {
-        console.error('Помилка при створенні борду:', error);
+        console.error(
+          isEdit
+            ? 'Помилка при редагуванні борду:'
+            : 'Помилка при створенні борду:',
+          error
+        );
       });
-    handleSetActiveBoard(activeBoardId);
   };
 
   const handleDeleteBoard = boardId => {
@@ -139,30 +113,16 @@ const Sidebar = ({ setIsBoardActive }) => {
     });
   };
 
-  const handleEditBoardName = boardData => {
-    dispatch(
-      editBoard({
-        id: editingBoardId,
-        data: {
-          title: boardData.values.boardTitle,
-          background: boardData.background,
-          icon: boardData.icon,
-        },
-      })
-    )
-      .then(() => {
-        onCloseEditBoard();
-      })
-      .catch(error => {
-        console.error('Помилка при редагуванні борду:', error);
-      });
-    // console.log(editingBoardId);
-    // console.log(boardData);
-    setEditingBoardId(null);
-  };
-
   const handleBoardInfo = boardId => {
     dispatch(getBoardId(boardId));
+  };
+
+  const onMouseEnterHelpBtn = () => {
+    setShowHelpText(true);
+  };
+
+  const onMouseLeaveHelpBtn = () => {
+    setShowHelpText(false);
   };
 
   return (
@@ -180,16 +140,14 @@ const Sidebar = ({ setIsBoardActive }) => {
             Create a<br></br> new board
           </div>
           <div>
-            <IconPlus onClick={onOpenBoard}>
+            <IconPlus onClick={openModal(setShowModalBoard)}>
               <use href={`${icons}#icon-plus`}></use>
             </IconPlus>
             {showModalBoard && (
               <ModalBoard
-                onClose={onCloseBoard}
-                // onCreateBoard={handleCreateBoard}
+                onClose={() => closeModal(setShowModalBoard)()}
                 onCreateBoard={boardData => {
-                  handleCreateBoard(boardData);
-                  handleSetActiveBoard(boardData.createdBoardId);
+                  handleCreateBoard(boardData, false);
                 }}
                 title="New board"
                 btnName="Create"
@@ -197,22 +155,24 @@ const Sidebar = ({ setIsBoardActive }) => {
             )}
             {showEditBoard && (
               <ModalBoard
-                onClose={onCloseEditBoard}
-                // onEditBoard={handleEditBoardName}
+                onClose={() => closeModal(setShowEditBoard)()}
+                // onClose={() => {
+                //   closeModal(setShowEditBoard)();
+                //   handleSetActiveBoard(
+                //     getBoard.find(board => board.isActive === true)._id
+                //   );
+                // }}
                 onEditBoard={boardData => {
-                  handleEditBoardName(boardData);
-                  handleSetActiveBoard(boardData.createdBoardId);
+                  handleCreateBoard(boardData, true);
                 }}
                 title={editingBoardId ? 'Edit board' : 'New board'}
                 btnName={editingBoardId ? 'Edit' : 'Create'}
                 boardName={
                   editingBoardId
-                    ? getBoard.find(board => board._id === editingBoardId).title
+                    ? getBoard.find(board => board.isActive === true).title
                     : ''
                 }
-                currentBoard={getBoard.find(
-                  board => board._id === activeBoardId
-                )}
+                currentBoard={getBoard.find(board => board.isActive === true)}
               />
             )}
           </div>
@@ -228,7 +188,6 @@ const Sidebar = ({ setIsBoardActive }) => {
                   handleBoardInfo(board._id);
                   handleSetActiveBoard(board._id);
                 }}
-                // isActiveProps={activeBoardId === board._id}
                 isActiveProps={board.isActive === true}
               >
                 <ProgName>
@@ -238,14 +197,14 @@ const Sidebar = ({ setIsBoardActive }) => {
                   <div>{board.title}</div>
                 </ProgName>
                 <IconEditCustom>
-                  <IconEdit onClick={() => onOpenEditBoard(board)}>
+                  <IconEdit onClick={openModal(setShowEditBoard, board)}>
                     <use href={`${icons}#icon-pencil`}></use>
                   </IconEdit>
                   <IconEdit onClick={() => handleDeleteBoard(board._id)}>
                     <use href={`${icons}#icon-trash`}></use>
                   </IconEdit>
                 </IconEditCustom>
-                <BorderRight isActive={activeBoardId === board._id} />
+                <BorderRight isActive={board.isActive === true} />
               </BoardItem>
             ))}
         </BoardList>
@@ -275,7 +234,10 @@ const Sidebar = ({ setIsBoardActive }) => {
             )}
           </HelpBar>
 
-          <HelpBtn onClick={onOpen} isHovered={isHelpBarHovered}>
+          <HelpBtn
+            onClick={openModal(setShowModal)}
+            isHovered={isHelpBarHovered}
+          >
             <IconHelp>
               <use href={`${icons}#icon-help`}></use>
             </IconHelp>
@@ -283,7 +245,7 @@ const Sidebar = ({ setIsBoardActive }) => {
             <HelpImg src={plant} alt="Help" />
           </HelpBtn>
 
-          {showModal && <ModalNeedHelp onClose={onClose} />}
+          {showModal && <ModalNeedHelp onClose={closeModal(setShowModal)} />}
         </div>
 
         <LogOut onClick={handleLogout}>
