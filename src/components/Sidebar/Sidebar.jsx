@@ -30,7 +30,7 @@ import plant from '../../images/plant_min.png';
 import { useDispatch } from 'react-redux';
 import {
   createBoard,
-  //deleteBoard,
+  deleteBoard,
   editBoard,
   logout,
   updateBoardActive,
@@ -42,6 +42,7 @@ import { getBoardId } from 'redux/task/taskOperations';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
+import ScrollingWord from './ScrollingWord/ScrollingWord';
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -49,6 +50,7 @@ const Sidebar = () => {
   const [showModalBoard, setShowModalBoard] = useState(false);
   const [showEditBoard, setShowEditBoard] = useState(false);
   const [editingBoardId, setEditingBoardId] = useState(null);
+  const [activeBoardId, setActiveBoardId] = useState(null);
   const [isHelpBarHovered, setIsHelpBarHovered] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const boardListRef = useRef(null);
@@ -116,12 +118,12 @@ const Sidebar = () => {
       });
   };
 
-  // const handleDeleteBoard = () => {
-  //   dispatch(deleteBoard(editingBoardId)).catch(error => {
-  //     console.error('Помилка при видаленні борду:', error);
-  //   });
-  //   setShowConfirm(false);
-  // };
+  const handleDeleteBoard = id => {
+    dispatch(deleteBoard(id)).catch(error => {
+      console.error('Помилка при видаленні борду:', error);
+    });
+    setShowConfirm(false);
+  };
 
   const handleBoardInfo = boardId => {
     dispatch(getBoardId(boardId));
@@ -196,9 +198,12 @@ const Sidebar = () => {
             .map(board => (
               <BoardItem
                 key={board._id}
-                onClick={() => {
-                  handleBoardInfo(board._id);
-                  handleSetActiveBoard(board._id);
+                onClick={event => {
+                  if (!event.target.matches('#deleteTarget')) {
+                    handleBoardInfo(board._id);
+                    handleSetActiveBoard(board._id);
+                  }
+                  setActiveBoardId(board._id);
                 }}
                 isActiveProps={board.isActive === true}
               >
@@ -206,13 +211,16 @@ const Sidebar = () => {
                   <IconProgect>
                     <use href={`${icons}#${board.icon}`}></use>
                   </IconProgect>
-                  <div>{board.title}</div>
+                  <div>
+                    {/* <ScrollingWord word={board.title} /> */}
+                    {board.title}
+                  </div>
                 </ProgName>
                 <IconEditCustom>
                   <IconEdit onClick={openModal(setShowEditBoard, board)}>
                     <use href={`${icons}#icon-pencil`}></use>
                   </IconEdit>
-                  <IconEdit onClick={() => handleOpen()}>
+                  <IconEdit onClick={() => handleOpen()} id="deleteTarget">
                     <use href={`${icons}#icon-trash`}></use>
                   </IconEdit>
                 </IconEditCustom>
@@ -258,12 +266,19 @@ const Sidebar = () => {
           </HelpBtn>
 
           {showModal && <ModalNeedHelp onClose={closeModal(setShowModal)} />}
-          {showConfirm && (
-            <ModalConfirm
-              onClose={handleClose}
-              //onConfirm={handleDeleteBoard()}
-            />
-          )}
+
+          <ToastContainer
+            position="top-center"
+            autoClose={2500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
         </div>
 
         <LogOut onClick={handleLogout}>
@@ -273,18 +288,13 @@ const Sidebar = () => {
           Log out
         </LogOut>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={2500}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+
+      {showConfirm && (
+        <ModalConfirm
+          onClose={handleClose}
+          onConfirm={() => handleDeleteBoard(activeBoardId)}
+        />
+      )}
     </SidebarContainer>
   );
 };

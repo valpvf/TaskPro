@@ -113,9 +113,6 @@ export const authSlice = createSlice({
         state.error = payload;
       })
       .addCase(deleteBoard.fulfilled, (state, { payload }) => {
-        // state.user.boards = state.user.boards.filter(
-        //   board => board.id !== payload.boardId
-        // );
         const indexToRemove = state.user.boards.findIndex(
           board => board._id === payload
         );

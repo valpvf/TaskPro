@@ -40,6 +40,7 @@ export const editColumn = createAsyncThunk(
   async ({ id, body }, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await editColumnApi(id, body);
+      console.log('123123', data);
       return data;
     } catch (error) {
       console.log(error);
