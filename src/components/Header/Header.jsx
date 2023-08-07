@@ -1,6 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import UserInfo from 'components/UserInfo/UserInfo';
+
+import icons from '../../images/sprite.svg';
+import { updateTheme } from 'redux/auth/authOperations';
+import { useTheme } from 'shared/hooks/useTheme';
+
 import {
   Container,
   HeaderInfo,
@@ -11,16 +17,10 @@ import {
   IconDown,
   TheamBtn,
 } from './HeaderStyled';
-import icons from '../../images/sprite.svg';
-import { useTheme } from '../../shared/hooks/useTheme';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTheme } from 'redux/auth/authSelectors';
-import { updateTheme } from 'redux/auth/authOperations';
 
 const Header = ({ onToggleSidebar }) => {
-  const initialTheme = useSelector(getTheme);
   const dispatch = useDispatch();
-  const { theme, setTheme } = useTheme(initialTheme || 'dark');
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     dispatch(updateTheme(theme));

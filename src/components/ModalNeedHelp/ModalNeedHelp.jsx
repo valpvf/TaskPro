@@ -1,16 +1,15 @@
+import { useSelector } from 'react-redux';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getUserEmail } from 'redux/auth/authSelectors';
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
 import { TextareaStyled, InputField } from './ModalNeedHelp.styled';
 import ButtonMain from 'shared/components/button/Button';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
-
 import fetchHelpApi from 'shared/utilities/fetchHelp';
-import { useSelector } from 'react-redux';
-import { getUserEmail } from 'redux/auth/authSelectors';
 
 const NeedHelpSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
