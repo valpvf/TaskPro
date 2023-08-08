@@ -63,6 +63,21 @@ const Card = ({ task = {}, columnID }) => {
   const onCloseProgress = () => {
     setShowProgressModal(false);
   };
+  const onCloseProgressOut = e => {
+    console.log(
+      'e.target, e.currentTarget',
+      e.target,
+      e.currentTarget,
+      e.target.classList[0]
+    );
+    if (
+      e.currentTarget.classList[0] === 'css-1ezvhq3'
+      // e.currentTarget.classList[0]
+    ) {
+      // e.stopPropagation();
+      setShowProgressModal(false);
+    }
+  };
 
   function formatDate(date) {
     const year = date.getFullYear();
@@ -76,7 +91,7 @@ const Card = ({ task = {}, columnID }) => {
   const deadlineDate = formatDate(new Date(deadline.split('T')[0]));
 
   return (
-    <CardWrapper priority={priority}>
+    <CardWrapper priority={priority} onClick={onCloseProgressOut}>
       <div>
         <Title>
           <EllipsisText text={title} length={'35'} />
