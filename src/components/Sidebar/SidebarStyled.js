@@ -259,7 +259,6 @@ export const HelpBtn = styled.div`
 
 export const HelpImg = styled.img`
   width: 34px;
-  /* height: 78px; */
   margin-left: 20px;
 `;
 

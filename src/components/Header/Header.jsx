@@ -1,8 +1,6 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import UserInfo from 'components/UserInfo/UserInfo';
-
 import icons from '../../images/sprite.svg';
 import { updateTheme } from 'redux/auth/authOperations';
 import { useTheme } from 'shared/hooks/useTheme';

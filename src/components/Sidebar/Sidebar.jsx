@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-
 import ModalBoard from 'components/ModalBoard/ModalBoard';
 import ModalNeedHelp from 'components/ModalNeedHelp/ModalNeedHelp';
 import {
@@ -41,7 +40,6 @@ import { getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardId } from 'redux/task/taskOperations';
 import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
 import EllipsisText from 'react-ellipsis-text';
-// import ScrollingWord from './ScrollingWord/ScrollingWord';
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -211,9 +209,7 @@ const Sidebar = () => {
                     <use href={`${icons}#${board.icon}`}></use>
                   </IconProgect>
                   <div>
-                    {/* <ScrollingWord word={board.title} /> */}
                     <EllipsisText text={board.title} length={'15'} />
-                    {/* {board.title} */}
                   </div>
                 </ProgName>
                 <IconEditCustom>

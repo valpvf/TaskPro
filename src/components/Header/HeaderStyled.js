@@ -5,20 +5,26 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* background-color: #161616; */
   background-color: var(--header-background-color);
-  /* color: #fff; */
   color: var(--primary-heading-color);
-  height: 68px;
-  padding-left: 32px;
+  min-height: 68px;
   padding-right: 24px;
+
+  @media (max-width: 1440px) {
+    padding-right: 32px;
+  }
+
+  @media (max-width: 768px) {
+    min-height: 68px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
 
 export const IconBM = styled.svg`
   width: 32px;
   height: 32px;
   fill: none;
-  /* stroke: #ffffff; */
   stroke: var(--primary-icon-stroke-color);
 
   @media (min-width: 1440px) {
@@ -43,9 +49,7 @@ export const CustomOptionList = styled.ul`
   position: absolute;
   top: 20px;
   left: -105px;
-  /* background-color: #161616; */
   background-color: var(--header-background-color);
-  /* border: solid 1px #bedbb0; */
   border: solid 1px var(--theme-switcher-dropdown-border-color);
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
@@ -58,7 +62,6 @@ export const CustomOption = styled.li`
   color: var(--theme-switcher-dropdown-text-color);
 
   &:hover {
-    /* color: #bedbb0; */
     color: var(--theme-switcher-dropdown-hover-color);
   }
 
