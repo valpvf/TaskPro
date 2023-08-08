@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
 
 export const SidebarContainer = styled.div`
-  width: 260px;
+  min-width: 260px;
   background-color: var(--primary-background-sidebar-color);
   color: var(--secondary-heading-color);
   display: flex;
@@ -14,7 +14,7 @@ export const SidebarContainer = styled.div`
   @media (max-width: 1440px) {
     position: absolute;
     height: 100vh;
-    width: 225px;
+    min-width: 225px;
   }
 `;
 
@@ -117,6 +117,7 @@ export const BoardItem = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-height: 60px;
 
   padding: 20px 24px;
   cursor: pointer;
