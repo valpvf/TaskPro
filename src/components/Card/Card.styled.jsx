@@ -42,9 +42,9 @@ export const SubTitle = styled.p`
   /* color: #b7b7b7; */
   color: var(--primary-text-color);
   max-width: 290px;
-  overflow: hidden;
+  /* overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
+  display: -webkit-box; */
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 `;
