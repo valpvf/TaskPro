@@ -25,7 +25,7 @@ import { getTheme } from 'redux/auth/authSelectors';
 
 const TitleSchema = Yup.object().shape({
   cardTitle: Yup.string().required('Title is required'),
-  cardDescr: Yup.string().required('Description is required'),
+  cardDescr: Yup.string(),
 });
 
 const ModalCard = ({
@@ -33,7 +33,7 @@ const ModalCard = ({
   title: modalTitle,
   btnName,
   cardTitle = '',
-  cardDescription = '',
+  cardDescription,
   currentPriority = 'Without',
   deadline = false,
   column,
@@ -119,7 +119,6 @@ const ModalCard = ({
               onChange={handleChange}
               // value={formik.values.cardDescr}
             />
-            <InputErrorMessage name="cardDescr" component={'p'} />
             <SubtitleStyled>Label color</SubtitleStyled>
             <RadioColored
               onRadioChange={setPriority}
