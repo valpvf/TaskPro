@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import EllipsisText from 'react-ellipsis-text';
 import PropTypes from 'prop-types';
 import ModalCard from 'components/ModalCard/ModalCard';
@@ -22,7 +22,6 @@ import {
   IconWrapper,
   Bell,
 } from './Card.styled';
-import { getColumn } from 'redux/task/taskSelectors';
 
 const Card = ({ task = {}, columnID }) => {
   const {
@@ -80,8 +79,6 @@ const Card = ({ task = {}, columnID }) => {
   const today = new Date();
   const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July 28, 2023)
   const deadlineDate = formatDate(new Date(deadline.split('T')[0]));
-  const columns = useSelector(getColumn);
-  console.log(columns)
 
   return (
     <CardWrapper priority={priority} onClick={onCloseProgressOut}>
@@ -111,9 +108,9 @@ const Card = ({ task = {}, columnID }) => {
                 <use xlinkHref={`${sprite}#icon-bell`} />
               </Bell>
             )}
-            {columns.length > 1 && <Icon width="16px" height="16px" onClick={onOpenProgress}>
+            <Icon width="16px" height="16px" onClick={onOpenProgress}>
               <use xlinkHref={`${sprite}#icon-goto`} />
-            </Icon>}
+            </Icon>
             {showProgressModal && (
               <ModalProgress
                 onCloseProgress={onCloseProgress}
