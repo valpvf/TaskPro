@@ -40,6 +40,7 @@ import { useSelector } from 'react-redux';
 import { getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardId } from 'redux/task/taskOperations';
 import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
+import EllipsisText from 'react-ellipsis-text';
 // import ScrollingWord from './ScrollingWord/ScrollingWord';
 
 const Sidebar = () => {
@@ -211,7 +212,8 @@ const Sidebar = () => {
                   </IconProgect>
                   <div>
                     {/* <ScrollingWord word={board.title} /> */}
-                    {board.title}
+                    <EllipsisText text={board.title} length={'15'} />
+                    {/* {board.title} */}
                   </div>
                 </ProgName>
                 <IconEditCustom>
