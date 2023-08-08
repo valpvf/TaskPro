@@ -15,8 +15,8 @@ export const StyledLabel = styled.label`
 
   &:hover > p,
   &:hover > svg {
-    color: #bedbb0;
-    stroke: #bedbb0;
+    color: var(--modal-progress-text-hover-color);
+    stroke: var(--modal-progress-icon--hover-stroke-color);
   }
 
   cursor: pointer;
@@ -32,12 +32,12 @@ export const StyledInput = styled.input`
 export const ColumnTitle = styled.p`
   font-family: Poppins;
   letter-spacing: -0.28px;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--modal-progress-text-color);
   transition: all 250ms ease-in-out;
 `;
 
 export const Icon = styled.svg`
-  stroke: rgba(255, 255, 255, 0.5);
+  stroke: var(--modal-progress-icon-stroke-color);
   fill: transparent;
   transition: all 250ms ease-in-out;
 `;
