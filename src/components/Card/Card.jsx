@@ -64,17 +64,7 @@ const Card = ({ task = {}, columnID }) => {
     setShowProgressModal(false);
   };
   const onCloseProgressOut = e => {
-    console.log(
-      'e.target, e.currentTarget',
-      e.target,
-      e.currentTarget,
-      e.target.classList[0]
-    );
-    if (
-      e.currentTarget.classList[0] === 'css-1ezvhq3'
-      // e.currentTarget.classList[0]
-    ) {
-      // e.stopPropagation();
+    if (e.target.id !== 'modal_progress' && showProgressModal) {
       setShowProgressModal(false);
     }
   };
