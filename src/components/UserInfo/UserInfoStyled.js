@@ -9,6 +9,7 @@ export const Container = styled.div`
 
 export const AvasarSetin = styled.div`
   position: relative;
+  cursor: pointer;
 `;
 
 export const IconAvatar = styled.svg`
@@ -19,6 +20,9 @@ export const IconAvatar = styled.svg`
   fill: var(--user-icon-fill-color);
   /* stroke: white; */
   stroke: var(--user-icon-stroke-color);
+  &:hover {
+    box-shadow: 0px 6px 7px 1px var(--user-edit-icon-plus-hover-color);
+  }
 `;
 
 export const IconPlus = styled.svg`
@@ -37,4 +41,7 @@ export const AvatarImg = styled.img`
   display: block;
   width: 32px;
   height: 32px;
+  &:hover {
+    box-shadow: 0px 6px 7px 1px var(--user-edit-icon-plus-hover-color);
+  }
 `;

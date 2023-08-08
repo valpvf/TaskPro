@@ -128,6 +128,14 @@ html[data-theme='dark'] {
   --input-need-help-background-focus: #1f1f1f;
   --radio-button-text-color: rgba(255, 255, 255, 0.5);
   --avatar-border-color: #bedbb0;
+  --user-edit-icon-plus-fill-color: #bedbb0;
+  --user-edit-icon-plus-hover-color: #9dc888;
+  --modal-progress-text-color: rgba(255, 255, 255, 0.5);
+  --modal-progress-icon-stroke-color: rgba(255, 255, 255, 0.5);
+  --modal-progress-text-hover-color: #bedbb0;
+  --modal-progress-icon--hover-stroke-color: #bedbb0;
+  --modal-progress-background-color: #1f1f1f;
+  --modal-progress-boxshadow-color: rgba(17, 17, 17, 0.1);
 }
 
 // light theme
@@ -222,6 +230,15 @@ html[data-theme='light'] {
   --input-need-help-background-focus: #fff;
   --radio-button-text-color: rgba(22, 22, 22, 0.5);
   --avatar-border-color: #bedbb0;
+  --user-edit-icon-plus-fill-color: #bedbb0;
+  --user-edit-icon-plus-hover-color: #9dc888;
+
+  --modal-progress-text-color: rgba(22, 22, 22, 1);
+  --modal-progress-icon-stroke-color: rgba(22, 22, 22, 1);
+  --modal-progress-text-hover-color: #bedbb0;
+  --modal-progress-icon--hover-stroke-color: #bedbb0;
+  --modal-progress-background-color: #fcfcfc;
+  --modal-progress-boxshadow-color: rgba(17, 17, 17, 0.1);
 }
 
 // purple theme
@@ -317,4 +334,13 @@ html[data-theme='violet'] {
   --input-need-help-background-focus: #fff;
   --radio-button-text-color: rgba(22, 22, 22, 0.5);
   --avatar-border-color: #7b7ede;
+  --user-edit-icon-plus-fill-color: #ecedfd;
+  --user-edit-icon-plus-hover-color: #7b7ede;
+
+  --modal-progress-text-color: rgba(22, 22, 22, 1);
+  --modal-progress-icon-stroke-color: rgba(22, 22, 22, 1);
+  --modal-progress-text-hover-color: rgba(82, 85, 188, 1);
+  --modal-progress-icon--hover-stroke-color: rgba(82, 85, 188, 1);
+  --modal-progress-background-color: #fcfcfc;
+  --modal-progress-boxshadow-color: rgba(17, 17, 17, 0.1);
 }

@@ -30,6 +30,10 @@ export const IconBM = styled.svg`
   @media (min-width: 1440px) {
     display: none;
   }
+
+  &:hover {
+    box-shadow: 0px 6px 7px 1px var(--user-edit-icon-plus-hover-color);
+  }
 `;
 
 export const HeaderInfo = styled.div`
@@ -76,6 +80,10 @@ export const TheamBtn = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+  &:hover {
+    padding: 0 2px 2px;
+    box-shadow: 0px 6px 7px -2px var(--user-edit-icon-plus-hover-color);
+  }
 `;
 
 export const IconDown = styled.svg`

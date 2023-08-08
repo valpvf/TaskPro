@@ -5,7 +5,8 @@ export const ModalWrapper = styled.div`
   /* top: 50%; */
   right: 2px;
   /* transform: translate(0, -77%); */
-  background-color: var(--secondary-background-color);
+  background-color: var(--modal-progress-background-color);
+  box-shadow: 0px 4px 16px 0px var(--modal-progress-boxshadow-color);
   width: 136px;
   padding: 10px 10px 15px 20px;
   /* padding: 20px 15px 15px 20px; */

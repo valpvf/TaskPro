@@ -12,6 +12,7 @@ export const AvatarWrapper = styled.div`
   width: 68px;
   height: 68px;
   position: relative;
+  cursor: pointer;
 `;
 
 export const IconUser = styled.svg`
@@ -22,12 +23,20 @@ export const IconUser = styled.svg`
 
   fill: var(--user-icon-fill-color);
   stroke: var(--user-icon-stroke-color);
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px 6px 7px 1px var(--user-edit-icon-plus-hover-color);
+  }
 `;
 
 export const AvatarImg = styled.img`
   width: 68px;
   height: 68px;
   border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px 6px 7px 1px var(--user-edit-icon-plus-hover-color);
+  }
 `;
 
 export const FileInputWrapper = styled.label`
@@ -49,9 +58,12 @@ export const FileInputWrapper = styled.label`
   color: var(--welcome-title-color);
 
   border-radius: 20%;
-  background-color: var(--user-icon-plus-fill-color);
+  background-color: var(--user-edit-icon-plus-fill-color);
 
   cursor: pointer;
+  &:hover {
+    background-color: var(--user-edit-icon-plus-hover-color);
+  }
 `;
 
 export const FileInput = styled.input`
