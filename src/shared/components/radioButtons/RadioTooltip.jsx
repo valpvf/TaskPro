@@ -1,4 +1,6 @@
 // import { nanoid } from 'nanoid';
+import EllipsisText from 'react-ellipsis-text';
+import PropTypes from 'prop-types';
 import {
   ColumnTitle,
   Icon,
@@ -38,7 +40,9 @@ const RadioTooltip = ({ onClick, id }) => {
               name="tooltip"
               onClick={onInputChange}
             />
-            <ColumnTitle>{title}</ColumnTitle>{' '}
+            <ColumnTitle>
+              <EllipsisText text={title} length={'12'} />
+            </ColumnTitle>
             <Icon width="16px" height="16px">
               <use href={`${sprite}#icon-goto`}></use>
             </Icon>
@@ -50,3 +54,8 @@ const RadioTooltip = ({ onClick, id }) => {
 };
 
 export default RadioTooltip;
+
+EllipsisText.propTypes = {
+  text: PropTypes.string.isRequired,
+  length: PropTypes.string.isRequired,
+};

@@ -85,7 +85,7 @@ const Card = ({ task = {}, columnID }) => {
           <EllipsisText text={title} length={'35'} />
         </Title>
         <SubTitle>
-          <EllipsisText text={description} length={'41'} />
+          <EllipsisText text={description} length={'37'} />
         </SubTitle>
         <Line />
         <PriorityWrapper>
