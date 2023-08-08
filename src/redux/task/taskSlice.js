@@ -11,7 +11,7 @@ import {
   deleteCard,
   replaceCard,
 } from './taskOperations';
-// import { authSlice } from 'redux/auth/authSlice';
+import { logout } from 'redux/auth/authOperations';
 
 const initialState = {
   _id: '64c772d4906c009cfba4f8a9',
@@ -50,6 +50,7 @@ const initialState = {
     },
   ],
   error: null,
+  isRefreshing: false,
 };
 
 const boardSlice = createSlice({
@@ -73,9 +74,8 @@ const boardSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addColumn.pending, state => {
-        // state.set('isRefreshing', true);
-        // console.log('state-auth');
         state.error = null;
+        state.isRefreshing = true;
       })
       .addCase(addColumn.fulfilled, (state, { payload }) => {
         state.columns.push(payload);
@@ -85,6 +85,7 @@ const boardSlice = createSlice({
       })
       .addCase(editColumn.pending, state => {
         state.error = null;
+        state.isRefreshing = true;
       })
       .addCase(editColumn.fulfilled, (state, { payload }) => {
         const index = state.columns.findIndex(col => col._id === payload._id);
@@ -93,7 +94,10 @@ const boardSlice = createSlice({
       .addCase(editColumn.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(deleteColumn.pending, state => {})
+      .addCase(deleteColumn.pending, state => {
+        state.isRefreshing = true;
+        state.error = null;
+      })
       .addCase(deleteColumn.fulfilled, (state, { payload }) => {
         state.columns = state.columns.filter(col => col._id !== payload.id);
       })
@@ -102,6 +106,7 @@ const boardSlice = createSlice({
       })
       .addCase(addCard.pending, state => {
         state.error = null;
+        state.isRefreshing = true;
       })
       .addCase(addCard.fulfilled, (state, { payload }) => {
         const { column, ...task } = payload;
@@ -113,6 +118,7 @@ const boardSlice = createSlice({
       })
       .addCase(editCard.pending, state => {
         state.error = null;
+        state.isRefreshing = true;
       })
       .addCase(editCard.fulfilled, (state, { payload }) => {
         const { column, ...task } = payload;
@@ -125,7 +131,10 @@ const boardSlice = createSlice({
       .addCase(editCard.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(deleteCard.pending, state => {})
+      .addCase(deleteCard.pending, state => {
+        state.isRefreshing = true;
+        state.error = null;
+      })
       .addCase(deleteCard.fulfilled, (state, { payload }) => {
         const { column, _id: id } = payload;
         const index = state.columns.findIndex(col => col._id === column);
@@ -136,7 +145,10 @@ const boardSlice = createSlice({
       .addCase(deleteCard.rejected, (state, action) => {
         state.error = action.error.message;
       })
-      .addCase(replaceCard.pending, state => {})
+      .addCase(replaceCard.pending, state => {
+        state.isRefreshing = true;
+        state.error = null;
+      })
       .addCase(replaceCard.fulfilled, (state, { payload }) => {
         const { columnNew, idCard, columnOld } = payload;
         const indexOld = state.columns.findIndex(col => col._id === columnOld);
@@ -151,7 +163,23 @@ const boardSlice = createSlice({
       })
       .addCase(replaceCard.rejected, (state, action) => {
         state.error = action.error.message;
-      });
+      })
+      .addCase(logout.fulfilled, (state, { payload }) => {
+        state.title = '';
+        state.background = '00';
+      })
+      .addMatcher(
+        action => action.type.endsWith('/rejected'),
+        (state, { payload }) => {
+          state.isRefreshing = false;
+        }
+      )
+      .addMatcher(
+        action => action.type.endsWith('/fulfilled'),
+        (state, { payload }) => {
+          state.isRefreshing = false;
+        }
+      );
   },
 });
 
