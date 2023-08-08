@@ -5,7 +5,7 @@ const RadioColored = ({ onRadioChange, currentPriority }) => {
     {
       value: 'High',
       radioColor: {
-        static: 'var(--radio-label-background-color)',
+        static: 'var(--radio-label-green-color)',
         checked: 'var(--radio-label-checked-background-color)',
         additional: 'var(--radio-label-checked-background-color)',
       },
@@ -20,7 +20,7 @@ const RadioColored = ({ onRadioChange, currentPriority }) => {
     {
       value: 'Low',
       radioColor: {
-        static: 'var(--radio-label-green-color)',
+        static: 'var(--radio-label-background-color)',
         checked: 'var(--radio-label-checked-background-color)',
       },
     },
@@ -52,7 +52,8 @@ const RadioColored = ({ onRadioChange, currentPriority }) => {
         {radioButtons.map(button => {
           const { value, radioColor } = button;
           return (
-            <FormControlLabel key={value}
+            <FormControlLabel
+              key={value}
               value={value}
               sx={{ margin: '0' }}
               control={
