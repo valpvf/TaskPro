@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import EllipsisText from 'react-ellipsis-text';
+import PropTypes from 'prop-types';
 import ModalCard from 'components/ModalCard/ModalCard';
 import ModalProgress from 'components/ModalProgress/ModalProgress';
 import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
@@ -79,8 +81,12 @@ const Card = ({ task = {}, columnID }) => {
   return (
     <CardWrapper priority={priority}>
       <div>
-        <Title>{title}</Title>
-        <SubTitle>{description}</SubTitle>
+        <Title>
+          <EllipsisText text={title} length={'35'} />
+        </Title>
+        <SubTitle>
+          <EllipsisText text={description} length={'41'} />
+        </SubTitle>
         <Line />
         <PriorityWrapper>
           <div>
@@ -136,6 +142,11 @@ const Card = ({ task = {}, columnID }) => {
       </div>
     </CardWrapper>
   );
+};
+
+EllipsisText.propTypes = {
+  text: PropTypes.string.isRequired,
+  length: PropTypes.string.isRequired,
 };
 
 export default Card;

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import EllipsisText from 'react-ellipsis-text';
+import PropTypes from 'prop-types';
 import icons from '../../images/sprite.svg';
 import { BoardItem, IconEdit, IconEditCustom, ProgName } from './Column.styled';
 import ModalColumn from 'components/ModalColumn/ModalColumn';
@@ -34,7 +36,9 @@ const Column = ({ title, columnId }) => {
   return (
     <BoardItem>
       <ProgName>
-        <div>{title}</div>
+        <div>
+          <EllipsisText text={title} length={'30'} />
+        </div>
       </ProgName>
       <IconEditCustom>
         <IconEdit onClick={onOpen}>
@@ -58,6 +62,11 @@ const Column = ({ title, columnId }) => {
       )}
     </BoardItem>
   );
+};
+
+EllipsisText.propTypes = {
+  text: PropTypes.string.isRequired,
+  length: PropTypes.string.isRequired,
 };
 
 export default Column;
