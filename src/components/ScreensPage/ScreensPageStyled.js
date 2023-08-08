@@ -173,6 +173,7 @@ export const ColumnsContainer = styled.div`
   justify-items: center;
   gap: 22px;
   max-width: 75vw;
+  height: 95%;
   overflow-x: auto;
 
   ::-webkit-scrollbar {
@@ -186,7 +187,7 @@ export const ColumnsContainer = styled.div`
     border-radius: 10px;
   }
   @media (min-width: 1440px) {
-    max-width: 95vw;
+    max-width: 87vw;
     ::-webkit-scrollbar {
       background-color: var(--scrollbar-base-color);
       border-radius: 10px;
