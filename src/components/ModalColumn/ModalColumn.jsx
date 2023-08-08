@@ -45,23 +45,12 @@ const ModalColumn = ({ onClose, title, btnName, columnTitle = '', column }) => {
         }}
         validationSchema={TitleSchema}
         onSubmit={(values, { resetForm }) => {
-          //const columnEditing = columns?.find(el => el._id === column);
           const columnForEdit = columns.filter(el => el._id !== column);
-          // console.log(
-          //   'object',
-          //   values.title,
-          //   columnForEdit,
-          //   columnEditing,
-          //   columnEditing.title
-          // );
-
-          //if (columnEditing.title.toLowerCase() === values.title.toLowerCase())
           if (
             columnForEdit.some(
               el => el.title.toLowerCase() === values.title.toLowerCase()
             )
           ) {
-            //console.log('Duplicate');
             return toast.warn('This title already exists!');
           }
 

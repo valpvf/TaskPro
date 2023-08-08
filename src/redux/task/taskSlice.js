@@ -11,6 +11,7 @@ import {
   deleteCard,
   replaceCard,
 } from './taskOperations';
+// import { authSlice } from 'redux/auth/authSlice';
 
 const initialState = {
   _id: '64c772d4906c009cfba4f8a9',
@@ -62,19 +63,19 @@ const boardSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getBoardId.pending, state => {
-        // state.error = null;
+        state.error = null;
       })
       .addCase(getBoardId.fulfilled, (state, { payload }) => {
-        // state.error = null;
+        state.error = null;
         return { ...payload, error: null };
       })
       .addCase(getBoardId.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(addColumn.pending, state => {
-        //state.set('isRefreshing', true);
+        // state.set('isRefreshing', true);
         // console.log('state-auth');
-        // state.error = null;
+        state.error = null;
       })
       .addCase(addColumn.fulfilled, (state, { payload }) => {
         state.columns.push(payload);
@@ -83,11 +84,10 @@ const boardSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(editColumn.pending, state => {
-        // state.error = null;
+        state.error = null;
       })
       .addCase(editColumn.fulfilled, (state, { payload }) => {
         const index = state.columns.findIndex(col => col._id === payload._id);
-        console.log('payloadColumn', payload);
         state.columns[index].title = payload.title;
       })
       .addCase(editColumn.rejected, (state, action) => {
@@ -101,7 +101,7 @@ const boardSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addCard.pending, state => {
-        // state.error = null;
+        state.error = null;
       })
       .addCase(addCard.fulfilled, (state, { payload }) => {
         const { column, ...task } = payload;
@@ -112,7 +112,7 @@ const boardSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(editCard.pending, state => {
-        // state.error = null;
+        state.error = null;
       })
       .addCase(editCard.fulfilled, (state, { payload }) => {
         const { column, ...task } = payload;
@@ -138,14 +138,12 @@ const boardSlice = createSlice({
       })
       .addCase(replaceCard.pending, state => {})
       .addCase(replaceCard.fulfilled, (state, { payload }) => {
-        console.log('payload', payload);
         const { columnNew, idCard, columnOld } = payload;
         const indexOld = state.columns.findIndex(col => col._id === columnOld);
         const indexNew = state.columns.findIndex(col => col._id === columnNew);
         const task = state.columns[indexOld].tasks.filter(
           el => el._id === idCard
         );
-        console.log('card', task);
         state.columns[indexOld].tasks = state.columns[indexOld].tasks.filter(
           el => el._id !== idCard
         );

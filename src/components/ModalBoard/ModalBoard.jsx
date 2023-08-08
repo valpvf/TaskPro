@@ -67,7 +67,6 @@ const ModalBoard = ({
           if (btnName === 'Create') {
             if (boards.some(el => el.title === values.boardTitle)) {
               setIsDuplicate(true);
-              //return console.log('Duplicate');
               return toast.warn('This title already exists!');
             }
             const boardInfo = {
@@ -84,7 +83,6 @@ const ModalBoard = ({
               )
             ) {
               setIsDuplicate(true);
-              //return console.log('Duplicate');
               return toast.warn('This title already exists!');
             }
             const boardInfoEdit = {

@@ -50,7 +50,6 @@ export const editCardApi = async (id, body, column) => {
 };
 
 export const deleteCardApi = async (id, column) => {
-  console.log('id2', id);
   const { data } = await axios.delete(`/api/tasks/${id}`).then(res => res);
   data.column = column;
   return { data };
