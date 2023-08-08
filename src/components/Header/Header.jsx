@@ -62,7 +62,7 @@ const Header = ({ onToggleSidebar }) => {
           </IconDown>
         </TheamBtn>
 
-        <CustomSelect>
+        <CustomSelect theme={theme}>
           <CustomOptionList open={isCustomOptionListOpen}>
             <CustomOption
               onClick={() => handleLightThemeClick()}
