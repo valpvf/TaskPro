@@ -3,7 +3,9 @@ import styled from '@emotion/styled';
 export const ModalWrapper = styled.div`
   position: absolute;
   /* top: 50%; */
-  right: 2px;
+  top: 70px;
+  right: 30px;
+  //right: 2px;
   /* transform: translate(0, -77%); */
   background-color: var(--modal-progress-background-color);
   box-shadow: 0px 4px 16px 0px var(--modal-progress-boxshadow-color);

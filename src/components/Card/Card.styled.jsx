@@ -4,6 +4,8 @@ export const CardWrapper = styled.div`
   &:not(:first-of-type) {
     margin-top: 10px;
   }
+  position: relative;
+  height: 130px;
   margin-right: 5px;
   /* background-color: #121212; */
   background-color: var(--primary-card-background-color);
