@@ -17,36 +17,46 @@ export const Container = styled.div`
   @media screen and (min-width: 320px) {
     padding-left: 10px;
     background-image: ${props =>
-      props.isBoardActive && `url('images/background/${props.picture}m.jpg')`};
+      props.isBoardActive &&
+      props.picture !== '00' &&
+      `url('images/background/${props.picture}m.jpg')`};
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: ${props =>
         props.isBoardActive &&
+        props.picture !== '00' &&
         `url('images/background/${props.picture}m2.jpg')`};
     }
   }
 
   @media screen and (min-width: 768px) {
     background-image: ${props =>
-      props.isBoardActive && `url('images/background/${props.picture}t.jpg')`};
+      props.isBoardActive &&
+      props.picture !== '00' &&
+      `url('images/background/${props.picture}t.jpg')`};
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: ${props =>
         props.isBoardActive &&
+        props.picture !== '00' &&
         `url('images/background/${props.picture}t2.jpg')`};
     }
   }
 
   @media screen and (min-width: 1440px) {
+    width: calc(100vw - 260px);
     background-image: ${props =>
-      props.isBoardActive && `url('images/background/${props.picture}d.jpg')`};
+      props.isBoardActive &&
+      props.picture !== '00' &&
+      `url('images/background/${props.picture}d.jpg')`};
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: ${props =>
         props.isBoardActive &&
+        props.picture !== '00' &&
         `url('images/background/${props.picture}d2.jpg')`};
     }
   }
