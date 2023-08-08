@@ -20,7 +20,7 @@ const ModalProgress = ({ onCloseProgress, id }) => {
   });
 
   return (
-    <ModalWrapper ref={modalRef}>
+    <ModalWrapper ref={modalRef} id="modal_progress">
       <RadioTooltip onClick={onCloseProgress} id={id} />
     </ModalWrapper>
   );
