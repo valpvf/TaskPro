@@ -13,6 +13,7 @@ import {
   editBoard,
   updateBoardActive,
 } from './authOperations';
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -28,6 +29,7 @@ export const authSlice = createSlice({
     isRefreshing: false,
     error: null,
   },
+
   extraReducers: builder =>
     builder
       .addCase(register.pending, state => {
