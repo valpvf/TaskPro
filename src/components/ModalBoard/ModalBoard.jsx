@@ -84,7 +84,8 @@ const ModalBoard = ({
               )
             ) {
               setIsDuplicate(true);
-              return console.log('Duplicate');
+              //return console.log('Duplicate');
+              return toast.warn('This title already exists!');
             }
             const boardInfoEdit = {
               values,
