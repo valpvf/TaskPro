@@ -20,4 +20,4 @@
 
 ## Repository backend
 
-[Посилання на макет](<https://www.figma.com/file/pSdUVzA3Ptey4JnZMJX90N/TaskPro-(Copy)?node-id=87%3A363>)
+[Посилання на бекенд](https://github.com/AlexSBolotov/taskspro-backend)
