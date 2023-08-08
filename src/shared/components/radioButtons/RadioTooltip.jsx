@@ -12,6 +12,7 @@ import sprite from '../../../images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { getColumn } from 'redux/task/taskSelectors';
 import { replaceCard } from 'redux/task/taskOperations';
+let view = false;
 
 const RadioTooltip = ({ onClick, id }) => {
   const [_id, columnID] = id;
@@ -27,8 +28,9 @@ const RadioTooltip = ({ onClick, id }) => {
     dispatch(replaceCard([_id, ev.target.value, columnID]));
     onClick();
   };
+  if (radioColumns.length > 0) view = true;
 
-  return (
+  return view ? (
     <RadioWrapper>
       {radioColumns.map(column => {
         const { title, _id } = column;
@@ -50,6 +52,17 @@ const RadioTooltip = ({ onClick, id }) => {
         );
       })}
     </RadioWrapper>
+  ) : (
+    <p
+      onClick={
+        onInputChange
+        //   setTimeout(() => {
+        // onModalClose();
+        //   }, 150)
+      }
+    >
+      No column
+    </p>
   );
 };
 
