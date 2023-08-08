@@ -41,11 +41,8 @@ const ScreensPage = ({ title }) => {
   const boardBg = useSelector(getBoardBg);
   const boards = useSelector(getBoard);
   const columns = useSelector(getColumn);
-  // console.log(boards.length, ' - boards');
-  // console.log(columns.length, ' - columns');
 
   const isBoardActive = boards.find(board => board.isActive);
-  // console.log(isBoardActive);
   // const dispatch = useDispatch();
 
   // useEffect(() => {

@@ -34,12 +34,9 @@ const Card = ({ task = {}, columnID }) => {
 
   const dispatch = useDispatch();
   const handleDelete = () => {
-    console.log('id', _id, columnID, task);
     dispatch(deleteCard({ _id, columnID }));
     setShowConfirm(false);
   };
-
-  // console.log('columnId', columnID);
 
   const [showModal, setShowModal] = useState(false);
   const [showProgressModal, setShowProgressModal] = useState(false);
