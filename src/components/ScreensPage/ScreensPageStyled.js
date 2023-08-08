@@ -15,7 +15,8 @@ export const Container = styled.div`
   padding-bottom: 5px;
 
   @media screen and (min-width: 320px) {
-    padding-left: 10px;
+    padding-left: 24px;
+    padding-right: 24px;
     background-image: ${props =>
       props.isBoardActive &&
       props.picture !== '00' &&
@@ -31,6 +32,8 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    padding-left: 34px;
+    padding-right: 34px;
     background-image: ${props =>
       props.isBoardActive &&
       props.picture !== '00' &&
@@ -183,7 +186,6 @@ export const ColumnsContainer = styled.div`
   justify-items: center;
   gap: 22px;
   max-width: 75vw;
-  height: 95%;
   overflow-x: auto;
 
   ::-webkit-scrollbar {
@@ -227,7 +229,7 @@ export const ColumnsContainer = styled.div`
   }
   @media (min-width: 320px) and (max-width: 720px) {
     flex-shrink: 0;
-    max-width: 92vw;
+    max-width: 88vw;
     overflow-y: auto;
     ::-webkit-scrollbar {
       background-color: var(--scrollbar-base-color);
