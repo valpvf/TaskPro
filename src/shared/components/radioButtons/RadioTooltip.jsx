@@ -24,11 +24,12 @@ const RadioTooltip = ({ onClick, id }) => {
     .filter(col => col._id !== columnID);
   const dispatch = useDispatch();
 
+  if (radioColumns.length > 0) view = true;
+
   const onInputChange = ev => {
-    dispatch(replaceCard([_id, ev.target.value, columnID]));
+    view && dispatch(replaceCard([_id, ev.target.value, columnID]));
     onClick();
   };
-  if (radioColumns.length > 0) view = true;
 
   return view ? (
     <RadioWrapper>
