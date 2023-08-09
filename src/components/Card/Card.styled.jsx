@@ -134,7 +134,7 @@ export const Bell = styled.svg`
 
 export const IconWrapper = styled.div`
   position: absolute;
-  left: ${props => (props.isEqualDate ? '202px' : '230px')};
+  right: ${props => (props.isEqualDate ? '202px' : '5px')};
   top: 10px;
   display: flex;
   align-items: center;
