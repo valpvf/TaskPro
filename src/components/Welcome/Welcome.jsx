@@ -1,6 +1,6 @@
 import React from 'react';
 import icons from '../../images/sprite.svg';
-import {Container,  Wrapper, Logo, LogoWrapper, Icon, Title, Text, AuthWrapper, AuthButton} from "./Welcome.styled"
+import {Container,  Wrapper, Logo, LogoWrapper, Icon, Title, Text, AuthWrapper, AuthButton, AuthButtonLogin} from "./Welcome.styled"
 
 function Welcome() {
   return (
@@ -16,10 +16,8 @@ function Welcome() {
             Pro - Don't wait, start achieving your goals now!
           </Text>
         <AuthWrapper>
-            {/* <AuthButton to="/home">Registration</AuthButton >
-            <AuthButton to="/home">Log In</AuthButton > */}
             <AuthButton to="register">Registration</AuthButton >
-            <AuthButton to="login">Log In</AuthButton >
+            <AuthButtonLogin to="login">Log In</AuthButtonLogin >
         </AuthWrapper>
         </Wrapper>
     </Container>
