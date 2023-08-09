@@ -75,7 +75,7 @@ const ModalColumn = ({ onClose, title, btnName, columnTitle = '', column }) => {
               onChange={handleChange('title')}
               value={values.title || ''}
             />
-            <InputErrorMessage name="columnTitle" component={'p'} />
+            <InputErrorMessage name="title" component={'p'} />
             <ButtonMain>
               <BlackPlusButton />
               {btnName}
