@@ -39,14 +39,10 @@ export const Title = styled.h4`
 export const SubTitle = styled.p`
   font-weight: 400;
   font-size: 12px;
-  margin-bottom: 12px;
   line-height: 1.5;
-  /* color: #b7b7b7; */
   color: var(--primary-text-color);
   max-width: 290px;
-  /* overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box; */
+  height: 35px;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 `;
@@ -101,7 +97,7 @@ export const Ball = styled.hr`
 export const Line = styled.hr`
   border: 1px solid #232323;
   border: 1px solid var(--secondary-line-color);
-  margin: 10px 0;
+  margin: 5px 0;
 `;
 
 export const Icon = styled.svg`
