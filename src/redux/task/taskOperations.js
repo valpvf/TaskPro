@@ -17,7 +17,6 @@ export const getBoardId = createAsyncThunk(
       const { data } = await getBoardApi(id);
       return data;
     } catch (error) {
-      // dispatch(errorHandler({ error, cb: () => addColumn(columnForm) }));
       return rejectWithValue(error.message);
     }
   }
@@ -30,7 +29,6 @@ export const addColumn = createAsyncThunk(
       const { data } = await addColumnApi(columnForm);
       return data;
     } catch (error) {
-      // dispatch(errorHandler({ error, cb: () => addColumn(columnForm) }));
       return rejectWithValue(error.message);
     }
   }

@@ -1,25 +1,24 @@
 import styled from '@emotion/styled';
 
 export const BoardItem = styled.li`
-margin-bottom: 10px;
-  width: 335px;
   position: relative;
   display: flex;
-  justify-content: space-between;
+  overflow-y: auto;
   align-items: center;
+  justify-content: space-between;
+  width: 335px;
+  max-height: 500px;
+  margin-bottom: 10px;
   padding: 18px 20px 17px;
-  background-color: var(--column-background-color);
+  cursor: pointer;
+  text-align: left;
+  letter-spacing: -0.02em;
   color: var(--column-text-color);
   border-radius: 8px;
-  max-height: 500px;
-  overflow-y: auto;
-  cursor: pointer;
-
+  background-color: var(--column-background-color);
   font-size: 14px;
   font-weight: 500;
   line-height: calc(24 / 14);
-  letter-spacing: -0.02em;
-  text-align: left;
 `;
 
 export const ProgName = styled.div`
@@ -27,21 +26,23 @@ export const ProgName = styled.div`
   align-items: center;
   gap: 8px;
 `;
+
 export const IconProgect = styled.svg`
   width: 18px;
   height: 18px;
   stroke: var(--sidebar-icon-stroke-color);
 `;
+
 export const IconEditCustom = styled.div`
   display: flex;
-  text-align: center;
   align-items: center;
+  text-align: center;
 `;
 
 export const IconEdit = styled.svg`
-  margin-left: 8px;
   width: 16px;
   height: 16px;
+  margin-left: 8px;
   stroke: var(--column-icon-edit-stroke-color);
   fill: none;
   &:hover {

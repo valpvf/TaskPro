@@ -2,20 +2,20 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  background-color: var(--header-background-color);
-  color: var(--primary-heading-color);
   min-height: 68px;
   padding-right: 24px;
+  color: var(--primary-heading-color);
+  background-color: var(--header-background-color);
 
   @media (max-width: 768px) {
     padding-left: 20px;
     padding-right: 20px;
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     padding-left: 20px;
     padding-right: 32px;
   }
@@ -46,16 +46,16 @@ export const CustomSelect = styled.div`
 `;
 
 export const CustomOptionList = styled.ul`
-  list-style: none;
-  padding: 18px 44px 18px 18px;
-  margin: 0;
-  display: ${props => (props.open ? 'block' : 'none')};
   position: absolute;
+  display: ${props => (props.open ? 'block' : 'none')};
   top: 20px;
   left: -105px;
-  background-color: var(--header-background-color);
+  margin: 0;
+  padding: 18px 44px 18px 18px;
+  list-style: none;
   border: solid 1px var(--theme-switcher-dropdown-border-color);
   border-radius: 8px;
+  background-color: var(--header-background-color);
   box-shadow: 0px 4px 16px 0px rgba(17, 17, 17, 0.1);
   z-index: 1;
 `;
@@ -90,8 +90,6 @@ export const IconDown = styled.svg`
   width: 16px;
   height: 16px;
   margin-left: 4px;
-
   fill: transparent;
-  stroke: white;
   stroke: var(--primary-icon-stroke-color);
 `;

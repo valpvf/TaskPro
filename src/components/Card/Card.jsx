@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EllipsisText from 'react-ellipsis-text';
 import PropTypes from 'prop-types';
+
 import ModalCard from 'components/ModalCard/ModalCard';
 import ModalProgress from 'components/ModalProgress/ModalProgress';
 import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
 import { deleteCard } from 'redux/task/taskOperations';
+import { getColumn } from 'redux/task/taskSelectors';
 import sprite from '../../images/sprite.svg';
 import {
   Title,
@@ -22,9 +24,15 @@ import {
   IconWrapper,
   Bell,
 } from './Card.styled';
-import { getColumn } from 'redux/task/taskSelectors';
 
 const Card = ({ task = {}, columnID }) => {
+  const dispatch = useDispatch();
+  const columns = useSelector(getColumn);
+
+  const [showModal, setShowModal] = useState(false);
+  const [showProgressModal, setShowProgressModal] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+
   const {
     title = ' ',
     description = ' ',
@@ -33,15 +41,14 @@ const Card = ({ task = {}, columnID }) => {
     _id = '',
   } = task;
 
-  const dispatch = useDispatch();
+  const today = new Date();
+  const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July 28, 2023)
+  const deadlineDate = formatDate(new Date(deadline.split('T')[0]));
+
   const handleDelete = () => {
     dispatch(deleteCard({ _id, columnID }));
     setShowConfirm(false);
   };
-
-  const [showModal, setShowModal] = useState(false);
-  const [showProgressModal, setShowProgressModal] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
 
   const handleOpen = () => {
     setShowConfirm(true);
@@ -65,9 +72,6 @@ const Card = ({ task = {}, columnID }) => {
     setShowProgressModal(false);
   };
   const onCloseProgressOut = e => {
-    // if (e.target.id !== 'modal_progress' && showProgressModal) {
-    //   setShowProgressModal(false);
-    // }
     e.stopPropagation();
     if (showProgressModal) {
       setShowProgressModal(false);
@@ -80,13 +84,6 @@ const Card = ({ task = {}, columnID }) => {
     const day = String(date.getDate()).padStart(2, '0');
     return `${day}/${month}/${year}`;
   }
-
-  const today = new Date();
-  const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July 28, 2023)
-  const deadlineDate = formatDate(new Date(deadline.split('T')[0]));
-
-  const columns = useSelector(getColumn);
-  // console.log(columns);
 
   return (
     <CardWrapper priority={priority}>
@@ -154,9 +151,9 @@ const Card = ({ task = {}, columnID }) => {
   );
 };
 
+export default Card;
+
 EllipsisText.propTypes = {
   text: PropTypes.string.isRequired,
   length: PropTypes.string.isRequired,
 };
-
-export default Card;

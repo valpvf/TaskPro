@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import UserInfo from 'components/UserInfo/UserInfo';
-import icons from '../../images/sprite.svg';
 import { updateTheme } from 'redux/auth/authOperations';
 import { useTheme } from 'shared/hooks/useTheme';
-
+import icons from '../../images/sprite.svg';
 import {
   Container,
   HeaderInfo,
@@ -21,31 +20,32 @@ const Header = ({ onToggleSidebar }) => {
   const dispatch = useDispatch();
   const { theme, setTheme } = useTheme();
 
+  const [selectedTheme, setSelectedTheme] = useState('dark');
+  const [isCustomOptionListOpen, setCustomOptionListOpen] = useState(false);
+
+  const toggleCustomOptionList = () => {
+    setCustomOptionListOpen(!isCustomOptionListOpen);
+  };
+
   const handleLightThemeClick = () => {
     setTheme('light');
     setSelectedTheme('light');
     dispatch(updateTheme('light'));
     toggleCustomOptionList();
   };
+
   const handleDarkThemeClick = () => {
     setTheme('dark');
     setSelectedTheme('dark');
     dispatch(updateTheme('dark'));
     toggleCustomOptionList();
   };
+
   const handleVioletThemeClick = () => {
     setTheme('violet');
     setSelectedTheme('violet');
     dispatch(updateTheme('violet'));
     toggleCustomOptionList();
-  };
-
-  const [selectedTheme, setSelectedTheme] = useState('dark');
-
-  const [isCustomOptionListOpen, setCustomOptionListOpen] = useState(false);
-
-  const toggleCustomOptionList = () => {
-    setCustomOptionListOpen(!isCustomOptionListOpen);
   };
 
   return (

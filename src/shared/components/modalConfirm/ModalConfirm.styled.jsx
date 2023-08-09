@@ -14,9 +14,7 @@ export const ButtonStyled = styled.button`
   box-sizing: border-box;
   border-radius: 8px;
   border: none;
-  /* background-color: var(--BEDBB0); */
   background-color: var(--primary-button-color);
-  /* color: var(--161616); */
   color: var(--shared-button-text-color);
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
@@ -25,7 +23,6 @@ export const ButtonStyled = styled.button`
 
   &:hover,
   :focus {
-    /* background-color: var(--9DC888); */
     background-color: var(--secondary-button-color);
   }
 `;

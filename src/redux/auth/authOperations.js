@@ -114,7 +114,6 @@ export const createBoard = createAsyncThunk(
   'boards/createBoard',
   async (boardData, thunkAPI) => {
     try {
-      // const isActive = true;
       const response = await addBoardApi(boardData);
       const payload = { isActive: true, ...response.data };
       return payload;

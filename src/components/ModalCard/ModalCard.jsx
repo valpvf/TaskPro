@@ -117,7 +117,6 @@ const ModalCard = ({
               name="cardDescr"
               type="text"
               onChange={handleChange}
-              // value={formik.values.cardDescr}
             />
             <SubtitleStyled>Label color</SubtitleStyled>
             <RadioColored

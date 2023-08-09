@@ -33,7 +33,6 @@ export const SharedLayout = () => {
         pauseOnHover
         theme={theme}
       />
-      {/* Same as */}
       <ToastContainer />
     </Container>
   );

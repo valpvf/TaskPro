@@ -3,7 +3,6 @@ import '../../shared/basicStyles/variables.scss';
 
 export const FormStyled = styled.form`
   padding-top: 14px;
-  /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
   border-top: 1px solid var(--modal-filter-form-line);
 `;
 
@@ -16,7 +15,6 @@ export const BoxStyled = styled.div`
 `;
 
 export const SubtitleStyled = styled.p`
-  /* color: var(--FFFFFF); */
   color: var(--modal-filters-text);
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
