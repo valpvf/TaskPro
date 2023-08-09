@@ -2,7 +2,7 @@ import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
 import { Wrapper, ButtonStyled } from './ModalConfirm.styled';
 
-const ModalConfirm = ({ onConfirm, onClose }) => {
+const ModalConfirm = ({ onConfirm, onClose, title = 'Are you sure?' }) => {
   const handleConfirm = () => {
     onConfirm();
   };
@@ -13,7 +13,7 @@ const ModalConfirm = ({ onConfirm, onClose }) => {
 
   return (
     <Modal onClose={onClose}>
-      <ModalTitle>Are you sure?</ModalTitle>
+      <ModalTitle>{title}</ModalTitle>
       <Wrapper>
         <ButtonStyled type="button" onClick={handleConfirm}>
           Yes
