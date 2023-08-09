@@ -99,6 +99,11 @@ export const AuthWrapper = styled.div`
   gap: 14px;
 
   margin-top: 48px;
+
+  & .login:hover + .register {
+    background: transparent;
+    color: var(--welcome-title-color);
+  }
 `;
 
 export const AuthButton = styled(NavLink)`
@@ -122,6 +127,9 @@ export const AuthButton = styled(NavLink)`
   cursor: pointer;
   text-transform: none;
 
+  &:hover {
+    transform: scale(1.05);
+  }
   &:active {
     transform: scale(0.95);
   }
