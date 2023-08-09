@@ -11,7 +11,7 @@ export const SidebarContainer = styled.div`
   transition: transform 0.3s ease-in-out;
   z-index: 11;
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     position: absolute;
     height: 100vh;
     min-width: 225px;
@@ -107,7 +107,6 @@ export const BoardList = styled.ul`
   }
 
   &::-webkit-scrollbar-track {
-    /* background-color: blue;  */
   }
 `;
 
@@ -181,7 +180,6 @@ export const IconEdit = styled.svg`
   margin-left: 8px;
   width: 16px;
   height: 16px;
-  /* stroke: #ffffff80; */
   stroke: var(--sidebar-icon-edit-stroke-color);
   fill: none;
   &:hover {
@@ -230,7 +228,7 @@ export const HelpTextContainer = styled.div`
         `
       : ''};
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     top: -140px;
   }
 `;

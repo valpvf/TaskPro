@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// import { changeUser, getUser } from './userOperations';
 import {
   getBoardId,
   addColumn,

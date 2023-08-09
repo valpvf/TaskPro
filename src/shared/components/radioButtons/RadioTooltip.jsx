@@ -1,4 +1,3 @@
-// import { nanoid } from 'nanoid';
 import EllipsisText from 'react-ellipsis-text';
 import PropTypes from 'prop-types';
 import {
@@ -31,7 +30,7 @@ const RadioTooltip = ({ onClick, id }) => {
     onClick();
   };
 
-  return view ? (
+  return (
     <RadioWrapper>
       {radioColumns.map(column => {
         const { title, _id } = column;
@@ -53,17 +52,6 @@ const RadioTooltip = ({ onClick, id }) => {
         );
       })}
     </RadioWrapper>
-  ) : (
-    <p
-      onClick={
-        onInputChange
-        //   setTimeout(() => {
-        // onModalClose();
-        //   }, 150)
-      }
-    >
-      No column
-    </p>
   );
 };
 

@@ -68,7 +68,6 @@ const ModalNeedHelp = ({ onClose }) => {
               type="text"
               placeholder="Comment"
               onChange={handleChange}
-              // value={formik.values.comment}
             />
             <InputErrorMessage name="comment" component={'p'} />
             <ButtonMain type="submit">Send</ButtonMain>

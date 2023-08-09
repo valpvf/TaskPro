@@ -12,12 +12,10 @@ export const TextareaStyled = styled(Field)`
   padding: 14px 18px;
   resize: none;
   border-radius: 8px;
-  /* border: 1px solid rgba(190, 219, 176, 0.4); */
   border: 1px solid var(--textarea-border-color);
   background-color: transparent;
   transition: border 250ms ease-in;
 
-  /* color: var(--FFFFFF); */
   color: var(--modal-board-text);
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
@@ -26,7 +24,6 @@ export const TextareaStyled = styled(Field)`
   letter-spacing: -0.28px;
 
   ::placeholder {
-    /* color: var(--FFFFFF); */
     color: var(--modal-board-text);
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
@@ -39,7 +36,6 @@ export const TextareaStyled = styled(Field)`
   :focus,
   :active {
     outline: none;
-    /* border: 1px solid var(--BEDBB0); */
     border: 1px solid var(--primary-modal-card-color);
   }
 `;
@@ -86,7 +82,6 @@ export const DatePickerWrapper = styled.div`
     background-color: transparent;
     border: none;
     outline: none;
-    /* color: var(--BEDBB0); */
     color: var(--primary-modal-card-color);
     cursor: pointer;
   }
@@ -95,14 +90,11 @@ export const DatePickerWrapper = styled.div`
   }
   & .react-datepicker {
     font-family: 'Poppins', sans-serif;
-    /* background-color: var(--1F1F1F); */
     background-color: var(--datepicker-background-color);
     border-radius: 6px;
-    /* border: 1px solid var(--BEDBB0); */
     border: 1px solid var(--primary-modal-card-color);
   }
   & .react-datepicker__header {
-    /* background-color: var(--1F1F1F); */
     background-color: var(--datepicker-background-color);
   }
   & .react-datepicker__current-month {
@@ -110,22 +102,18 @@ export const DatePickerWrapper = styled.div`
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: -0.32px;
-    /* color: var(--FFFFFF); */
     color: var(--datepicker-current-month);
   }
   & .react-datepicker__navigation-icon--next {
-    /* background-color: var(--BEDBB0); */
     background-color: var(--primary-modal-card-color);
   }
   & .react-datepicker__day-name {
-    /* color: rgba(255, 255, 255, 0.5); */
     color: var(--datepicker-dayname-color);
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 500;
   }
   & .react-datepicker__day {
-    /* color: var(--FFFFFF); */
     color: var(--datepicker-current-day);
     background-color: transparent;
     border-radius: 50%;
@@ -136,20 +124,15 @@ export const DatePickerWrapper = styled.div`
     font-weight: 400;
   }
   & .react-datepicker__day--selected {
-    /* background-color: var(--BEDBB0); */
     background-color: var(--primary-modal-card-color);
     border-radius: 50%;
-    /* color: var(--1F1F1F); */
     color: var(--datepicker-background-color);
   }
   & .react-datepicker__day--disabled {
-    /* color: rgba(255, 255, 255, 0.2); */
     color: var(--datepicker-disabled-day);
   }
   & .react-datepicker__day:hover {
-    /* background-color: var(--BEDBB0); */
     background-color: var(--datepicker-hover-background-color);
-    /* color: var(--1F1F1F); */
     color: var(--datepicker-background-color);
   }
   & .react-datepicker__day--disabled:hover {
@@ -165,6 +148,5 @@ export const SpanStyled = styled.span`
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: -0.28px;
-  /* color: var(--BEDBB0); */
   color: var(--primary-modal-card-color);
 `;

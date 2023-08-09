@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Field } from 'formik';
+
+import { UpdateUserSchema } from '../../Schemas/authSchemas';
 import { getUserData } from 'redux/auth/authSelectors';
 import { updateUser } from '../../redux/auth/authOperations';
-import { UpdateUserSchema } from '../../Schemas/authSchemas';
+import sprite from '../../images/sprite.svg';
+import eyeHide from '../../images/eye-hide.svg';
 import {
   Wrapper,
   AvatarWrapper,
@@ -19,12 +22,10 @@ import {
   SendBtn,
   ErrorText,
 } from './EditUser.styled';
-import sprite from '../../images/sprite.svg';
-import eyeHide from '../../images/eye-hide.svg';
 
 function EditUser({ onClose }) {
-  const userData = useSelector(getUserData);
   const dispatch = useDispatch();
+  const userData = useSelector(getUserData);
 
   const [imageUrl, setImageUrl] = useState('');
   const [imageFile, setImageFile] = useState(null);

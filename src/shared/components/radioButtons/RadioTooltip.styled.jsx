@@ -11,7 +11,6 @@ export const RadioWrapper = styled.div`
 export const StyledLabel = styled.label`
   display: flex;
   justify-content: space-between;
-  /* gap: 8px; */
 
   &:hover > p,
   &:hover > svg {

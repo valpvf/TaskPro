@@ -9,7 +9,6 @@ export const BackdropStyled = styled.div`
   width: 100%;
   height: 100%;
   z-index: 100;
-  /* background-color: rgba(137, 137, 137, 0.2); */
   background-color: var(--modal-backdrop-background-color);
 `;
 
@@ -21,7 +20,6 @@ export const ModalWindowStyled = styled.div`
   width: 100%;
   padding: 24px;
 
-  /* background-color: var(--161616); */
   background-color: var(--modal-window-color);
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
@@ -54,12 +52,10 @@ export const CloseBtnStyled = styled.div`
 
   &:hover,
   :focus {
-    /* background-color: var(--9DC888); */
     background-color: var(--secondary-button-color);
   }
 `;
 
 export const IconStyled = styled.svg`
-  /* stroke: currentColor; */
   stroke: var(--modal-close-icon-color);
 `;

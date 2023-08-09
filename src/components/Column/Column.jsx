@@ -2,17 +2,19 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import EllipsisText from 'react-ellipsis-text';
 import PropTypes from 'prop-types';
+
+import ModalColumn from 'components/ModalColumn/ModalColumn';
+import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
+import { deleteColumn } from 'redux/task/taskOperations';
+import { getColumn } from 'redux/task/taskSelectors';
 import icons from '../../images/sprite.svg';
 import { BoardItem, IconEdit, IconEditCustom, ProgName } from './Column.styled';
-import ModalColumn from 'components/ModalColumn/ModalColumn';
-import { deleteColumn } from 'redux/task/taskOperations';
-import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
-import { getColumn } from 'redux/task/taskSelectors';
 
 const Column = ({ title, columnId }) => {
+  const dispatch = useDispatch();
+
   const [showModal, setShowModal] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const dispatch = useDispatch();
 
   const getColumns = useSelector(getColumn);
   const tasksInColumn = getColumns.filter(el => el._id === columnId);
@@ -76,9 +78,9 @@ const Column = ({ title, columnId }) => {
   );
 };
 
+export default Column;
+
 EllipsisText.propTypes = {
   text: PropTypes.string.isRequired,
   length: PropTypes.string.isRequired,
 };
-
-export default Column;

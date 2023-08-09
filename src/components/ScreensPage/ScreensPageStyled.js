@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
 
-// Імпортуйте ваш Redux slice
 
 export const Container = styled.div`
-  /* background-color: #1f1f1f; */
   background-color: var(--secondary-background-color);
   background-position-y: bottom;
   background-position-x: center;
@@ -97,7 +95,6 @@ export const ScreensHeader = styled.div`
 
   @media screen and (max-width: 767.8px) {
     flex-wrap: wrap;
-    /* max-width: 168px; */
   }
 `;
 
@@ -112,11 +109,6 @@ export const HeaderTxt = styled.div`
   line-height: 27px;
   letter-spacing: -0.02em;
   color: var(--primary-heading-color);
-
-  /* @media (max-width: 375px) {
-    max-width: 40px;
-    overflow: hidden;
-  } */
 `;
 
 export const HeaderFiltres = styled.div`
@@ -152,7 +144,6 @@ export const IconFiltre = styled.svg`
   margin-right: 8px;
 
   fill: none;
-  /* stroke: white; */
   stroke: var(--primary-icon-stroke-color);
 `;
 
@@ -171,7 +162,6 @@ export const AddColumn = styled.div`
 
   width: 334px;
   height: 56px;
-  /* background-color: #121212; */
   background-color: var(--add-column-button-color);
 
   border-radius: 8px;
@@ -180,7 +170,6 @@ export const AddColumn = styled.div`
 export const IconPlus = styled.svg`
   width: 32px;
   height: 32px;
-  /* fill: white; */
   fill: var(--column-icon-plus-color);
   stroke: var(--column-icon-plus-stroke-color);
   margin-right: 8px;
@@ -218,7 +207,7 @@ export const ColumnsContainer = styled.div`
       border-radius: 10px;
     }
   }
-  @media (min-width: 768px) and (max-width: 1440px) {
+  @media (min-width: 768px) and (max-width: 1439px) {
     flex-shrink: 0;
     max-height: 95vh;
     max-width: 98vw;
@@ -253,7 +242,6 @@ export const ColumnsContainer = styled.div`
 
 export const ButtonAdd = styled.button`
   margin-left: 80px;
-  /* color: white; */
   color: var(--primary-heading-color);
   display: flex;
   align-items: center;
@@ -293,7 +281,7 @@ export const ColumnWrapper = styled.div`
       border-radius: 10px;
     }
   }
-  @media (min-width: 720px) and (max-width: 1440px) {
+  @media (min-width: 720px) and (max-width: 1439px) {
     flex-shrink: 0;
     max-height: 62vh;
     overflow-y: auto;

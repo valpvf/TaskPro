@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const BackdropContainer = styled.div`
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     position: fixed;
     top: 0;
     left: 0;
