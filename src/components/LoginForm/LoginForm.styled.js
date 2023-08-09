@@ -10,6 +10,11 @@ export const RegisterLink = styled(Link)`
   line-height: 27px;
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.3);
+
+  &:hover,
+  &:focus {
+    color: #bedbb0;
+  }
 `;
 
 export const LoginLink = styled(Link)`
@@ -37,9 +42,16 @@ export const LoginBtn = styled.button`
   text-align: center;
 
   background: #bedbb0;
+  border: none;
   border-radius: 8px;
   color: var(--welcome-title-color);
   cursor: pointer;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: #a1cf89;
+  }
 
   &:active {
     transform: scale(0.95);

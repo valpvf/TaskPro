@@ -136,6 +136,7 @@ export const SendBtn = styled.button`
   text-align: center;
 
   background: #bedbb0;
+  border: none;
   border-radius: 8px;
   color: var(--welcome-title-color);
   cursor: pointer;

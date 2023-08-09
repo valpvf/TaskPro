@@ -112,17 +112,46 @@ export const AuthButton = styled(NavLink)`
   line-height: 1.5;
   letter-spacing: -0.28px;
 
-  color: var(--welcome-title-color);
+  background: var(--welcome-background-color);
+  color: var(--welcome-hover-text-color);
 
   text-align: center;
 
+  border: none;
   border-radius: 8px;
   cursor: pointer;
   text-transform: none;
 
-  &:hover,
-  &:focus,
   &:active {
+    transform: scale(0.95);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 344px;
+  }
+`;
+
+export const AuthButtonLogin = styled(NavLink)`
+  width: 335px;
+
+  padding: 14px 0;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.28px;
+
+  color: var(--welcome-title-color);
+
+  text-align: center;
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: none;
+
+  &:hover {
     background: var(--welcome-background-color);
     color: var(--welcome-hover-text-color);
   }
