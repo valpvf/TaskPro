@@ -40,6 +40,7 @@ import { getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardId } from 'redux/task/taskOperations';
 import ModalConfirm from 'shared/components/modalConfirm/ModalConfirm';
 import EllipsisText from 'react-ellipsis-text';
+import { getColumn } from 'redux/task/taskSelectors';
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -54,6 +55,8 @@ const Sidebar = () => {
 
   const dispatch = useDispatch();
   const getBoard = useSelector(getBoardSelector);
+
+  const getColumnTasksLength = useSelector(getColumn).length;
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -276,6 +279,11 @@ const Sidebar = () => {
         <ModalConfirm
           onClose={handleClose}
           onConfirm={() => handleDeleteBoard(activeBoardId)}
+          title={
+            getColumnTasksLength > 0
+              ? 'The board is not empty. Are you sure to delete it?'
+              : 'Are you sure?'
+          }
         />
       )}
     </SidebarContainer>

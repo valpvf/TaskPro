@@ -10,14 +10,14 @@ export const Container = styled.div`
   min-height: 68px;
   padding-right: 24px;
 
-  @media (max-width: 1440px) {
-    padding-right: 32px;
-  }
-
   @media (max-width: 768px) {
-    min-height: 68px;
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  @media (max-width: 1440px) {
+    padding-left: 20px;
+    padding-right: 32px;
   }
 `;
 
@@ -81,8 +81,8 @@ export const TheamBtn = styled.div`
   align-items: center;
   cursor: pointer;
   &:hover {
-    padding: 0 2px 2px;
-    box-shadow: 0px 6px 7px -2px var(--user-edit-icon-plus-hover-color);
+    padding: 5px;
+    box-shadow: 0px 6px 7px -5px var(--user-edit-icon-plus-hover-color);
   }
 `;
 
