@@ -5,7 +5,7 @@ export const StyledButton = styled(Button)`
   gap: 8px;
   width: 100%;
   height: 49px;
-  margin-top: 10px;
+  margin-top: 17px;
   margin-bottom: 10px;
   box-sizing: border-box;
   border-radius: 8px;
