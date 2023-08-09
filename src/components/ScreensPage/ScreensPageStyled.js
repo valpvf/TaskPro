@@ -10,12 +10,13 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   flex-grow: 1;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 34px;
+  padding-right: 34px;
   padding-bottom: 5px;
 
   @media screen and (min-width: 320px) {
-    padding-left: 10px;
+    padding-left: 24px;
+    padding-right: 24px;
     background-image: ${props =>
       props.isBoardActive &&
       props.picture !== '00' &&
@@ -31,6 +32,8 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 768px) {
+    padding-left: 34px;
+    padding-right: 34px;
     background-image: ${props =>
       props.isBoardActive &&
       props.picture !== '00' &&
@@ -183,7 +186,6 @@ export const ColumnsContainer = styled.div`
   justify-items: center;
   gap: 22px;
   max-width: 75vw;
-  height: 95%;
   overflow-x: auto;
 
   ::-webkit-scrollbar {
@@ -227,7 +229,7 @@ export const ColumnsContainer = styled.div`
   }
   @media (min-width: 320px) and (max-width: 720px) {
     flex-shrink: 0;
-    max-width: 92vw;
+    max-width: 88vw;
     overflow-y: auto;
     ::-webkit-scrollbar {
       background-color: var(--scrollbar-base-color);
@@ -257,7 +259,7 @@ export const ButtonAdd = styled.button`
 
 export const ColumnWrapper = styled.div`
   flex-shrink: 0;
-  max-height: 60vh;
+  max-height: 50vh;
   overflow-y: auto;
   ::-webkit-scrollbar {
     background-color: var(--scrollbar-base-color);
@@ -269,9 +271,23 @@ export const ColumnWrapper = styled.div`
     background-color: var(--scrollbar-background-color);
     border-radius: 10px;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1680px) {
+    max-height: 73vh;
     flex-shrink: 0;
-    max-height: 75vh;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+      background-color: var(--scrollbar-base-color);
+      border-radius: 10px;
+      width: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--scrollbar-background-color);
+      border-radius: 10px;
+    }
+  }
+  @media (min-width: 1440px) and (max-width: 1679px) {
+    flex-shrink: 0;
+    max-height: 60vh;
     overflow-y: auto;
     ::-webkit-scrollbar {
       background-color: var(--scrollbar-base-color);
@@ -286,7 +302,7 @@ export const ColumnWrapper = styled.div`
   }
   @media (min-width: 720px) and (max-width: 1440px) {
     flex-shrink: 0;
-    max-height: 62vh;
+    max-height: 65vh;
     overflow-y: auto;
     ::-webkit-scrollbar {
       background-color: var(--scrollbar-base-color);
