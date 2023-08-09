@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import EllipsisText from 'react-ellipsis-text';
 import PropTypes from 'prop-types';
 import ModalCard from 'components/ModalCard/ModalCard';
@@ -22,6 +22,7 @@ import {
   IconWrapper,
   Bell,
 } from './Card.styled';
+import { getColumn } from 'redux/task/taskSelectors';
 
 const Card = ({ task = {}, columnID }) => {
   const {
@@ -64,7 +65,11 @@ const Card = ({ task = {}, columnID }) => {
     setShowProgressModal(false);
   };
   const onCloseProgressOut = e => {
-    if (e.target.id !== 'modal_progress' && showProgressModal) {
+    // if (e.target.id !== 'modal_progress' && showProgressModal) {
+    //   setShowProgressModal(false);
+    // }
+    e.stopPropagation();
+    if (showProgressModal) {
       setShowProgressModal(false);
     }
   };
@@ -80,9 +85,12 @@ const Card = ({ task = {}, columnID }) => {
   const formattedDate = formatDate(today); // Output: "07/28/23" (if today is July 28, 2023)
   const deadlineDate = formatDate(new Date(deadline.split('T')[0]));
 
+  const columns = useSelector(getColumn);
+  // console.log(columns);
+
   return (
-    <CardWrapper priority={priority} onClick={onCloseProgressOut}>
-      <div>
+    <CardWrapper priority={priority}>
+      <div onClick={onCloseProgressOut}>
         <Title>
           <EllipsisText text={title} length={'35'} />
         </Title>
@@ -108,9 +116,13 @@ const Card = ({ task = {}, columnID }) => {
                 <use xlinkHref={`${sprite}#icon-bell`} />
               </Bell>
             )}
-            <Icon width="16px" height="16px" onClick={onOpenProgress}>
-              <use xlinkHref={`${sprite}#icon-goto`} />
-            </Icon>
+
+            {columns.length > 1 && (
+              <Icon width="16px" height="16px" onClick={onOpenProgress}>
+                <use xlinkHref={`${sprite}#icon-goto`} />
+              </Icon>
+            )}
+
             {showProgressModal && (
               <ModalProgress
                 onCloseProgress={onCloseProgress}
@@ -142,6 +154,9 @@ const Card = ({ task = {}, columnID }) => {
           <ModalConfirm onClose={handleClose} onConfirm={handleDelete} />
         )}
       </div>
+      {showProgressModal && (
+        <ModalProgress onCloseProgress={onCloseProgress} id={[_id, columnID]} />
+      )}
     </CardWrapper>
   );
 };
