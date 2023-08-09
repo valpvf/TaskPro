@@ -97,7 +97,7 @@ export const ScreensHeader = styled.div`
 
   @media screen and (max-width: 767.8px) {
     flex-wrap: wrap;
-    max-width: 168px;
+    /* max-width: 168px; */
   }
 `;
 
@@ -112,6 +112,11 @@ export const HeaderTxt = styled.div`
   line-height: 27px;
   letter-spacing: -0.02em;
   color: var(--primary-heading-color);
+
+  /* @media (max-width: 375px) {
+    max-width: 40px;
+    overflow: hidden;
+  } */
 `;
 
 export const HeaderFiltres = styled.div`
@@ -133,7 +138,11 @@ export const HeaderAddColumn = styled(HeaderFiltres)`
   cursor: pointer;
 
   @media screen and (max-width: 767.8px) {
-    margin: 0;
+    margin-right: 20px;
+  }
+
+  @media screen and (max-width: 320px) {
+    margin-right: 10px;
   }
 `;
 
@@ -209,10 +218,10 @@ export const ColumnsContainer = styled.div`
       border-radius: 10px;
     }
   }
-  @media (min-width: 720px) and (max-width: 1440px) {
+  @media (min-width: 768px) and (max-width: 1440px) {
     flex-shrink: 0;
     max-height: 95vh;
-    max-width: 95vw;
+    max-width: 98vw;
     overflow-y: auto;
     ::-webkit-scrollbar {
       background-color: var(--scrollbar-base-color);
@@ -225,9 +234,9 @@ export const ColumnsContainer = styled.div`
       border-radius: 10px;
     }
   }
-  @media (min-width: 320px) and (max-width: 720px) {
+  @media (min-width: 320px) and (max-width: 768px) {
     flex-shrink: 0;
-    max-width: 92vw;
+    max-width: 95vw;
     overflow-y: auto;
     ::-webkit-scrollbar {
       background-color: var(--scrollbar-base-color);

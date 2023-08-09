@@ -17,7 +17,7 @@ import {
   HeadersWrapper,
 } from './ScreensPageStyled';
 import icons from '../../images/sprite.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from 'components/Card/Card';
 import ModalColumn from 'components/ModalColumn/ModalColumn';
 import ModalFilters from 'components/ModalFilters/ModalFilters';
@@ -25,11 +25,10 @@ import ButtonMain from 'shared/components/button/Button';
 import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import ModalCard from 'components/ModalCard/ModalCard';
 import { useSelector } from 'react-redux';
-// import { getBoard, getBoardSelector } from 'redux/auth/authSelectors';
 import { getBoardBg, getBoardName, getColumn } from 'redux/task/taskSelectors';
 import Column from 'components/Column/Column';
 import { getBoard } from 'redux/auth/authSelectors';
-// import { addBoardApi } from 'services/backApi';
+import EllipsisText from 'react-ellipsis-text/lib/components/EllipsisText';
 
 const ScreensPage = ({ title }) => {
   const [showModal, setShowModal] = useState(false);
@@ -43,13 +42,22 @@ const ScreensPage = ({ title }) => {
   const columns = useSelector(getColumn);
 
   const isBoardActive = boards.find(board => board.isActive);
-  // const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(addBoardApi());
-  // }, [dispatch]);
+  const [headerSize, setHeaderSize] = useState(true);
 
-  // const backgroundValue = useSelector(getBoardSelector);
+  const handleWindowResize = () => {
+    if (window.innerWidth > 375) {
+      setHeaderSize(true);
+    } else {
+      setHeaderSize(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize);
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
   const boardName = useSelector(getBoardName);
   const column = useSelector(getColumn)?.toSorted((a, b) =>
     b.updatedAt.localeCompare(a.updatedAt)
@@ -84,30 +92,18 @@ const ScreensPage = ({ title }) => {
   };
 
   return boards.length ? (
-    // <Container
-    //   style={{
-    //     backgroundImage:
-    //       isBoardActive && `url('images/background/${boardBg}d.jpg')`,
-    //   }}
-    // >
-    <Container
-      picture={boardBg}
-      isBoardActive
-      // css={mq({
-      //   backgroundImage: [
-      //     `url('images/background/${boardBg}m.jpg')`,
-      //     `url('images/background/${boardBg}m.jpg')`,
-      //     `url('images/background/${boardBg}t.jpg')`,
-      //     `url('images/background/${boardBg}d.jpg')`,
-      //   ],
-      // })}
-      // style={{
-      //   backgroundImage:
-      //      && `url('images/background/${boardBg}d.jpg')`,
-      // }}
-    >
+    <Container picture={boardBg} isBoardActive>
       <ScreensHeader>
-        {isBoardActive && <HeaderTxt>{boardName ?? ''}</HeaderTxt>}
+        {isBoardActive && (
+          <HeaderTxt>
+            {headerSize ? (
+              boardName ?? ''
+            ) : (
+              <EllipsisText text={boardName ?? ''} length={15} />
+            )}
+          </HeaderTxt>
+        )}
+
         <HeadersWrapper>
           {isBoardActive && columns.length !== 0 && (
             <HeaderAddColumn onClick={() => setShowModal(true)}>
@@ -132,11 +128,7 @@ const ScreensPage = ({ title }) => {
       </ScreensHeader>
       {isBoardActive && columns.length === 0 && (
         <AddColumn>
-          <ButtonAdd
-            type="button"
-            // onClick={handleAddColumnClick}
-            onClick={onOpen}
-          >
+          <ButtonAdd type="button" onClick={onOpen}>
             <IconPlus>
               <use href={`${icons}#icon-plus`}></use>
             </IconPlus>
