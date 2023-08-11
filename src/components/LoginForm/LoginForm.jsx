@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { login } from 'redux/auth/authOperations';
+import { toast } from 'react-toastify';
 import { Formik, Field, Form } from 'formik';
+
+import { login } from 'redux/auth/authOperations';
 import { setToken } from 'redux/auth/authSelectors';
 import { LoginSchema } from '../../Schemas/authSchemas';
-import { toast } from 'react-toastify';
+import sprite from '../../images/sprite.svg';
+import eyeHide from '../../images/eye-hide.svg';
 import {
   Container,
   Wrapper,
@@ -18,8 +21,6 @@ import {
   Svg,
 } from '../RegisterForm/RegisterForm.styled';
 import { RegisterLink, LoginLink, LoginBtn } from './LoginForm.styled';
-import sprite from '../../images/sprite.svg';
-import eyeHide from '../../images/eye-hide.svg';
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -32,9 +33,7 @@ function LoginForm() {
 
   const handleSubmit = async (values, { resetForm }) => {
     const currentUser = { ...values };
-
     const response = await dispatch(login(currentUser, setToken));
-
     if (response.error) {
       toast.error(response.payload);
     } else {

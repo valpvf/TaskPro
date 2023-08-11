@@ -8,29 +8,30 @@ export const BackdropStyled = styled.div`
   overflow-y: auto;
   width: 100%;
   height: 100%;
-  z-index: 100;
   background-color: var(--modal-backdrop-background-color);
+  z-index: 100;
 `;
 
 export const ModalWindowStyled = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
   padding: 24px;
-
-  background-color: var(--modal-window-color);
+  transform: translate(-50%, -50%);
   border-radius: 8px;
+  background-color: var(--modal-window-color);
   box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
   box-shadow: 0px 4px 16px 0px var(--modal-window-shadow);
 
   @media screen and (min-width: 375px) {
     width: 335px;
   }
+
   @media screen and (min-width: 768px) {
     width: ${props => (props.custom ? '400px' : '350px')};
   }
+
   @media screen and (max-height: 500px) and (orientation: landscape) {
     position: sticky;
     top: 0;
@@ -40,15 +41,15 @@ export const ModalWindowStyled = styled.div`
 `;
 
 export const CloseBtnStyled = styled.div`
+  position: absolute;
+  top: 14px;
+  right: 14px;
   width: 18px;
   height: 18px;
-  position: absolute;
-  right: 14px;
-  top: 14px;
-  border-radius: 50%;
-  background-color: transparent;
   cursor: pointer;
   transition: background-color 250ms ease-in;
+  border-radius: 50%;
+  background-color: transparent;
 
   &:hover,
   :focus {
