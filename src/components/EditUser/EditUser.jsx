@@ -40,11 +40,9 @@ function EditUser({ onClose }) {
   useEffect(() => {
     if (imageFile) {
       const reader = new FileReader();
-
       reader.onload = event => {
         setImageUrl(event.target.result);
       };
-
       reader.readAsDataURL(imageFile);
     }
   }, [imageFile]);
