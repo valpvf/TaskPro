@@ -53,7 +53,7 @@ export const LoginBtn = styled.button`
     transform: scale(0.95);
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     width: 287px;
   }
 `;

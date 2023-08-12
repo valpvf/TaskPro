@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
-import 'react-datepicker/dist/react-datepicker.css';
+import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import { registerLocale } from 'react-datepicker';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 import uk from 'date-fns/locale/uk';
+
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
 import ButtonMain from 'shared/components/button/Button';
@@ -12,6 +13,9 @@ import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import InputField from 'shared/components/inputField/InputField';
 import RadioColored from 'shared/components/radioButtons/RadioColored';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
+import { addCard, editCard } from 'redux/task/taskOperations';
+import { getTheme } from 'redux/auth/authSelectors';
+import 'react-datepicker/dist/react-datepicker.css';
 import {
   TextareaStyled,
   SubtitleStyled,
@@ -19,9 +23,6 @@ import {
   DatePickerWrapper,
   SpanStyled,
 } from './ModalCard.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { addCard, editCard } from 'redux/task/taskOperations';
-import { getTheme } from 'redux/auth/authSelectors';
 
 const TitleSchema = Yup.object().shape({
   cardTitle: Yup.string().required('Title is required'),

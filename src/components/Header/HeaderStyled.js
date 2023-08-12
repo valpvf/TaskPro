@@ -10,7 +10,7 @@ export const Container = styled.div`
   color: var(--primary-heading-color);
   background-color: var(--header-background-color);
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding-left: 20px;
     padding-right: 20px;
   }

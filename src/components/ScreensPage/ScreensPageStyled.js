@@ -223,7 +223,7 @@ export const ColumnsContainer = styled.div`
       border-radius: 10px;
     }
   }
-  @media (min-width: 320px) and (max-width: 768px) {
+  @media (min-width: 320px) and (max-width: 767px) {
     flex-shrink: 0;
     max-width: 95vw;
     overflow-y: auto;

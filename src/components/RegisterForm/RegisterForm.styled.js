@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
   border-radius: 8px;
   padding: 40px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     padding: 24px;
   }
 `;
@@ -138,7 +138,7 @@ export const RegisterBtn = styled.button`
     transform: scale(0.95);
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 767px) {
     width: 287px;
   }
 `;
