@@ -3,8 +3,8 @@
 ## Група розробників
 
 1.  Валерій Пожидаєв - `Team Lead - Front`
-2.  Алекс Болотов - `Team Lead - Back`
-3.  Ден Дудаєв - `Scrum Master`
+2.  Олексій Болотов - `Team Lead - Back`
+3.  Данило Дудаєв - `Scrum Master`
 
 `Developers:`
 
@@ -21,6 +21,7 @@
 ## Repository backend
 
 [Посилання на бекенд](https://github.com/AlexSBolotov/taskspro-backend)
+[Посилання на свагер](https://taskspro-backend.onrender.com/api-docs)
 
 ## Website
 
@@ -51,5 +52,3 @@
 кольоровий дзвоник.
 
 ### Впевнені, що застосунок сподобається користувачеві та стане йому у нагоді.
-
-###
