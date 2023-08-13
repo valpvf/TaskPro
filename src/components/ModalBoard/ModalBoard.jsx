@@ -1,5 +1,9 @@
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
 import ButtonMain from 'shared/components/button/Button';
@@ -7,13 +11,10 @@ import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import InputField from 'shared/components/inputField/InputField';
 import RadioImages from 'shared/components/radioButtons/RadioImages';
 import RadioIcons from 'shared/components/radioButtons/RadioIcons';
-import { SubtitleStyled, Duplicate } from './ModalBoard.styled';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { getBoardSelector } from 'redux/auth/authSelectors';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { SubtitleStyled, Duplicate } from './ModalBoard.styled';
 
 const TitleSchema = Yup.object().shape({
   boardTitle: Yup.string().required('Title is required'),
