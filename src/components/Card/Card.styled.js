@@ -47,6 +47,9 @@ export const SubTitle = styled.p`
   line-height: 1.5;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export const PrioryTitle = styled.p`

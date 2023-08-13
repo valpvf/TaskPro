@@ -4,7 +4,7 @@ import Sidebar from 'components/Sidebar/Sidebar';
 import Backdrop from '../components/Sidebar/Backdrop';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { ToastContainer } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
@@ -43,18 +43,6 @@ const Home = () => {
         >
           <Header onToggleSidebar={toggleSidebar} />
           <ScreensPage />
-          <ToastContainer
-            position="top-center"
-            autoClose={2500}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-          />
         </div>
       </div>
     </>
