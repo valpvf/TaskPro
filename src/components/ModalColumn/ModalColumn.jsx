@@ -1,15 +1,16 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+
 import Modal from 'components/Modal/Modal';
 import ModalTitle from 'components/ModalTitle/ModalTitle';
 import ButtonMain from 'shared/components/button/Button';
 import { BlackPlusButton } from 'shared/components/plusButton/PlusButtons';
 import InputField from 'shared/components/inputField/InputField';
 import InputErrorMessage from 'shared/components/inputErrorMessage/InputErrorMessage';
-import { useDispatch, useSelector } from 'react-redux';
 import { addColumn, editColumn } from 'redux/task/taskOperations';
 import { getBoardId, getColumn } from 'redux/task/taskSelectors';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const TitleSchema = Yup.object().shape({

@@ -37,6 +37,7 @@ const Home = () => {
           style={{
             flexGrow: '1',
             height: '100vh',
+            maxHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
           }}

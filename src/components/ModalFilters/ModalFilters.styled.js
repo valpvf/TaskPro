@@ -9,16 +9,16 @@ export const FormStyled = styled.form`
 export const BoxStyled = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 14px;
 `;
 
 export const SubtitleStyled = styled.p`
+  letter-spacing: -0.28px;
   color: var(--modal-filters-text);
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
-  letter-spacing: -0.28px;
 `;
